@@ -12,6 +12,9 @@
 		7C0949681DE222250038018F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C0949661DE222250038018F /* Main.storyboard */; };
 		7C09496A1DE222250038018F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C0949691DE222250038018F /* Assets.xcassets */; };
 		7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C09496B1DE222250038018F /* LaunchScreen.storyboard */; };
+		7C0949771DE236D40038018F /* ContainerViewCntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0949761DE236D40038018F /* ContainerViewCntroller.swift */; };
+		7C09497B1DE23F690038018F /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C09497A1DE23F690038018F /* SignUp.storyboard */; };
+		7C09497D1DE240B10038018F /* BaseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C09497C1DE240B10038018F /* BaseLoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		7C0949691DE222250038018F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C09496C1DE222250038018F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C09496E1DE222250038018F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C0949761DE236D40038018F /* ContainerViewCntroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewCntroller.swift; sourceTree = "<group>"; };
+		7C09497A1DE23F690038018F /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SignUp.storyboard; path = ../SignUp.storyboard; sourceTree = "<group>"; };
+		7C09497C1DE240B10038018F /* BaseLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,8 +44,8 @@
 		7C0949561DE222250038018F = {
 			isa = PBXGroup;
 			children = (
-				7C0949611DE222250038018F /* Mandarin */,
 				7C0949601DE222250038018F /* Products */,
+				7C0949611DE222250038018F /* Mandarin */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +60,25 @@
 		7C0949611DE222250038018F /* Mandarin */ = {
 			isa = PBXGroup;
 			children = (
+				7C0949751DE2368E0038018F /* View Controllers */,
 				7C0949621DE222250038018F /* AppDelegate.swift */,
 				7C0949641DE222250038018F /* ViewController.swift */,
 				7C0949661DE222250038018F /* Main.storyboard */,
+				7C09497A1DE23F690038018F /* SignUp.storyboard */,
 				7C0949691DE222250038018F /* Assets.xcassets */,
 				7C09496B1DE222250038018F /* LaunchScreen.storyboard */,
 				7C09496E1DE222250038018F /* Info.plist */,
 			);
 			path = Mandarin;
+			sourceTree = "<group>";
+		};
+		7C0949751DE2368E0038018F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7C0949761DE236D40038018F /* ContainerViewCntroller.swift */,
+				7C09497C1DE240B10038018F /* BaseLoginViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +142,7 @@
 			files = (
 				7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */,
 				7C09496A1DE222250038018F /* Assets.xcassets in Resources */,
+				7C09497B1DE23F690038018F /* SignUp.storyboard in Resources */,
 				7C0949681DE222250038018F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +156,8 @@
 			files = (
 				7C0949651DE222250038018F /* ViewController.swift in Sources */,
 				7C0949631DE222250038018F /* AppDelegate.swift in Sources */,
+				7C0949771DE236D40038018F /* ContainerViewCntroller.swift in Sources */,
+				7C09497D1DE240B10038018F /* BaseLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +317,7 @@
 				7C0949731DE222250038018F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

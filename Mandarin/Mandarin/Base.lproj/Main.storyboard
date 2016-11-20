@@ -11,7 +11,7 @@
         <!--Container View Controller-->
         <scene sceneID="md9-IG-a8y">
             <objects>
-                <viewController storyboardIdentifier="container" automaticallyAdjustsScrollViewInsets="NO" id="fDU-Pd-j4B" customClass="ContainerViewController" customModule="BinarySwipe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="container" automaticallyAdjustsScrollViewInsets="NO" id="fDU-Pd-j4B" customClass="ContainerViewController" customModule="Mandarin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QRe-ca-y1L"/>
                         <viewControllerLayoutGuide type="bottom" id="xOS-m8-1Va"/>
@@ -24,7 +24,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="doO-lC-aOF" userLabel="Content View">
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rS5-ZQ-9jq" customClass="Menu" customModule="BinarySwipe" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rS5-ZQ-9jq" customClass="Menu" customModule="Mandarin" customModuleProvider="target">
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3o-CD-das">
                                                         <string key="text" base64-UTF8="YES">
@@ -430,6 +430,6 @@ SBBFTExPA
         </scene>
     </scenes>
     <resources>
-        <image name="vxmarkets" width="233" height="78"/>
+        <image name="vxmarkets" width="325" height="356"/>
     </resources>
 </document>
