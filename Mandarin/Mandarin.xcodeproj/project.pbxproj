@@ -22,6 +22,8 @@
 		5621B5971DE2E0F000C3B612 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B5961DE2E0F000C3B612 /* Label.swift */; };
 		5621B5991DE2E0F600C3B612 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B5981DE2E0F600C3B612 /* Button.swift */; };
 		5621B59B1DE2E1F400C3B612 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B59A1DE2E1F400C3B612 /* TextField.swift */; };
+		567C5D361DE379F600776171 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567C5D341DE379F600776171 /* FBSDKCoreKit.framework */; };
+		567C5D371DE379F600776171 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567C5D351DE379F600776171 /* FBSDKLoginKit.framework */; };
 		7C0949631DE222250038018F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0949621DE222250038018F /* AppDelegate.swift */; };
 		7C0949681DE222250038018F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C0949661DE222250038018F /* Main.storyboard */; };
 		7C09496A1DE222250038018F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C0949691DE222250038018F /* Assets.xcassets */; };
@@ -48,6 +50,9 @@
 		5621B5961DE2E0F000C3B612 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		5621B5981DE2E0F600C3B612 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		5621B59A1DE2E1F400C3B612 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		567C5D341DE379F600776171 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		567C5D351DE379F600776171 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mandarin-Bridging-Header.h"; sourceTree = "<group>"; };
 		59C633C6F7C974462971A9F1 /* Pods-Mandarin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mandarin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mandarin/Pods-Mandarin.debug.xcconfig"; sourceTree = "<group>"; };
 		6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mandarin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C54CC98AB82A309CE8319DC /* Pods-Mandarin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mandarin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mandarin/Pods-Mandarin.release.xcconfig"; sourceTree = "<group>"; };
@@ -68,6 +73,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */,
+				567C5D361DE379F600776171 /* FBSDKCoreKit.framework in Frameworks */,
+				567C5D371DE379F600776171 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +93,7 @@
 		21949D324E7A39284F117969 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				567C5D2B1DE377BF00776171 /* Facebook */,
 				6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */,
 			);
 			name = Frameworks;
@@ -125,9 +133,20 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		567C5D2B1DE377BF00776171 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				567C5D341DE379F600776171 /* FBSDKCoreKit.framework */,
+				567C5D351DE379F600776171 /* FBSDKLoginKit.framework */,
+			);
+			name = Facebook;
+			path = Frameworks/Facebook;
+			sourceTree = "<group>";
+		};
 		7C0949561DE222250038018F = {
 			isa = PBXGroup;
 			children = (
+				567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */,
 				7C0949611DE222250038018F /* Mandarin */,
 				7C0949601DE222250038018F /* Products */,
 				20DD497CF19ED60CA2ECF05D /* Pods */,
@@ -206,6 +225,7 @@
 				TargetAttributes = {
 					7C09495E1DE222250038018F = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -434,10 +454,18 @@
 			baseConfigurationReference = 59C633C6F7C974462971A9F1 /* Pods-Mandarin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/Facebook",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Mandarin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Home.Mandarin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mandarin/Mandarin-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -447,10 +475,17 @@
 			baseConfigurationReference = 6C54CC98AB82A309CE8319DC /* Pods-Mandarin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks/Facebook",
+				);
 				INFOPLIST_FILE = Mandarin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Home.Mandarin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mandarin/Mandarin-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
