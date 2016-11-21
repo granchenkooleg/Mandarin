@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ContainerViewController/*: BaseViewController*/ {
+class ContainerViewController: BaseViewController {
     
     @IBOutlet weak var menuContainerView: Menu!
     @IBOutlet weak var scrollView: UIScrollView!

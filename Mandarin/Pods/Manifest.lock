@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (4.0.1)
+  - CryptoSwift (0.6.5)
+  - Kingfisher (3.1.4)
+  - Realm (2.0.3):
+    - Realm/Headers (= 2.0.3)
+  - Realm/Headers (2.0.3)
+  - RealmSwift (2.0.3):
+    - Realm (= 2.0.3)
+  - SnapKit (3.0.2)
+  - SwiftyJSON (3.1.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - CryptoSwift
+  - Kingfisher
+  - RealmSwift
+  - SnapKit
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  CryptoSwift: d86b1d97d39b4a361ba44c77180b221e9c5b864f
+  Kingfisher: 6c67e3e57f2d81a9cfdfa25052cd86f33ceac9bb
+  Realm: 5f008bfe3c8c47142eddfc30b8c1584cde22db24
+  RealmSwift: 5afb451f65b682242f272dbb52d5c6f6e343c980
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+
+PODFILE CHECKSUM: 698fdcd177cc844e88c4e9c54d751b63a86ebf90
+
+COCOAPODS: 1.1.0.rc.2
