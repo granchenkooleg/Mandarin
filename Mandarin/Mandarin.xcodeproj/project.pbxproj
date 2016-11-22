@@ -30,6 +30,7 @@
 		7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C09496B1DE222250038018F /* LaunchScreen.storyboard */; };
 		7C0949771DE236D40038018F /* ContainerViewCntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0949761DE236D40038018F /* ContainerViewCntroller.swift */; };
 		7C09497D1DE240B10038018F /* BaseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C09497C1DE240B10038018F /* BaseLoginViewController.swift */; };
+		7C2C70151DE45316005DEDCA /* registr_v4-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C2C70141DE45316005DEDCA /* registr_v4-05.jpg */; };
 		7C513DB71DE399160054B38A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C513DB61DE399160054B38A /* SignUp.storyboard */; };
 		ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		7C09496E1DE222250038018F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C0949761DE236D40038018F /* ContainerViewCntroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewCntroller.swift; sourceTree = "<group>"; };
 		7C09497C1DE240B10038018F /* BaseLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLoginViewController.swift; sourceTree = "<group>"; };
+		7C2C70141DE45316005DEDCA /* registr_v4-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "registr_v4-05.jpg"; sourceTree = "<group>"; };
 		7C513DB61DE399160054B38A /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,6 +173,7 @@
 				5621B57D1DE2DEDB00C3B612 /* Model */,
 				7C0949751DE2368E0038018F /* View Controllers */,
 				5621B57E1DE2DEE400C3B612 /* Extension */,
+				7C2C700F1DE44CDC005DEDCA /* Images  */,
 				7C0949661DE222250038018F /* Main.storyboard */,
 				7C513DB61DE399160054B38A /* SignUp.storyboard */,
 				7C0949691DE222250038018F /* Assets.xcassets */,
@@ -188,6 +191,14 @@
 				7C09497C1DE240B10038018F /* BaseLoginViewController.swift */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		7C2C700F1DE44CDC005DEDCA /* Images  */ = {
+			isa = PBXGroup;
+			children = (
+				7C2C70141DE45316005DEDCA /* registr_v4-05.jpg */,
+			);
+			name = "Images ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C2C70151DE45316005DEDCA /* registr_v4-05.jpg in Resources */,
 				7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */,
 				7C09496A1DE222250038018F /* Assets.xcassets in Resources */,
 				7C513DB71DE399160054B38A /* SignUp.storyboard in Resources */,
