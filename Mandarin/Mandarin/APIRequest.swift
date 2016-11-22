@@ -150,75 +150,75 @@ enum UserRequest: URLRequestConvertible {
         return try encodedRequestHalper(method, params, url)
     }
     
-    static func creteUserForTranse(_ _trans: String, completion: @escaping Block) {
-        guard let uid = UserDefaults.standard.value(forKey: "deviceID") as? [String : AnyObject] else { return }
-        let transEntry = TransEntry(params: uid)
-        requestHandler(#function, URLRequest: trans(_trans, transEntry.params), completionHandler: { json in
-            setupUser(json)
-            
-            completion()
-        })
-    }
-    
-    static func createUser(_ entryParams: EntryParametersPresenting, completion: @escaping Block) {
-        requestHandler(#function, URLRequest: create(entryParams.params)) { json in
-            setupUser(json)
-            completion()
-        }
-    }
-    
-    static func getUser() {
-         guard let id = User.currentUser?.id , id.isEmpty == false else { return }
-        requestHandler(#function, URLRequest: get(id), completionHandler: { json in
-            setupUser(json)
-        })
-    }
-    
-    static func performAuthorization(_ entryParams: EntryParametersPresenting, completion: @escaping (Bool) -> Void) {
-        requestHandler(#function, URLRequest: authorization(entryParams.params)) { json in
-            guard let json = json else {
-                completion(false)
-                return
-            }
-            setupUser(json)
-            completion(true)
-        }
-    }
-    
-    static fileprivate func setupUser(_ json: JSON?) {
-        guard let json = json else { return }
-        User.createUser(json)
-    }
-    
-    static func logoutUser() {
-        guard let saveDeviceID = UserDefaults.standard.value(forKey: "deviceID") as? [String: Any],
-            let deviceID = saveDeviceID["device_id"] as? String else { return }
-        requestHandler(#function, URLRequest: logOut(deviceID)) { json in
-            
-        }
-    }
-    
-    static func getStatistics() {
-        guard let id = User.currentUser?.id , id.isEmpty == false else { return }
-        requestHandler(#function, URLRequest: statistics(id)) { json in
-            if let json = json {
-                   User.currentUser?.addStatistic(json)
-            }
-        }
-    }
-    
-    static func getTrades(_ completion: @escaping (JSON?) -> Void) {
-        guard let id = User.currentUser?.id , id.isEmpty == false else { return }
-        requestHandler(#function, URLRequest: trades(id), completionHandler: completion)
-    }
-    
-    static func updateAmount(_ entryParams: EntryParametersPresenting, completion: ((Bool) -> Void)? = nil) {
-        requestHandler(#function, URLRequest: amount(entryParams.params), completionHandler: { json in
-            if let array = json?.array {
-                completion?(array.isEmpty)
-            }
-        })
-    }
+//    static func creteUserForTranse(_ _trans: String, completion: @escaping Block) {
+//        guard let uid = UserDefaults.standard.value(forKey: "deviceID") as? [String : AnyObject] else { return }
+//        let transEntry = TransEntry(params: uid)
+//        requestHandler(#function, URLRequest: trans(_trans, transEntry.params), completionHandler: { json in
+//            setupUser(json)
+//            
+//            completion()
+//        })
+//    }
+//    
+//    static func createUser(_ entryParams: EntryParametersPresenting, completion: @escaping Block) {
+//        requestHandler(#function, URLRequest: create(entryParams.params)) { json in
+//            setupUser(json)
+//            completion()
+//        }
+//    }
+//    
+//    static func getUser() {
+//         guard let id = User.currentUser?.id , id.isEmpty == false else { return }
+//        requestHandler(#function, URLRequest: get(id), completionHandler: { json in
+//            setupUser(json)
+//        })
+//    }
+//    
+//    static func performAuthorization(_ entryParams: EntryParametersPresenting, completion: @escaping (Bool) -> Void) {
+//        requestHandler(#function, URLRequest: authorization(entryParams.params)) { json in
+//            guard let json = json else {
+//                completion(false)
+//                return
+//            }
+//            setupUser(json)
+//            completion(true)
+//        }
+//    }
+//    
+//    static fileprivate func setupUser(_ json: JSON?) {
+//        guard let json = json else { return }
+//        User.createUser(json)
+//    }
+//    
+//    static func logoutUser() {
+//        guard let saveDeviceID = UserDefaults.standard.value(forKey: "deviceID") as? [String: Any],
+//            let deviceID = saveDeviceID["device_id"] as? String else { return }
+//        requestHandler(#function, URLRequest: logOut(deviceID)) { json in
+//            
+//        }
+//    }
+//    
+//    static func getStatistics() {
+//        guard let id = User.currentUser?.id , id.isEmpty == false else { return }
+//        requestHandler(#function, URLRequest: statistics(id)) { json in
+//            if let json = json {
+//                   User.currentUser?.addStatistic(json)
+//            }
+//        }
+//    }
+//    
+//    static func getTrades(_ completion: @escaping (JSON?) -> Void) {
+//        guard let id = User.currentUser?.id , id.isEmpty == false else { return }
+//        requestHandler(#function, URLRequest: trades(id), completionHandler: completion)
+//    }
+//    
+//    static func updateAmount(_ entryParams: EntryParametersPresenting, completion: ((Bool) -> Void)? = nil) {
+//        requestHandler(#function, URLRequest: amount(entryParams.params), completionHandler: { json in
+//            if let array = json?.array {
+//                completion?(array.isEmpty)
+//            }
+//        })
+//    }
 }
 
 enum SignalRequest: URLRequestConvertible {
@@ -264,22 +264,21 @@ enum SignalRequest: URLRequestConvertible {
        return try encodedRequestHalper(method, params, url)
     }
     
-    static func aproveTrade(_ completion: @escaping (JSON?) -> Void) {
-        let signal = Signal.sharedInctance
-        let isCall = NSNumber(value: signal.isCall ?? false)
-        let trandEntry = TrandEntry(params: ["is_call" : isCall,
-                                            "option_id" : signal.optionID as AnyObject? ?? "" as AnyObject,
-                                            "expiry_date" : signal.remainsAfter as AnyObject,
-                                            "asset_name" : signal.asset as AnyObject,
-                                            "amount" : signal.profit as AnyObject])
-        requestHandler(#function, URLRequest: trades(trandEntry.params), completionHandler: completion)
-    }
-    
-    static func retrievesTrade(_ completion: @escaping (JSON?) -> Void) {
-        guard let id = User.currentUser?.strategy_id , id.isEmpty == false else { return }
-        requestHandler(#function, URLRequest: retrieves(id), completionHandler: completion)
-        
-    }
+//    static func aproveTrade(_ completion: @escaping (JSON?) -> Void) {
+//        let signal = Signal.sharedInctance
+//        let isCall = NSNumber(value: signal.isCall ?? false)
+//        let trandEntry = TrandEntry(params: ["is_call" : isCall,
+//                                            "option_id" : signal.optionID as AnyObject? ?? "" as AnyObject,
+//                                            "expiry_date" : signal.remainsAfter as AnyObject,
+//                                            "asset_name" : signal.asset as AnyObject,
+//                                            "amount" : signal.profit as AnyObject])
+//        requestHandler(#function, URLRequest: trades(trandEntry.params), completionHandler: completion)
+//    }
+//    
+//    static func retrievesTrade(_ completion: @escaping (JSON?) -> Void) {
+//        guard let id = User.currentUser?.strategy_id , id.isEmpty == false else { return }
+//        requestHandler(#function, URLRequest: retrieves(id), completionHandler: completion
+//    }
 }
 
 enum TradesRequest: URLRequestConvertible {
@@ -322,12 +321,12 @@ enum TradesRequest: URLRequestConvertible {
     }
     
     static func getHighRatedTrade(_ completion: @escaping (JSON?) -> Void) {
-        guard let id = User.currentUser?.id , id.isEmpty == false else { return }
-        requestHandler(#function, URLRequest: get(id), completionHandler: completion)
+//        guard let id = User.currentUser?.id , id.isEmpty == false else { return }
+//        requestHandler(#function, URLRequest: get(id), completionHandler: completion)
     }
     
     static func getHistoryTrades(_ completion: @escaping (JSON?) -> Void)  {
-        guard let id = User.currentUser?.id , id.isEmpty == false else { return }
-        requestHandler(#function, URLRequest: historyTrades(id), completionHandler: completion)
+//        guard let id = User.currentUser?.id , id.isEmpty == false else { return }
+//        requestHandler(#function, URLRequest: historyTrades(id), completionHandler: completion)
     }
 }

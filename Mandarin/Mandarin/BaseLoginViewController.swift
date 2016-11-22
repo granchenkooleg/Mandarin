@@ -41,30 +41,30 @@ class BaseLoginViewController: BaseViewController, FBSDKLoginButtonDelegate {
     
     public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, email, first_name, last_name, location"])
-        let _  =  graphRequest?.start(completionHandler: { _, result, error in
-            guard let result = result as? NSDictionary else { return }
-            guard error == nil, let id = result["id"] else { return }
-            let fbEntry = FBEntry(params: ["id": id as AnyObject])
-            UserRequest.createUser(fbEntry, completion: {[weak self] in
-                self?.chooseNextContoller()
-                })
-        })
+//        let _  =  graphRequest?.start(completionHandler: { _, result, error in
+//            guard let result = result as? NSDictionary else { return }
+//            guard error == nil, let id = result["id"] else { return }
+//            let fbEntry = FBEntry(params: ["id": id as AnyObject])
+//            UserRequest.createUser(fbEntry, completion: {[weak self] in
+//                self?.chooseNextContoller()
+//                })
+//        })
         
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
         loginManager.logOut()
-        UserRequest.logoutUser()
+//        UserRequest.logoutUser()
     }
     
     fileprivate func chooseNextContoller() {
         var appropriateVC: UIViewController = UIViewController()
-        if User.isAuthorized() == true {
-            appropriateVC = Storyboard.Container.instantiate()
-        } else {
-            appropriateVC = Storyboard.OnBoard.instantiate()
-        }
+//        if User.isAuthorized() == true {
+//            appropriateVC = Storyboard.Container.instantiate()
+//        } else {
+//            appropriateVC = Storyboard.OnBoard.instantiate()
+//        }
         
         UINavigationController.main.pushViewController(appropriateVC, animated: false)
     }
@@ -79,7 +79,7 @@ class SignInViewController: BaseLoginViewController {
     
     @IBAction func createAccount(_ sender: AnyObject) {
         //        navigationController?.pushViewController(Storyboard.CreateAccount.instantiate(), animated: true)
-        present(Storyboard.RemoteCreate.instantiate(), animated: true, completion: nil)
+//        present(Storyboard.RemoteCreate.instantiate(), animated: true, completion: nil)
     }
 }
 
@@ -116,14 +116,14 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate {
         //        }
         
         //        let login = LoginEntry(params: ["email": "KyraSany@web.de", "password": "W87Sandra"])
-        let login = LoginEntry(params: ["email": "ProftitTest@Proftit.com" as AnyObject, "password": "123456" as AnyObject])
-        UserRequest.performAuthorization(login, completion: { success in
-            if success == true {
-                UINavigationController.main.pushViewController(Storyboard.OnBoard.instantiate(), animated: false)
-            }
-            
-            sender.loading = false
-        })
+//        let login = LoginEntry(params: ["email": "ProftitTest@Proftit.com" as AnyObject, "password": "123456" as AnyObject])
+//        UserRequest.performAuthorization(login, completion: { success in
+//            if success == true {
+//                UINavigationController.main.pushViewController(Storyboard.OnBoard.instantiate(), animated: false)
+//            }
+//            
+//            sender.loading = false
+//        })
     }
     
     override func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
@@ -172,11 +172,11 @@ class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate 
             sender.loading = false
             return
         }
-        let login = LoginEntry(params: ["username": userName as AnyObject, "password": password as AnyObject])
-        UserRequest.createUser(login, completion: {
-            sender.loading = false
-            UINavigationController.main.pushViewController(Storyboard.Container.instantiate(), animated: false)
-        })
+//        let login = LoginEntry(params: ["username": userName as AnyObject, "password": password as AnyObject])
+//        UserRequest.createUser(login, completion: {
+//            sender.loading = false
+//            UINavigationController.main.pushViewController(Storyboard.Container.instantiate(), animated: false)
+//        })
     }
     
     override func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {

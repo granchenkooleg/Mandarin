@@ -200,20 +200,20 @@ class ConfirmView: UIView {
     }
     
     func setupSignal() {
-        let signal = Signal.sharedInctance
-        timer.text = signal.remainTimeInterval.remainTime()
-        assetValueLabel.text = signal.asset
-        ratePositionLabel.contentMode = signal.isCall == true ? .left : .right
-        ratePositionLabel.rotate = true
-        rateValueLabel.text = signal.rate
-        investmentValueLabel.text = User.currentUser?.preferedAmountTrade
-        payoutValueLabel.text = "$\(signal.profit ?? "")"
-        
-        Signal.notifier.subscribe(self, block: { [weak self] _, signal in
-            Dispatch.mainQueue.async { _ in
-                self?.timer.text = signal.remainTimeInterval.remainTime()
-            }
-            })
+//        let signal = Signal.sharedInctance
+//        timer.text = signal.remainTimeInterval.remainTime()
+//        assetValueLabel.text = signal.asset
+//        ratePositionLabel.contentMode = signal.isCall == true ? .left : .right
+//        ratePositionLabel.rotate = true
+//        rateValueLabel.text = signal.rate
+//        investmentValueLabel.text = User.currentUser?.preferedAmountTrade
+//        payoutValueLabel.text = "$\(signal.profit ?? "")"
+//        
+//        Signal.notifier.subscribe(self, block: { [weak self] _, signal in
+//            Dispatch.mainQueue.async { _ in
+//                self?.timer.text = signal.remainTimeInterval.remainTime()
+//            }
+//            })
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -255,20 +255,20 @@ class ConfirmView: UIView {
     }
     
     internal func approve(_ sender: AnyObject) {
-        SignalRequest.aproveTrade {[weak self] json in
-            if let result = json?["result"] , result == true {
-                UserRequest.getStatistics()
-                self?.setupSuccessView()
-                Dispatch.mainQueue.after(3.0, block: {
-                    self?.hide()
-                    self?.approveBlock?()
-                    Dispatch.mainQueue.after(1.0, block: {
-                        self?.setupSingalSettingsView()
-                    })
-                })
-            } else {
-                self?.hide()
-            }
-        }
+//        SignalRequest.aproveTrade {[weak self] json in
+//            if let result = json?["result"] , result == true {
+//                UserRequest.getStatistics()
+//                self?.setupSuccessView()
+//                Dispatch.mainQueue.after(3.0, block: {
+//                    self?.hide()
+//                    self?.approveBlock?()
+//                    Dispatch.mainQueue.after(1.0, block: {
+//                        self?.setupSingalSettingsView()
+//                    })
+//                })
+//            } else {
+//                self?.hide()
+//            }
+//        }
     }
 }

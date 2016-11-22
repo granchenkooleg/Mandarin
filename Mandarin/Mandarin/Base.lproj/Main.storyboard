@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fDU-Pd-j4B">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,12 +24,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUe-sH-Zhi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="699"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="doO-lC-aOF" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="635" height="667"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rS5-ZQ-9jq" customClass="Menu" customModule="Mandarin" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="260" height="667"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3o-CD-das">
+                                                        <rect key="frame" x="111.5" y="30" width="37.5" height="13.5"/>
                                                         <string key="text" base64-UTF8="YES">
 SBBFTExPA
 </string>
@@ -35,26 +42,32 @@ SBBFTExPA
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jv9-YC-C3b">
+                                                        <rect key="frame" x="102" y="48.5" width="56" height="23"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IL7-pV-W2I">
+                                                        <rect key="frame" x="0.0" y="137.5" width="260" height="492"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACCOUNT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPm-qg-Yc8">
+                                                                <rect key="frame" x="10" y="0.0" width="57.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                 <color key="textColor" red="0.40000000000000002" green="0.42745098040000001" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z2h-mc-YTn" userLabel="SeparatorView">
+                                                                <rect key="frame" x="10" y="18.5" width="240" height="1"/>
                                                                 <color key="backgroundColor" red="0.27058823529999998" green="0.28235294119999998" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="GQA-3W-n4j"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6x-ye-uPP" userLabel="Account View">
+                                                                <rect key="frame" x="30" y="29.5" width="220" height="119.5"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHQ-xh-75v">
+                                                                        <rect key="frame" x="0.0" y="5" width="220" height="26"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                         <state key="normal" title="MY ACCOUNT">
                                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,6 +77,7 @@ SBBFTExPA
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYj-kR-jyR">
+                                                                        <rect key="frame" x="0.0" y="34" width="220" height="26"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                         <state key="normal" title="DASHBOARD">
                                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -73,11 +87,13 @@ SBBFTExPA
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WITHDRAW PROFIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUJ-yP-gxG">
+                                                                        <rect key="frame" x="0.0" y="70" width="135" height="13.5"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yd-cC-GkL">
+                                                                        <rect key="frame" x="140" y="59.5" width="80" height="35"/>
                                                                         <color key="backgroundColor" red="0.10980392160000001" green="0.12941176469999999" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="80" id="gIz-M6-RQP"/>
@@ -97,6 +113,7 @@ SBBFTExPA
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Pn-Pk-hps">
+                                                                        <rect key="frame" x="0.0" y="93.5" width="131" height="26"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                         <state key="normal" title="RECOMENDED BROKER">
                                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -106,6 +123,7 @@ SBBFTExPA
                                                                         </connections>
                                                                     </button>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vxmarkets" translatesAutoresizingMaskIntoConstraints="NO" id="70G-22-25F">
+                                                                        <rect key="frame" x="145" y="91.5" width="80" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="30" id="b3R-Z5-fyD"/>
                                                                             <constraint firstAttribute="width" constant="80" id="dR7-c5-h1E"/>
@@ -133,26 +151,32 @@ SBBFTExPA
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETTINGS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gg-VD-pwG">
+                                                                <rect key="frame" x="10" y="164" width="57" height="13.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                 <color key="textColor" red="0.40000000000000002" green="0.42745098040000001" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ED-Hi-LDx" userLabel="SeparatorView">
+                                                                <rect key="frame" x="10" y="182.5" width="240" height="1"/>
                                                                 <color key="backgroundColor" red="0.27058823529999998" green="0.28235294119999998" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="aRj-Eh-6ny"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXt-sr-QX8" userLabel="Settings View">
+                                                                <rect key="frame" x="30" y="188.5" width="220" height="159"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZy-wW-56N" userLabel="Signal View">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="137" height="47"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="SIGNAL NOTIFICATIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSd-Aw-Ku0">
+                                                                                <rect key="frame" x="0.0" y="15" width="137" height="15"/>
                                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Imported alarts and updates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcy-yE-exE">
+                                                                                <rect key="frame" x="0.0" y="35" width="137" height="12"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                                 <color key="textColor" red="0.40000000000000002" green="0.42745098040000001" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
@@ -170,6 +194,7 @@ SBBFTExPA
                                                                         </constraints>
                                                                     </view>
                                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ci4-Ts-QMb">
+                                                                        <rect key="frame" x="171" y="8" width="51" height="31"/>
                                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="49" id="1fO-Od-Hna"/>
@@ -182,13 +207,16 @@ SBBFTExPA
                                                                         </connections>
                                                                     </switch>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rEi-Fu-LoR" userLabel="News View">
+                                                                        <rect key="frame" x="0.0" y="57" width="126" height="72"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="NEWS NOTIFICATIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Me-3u-Gcv">
+                                                                                <rect key="frame" x="0.0" y="15" width="126" height="40"/>
                                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All the latest trades news" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWE-Ei-OLx">
+                                                                                <rect key="frame" x="0.0" y="60" width="126" height="12"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                                 <color key="textColor" red="0.40000000000000002" green="0.42745098040000001" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
@@ -206,6 +234,7 @@ SBBFTExPA
                                                                         </constraints>
                                                                     </view>
                                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0f0-qv-mgo">
+                                                                        <rect key="frame" x="171" y="77.5" width="51" height="31"/>
                                                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="49" id="Ey1-RY-bpg"/>
@@ -218,13 +247,16 @@ SBBFTExPA
                                                                         </connections>
                                                                     </switch>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZH-dr-Rmg" userLabel="Trades View">
+                                                                        <rect key="frame" x="0.0" y="139" width="133" height="20"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set default amount of trade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYY-22-wlo">
+                                                                                <rect key="frame" x="0.0" y="3" width="133" height="12"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                                 <color key="textColor" red="0.40000000000000002" green="0.42745098040000001" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="TRADES AMOUNT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4O2-Jr-GeP">
+                                                                                <rect key="frame" x="0.0" y="15" width="133" height="13.5"/>
                                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
@@ -242,6 +274,7 @@ SBBFTExPA
                                                                         </constraints>
                                                                     </view>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f73-Ef-PDj">
+                                                                        <rect key="frame" x="165" y="131.5" width="55" height="35"/>
                                                                         <color key="backgroundColor" red="0.10980392160000001" green="0.12941176469999999" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="55" id="PPV-rG-VIO"/>
@@ -281,19 +314,23 @@ SBBFTExPA
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENERAL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6je-Ls-jzH">
+                                                                <rect key="frame" x="10" y="362.5" width="53.5" height="13.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                 <color key="textColor" red="0.40000000000000002" green="0.42745098040000001" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="knR-Sh-dNj" userLabel="Separator View">
+                                                                <rect key="frame" x="10" y="381" width="240" height="1"/>
                                                                 <color key="backgroundColor" red="0.27058823529999998" green="0.28235294119999998" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="BCH-tV-J4R"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1K-7s-pQp" userLabel="General View">
+                                                                <rect key="frame" x="30" y="392" width="220" height="100"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8j3-iV-MGG">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="89" height="26"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                         <state key="normal" title="INTRODUCTION">
                                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -303,6 +340,7 @@ SBBFTExPA
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpP-lB-55v">
+                                                                        <rect key="frame" x="0.0" y="31" width="61" height="26"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                         <state key="normal" title="HELP&amp;FAQ">
                                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -312,6 +350,7 @@ SBBFTExPA
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6td-I4-pbD" userLabel="LOGOUT">
+                                                                        <rect key="frame" x="0.0" y="62" width="49" height="26"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                                         <state key="normal" title="LOGOUT">
                                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -380,6 +419,7 @@ SBBFTExPA
                                                 </connections>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1f-GC-DsR" userLabel="Detail Container View">
+                                                <rect key="frame" x="260" y="0.0" width="375" height="667"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </containerView>
                                         </subviews>
@@ -426,7 +466,7 @@ SBBFTExPA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYK-vD-UbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="418" y="345"/>
+            <point key="canvasLocation" x="446" y="326"/>
         </scene>
     </scenes>
     <resources>
