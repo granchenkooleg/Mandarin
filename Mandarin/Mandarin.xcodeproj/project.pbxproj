@@ -54,9 +54,10 @@
 		5621B5961DE2E0F000C3B612 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		5621B5981DE2E0F600C3B612 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		5621B59A1DE2E1F400C3B612 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		5633EECB1DE4995400A3D3A3 /* mandarin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandarin.ttf; sourceTree = "<group>"; };
 		567C5D341DE379F600776171 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		567C5D351DE379F600776171 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mandarin-Bridging-Header.h"; sourceTree = "<group>"; };
+		567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mandarin-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		56CEB7841DE47A1800E84345 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		56CEB7861DE4862B00E84345 /* BezierPath+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BezierPath+Ext.swift"; sourceTree = "<group>"; };
 		56CEB7881DE488BB00E84345 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -158,7 +159,6 @@
 		7C0949561DE222250038018F = {
 			isa = PBXGroup;
 			children = (
-				567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */,
 				7C0949611DE222250038018F /* Mandarin */,
 				7C0949601DE222250038018F /* Products */,
 				20DD497CF19ED60CA2ECF05D /* Pods */,
@@ -189,6 +189,8 @@
 				7C0949691DE222250038018F /* Assets.xcassets */,
 				7C09496B1DE222250038018F /* LaunchScreen.storyboard */,
 				7C09496E1DE222250038018F /* Info.plist */,
+				567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */,
+				5633EECB1DE4995400A3D3A3 /* mandarin.ttf */,
 			);
 			path = Mandarin;
 			sourceTree = "<group>";
