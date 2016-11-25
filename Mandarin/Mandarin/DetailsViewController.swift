@@ -10,15 +10,15 @@ import UIKit
 
 class DetailsViewController: BaseViewController {
     
-    @IBOutlet  var friendsImageView: UIImageView!
-    var friendsImage: String! // name our image
+    @IBOutlet  var productsImageView: UIImageView!
+    var productsImage: String! // name our image
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        friendsImageView = UIImageView ()
-        friendsImageView.image = UIImage(named: friendsImage)
+        productsImageView = UIImageView ()
+        productsImageView.image = UIImage(named: productsImage)
     }
     
     override func didReceiveMemoryWarning() {

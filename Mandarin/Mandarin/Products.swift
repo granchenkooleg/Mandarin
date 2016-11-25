@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct Person {
+struct Products {
     var name = ""
-    var age = 0
+    var capacity = 0
     var photo = ""
     var description = ""
     var remaindMe: Bool = false

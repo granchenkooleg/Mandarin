@@ -33,6 +33,7 @@
 		7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C09496B1DE222250038018F /* LaunchScreen.storyboard */; };
 		7C0949771DE236D40038018F /* ContainerViewCntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0949761DE236D40038018F /* ContainerViewCntroller.swift */; };
 		7C09497D1DE240B10038018F /* BaseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C09497C1DE240B10038018F /* BaseLoginViewController.swift */; };
+		7C0E64111DE7A72B00A227E2 /* CategoryCellTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0E64101DE7A72B00A227E2 /* CategoryCellTableViewController.swift */; };
 		7C2C70151DE45316005DEDCA /* registr_v4-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C2C70141DE45316005DEDCA /* registr_v4-05.jpg */; };
 		7C2C70171DE4B617005DEDCA /* hello_v8-2-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C2C70161DE4B617005DEDCA /* hello_v8-2-05.jpg */; };
 		7C36EE891DE5CC98007506BC /* Odessa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C36EE881DE5CC98007506BC /* Odessa.jpg */; };
@@ -79,6 +80,7 @@
 		7C09496E1DE222250038018F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C0949761DE236D40038018F /* ContainerViewCntroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewCntroller.swift; sourceTree = "<group>"; };
 		7C09497C1DE240B10038018F /* BaseLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLoginViewController.swift; sourceTree = "<group>"; };
+		7C0E64101DE7A72B00A227E2 /* CategoryCellTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCellTableViewController.swift; sourceTree = "<group>"; };
 		7C2C70141DE45316005DEDCA /* registr_v4-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "registr_v4-05.jpg"; sourceTree = "<group>"; };
 		7C2C70161DE4B617005DEDCA /* hello_v8-2-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hello_v8-2-05.jpg"; sourceTree = "<group>"; };
 		7C36EE881DE5CC98007506BC /* Odessa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Odessa.jpg; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				7C36EE8A1DE5F62F007506BC /* AllProductsTableViewController.swift */,
 				7C36EE8C1DE5F6FE007506BC /* AllProductsTableViewCell.swift */,
 				7C36EE8E1DE5F742007506BC /* DetailsViewController.swift */,
+				7C0E64101DE7A72B00A227E2 /* CategoryCellTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				5621B5891DE2DFA300C3B612 /* Dispatch.swift in Sources */,
 				7C36EE8F1DE5F742007506BC /* DetailsViewController.swift in Sources */,
 				5621B58D1DE2DFF700C3B612 /* Notifier.swift in Sources */,
+				7C0E64111DE7A72B00A227E2 /* CategoryCellTableViewController.swift in Sources */,
 				5621B5851DE2DF8700C3B612 /* Storyboard+Ext.swift in Sources */,
 				5621B57C1DE2DDDE00C3B612 /* BaseViewController.swift in Sources */,
 				56CEB7851DE47A1800E84345 /* UIColor+Ext.swift in Sources */,

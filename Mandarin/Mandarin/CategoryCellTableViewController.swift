@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AllProductsTableViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class CategoryCellTableViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -134,7 +134,7 @@ class AllProductsTableViewController: BaseViewController, UITableViewDataSource,
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "Cell"
+        let cellIdentifier = "CategoryCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AllProductsTableViewCell
         
         // Configure the cell...

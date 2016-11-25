@@ -12,7 +12,7 @@ class AllProductsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var thubnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var capacityLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
     
