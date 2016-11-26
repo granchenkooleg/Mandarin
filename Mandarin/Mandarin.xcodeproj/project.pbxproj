@@ -24,13 +24,25 @@
 		5621B59B1DE2E1F400C3B612 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B59A1DE2E1F400C3B612 /* TextField.swift */; };
 		567C5D361DE379F600776171 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567C5D341DE379F600776171 /* FBSDKCoreKit.framework */; };
 		567C5D371DE379F600776171 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 567C5D351DE379F600776171 /* FBSDKLoginKit.framework */; };
+		56CEB7851DE47A1800E84345 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CEB7841DE47A1800E84345 /* UIColor+Ext.swift */; };
+		56CEB7871DE4862B00E84345 /* BezierPath+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CEB7861DE4862B00E84345 /* BezierPath+Ext.swift */; };
+		56CEB7891DE488BB00E84345 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56CEB7881DE488BB00E84345 /* Bolts.framework */; };
 		7C0949631DE222250038018F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0949621DE222250038018F /* AppDelegate.swift */; };
 		7C0949681DE222250038018F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C0949661DE222250038018F /* Main.storyboard */; };
 		7C09496A1DE222250038018F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C0949691DE222250038018F /* Assets.xcassets */; };
 		7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C09496B1DE222250038018F /* LaunchScreen.storyboard */; };
 		7C0949771DE236D40038018F /* ContainerViewCntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0949761DE236D40038018F /* ContainerViewCntroller.swift */; };
-		7C09497B1DE23F690038018F /* SignUP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C09497A1DE23F690038018F /* SignUP.storyboard */; };
 		7C09497D1DE240B10038018F /* BaseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C09497C1DE240B10038018F /* BaseLoginViewController.swift */; };
+		7C0E64111DE7A72B00A227E2 /* CategoryCellTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0E64101DE7A72B00A227E2 /* CategoryCellTableViewController.swift */; };
+		7C2C70151DE45316005DEDCA /* registr_v4-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C2C70141DE45316005DEDCA /* registr_v4-05.jpg */; };
+		7C2C70171DE4B617005DEDCA /* hello_v8-2-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C2C70161DE4B617005DEDCA /* hello_v8-2-05.jpg */; };
+		7C36EE891DE5CC98007506BC /* Odessa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C36EE881DE5CC98007506BC /* Odessa.jpg */; };
+		7C36EE8B1DE5F62F007506BC /* AllProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE8A1DE5F62F007506BC /* AllProductsTableViewController.swift */; };
+		7C36EE8D1DE5F6FE007506BC /* AllProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE8C1DE5F6FE007506BC /* AllProductsTableViewCell.swift */; };
+		7C36EE8F1DE5F742007506BC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE8E1DE5F742007506BC /* DetailsViewController.swift */; };
+		7C36EE911DE5F791007506BC /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE901DE5F791007506BC /* Products.swift */; };
+		7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C36EE921DE63C63007506BC /* check_v1-05.jpg */; };
+		7C513DB71DE399160054B38A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C513DB61DE399160054B38A /* SignUp.storyboard */; };
 		ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,9 +62,13 @@
 		5621B5961DE2E0F000C3B612 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		5621B5981DE2E0F600C3B612 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		5621B59A1DE2E1F400C3B612 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		5633EECB1DE4995400A3D3A3 /* mandarin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandarin.ttf; sourceTree = "<group>"; };
 		567C5D341DE379F600776171 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		567C5D351DE379F600776171 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mandarin-Bridging-Header.h"; sourceTree = "<group>"; };
+		567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mandarin-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		56CEB7841DE47A1800E84345 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		56CEB7861DE4862B00E84345 /* BezierPath+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BezierPath+Ext.swift"; sourceTree = "<group>"; };
+		56CEB7881DE488BB00E84345 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		59C633C6F7C974462971A9F1 /* Pods-Mandarin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mandarin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mandarin/Pods-Mandarin.debug.xcconfig"; sourceTree = "<group>"; };
 		6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mandarin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C54CC98AB82A309CE8319DC /* Pods-Mandarin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mandarin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mandarin/Pods-Mandarin.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,8 +79,17 @@
 		7C09496C1DE222250038018F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C09496E1DE222250038018F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C0949761DE236D40038018F /* ContainerViewCntroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewCntroller.swift; sourceTree = "<group>"; };
-		7C09497A1DE23F690038018F /* SignUP.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SignUP.storyboard; path = Base.lproj/SignUP.storyboard; sourceTree = "<group>"; };
 		7C09497C1DE240B10038018F /* BaseLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLoginViewController.swift; sourceTree = "<group>"; };
+		7C0E64101DE7A72B00A227E2 /* CategoryCellTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCellTableViewController.swift; sourceTree = "<group>"; };
+		7C2C70141DE45316005DEDCA /* registr_v4-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "registr_v4-05.jpg"; sourceTree = "<group>"; };
+		7C2C70161DE4B617005DEDCA /* hello_v8-2-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hello_v8-2-05.jpg"; sourceTree = "<group>"; };
+		7C36EE881DE5CC98007506BC /* Odessa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Odessa.jpg; sourceTree = "<group>"; };
+		7C36EE8A1DE5F62F007506BC /* AllProductsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllProductsTableViewController.swift; sourceTree = "<group>"; };
+		7C36EE8C1DE5F6FE007506BC /* AllProductsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllProductsTableViewCell.swift; sourceTree = "<group>"; };
+		7C36EE8E1DE5F742007506BC /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		7C36EE901DE5F791007506BC /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		7C36EE921DE63C63007506BC /* check_v1-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "check_v1-05.jpg"; sourceTree = "<group>"; };
+		7C513DB61DE399160054B38A /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +100,7 @@
 				ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */,
 				567C5D361DE379F600776171 /* FBSDKCoreKit.framework in Frameworks */,
 				567C5D371DE379F600776171 /* FBSDKLoginKit.framework in Frameworks */,
+				56CEB7891DE488BB00E84345 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +128,7 @@
 		5621B57D1DE2DEDB00C3B612 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7C36EE901DE5F791007506BC /* Products.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -109,6 +136,8 @@
 		5621B57E1DE2DEE400C3B612 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				56CEB7861DE4862B00E84345 /* BezierPath+Ext.swift */,
+				56CEB7841DE47A1800E84345 /* UIColor+Ext.swift */,
 				5621B5921DE2E0D200C3B612 /* UIAlertController+Ext.swift */,
 				5621B5901DE2E0CA00C3B612 /* View+Ext.swift */,
 				5621B58A1DE2DFB500C3B612 /* APIRequest.swift */,
@@ -138,6 +167,7 @@
 			children = (
 				567C5D341DE379F600776171 /* FBSDKCoreKit.framework */,
 				567C5D351DE379F600776171 /* FBSDKLoginKit.framework */,
+				56CEB7881DE488BB00E84345 /* Bolts.framework */,
 			);
 			name = Facebook;
 			path = Frameworks/Facebook;
@@ -146,7 +176,6 @@
 		7C0949561DE222250038018F = {
 			isa = PBXGroup;
 			children = (
-				567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */,
 				7C0949611DE222250038018F /* Mandarin */,
 				7C0949601DE222250038018F /* Products */,
 				20DD497CF19ED60CA2ECF05D /* Pods */,
@@ -171,11 +200,14 @@
 				5621B57D1DE2DEDB00C3B612 /* Model */,
 				7C0949751DE2368E0038018F /* View Controllers */,
 				5621B57E1DE2DEE400C3B612 /* Extension */,
+				7C2C700F1DE44CDC005DEDCA /* Images  */,
 				7C0949661DE222250038018F /* Main.storyboard */,
-				7C09497A1DE23F690038018F /* SignUP.storyboard */,
+				7C513DB61DE399160054B38A /* SignUp.storyboard */,
 				7C0949691DE222250038018F /* Assets.xcassets */,
 				7C09496B1DE222250038018F /* LaunchScreen.storyboard */,
 				7C09496E1DE222250038018F /* Info.plist */,
+				567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */,
+				5633EECB1DE4995400A3D3A3 /* mandarin.ttf */,
 			);
 			path = Mandarin;
 			sourceTree = "<group>";
@@ -186,8 +218,23 @@
 				5621B57B1DE2DDDE00C3B612 /* BaseViewController.swift */,
 				7C0949761DE236D40038018F /* ContainerViewCntroller.swift */,
 				7C09497C1DE240B10038018F /* BaseLoginViewController.swift */,
+				7C36EE8A1DE5F62F007506BC /* AllProductsTableViewController.swift */,
+				7C36EE8C1DE5F6FE007506BC /* AllProductsTableViewCell.swift */,
+				7C36EE8E1DE5F742007506BC /* DetailsViewController.swift */,
+				7C0E64101DE7A72B00A227E2 /* CategoryCellTableViewController.swift */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		7C2C700F1DE44CDC005DEDCA /* Images  */ = {
+			isa = PBXGroup;
+			children = (
+				7C36EE921DE63C63007506BC /* check_v1-05.jpg */,
+				7C36EE881DE5CC98007506BC /* Odessa.jpg */,
+				7C2C70161DE4B617005DEDCA /* hello_v8-2-05.jpg */,
+				7C2C70141DE45316005DEDCA /* registr_v4-05.jpg */,
+			);
+			name = "Images ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +272,7 @@
 				TargetAttributes = {
 					7C09495E1DE222250038018F = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 224SJKKLQ3;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
@@ -253,10 +301,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C2C70151DE45316005DEDCA /* registr_v4-05.jpg in Resources */,
 				7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */,
+				7C2C70171DE4B617005DEDCA /* hello_v8-2-05.jpg in Resources */,
 				7C09496A1DE222250038018F /* Assets.xcassets in Resources */,
-				7C09497B1DE23F690038018F /* SignUP.storyboard in Resources */,
+				7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */,
+				7C513DB71DE399160054B38A /* SignUp.storyboard in Resources */,
 				7C0949681DE222250038018F /* Main.storyboard in Resources */,
+				7C36EE891DE5CC98007506BC /* Odessa.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,13 +368,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				5621B5891DE2DFA300C3B612 /* Dispatch.swift in Sources */,
+				7C36EE8F1DE5F742007506BC /* DetailsViewController.swift in Sources */,
 				5621B58D1DE2DFF700C3B612 /* Notifier.swift in Sources */,
+				7C0E64111DE7A72B00A227E2 /* CategoryCellTableViewController.swift in Sources */,
 				5621B5851DE2DF8700C3B612 /* Storyboard+Ext.swift in Sources */,
 				5621B57C1DE2DDDE00C3B612 /* BaseViewController.swift in Sources */,
+				56CEB7851DE47A1800E84345 /* UIColor+Ext.swift in Sources */,
+				56CEB7871DE4862B00E84345 /* BezierPath+Ext.swift in Sources */,
 				5621B5831DE2DF7500C3B612 /* Logger.swift in Sources */,
+				7C36EE8B1DE5F62F007506BC /* AllProductsTableViewController.swift in Sources */,
 				7C0949631DE222250038018F /* AppDelegate.swift in Sources */,
 				5621B5971DE2E0F000C3B612 /* Label.swift in Sources */,
 				5621B5811DE2DF1700C3B612 /* Keyboard.swift in Sources */,
+				7C36EE8D1DE5F6FE007506BC /* AllProductsTableViewCell.swift in Sources */,
 				7C0949771DE236D40038018F /* ContainerViewCntroller.swift in Sources */,
 				5621B5951DE2E0E300C3B612 /* ConfirmView.swift in Sources */,
 				5621B5931DE2E0D200C3B612 /* UIAlertController+Ext.swift in Sources */,
@@ -331,6 +389,7 @@
 				7C09497D1DE240B10038018F /* BaseLoginViewController.swift in Sources */,
 				5621B5911DE2E0CA00C3B612 /* View+Ext.swift in Sources */,
 				5621B59B1DE2E1F400C3B612 /* TextField.swift in Sources */,
+				7C36EE911DE5F791007506BC /* Products.swift in Sources */,
 				5621B58F1DE2E07600C3B612 /* Constants.swift in Sources */,
 				5621B5991DE2E0F600C3B612 /* Button.swift in Sources */,
 			);
@@ -455,6 +514,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 224SJKKLQ3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/Facebook",
@@ -464,7 +524,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Home.Mandarin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Mandarin/Mandarin-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mandarin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -476,6 +536,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 224SJKKLQ3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -485,7 +546,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Home.Mandarin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Mandarin/Mandarin-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mandarin-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -16,22 +16,22 @@ class ContainerViewController: BaseViewController {
     
     var showingMenu = false
     
-    func mainViewController () -> MainViewController? {
-        guard let mainViewController = self.childViewControllers.first as? MainViewController else { return nil }
-        return mainViewController
-    }
+//    func mainViewController () -> MainViewController? {
+//        guard let mainViewController = self.childViewControllers.first as? MainViewController else { return nil }
+//        return mainViewController
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuContainerView.completion = { [weak self] in
-            self?.showMenu(false, animated: false)
-        }
-        amountButton.setTitle(User.currentUser?.preferedAmountTrade , for: UIControlState())
-        User.notifier.subscribe(self, block: {[weak self] _, user in
-            Dispatch.mainQueue.async {
-                self?.amountButton.setTitle("\(user.preferedAmountTrade ?? "")" , for: UIControlState())
-            }
-            })
+//        menuContainerView.completion = { [weak self] in
+//            self?.showMenu(false, animated: false)
+//        }
+//        amountButton.setTitle(User.currentUser?.preferedAmountTrade , for: UIControlState())
+//        User.notifier.subscribe(self, block: {[weak self] _, user in
+//            Dispatch.mainQueue.async {
+//                self?.amountButton.setTitle("\(user.preferedAmountTrade ?? "")" , for: UIControlState())
+//            }
+//            })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,12 +87,12 @@ class Menu: UIView {
     }
     
     func setup()  {
-        nameLabel.text = User.currentUser?.firstName
-        balanceButton.setTitle(User.currentUser?.statistic?.balance, for: UIControlState())
-        User.notifier.subscribe(self, block: {[weak self] in
-            self?.nameLabel.text = $1.firstName
-            self?.balanceButton.setTitle($1.statistic?.balance, for: UIControlState())
-            })
+//        nameLabel.text = User.currentUser?.firstName
+//        balanceButton.setTitle(User.currentUser?.statistic?.balance, for: UIControlState())
+//        User.notifier.subscribe(self, block: {[weak self] in
+//            self?.nameLabel.text = $1.firstName
+//            self?.balanceButton.setTitle($1.statistic?.balance, for: UIControlState())
+//            })
     }
     
     @IBAction func toggleSwitch(_ sender: UISwitch) {
@@ -100,28 +100,28 @@ class Menu: UIView {
     }
     
     @IBAction func myAccountClick(_ sender: AnyObject) {
-        presetingSettingsViewController(Storyboard.Account.instantiate())
+//        presetingSettingsViewController(Storyboard.Account.instantiate())
     }
     @IBAction func dashboardClick(_ sender: AnyObject) {
-        presetingSettingsViewController(Storyboard.DashBoard.instantiate())
+//        presetingSettingsViewController(Storyboard.DashBoard.instantiate())
     }
     @IBAction func withDrawClick(_ sender: AnyObject) {
-        presetingSettingsViewController(Storyboard.WithDrawProfits.instantiate())
+//        presetingSettingsViewController(Storyboard.WithDrawProfits.instantiate())
     }
     @IBAction func recomenedBrokerClick(_ sender: AnyObject) {
     }
     @IBAction func tradesClick(_ sender: AnyObject) {
-        AmountTradeView.sharedView.show()
+//        AmountTradeView.sharedView.show()
     }
     @IBAction func introductionClick(_ sender: AnyObject) {
-        let videoIntoductionVC = Storyboard.VideoIntoduction.instantiate()
-        performWhenLoaded(videoIntoductionVC, block: {
-            $0.showBackButton(true)
-        })
-        presetingSettingsViewController(videoIntoductionVC)
+//        let videoIntoductionVC = Storyboard.VideoIntoduction.instantiate()
+//        performWhenLoaded(videoIntoductionVC, block: {
+//            $0.showBackButton(true)
+//        })
+//        presetingSettingsViewController(videoIntoductionVC)
     }
     @IBAction func helpClick(_ sender: AnyObject) {
-        presetingSettingsViewController(Storyboard.Help.instantiate())
+//        presetingSettingsViewController(Storyboard.Help.instantiate())
     }
     @IBAction func logoutClick(_ sender: AnyObject) {
         let signInViewController = Storyboard.SignIn.instantiate() as BaseLoginViewController
