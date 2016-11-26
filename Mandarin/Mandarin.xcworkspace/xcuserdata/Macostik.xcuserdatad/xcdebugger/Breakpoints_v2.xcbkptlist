@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mandarin/BaseLoginViewController.swift"
-            timestampString = "501446698.028652"
+            timestampString = "501848369.613749"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "BaseLoginViewController"
             landmarkType = "3">
          </BreakpointContent>

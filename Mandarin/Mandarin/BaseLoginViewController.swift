@@ -10,53 +10,10 @@ import Foundation
 import UIKit
 import Alamofire
 import CryptoSwift
+import FacebookCore
+import FacebookLogin
 
-class BaseLoginViewController: BaseViewController, FBSDKLoginButtonDelegate {
-    
-    @IBOutlet var facebookLoginButton: FBSDKLoginButton!
-    @IBOutlet var helperButton: Button!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        signInButtonConfigure()
-        configureFacebook()
-    }
-    
-    func configureFacebook() {
-        facebookLoginButton?.readPermissions = ["public_profile", "email", "user_friends"];
-        facebookLoginButton?.loginBehavior = .systemAccount
-        facebookLoginButton?.delegate = self
-    }
-    
-    fileprivate func signInButtonConfigure() {
-        let title = NSMutableAttributedString(string:helperButton.titleLabel?.text ?? "")
-        let range = NSMakeRange(0, title.length)
-        title.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
-        title.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 15.0), range: range)
-        title.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: range)
-        helperButton.setAttributedTitle(title, for: UIControlState())
-    }
-    
-    //MARK: Facebook handler
-    
-    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, email, first_name, last_name, location"])
-//        let _  =  graphRequest?.start(completionHandler: { _, result, error in
-//            guard let result = result as? NSDictionary else { return }
-//            guard error == nil, let id = result["id"] else { return }
-//            let fbEntry = FBEntry(params: ["id": id as AnyObject])
-//            UserRequest.createUser(fbEntry, completion: {[weak self] in
-//                self?.chooseNextContoller()
-//                })
-//        })
-        
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        let loginManager: FBSDKLoginManager = FBSDKLoginManager()
-        loginManager.logOut()
-//        UserRequest.logoutUser()
-    }
+class BaseLoginViewController: BaseViewController {
     
     fileprivate func chooseNextContoller() {
         var appropriateVC: UIViewController = UIViewController()
@@ -83,10 +40,18 @@ class SignInViewController: BaseLoginViewController {
     }
 }
 
-class LoginViewController: BaseLoginViewController, UITextFieldDelegate {
+class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!
+    lazy var loginManager: LoginManager =  LoginManager()
+    
+    
+    override func viewDidLoad() {
+        GIDSignIn.sharedInstance().uiDelegate = self
+        loginManager = LoginManager()
+    }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField.tag + 1 {
@@ -102,32 +67,34 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate {
         return true
     }
     
-    @IBAction func helperButtonClick(_ sender: AnyObject) {
-        navigationController?.pushViewController(Storyboard.CreateAccount.instantiate(), animated: true)
+    @IBAction func googleLogin(_ sender: Button) {
+        GIDSignIn.sharedInstance().signIn()
     }
     
-    @IBAction func login(_ sender: Button) {
+    @IBAction func faceBookLogin(_ sender: Button) {
         sender.loading = true
-        //        guard let email = emailTextField.text, let password = passwordTextField.text,
-        //             email.isValidEmail == true && password.isEmpty == false else {
-        //            UIAlertController.alert("Input data isn't valid.".ls).show()
-        //            sender.loading = false
-        //            return
-        //        }
-        
-        //        let login = LoginEntry(params: ["email": "KyraSany@web.de", "password": "W87Sandra"])
-//        let login = LoginEntry(params: ["email": "ProftitTest@Proftit.com" as AnyObject, "password": "123456" as AnyObject])
-//        UserRequest.performAuthorization(login, completion: { success in
-//            if success == true {
-//                UINavigationController.main.pushViewController(Storyboard.OnBoard.instantiate(), animated: false)
-//            }
-//            
-//            sender.loading = false
-//        })
+        loginManager.logIn([ .publicProfile, .userFriends, .email ], viewController: self) { loginResult in
+            switch loginResult {
+            case .failed(let error):
+                print(error)
+            case .cancelled:
+                print("User cancelled login.")
+            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                print("Logged in!")
+            }
+        }
     }
     
     override func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
         return adjustment.defaultConstant + 60.0
+    }
+    
+    @IBAction func didTapGoogleSignOut(sender: AnyObject) {
+        GIDSignIn.sharedInstance().signOut()
+    }
+    
+    @IBAction func didTapFaceBookSignOut(sender: AnyObject) {
+        loginManager.logOut()
     }
 }
 
