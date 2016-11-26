@@ -185,6 +185,7 @@
                                 </state>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jj8-iv-Ajj" firstAttribute="top" secondItem="qde-F1-dyB" secondAttribute="bottom" constant="25" id="5ya-Dt-422"/>
                             <constraint firstItem="jj8-iv-Ajj" firstAttribute="centerX" secondItem="5Sh-Nu-ww6" secondAttribute="centerX" id="776-eK-Ek9"/>
