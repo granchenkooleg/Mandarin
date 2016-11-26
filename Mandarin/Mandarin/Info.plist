@@ -2,15 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>vk</string>
-        <string>vk-share</string>
-        <string>vkauthorize</string>
-        <string>vk$YOUR_APP_ID$</string>
-    </array>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -40,7 +31,7 @@
 			<string>REVERSED_CLIENT_ID</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>949659062079-cgd4h58q8rnac5ko4113jt4e1054eeed.apps.googleusercontent.com</string>
+				<string>com.googleusercontent.apps.949659062079-cgd4h58q8rnac5ko4113jt4e1054eeed</string>
 			</array>
 		</dict>
 		<dict>
@@ -70,6 +61,8 @@
 	<string>1059473057508658</string>
 	<key>FacebookDisplayName</key>
 	<string>Mandarin</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
