@@ -9,10 +9,60 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>CryptoSwift.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
+		</dict>
+		<key>FBSDKCoreKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
+		<key>FBSDKLoginKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
+		<key>FBSDKShareKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
+		<key>FacebookCore.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+		<key>FacebookLogin.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>FacebookShare.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
+		<key>GTMOAuth2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>17</integer>
+		</dict>
+		<key>GTMSessionFetcher.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
 		</dict>
 		<key>Kingfisher.xcscheme</key>
 		<dict>
@@ -47,12 +97,72 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>13D41E4CA012BCA99D5D01BC714DE443</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1978024ED098C0ADFD0776F8D7B2B25D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>1DE93A359FA21F91DFBE81309E851A4A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>28AF4691D7D820AED9360CE25326311A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>332F91393FB1DE033D370B4CEDDD5FCF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>44CAD6CE523055ED339E87154473A254</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>44EBFCB70EC7B7BE8D363D3CA180828D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>593E9479C06FB200807D11AB29EB50BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5B5AC3C06B783F8674FDB4C0F900B56A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>65863ED84FFF2F5BFD88780D0C5D1F6D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BB1C1403B2419F911818DA8413FDA07</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7335E9C9689F3B8A16F063A884748533</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,7 +177,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>90A1475C71C6C80368F31899B5ACAB2E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A7FEAA14E89971698ACA148F7F7202F2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B1C4AAFAF49036C7007633DAA3C806AD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C4944FEC314D1A66588651D006273ADE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D4DE576D7BE0A310748D1DB6976B8AC2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DDBCFDE490CDFDABF6F16A26F346932D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

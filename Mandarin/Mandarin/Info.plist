@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>vk</string>
+        <string>vk-share</string>
+        <string>vkauthorize</string>
+    </array>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -42,6 +50,16 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.export.project.mandarin</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>vk5748027</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>vk5748027</string>
 			</array>
 		</dict>
 	</array>

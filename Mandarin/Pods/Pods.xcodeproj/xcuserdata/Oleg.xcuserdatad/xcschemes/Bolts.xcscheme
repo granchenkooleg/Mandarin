@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7C09495E1DE222250038018F"
-               BuildableName = "Mandarin.app"
-               BlueprintName = "Mandarin"
-               ReferencedContainer = "container:Mandarin.xcodeproj">
+               BlueprintIdentifier = "44CAD6CE523055ED339E87154473A254"
+               BuildableName = "Bolts.framework"
+               BlueprintName = "Bolts"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7C09495E1DE222250038018F"
-            BuildableName = "Mandarin.app"
-            BlueprintName = "Mandarin"
-            ReferencedContainer = "container:Mandarin.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,23 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7C09495E1DE222250038018F"
-            BuildableName = "Mandarin.app"
-            BlueprintName = "Mandarin"
-            ReferencedContainer = "container:Mandarin.xcodeproj">
+            BlueprintIdentifier = "44CAD6CE523055ED339E87154473A254"
+            BuildableName = "Bolts.framework"
+            BlueprintName = "Bolts"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -77,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7C09495E1DE222250038018F"
-            BuildableName = "Mandarin.app"
-            BlueprintName = "Mandarin"
-            ReferencedContainer = "container:Mandarin.xcodeproj">
+            BlueprintIdentifier = "44CAD6CE523055ED339E87154473A254"
+            BuildableName = "Bolts.framework"
+            BlueprintName = "Bolts"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
