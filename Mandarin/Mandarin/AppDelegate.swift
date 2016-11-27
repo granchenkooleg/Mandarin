@@ -15,10 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     var window: UIWindow?
     
     //[special for VK]
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        VK.process(url: url, options: options)
-        return true
-    }
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+//
+//        return true
+//    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -57,15 +57,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func application(application: UIApplication,
-                     openURL url: NSURL, options: [String: AnyObject]) -> Bool {
-        return (FBSDKApplicationDelegate.sharedInstance().application(application, open: url as URL,
-                                                                      sourceApplication:
-            options["UIApplicationOpenURLOptionsSourceApplicationKey"] as! String!,
-                                                                      annotation: options["UIApplicationOpenURLOptionsAnnotationKey"]) ||
-            GIDSignIn.sharedInstance().handle(url as URL!,sourceApplication:
-                options["UIApplicationOpenURLOptionsSourceApplicationKey"] as? String,
-                                              annotation: options["UIApplicationOpenURLOptionsAnnotationKey"]))
+     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        VK.process(url: url, options: options)
+        return ( GIDSignIn.sharedInstance().handle(url as URL!,sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                   annotation: options[UIApplicationOpenURLOptionsKey.annotation]) ||
+                FBSDKApplicationDelegate.sharedInstance().application(app, open: url as URL,
+                                                                  sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String!,
+                                                                  annotation: options[UIApplicationOpenURLOptionsKey.annotation]) )
     }
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
