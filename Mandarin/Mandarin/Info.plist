@@ -31,7 +31,7 @@
 			<string>REVERSED_CLIENT_ID</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>949659062079-cgd4h58q8rnac5ko4113jt4e1054eeed.apps.googleusercontent.com</string>
+				<string>com.googleusercontent.apps.949659062079-cgd4h58q8rnac5ko4113jt4e1054eeed</string>
 			</array>
 		</dict>
 		<dict>
@@ -44,6 +44,16 @@
 				<string>com.export.project.mandarin</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>vk5748027</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>vk5748027</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -51,6 +61,8 @@
 	<string>1059473057508658</string>
 	<key>FacebookDisplayName</key>
 	<string>Mandarin</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
