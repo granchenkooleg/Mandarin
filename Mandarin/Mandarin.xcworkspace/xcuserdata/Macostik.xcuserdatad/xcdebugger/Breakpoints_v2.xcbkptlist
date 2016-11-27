@@ -86,17 +86,81 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mandarin/BaseLoginViewController.swift"
-            timestampString = "501968746.602512"
+            timestampString = "501972394.287136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "faceBookLogin(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mandarin/BaseLoginViewController.swift"
+            timestampString = "501972394.287136"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "faceBookLogin(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mandarin/BaseLoginViewController.swift"
+            timestampString = "501972394.287136"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "faceBookLogin(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mandarin.LoginViewController.(faceBookLogin (Mandarin.Button) -&gt; ()).(closure #1)"
+                  moduleName = "Mandarin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Mac_data/Projects/Mandarin/Mandarin/Mandarin/BaseLoginViewController.swift"
+                  timestampString = "501971959.420979"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "3048">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mandarin.LoginViewController.(faceBookLogin (Mandarin.Button) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "Mandarin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Mac_data/Projects/Mandarin/Mandarin/Mandarin/BaseLoginViewController.swift"
+                  timestampString = "501971959.424321"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "909">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
