@@ -9,11 +9,19 @@
 import Foundation
 
 struct Products {
+    var price = 0
     var name = ""
-    var capacity = 0
     var photo = ""
     var description = ""
-    var remaindMe: Bool = false
+    var manufacturer = ""
+    var capacity = 0
+    var calories = 0
+    var proteins = 0
+    var fats = 0
+    var carbohydrates = 0
+    var specialPrice = 0
+    var weightOfgoods = 0
+    
     
     //    init(name: String, age: Int, photo: String, description: String, remainedMe: Bool = false) {
     //            self.name = name   //        self.age = age

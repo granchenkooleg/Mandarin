@@ -17,21 +17,89 @@ class AllProductsTableViewController: BaseViewController, UITableViewDataSource,
             "name": "Крупы",
             "capacity": 500,
             "photo": "IconMandarin-76",
-            "description": "Йогурт Активна с черносливом"
-        ],
+            "description": "Йогурт Активна с черносливом",
+            "price": 222,
+            "manufacturer": "Ukraine",
+            "calories": 1000,
+            "proteins": 23,
+            "fats": 22,
+            "carbohydrates": 122,
+            "specialPrice": 100,
+            "weightOfgoods": 550
+            ],
         [
             "name": "Молочные изделия",
-            "capacity": 250,
+            "capacity": 500,
             "photo": "Icon-76",
-            "description": "Йогурт Активна с черносливом"
+            "description": "Йогурт Активна с черносливом",
+            "price": 222,
+            "manufacturer": "Ukraine",
+            "calories": 1000,
+            "proteins": 23,
+            "fats": 22,
+            "carbohydrates": 122,
+            "specialPrice": 100,
+            "weightOfgoods": 550
         ],
         
         [
             "name": "Консервация и соления",
-            "capacity": 1000,
+            "capacity": 500,
             "photo": "IconMandarin-76",
             "description": "Йогурт Активна с черносливом",
+            "price": 222,
+            "manufacturer": "Ukraine",
+            "calories": 1000,
+            "proteins": 23,
+            "fats": 22,
+            "carbohydrates": 122,
+            "specialPrice": 100,
+            "weightOfgoods": 550,
+            ],
+        [
+            "name": "Крупы",
+            "capacity": 500,
+            "photo": "IconMandarin-76",
+            "description": "Йогурт Активна с черносливом",
+            "price": 222,
+            "manufacturer": "Ukraine",
+            "calories": 1000,
+            "proteins": 23,
+            "fats": 22,
+            "carbohydrates": 122,
+            "specialPrice": 100,
+            "weightOfgoods": 550
+        ],
+        [
+            "name": "Молочные изделия",
+            "capacity": 500,
+            "photo": "Icon-76",
+            "description": "Йогурт Активна с черносливом",
+            "price": 222,
+            "manufacturer": "Ukraine",
+            "calories": 1000,
+            "proteins": 23,
+            "fats": 22,
+            "carbohydrates": 122,
+            "specialPrice": 100,
+            "weightOfgoods": 550
+        ],
+        
+        [
+            "name": "Консервация и соления",
+            "capacity": 500,
+            "photo": "IconMandarin-76",
+            "description": "Йогурт Активна с черносливом",
+            "price": 222,
+            "manufacturer": "Ukraine",
+            "calories": 1000,
+            "proteins": 23,
+            "fats": 22,
+            "carbohydrates": 122,
+            "specialPrice": 100,
+            "weightOfgoods": 550,
             ]
+
     ]
     
     fileprivate var internalProducts: [Products] = []
@@ -45,76 +113,22 @@ class AllProductsTableViewController: BaseViewController, UITableViewDataSource,
             let capacity = dictionary ["capacity"] as? Int ?? 0
             let photo = dictionary["photo"] as? String ?? ""
             let description = dictionary["description"] as? String ?? ""
-            let product = Products(name: name, capacity: capacity, photo: photo, description: description, remaindMe: false)
+            let price = dictionary["price"] as? Int ?? 0
+            let manufacturer  =   dictionary["manufacturer"] as? String ?? ""
+            let calories = dictionary["ccalories"] as? Int ?? 0
+            let proteins = dictionary["proteins"] as? Int ?? 0
+            let fats = dictionary["fats"] as? Int ?? 0
+            let carbohydrates = dictionary["carbohydrates"] as? Int ?? 0
+            let specialPrice = dictionary["specialPrice"] as? Int ?? 0
+            let weightOfgoods = dictionary["weightOfgoods"] as? Int ?? 0
+            
+            let product = Products(price: price, name: name, photo: photo, description: description, manufacturer: manufacturer, capacity: capacity,  calories: calories, proteins: proteins, fats: fats, carbohydrates: carbohydrates, specialPrice: specialPrice, weightOfgoods: weightOfgoods)
             internalProducts.append(product)
             
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let product = self.internalProducts[(indexPath as NSIndexPath).row]
-        
-        //create alert controller
-        
-        let actionMenu = UIAlertController(title: "День рождения", message: "Через: 7 дней", preferredStyle: .actionSheet)
-        
-        //create actions for controller
-        
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
-        actionMenu.addAction(cancelAction)
-        
-        let callActionHandler = {(action: UIAlertAction!) -> Void in
-            let warningMessage = UIAlertController(title: "Сервис не доступен", message: "Попробуйте позже!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "ok", style: .default, handler: nil)
-            warningMessage.addAction(okAction)
-            
-            //to reflect the controller
-            
-            self.present(warningMessage, animated: true, completion: nil)
-        }
-        
-        let callAction = UIAlertAction(title: "Позвонить", style: .default, handler: callActionHandler)
-        actionMenu.addAction(callAction)
-        
-        let sendCongratulation = UIAlertAction(title: "Отправить открытку", style: .default, handler: {[weak self] _ in
-            if let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detail") as? DetailsViewController {
-                detailVC.productsImage = product.photo
-                self?.navigationController?.pushViewController(detailVC, animated: true)
-            }
-            })
-        actionMenu.addAction(sendCongratulation)
-        
-        let toRemindInThatDay = UIAlertAction(title: "Напоминание в день события!", style: .default, handler: {(action: UIAlertAction!) -> Void in
-            // add and remove check for cell
-            //let cell = tableView.cellForRow(at: indexPath)
-            //product.remaindMe = true
-            //cell?.accessoryView?.isHidden = !product.remaindMe
-        })
-        
-        
-        let toRemoveRemindInThatDay = UIAlertAction(title: "Удалить напоминание!", style: .default, handler: {(action: UIAlertAction!) -> Void in
-            // add and remove check for cell
-            //let cell = tableView.cellForRow(at: indexPath)
-            //product.remaindMe = false
-            //cell?.accessoryView?.isHidden = !product.remaindMe
-            
-        })
-        
-        
-        let cell = tableView.cellForRow(at: indexPath)
-        
-        if cell?.accessoryView?.isHidden == false {
-            actionMenu.addAction(toRemoveRemindInThatDay)
-        } else {
-            actionMenu.addAction(toRemindInThatDay)
-        }
-        
-        //to reflect the controller
-        
-        self.present(actionMenu, animated: true, completion: nil)
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+    
     
     // MARK: - Table view data source
     
@@ -147,19 +161,5 @@ class AllProductsTableViewController: BaseViewController, UITableViewDataSource,
         
         return cell
     }
-    
-    //remove rows
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        self.internalProducts.remove(at: (indexPath as NSIndexPath).row)
         
-        //        self.tableView.reloadData() // fast removing
-        
-        self.tableView.deleteRows(at: [indexPath], with: .fade)
-    }
-    
-    override var prefersStatusBarHidden : Bool {
-        return true
-    }
-    
 }

@@ -19,14 +19,8 @@ class AllProductsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        thubnailImageView.layer.cornerRadius = 30
+        thubnailImageView.layer.cornerRadius = 37
         thubnailImageView.layer.masksToBounds = true
-        
-        let bellLabel = UILabel()
-        bellLabel.text = "🔔"
-        bellLabel.sizeToFit()
-        accessoryView = bellLabel
-        accessoryView?.isHidden = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
