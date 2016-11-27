@@ -46,6 +46,11 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     
     @IBOutlet weak var emailTextField: TextField!
     @IBOutlet weak var passwordTextField: TextField!
+    
+    @IBOutlet weak var vkButton: Button!
+    @IBOutlet weak var facebookButton: Button!
+    @IBOutlet weak var googleButton: Button!
+    
     lazy var loginManager: LoginManager =  LoginManager()
     
     
@@ -53,75 +58,44 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         GIDSignIn.sharedInstance().uiDelegate = self
         loginManager = LoginManager()
         VK.configure(withAppId: "5748027", delegate: self)
+        
+        setup()
     }
     
-    
-    
-    
-    //[special for VK]
+    func setup() {
+        vkButton.circled = true
+        facebookButton.circled = true
+        googleButton.circled = true
+    }
     
     func vkWillAuthorize() -> Set<VK.Scope> {
         //Called when SwiftyVK need authorization permissions.
-        return  [.offline]//an set of application permissions
+        return  [.offline]
     }
     
     func vkDidAuthorizeWith(parameters: Dictionary<String, String>) {
-        //Called when the user is log in.
-        //Here you can start to send requests to the API.
-        
-//        let userId = parameters["user_id"]!
-//        
-//        var req = VK.API.Users.get([VK.Arg.userId: userId])
-//        req.httpMethod = .GET
-//        req.successBlock = { response in
-//            let id = response.array![0]["id"].intValue
-//            let firstName = response.array![0]["first_name"].stringValue
-//            let lastName = response.array![0]["last_name"].stringValue
-//            
-//            print(id)
-//            print(firstName)
-//            print(lastName)
-//    }
-//        req.errorBlock = {
-//            error in print(error)
-//        }
-//        req.send()
+        let userId = parameters["user_id"]!
+
+        VK.API.Users.get([VK.Arg.userId: userId]).send(
+            onSuccess: {response in
+                print(response)
+        },
+            onError: {error in print(error)}
+        )
     }
     
-    @IBAction func signInTouchUp(_ sender: AnyObject) {
-        VK.logIn()
-    }
+    func vkAutorizationFailedWith(error: AuthError) {}
     
-    func vkAutorizationFailedWith(error: AuthError) {
-        //Called when SwiftyVK could not authorize. To let the application know that something went wrong.
-    }
-    
-    func vkDidUnauthorize() {
-        //Called when user is log out.
-    }
+    func vkDidUnauthorize() {}
     
     func vkShouldUseTokenPath() -> String? {
-        // ---DEPRECATED. TOKEN NOW STORED IN KEYCHAIN---
-        //Called when SwiftyVK need know where a token is located.
-        return nil//Path to save/read token or nil if should save token to UserDefaults
+        return nil
     }
     
     func vkWillPresentView() -> UIViewController {
-        //Only for iOS!
-        //Called when need to display a view from SwiftyVK.
-        return self//UIViewController that should present authorization view controller
+        return self
     }
-    
-    //func vkWillPresentView() -> NSWindow? {
-       // //Only for OSX!
-       // //Called when need to display a window from SwiftyVK.
-        //return //Parent window for modal view or nil if view should present in separate window
-    //}
-    
-    //[the end VK]
-    
-    
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField.tag + 1 {
         case passwordTextField.tag:
@@ -136,6 +110,10 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         return true
     }
     
+    @IBAction func signInTouchUp(_ sender: AnyObject) {
+        VK.logIn()
+    }
+    
     @IBAction func googleLogin(_ sender: Button) {
         GIDSignIn.sharedInstance().signIn()
     }
@@ -148,8 +126,14 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
                 print(error)
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+            case .success(_, _, _):
                 print("Logged in!")
+                let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, email, first_name, last_name, location"])
+                let _  =  graphRequest?.start(completionHandler: { _, result, error in
+                    guard let result = result as? NSDictionary else { return }
+                    guard error == nil, let id = result["id"] else { return }
+                    print("\(result)")
+                })
             }
         }
     }
@@ -164,6 +148,20 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     
     @IBAction func didTapFaceBookSignOut(sender: AnyObject) {
         loginManager.logOut()
+    }
+    
+    struct MyProfileRequest: GraphRequestProtocol {
+        struct Response: GraphResponseProtocol {
+            init(rawResponse: Any?) {
+                // Decode JSON from rawResponse into other properties here.
+            }
+        }
+        
+        var graphPath = "/me"
+        var parameters: [String : Any]? = ["fields": "id, name"]
+        var accessToken = AccessToken.current
+        var httpMethod: GraphRequestHTTPMethod = .GET
+        var apiVersion: GraphAPIVersion = .defaultVersion
     }
 }
 
