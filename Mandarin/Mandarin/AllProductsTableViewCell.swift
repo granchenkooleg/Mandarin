@@ -19,7 +19,7 @@ class AllProductsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        thubnailImageView.layer.cornerRadius = 37
+        thubnailImageView.layer.cornerRadius = 40
         thubnailImageView.layer.masksToBounds = true
     }
     
