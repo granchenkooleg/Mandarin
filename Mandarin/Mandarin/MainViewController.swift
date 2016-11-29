@@ -1,19 +1,28 @@
 //
-//  AllProductsTableViewController.swift
+//  MainViewController.swift
 //  Mandarin
 //
-//  Created by Oleg on 11/23/16.
+//  Created by Yuriy on 11/29/16.
 //  Copyright © 2016 Oleg. All rights reserved.
 //
 
 import UIKit
 
-class AllProductsTableViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController, SegmentedControlDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentControl: SegmentControl?
     
+    fileprivate var internalProducts: [Products] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        segmentControl?.delegate = self
+        segmentControl?.layer.cornerRadius = 5.0
+        segmentControl?.layer.borderColor = Color.mandarin.cgColor
+        segmentControl?.layer.borderWidth = 1.0
+        segmentControl?.layer.masksToBounds = true
+        segmentControl?.selectedSegment = 0
         
         for dictionary in Feeds.products {
             let name  =   dictionary["name"] as? String ?? ""
@@ -35,30 +44,27 @@ class AllProductsTableViewController: BaseViewController, UITableViewDataSource,
         }
     }
     
-    fileprivate var internalProducts: [Products] = []
+    //MARK: SegmentedControlDelegate
+    
+    func segmentedControl(_ control: SegmentControl, didSelectSegment segment: Int) {
+//        guard let controller = viewController(SegmentTab(rawValue: segment)!) else { return }
+//        selectedControl?(controller)
+    }
     
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
-        // #warning Incomplete implementation, return the number of sections
-        
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        // #warning Incomplete implementation, return the number of rows
-        
-        return internalProducts.count
+        return 0
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AllProductsTableViewCell
-        
-        // Configure the cell...
         
         let productDetails = internalProducts[(indexPath as NSIndexPath).row]
         cell.thubnailImageView?.image = UIImage(named: productDetails.photo)
@@ -68,5 +74,4 @@ class AllProductsTableViewController: BaseViewController, UITableViewDataSource,
         
         return cell
     }
-        
 }

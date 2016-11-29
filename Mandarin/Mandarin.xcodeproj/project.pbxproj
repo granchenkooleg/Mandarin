@@ -22,6 +22,10 @@
 		5621B5971DE2E0F000C3B612 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B5961DE2E0F000C3B612 /* Label.swift */; };
 		5621B5991DE2E0F600C3B612 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B5981DE2E0F600C3B612 /* Button.swift */; };
 		5621B59B1DE2E1F400C3B612 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B59A1DE2E1F400C3B612 /* TextField.swift */; };
+		563474311DEDBA21004ECDC4 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563474301DEDBA21004ECDC4 /* SegmentControl.swift */; };
+		563474331DEDBC1B004ECDC4 /* GenericCollections+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563474321DEDBC1B004ECDC4 /* GenericCollections+Ext.swift */; };
+		563474351DEDC0DE004ECDC4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563474341DEDC0DE004ECDC4 /* MainViewController.swift */; };
+		563474371DEDC3E9004ECDC4 /* Feeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563474361DEDC3E9004ECDC4 /* Feeds.swift */; };
 		56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56899DCF1DE9879B00EF02FE /* GoogleService-Info.plist */; };
 		56B0FBD01DE97B4800DC1600 /* mandarin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B0FBCF1DE97B4500DC1600 /* mandarin.ttf */; };
 		56CEB7851DE47A1800E84345 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CEB7841DE47A1800E84345 /* UIColor+Ext.swift */; };
@@ -61,6 +65,10 @@
 		5621B5961DE2E0F000C3B612 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		5621B5981DE2E0F600C3B612 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		5621B59A1DE2E1F400C3B612 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		563474301DEDBA21004ECDC4 /* SegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentControl.swift; sourceTree = "<group>"; };
+		563474321DEDBC1B004ECDC4 /* GenericCollections+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GenericCollections+Ext.swift"; sourceTree = "<group>"; };
+		563474341DEDC0DE004ECDC4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		563474361DEDC3E9004ECDC4 /* Feeds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feeds.swift; sourceTree = "<group>"; };
 		567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mandarin-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		56899DCF1DE9879B00EF02FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		56B0FBCF1DE97B4500DC1600 /* mandarin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandarin.ttf; sourceTree = "<group>"; };
@@ -123,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				7C36EE901DE5F791007506BC /* Products.swift */,
+				563474361DEDC3E9004ECDC4 /* Feeds.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -130,6 +139,7 @@
 		5621B57E1DE2DEE400C3B612 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				563474321DEDBC1B004ECDC4 /* GenericCollections+Ext.swift */,
 				56CEB7861DE4862B00E84345 /* BezierPath+Ext.swift */,
 				56CEB7841DE47A1800E84345 /* UIColor+Ext.swift */,
 				5621B5921DE2E0D200C3B612 /* UIAlertController+Ext.swift */,
@@ -148,6 +158,7 @@
 		5621B57F1DE2DEF500C3B612 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				563474301DEDBA21004ECDC4 /* SegmentControl.swift */,
 				5621B5941DE2E0E300C3B612 /* ConfirmView.swift */,
 				5621B5961DE2E0F000C3B612 /* Label.swift */,
 				5621B5981DE2E0F600C3B612 /* Button.swift */,
@@ -207,6 +218,7 @@
 				7C36EE8C1DE5F6FE007506BC /* AllProductsTableViewCell.swift */,
 				7C36EE8E1DE5F742007506BC /* DetailsViewController.swift */,
 				7C0E64101DE7A72B00A227E2 /* CategoryCellTableViewController.swift */,
+				563474341DEDC0DE004ECDC4 /* MainViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -361,11 +373,13 @@
 			files = (
 				5621B5891DE2DFA300C3B612 /* Dispatch.swift in Sources */,
 				7C36EE8F1DE5F742007506BC /* DetailsViewController.swift in Sources */,
+				563474371DEDC3E9004ECDC4 /* Feeds.swift in Sources */,
 				5621B58D1DE2DFF700C3B612 /* Notifier.swift in Sources */,
 				7C0E64111DE7A72B00A227E2 /* CategoryCellTableViewController.swift in Sources */,
 				5621B5851DE2DF8700C3B612 /* Storyboard+Ext.swift in Sources */,
 				5621B57C1DE2DDDE00C3B612 /* BaseViewController.swift in Sources */,
 				56CEB7851DE47A1800E84345 /* UIColor+Ext.swift in Sources */,
+				563474351DEDC0DE004ECDC4 /* MainViewController.swift in Sources */,
 				56CEB7871DE4862B00E84345 /* BezierPath+Ext.swift in Sources */,
 				5621B5831DE2DF7500C3B612 /* Logger.swift in Sources */,
 				7C36EE8B1DE5F62F007506BC /* AllProductsTableViewController.swift in Sources */,
@@ -382,7 +396,9 @@
 				5621B5911DE2E0CA00C3B612 /* View+Ext.swift in Sources */,
 				5621B59B1DE2E1F400C3B612 /* TextField.swift in Sources */,
 				7C36EE911DE5F791007506BC /* Products.swift in Sources */,
+				563474311DEDBA21004ECDC4 /* SegmentControl.swift in Sources */,
 				5621B58F1DE2E07600C3B612 /* Constants.swift in Sources */,
+				563474331DEDBC1B004ECDC4 /* GenericCollections+Ext.swift in Sources */,
 				5621B5991DE2E0F600C3B612 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,4 +23,5 @@ struct Color {
     static let gray = UIColor(hex: 0xbababc)
     static let green = UIColor(hex: 0x6acd00)
     static let caral = UIColor(hex: 0xf8334d)
+    static let mandarin = UIColor(hex: 0xff4d0a)
 }
