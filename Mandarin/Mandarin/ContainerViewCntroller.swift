@@ -125,7 +125,6 @@ class Menu: UIView {
     }
     @IBAction func logoutClick(_ sender: AnyObject) {
         let signInViewController = Storyboard.SignIn.instantiate() as BaseLoginViewController
-        signInViewController.loginButtonDidLogOut(nil)
         UINavigationController.main.pushViewController(signInViewController, animated: false)
     }
     

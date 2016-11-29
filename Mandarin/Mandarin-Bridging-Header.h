@@ -11,6 +11,6 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-
+#import <Google/SignIn.h>
 
 #endif /* Mandarin_Bridging_Header_h */
