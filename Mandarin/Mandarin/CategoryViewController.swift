@@ -10,7 +10,8 @@ import UIKit
 
 class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var nameLabel: UIView!
+    @IBOutlet weak var categoryLabel: UILabel!
+    
     
     fileprivate var internalProducts: [Products] = []
     
