@@ -1,0 +1,31 @@
+//
+//  CategoryTableViewCell.swift
+//  Mandarin
+//
+//  Created by Oleg on 11/30/16.
+//  Copyright © 2016 Oleg. All rights reserved.
+//
+
+import UIKit
+
+class CategoryTableViewCell: UITableViewCell {
+
+    
+    @IBOutlet weak var thubnailImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        
+        thubnailImageView?.layer.cornerRadius = 30
+        thubnailImageView?.layer.masksToBounds = true
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}
