@@ -36,12 +36,10 @@
 		7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C09496B1DE222250038018F /* LaunchScreen.storyboard */; };
 		7C0949771DE236D40038018F /* ContainerViewCntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0949761DE236D40038018F /* ContainerViewCntroller.swift */; };
 		7C09497D1DE240B10038018F /* BaseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C09497C1DE240B10038018F /* BaseLoginViewController.swift */; };
-		7C0E64111DE7A72B00A227E2 /* CategoryCellTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0E64101DE7A72B00A227E2 /* CategoryCellTableViewController.swift */; };
 		7C2C70151DE45316005DEDCA /* registr_v4-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C2C70141DE45316005DEDCA /* registr_v4-05.jpg */; };
 		7C2C70171DE4B617005DEDCA /* hello_v8-2-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C2C70161DE4B617005DEDCA /* hello_v8-2-05.jpg */; };
 		7C36EE891DE5CC98007506BC /* Odessa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C36EE881DE5CC98007506BC /* Odessa.jpg */; };
-		7C36EE8B1DE5F62F007506BC /* AllProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE8A1DE5F62F007506BC /* AllProductsTableViewController.swift */; };
-		7C36EE8D1DE5F6FE007506BC /* AllProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE8C1DE5F6FE007506BC /* AllProductsTableViewCell.swift */; };
+		7C36EE8D1DE5F6FE007506BC /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE8C1DE5F6FE007506BC /* MainTableViewCell.swift */; };
 		7C36EE8F1DE5F742007506BC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE8E1DE5F742007506BC /* DetailsViewController.swift */; };
 		7C36EE911DE5F791007506BC /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE901DE5F791007506BC /* Products.swift */; };
 		7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C36EE921DE63C63007506BC /* check_v1-05.jpg */; };
@@ -86,12 +84,10 @@
 		7C09496E1DE222250038018F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C0949761DE236D40038018F /* ContainerViewCntroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewCntroller.swift; sourceTree = "<group>"; };
 		7C09497C1DE240B10038018F /* BaseLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLoginViewController.swift; sourceTree = "<group>"; };
-		7C0E64101DE7A72B00A227E2 /* CategoryCellTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCellTableViewController.swift; sourceTree = "<group>"; };
 		7C2C70141DE45316005DEDCA /* registr_v4-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "registr_v4-05.jpg"; sourceTree = "<group>"; };
 		7C2C70161DE4B617005DEDCA /* hello_v8-2-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hello_v8-2-05.jpg"; sourceTree = "<group>"; };
 		7C36EE881DE5CC98007506BC /* Odessa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Odessa.jpg; sourceTree = "<group>"; };
-		7C36EE8A1DE5F62F007506BC /* AllProductsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllProductsTableViewController.swift; sourceTree = "<group>"; };
-		7C36EE8C1DE5F6FE007506BC /* AllProductsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllProductsTableViewCell.swift; sourceTree = "<group>"; };
+		7C36EE8C1DE5F6FE007506BC /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		7C36EE8E1DE5F742007506BC /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		7C36EE901DE5F791007506BC /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		7C36EE921DE63C63007506BC /* check_v1-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "check_v1-05.jpg"; sourceTree = "<group>"; };
@@ -214,11 +210,9 @@
 				5621B57B1DE2DDDE00C3B612 /* BaseViewController.swift */,
 				7C0949761DE236D40038018F /* ContainerViewCntroller.swift */,
 				7C09497C1DE240B10038018F /* BaseLoginViewController.swift */,
-				7C36EE8A1DE5F62F007506BC /* AllProductsTableViewController.swift */,
-				7C36EE8C1DE5F6FE007506BC /* AllProductsTableViewCell.swift */,
-				7C36EE8E1DE5F742007506BC /* DetailsViewController.swift */,
-				7C0E64101DE7A72B00A227E2 /* CategoryCellTableViewController.swift */,
 				563474341DEDC0DE004ECDC4 /* MainViewController.swift */,
+				7C36EE8C1DE5F6FE007506BC /* MainTableViewCell.swift */,
+				7C36EE8E1DE5F742007506BC /* DetailsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -375,18 +369,16 @@
 				7C36EE8F1DE5F742007506BC /* DetailsViewController.swift in Sources */,
 				563474371DEDC3E9004ECDC4 /* Feeds.swift in Sources */,
 				5621B58D1DE2DFF700C3B612 /* Notifier.swift in Sources */,
-				7C0E64111DE7A72B00A227E2 /* CategoryCellTableViewController.swift in Sources */,
 				5621B5851DE2DF8700C3B612 /* Storyboard+Ext.swift in Sources */,
 				5621B57C1DE2DDDE00C3B612 /* BaseViewController.swift in Sources */,
 				56CEB7851DE47A1800E84345 /* UIColor+Ext.swift in Sources */,
 				563474351DEDC0DE004ECDC4 /* MainViewController.swift in Sources */,
 				56CEB7871DE4862B00E84345 /* BezierPath+Ext.swift in Sources */,
 				5621B5831DE2DF7500C3B612 /* Logger.swift in Sources */,
-				7C36EE8B1DE5F62F007506BC /* AllProductsTableViewController.swift in Sources */,
 				7C0949631DE222250038018F /* AppDelegate.swift in Sources */,
 				5621B5971DE2E0F000C3B612 /* Label.swift in Sources */,
 				5621B5811DE2DF1700C3B612 /* Keyboard.swift in Sources */,
-				7C36EE8D1DE5F6FE007506BC /* AllProductsTableViewCell.swift in Sources */,
+				7C36EE8D1DE5F6FE007506BC /* MainTableViewCell.swift in Sources */,
 				7C0949771DE236D40038018F /* ContainerViewCntroller.swift in Sources */,
 				5621B5951DE2E0E300C3B612 /* ConfirmView.swift in Sources */,
 				5621B5931DE2E0D200C3B612 /* UIAlertController+Ext.swift in Sources */,

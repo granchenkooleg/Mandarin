@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, SegmentedControlDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SegmentedControlDelegate {
     
     @IBOutlet weak var segmentControl: SegmentControl?
     
@@ -58,19 +58,18 @@ class MainViewController: UIViewController, SegmentedControlDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return internalProducts.count
+        
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AllProductsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MainTableViewCell
         
         let productDetails = internalProducts[(indexPath as NSIndexPath).row]
         cell.thubnailImageView?.image = UIImage(named: productDetails.photo)
         cell.nameLabel?.text = productDetails.name
-        cell.capacityLabel?.text = "capacity:" + String(productDetails.capacity)
-        cell.locationLabel?.text = productDetails.description
         
         return cell
     }

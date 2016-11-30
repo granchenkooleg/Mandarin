@@ -8,19 +8,17 @@
 
 import UIKit
 
-class AllProductsTableViewCell: UITableViewCell {
+class MainTableViewCell: UITableViewCell {
     
     @IBOutlet weak var thubnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var capacityLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        thubnailImageView.layer.cornerRadius = 40
-        thubnailImageView.layer.masksToBounds = true
+        thubnailImageView?.layer.cornerRadius = 30
+        thubnailImageView?.layer.masksToBounds = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
