@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListOfProductsByWeightViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()

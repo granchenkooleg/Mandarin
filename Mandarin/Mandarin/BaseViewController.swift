@@ -170,7 +170,16 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     func keyboardDidHide(_ keyboard: Keyboard) {}
     
-    @IBAction func back(_ sender: AnyObject) {
-        UINavigationController.main.dismiss(animated: true, completion: nil)
+    //Back Button in header
+    @IBAction func backClick(_ sender: AnyObject) {
+        if ((self.presentedViewController) != nil) {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
+    
+//    @IBAction func back(_ sender: AnyObject) {
+//        UINavigationController.main.dismiss(animated: true, completion: nil)
+//    }
 }
