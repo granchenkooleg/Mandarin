@@ -343,36 +343,34 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhN-bR-wYE" customClass="AllProductsTableViewCell" customModule="Mandarin" customModuleProvider="target">
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uee-yR-dJj">
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="JHs-PL-LBK"/>
-                                                                <constraint firstAttribute="height" constant="60" id="nna-GI-iWf"/>
-                                                                <constraint firstAttribute="width" constant="60" id="sTz-Ft-J1g"/>
-                                                            </constraints>
-                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qo3-L4-hj7">
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uee-yR-dJj">
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="60" id="sOw-NN-hlO"/>
+                                                            </constraints>
+                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="Uee-yR-dJj" firstAttribute="leading" secondItem="EhN-bR-wYE" secondAttribute="leadingMargin" id="Xpl-qJ-6px"/>
-                                                        <constraint firstItem="Qo3-L4-hj7" firstAttribute="top" secondItem="EhN-bR-wYE" secondAttribute="top" constant="16" id="bur-zL-Pwk"/>
-                                                        <constraint firstItem="Uee-yR-dJj" firstAttribute="top" secondItem="EhN-bR-wYE" secondAttribute="top" constant="6" id="dG1-A4-zax"/>
-                                                        <constraint firstItem="Qo3-L4-hj7" firstAttribute="leading" secondItem="Uee-yR-dJj" secondAttribute="trailing" constant="12" id="fWq-vI-D14"/>
-                                                        <constraint firstItem="Uee-yR-dJj" firstAttribute="centerY" secondItem="Qo3-L4-hj7" secondAttribute="centerY" id="k3d-nm-sGL"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Qo3-L4-hj7" secondAttribute="trailing" id="kaw-Gt-lcw"/>
-                                                        <constraint firstItem="Uee-yR-dJj" firstAttribute="centerY" secondItem="EhN-bR-wYE" secondAttribute="centerY" id="sRP-k7-6Pb"/>
+                                                        <constraint firstItem="Uee-yR-dJj" firstAttribute="top" secondItem="EhN-bR-wYE" secondAttribute="top" constant="4" id="09e-MK-Ipz"/>
+                                                        <constraint firstItem="Qo3-L4-hj7" firstAttribute="leading" secondItem="Uee-yR-dJj" secondAttribute="trailing" constant="12" id="4om-5A-wC1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Qo3-L4-hj7" secondAttribute="trailing" id="OhV-XP-rbx"/>
+                                                        <constraint firstItem="Uee-yR-dJj" firstAttribute="centerY" secondItem="Qo3-L4-hj7" secondAttribute="centerY" id="U52-3s-xFX"/>
+                                                        <constraint firstItem="Uee-yR-dJj" firstAttribute="centerY" secondItem="EhN-bR-wYE" secondAttribute="centerY" id="WGL-3A-2sf"/>
+                                                        <constraint firstItem="Uee-yR-dJj" firstAttribute="leading" secondItem="EhN-bR-wYE" secondAttribute="leadingMargin" id="psG-0i-YvB"/>
+                                                        <constraint firstItem="Qo3-L4-hj7" firstAttribute="top" secondItem="EhN-bR-wYE" secondAttribute="top" constant="14" id="rZc-XB-fsh"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="EhN-bR-wYE" secondAttribute="trailing" id="02q-jx-s2v"/>
-                                                <constraint firstItem="EhN-bR-wYE" firstAttribute="bottom" secondItem="zBP-EC-aQ2" secondAttribute="bottomMargin" id="1Vc-0O-m62"/>
-                                                <constraint firstItem="EhN-bR-wYE" firstAttribute="top" secondItem="zBP-EC-aQ2" secondAttribute="top" id="CE4-rR-C3C"/>
-                                                <constraint firstItem="EhN-bR-wYE" firstAttribute="leading" secondItem="zBP-EC-aQ2" secondAttribute="leading" id="moH-6J-dKQ"/>
+                                                <constraint firstItem="EhN-bR-wYE" firstAttribute="centerY" secondItem="zBP-EC-aQ2" secondAttribute="centerY" id="F8g-rc-MdL"/>
+                                                <constraint firstItem="EhN-bR-wYE" firstAttribute="leading" secondItem="zBP-EC-aQ2" secondAttribute="leading" id="S7m-08-OU6"/>
+                                                <constraint firstAttribute="trailing" secondItem="EhN-bR-wYE" secondAttribute="trailing" id="cXO-CW-O0l"/>
+                                                <constraint firstItem="EhN-bR-wYE" firstAttribute="top" secondItem="zBP-EC-aQ2" secondAttribute="topMargin" constant="-2" id="oxD-y7-jIg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1726,7 +1724,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="jWy-c3-4n1" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BJE-88-Wcs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BJE-88-Wcs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
