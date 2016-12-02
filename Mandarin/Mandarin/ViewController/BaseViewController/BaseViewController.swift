@@ -172,7 +172,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     //Back Button in header
     @IBAction func backClick(_ sender: AnyObject) {
-        if ((self.presentedViewController) != nil) {
+        if (self.presentedViewController != nil) {
             self.dismiss(animated: true, completion: nil)
         } else {
             self.navigationController?.popViewController(animated: true)
