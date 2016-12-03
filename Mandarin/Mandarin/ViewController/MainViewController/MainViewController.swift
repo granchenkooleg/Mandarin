@@ -26,6 +26,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         segmentControl?.layer.borderWidth = 1.0
         segmentControl?.layer.masksToBounds = true
         segmentControl?.selectedSegment = 0
+        searchTextField.addTarget(self, action: #selector(self.searchTextChanged(sender:)), for: .editingChanged)
         
         for dictionary in Feeds.products {
             let name  =   dictionary["name"] as? String ?? ""
@@ -74,16 +75,21 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MainTableViewCell
         
-        let productDetails = internalProducts[(indexPath as NSIndexPath).row]
+        let productDetails = _products[(indexPath as NSIndexPath).row]
         cell.thubnailImageView?.image = UIImage(named: productDetails.photo)
         cell.nameLabel?.text = productDetails.name
         
         return cell
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        _products =  self.internalProducts.filter {$0.name.contains(string)}
+    func searchTextChanged(sender: UITextField) {
+        if let text = sender.text {
+            if text.isEmpty {
+                _products = internalProducts;
+            } else {
+                _products =  self.internalProducts.filter { $0.name.lowercased().range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil }
+            }
+        }
         tableView.reloadData()
-        return true
     }
 }

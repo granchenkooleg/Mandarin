@@ -12,7 +12,7 @@ class Feeds: NSObject {
     
     static var products: [[String:Any]] = [
         [
-            "name": "Крупы",
+            "name": "Soup",
             "capacity": 500,
             "photo": "IconMandarin-76",
             "description": "Йогурт Активна с черносливом",
@@ -26,7 +26,7 @@ class Feeds: NSObject {
             "weightOfgoods": 550
         ],
         [
-            "name": "Молочные изделия",
+            "name": "Drink",
             "capacity": 500,
             "photo": "Icon-76",
             "description": "Йогурт Активна с черносливом",
@@ -41,7 +41,7 @@ class Feeds: NSObject {
         ],
         
         [
-            "name": "Консервация и соления",
+            "name": "Milk",
             "capacity": 500,
             "photo": "IconMandarin-76",
             "description": "Йогурт Активна с черносливом",
@@ -55,7 +55,7 @@ class Feeds: NSObject {
             "weightOfgoods": 550,
             ],
         [
-            "name": "Крупы",
+            "name": "Potato",
             "capacity": 500,
             "photo": "IconMandarin-76",
             "description": "Йогурт Активна с черносливом",
@@ -69,7 +69,7 @@ class Feeds: NSObject {
             "weightOfgoods": 550
         ],
         [
-            "name": "Молочные изделия",
+            "name": "Cucumber",
             "capacity": 500,
             "photo": "Icon-76",
             "description": "Йогурт Активна с черносливом",
@@ -84,7 +84,7 @@ class Feeds: NSObject {
         ],
         
         [
-            "name": "Консервация и соления",
+            "name": "Tea",
             "capacity": 500,
             "photo": "IconMandarin-76",
             "description": "Йогурт Активна с черносливом",

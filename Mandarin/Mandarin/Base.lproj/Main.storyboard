@@ -20,7 +20,6 @@
         <!--Main View Controller-->
         <scene sceneID="md9-IG-a8y">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KYK-vD-UbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="container" automaticallyAdjustsScrollViewInsets="NO" id="fDU-Pd-j4B" userLabel="Main View Controller" customClass="ContainerViewController" customModule="Mandarin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QRe-ca-y1L"/>
@@ -237,6 +236,7 @@
                         <outlet property="scrollView" destination="fUe-sH-Zhi" id="kKr-oX-1ha"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KYK-vD-UbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1300" y="323.38830584707648"/>
         </scene>
@@ -496,7 +496,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqN-kN-rOJ">
-                                        <rect key="frame" x="332" y="14" width="30" height="31"/>
+                                        <rect key="frame" x="332" y="13.5" width="30" height="31"/>
                                         <fontDescription key="fontDescription" name="mandarin" family="mandarin" pointSize="19"/>
                                         <state key="normal" title="l">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1882,7 +1882,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="jWy-c3-4n1" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BJE-88-Wcs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BJE-88-Wcs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
