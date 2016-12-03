@@ -35,27 +35,8 @@ struct Storyboard {
     static let SignIn = StoryboardObject<SignInViewController>("signin", UIStoryboard.signUp)
     static let Login = StoryboardObject<LoginViewController>("login", UIStoryboard.signUp)
     static let CreateAccount = StoryboardObject<CreateAccountViewController>("createAccount", UIStoryboard.signUp)
-//    static let RemoteCreate = StoryboardObject<RemoteCreateAccountViewController>("remote", UIStoryboard.signUp)
-//    
-//    static let OnBoard = StoryboardObject<OnBoardViewController>("introduction", UIStoryboard.introduction)
-//    static let Introduction_Item = StoryboardObject<PageItem>("pageItem",  UIStoryboard.introduction)
-//    static let VideoIntoduction = StoryboardObject<VideoIntroductionViewController>("videoIntroduction", UIStoryboard.introduction)
-//    
-//    static let Container = StoryboardObject<ContainerViewController>("container")
-//    static let Main = StoryboardObject<MainViewController>("main")
-//    static let SearchSignals = StoryboardObject<SearchSinalsViewController>("searchSignals")
-//    static let LiveSignals = StoryboardObject<LiveSignalsViewController>("liveSignals")
-//    static let AlertFunds = StoryboardObject<AlertFundsViewController>("alertFunds")
-//    static let FundAccount = StoryboardObject<FundAccountViewController>("fundAccount")
-//    static let SuccessFund = StoryboardObject<SuccessFundViewController>("successFund")
-//    static let Trade = StoryboardObject<TradeViewController>("trade")
-//    static let Deposit = StoryboardObject<DepositViewController>("deposit")
-//    
-//    static let Account = StoryboardObject<AccountViewController>("account")
-//    static let DashBoard = StoryboardObject<DashboardViewController>("dashboard")
-//    static let WithDrawProfits = StoryboardObject<WithDrawProfitsViewController>("withdraw_profits")
-//    static let Settings = StoryboardObject<SettingsViewController>("settings")
-//    static let Help = StoryboardObject<HelpViewController>("help")
+    static let Container = StoryboardObject<ContainerViewController>("container")
+    static let Main = StoryboardObject<MainViewController>("main")
 }
 
 extension UIStoryboard {

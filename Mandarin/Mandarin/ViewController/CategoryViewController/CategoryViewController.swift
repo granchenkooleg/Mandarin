@@ -12,6 +12,7 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var categoryLabel: UILabel!
     
+    @IBOutlet weak var tableView: UITableView!
     
     fileprivate var internalProducts: [Products] = []
     
@@ -35,8 +36,9 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
             
             let product = Products(price: price, name: name, photo: photo, description: description, manufacturer: manufacturer, capacity: capacity,  calories: calories, proteins: proteins, fats: fats, carbohydrates: carbohydrates, specialPrice: specialPrice, weightOfgoods: weightOfgoods)
             internalProducts.append(product)
-            
         }
+        
+        _products = internalProducts
    }
     
     // MARK: - Table view data source
@@ -46,32 +48,30 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return internalProducts.count
+        return _products.count
         
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "Celll"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CategoryTableViewCell        
-        let productDetails = internalProducts[(indexPath as NSIndexPath).row]
+        let cellIdentifier = "CategoryTableViewCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CategoryTableViewCell
+        
+        let productDetails = _products[(indexPath as NSIndexPath).row]
         cell.thubnailImageView?.image = UIImage(named: productDetails.photo)
         cell.nameLabel?.text = productDetails.name
         
         return cell
     }
-}
-
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func searchTextChanged(sender: UITextField) {
+        if let text = sender.text {
+            if text.isEmpty {
+                _products = internalProducts;
+            } else {
+                _products =  self.internalProducts.filter { $0.name.lowercased().range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil }
+            }
+        }
+        tableView.reloadData()
     }
-    */
-
+}
 

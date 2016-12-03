@@ -42,7 +42,11 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     @IBOutlet weak var keyboardBottomGuideView: UIView?
     
+    @IBOutlet var searchTextField: TextField?
+    
     var viewAppeared = false
+    
+    var _products: [Products] = []
         
     fileprivate lazy var keyboardAdjustments: [KeyboardAdjustment] = []
     
@@ -79,6 +83,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
             whenLoadedBlocks.forEach({ $0() })
             whenLoadedBlocks.removeAll()
         }
+        searchTextField?.addTarget(self, action: #selector(self.searchTextChanged(sender:)), for: .editingChanged)
     }
     
     fileprivate var whenLoadedBlocks = [Block]()
@@ -179,7 +184,11 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         }
     }
     
-//    @IBAction func back(_ sender: AnyObject) {
-//        UINavigationController.main.dismiss(animated: true, completion: nil)
-//    }
+    @IBAction func searchClick(_ sender: Any) {
+        guard let searchTextField = self.searchTextField else { return }
+        searchTextField.isHidden = !searchTextField.isHidden
+    }
+    
+    func searchTextChanged(sender: UITextField) {}
+   
 }

@@ -17,14 +17,14 @@ import SwiftyVK
 class BaseLoginViewController: BaseViewController {
     
     fileprivate func chooseNextContoller() {
-        var appropriateVC: UIViewController = UIViewController()
-//        if User.isAuthorized() == true {
-//            appropriateVC = Storyboard.Container.instantiate()
-//        } else {
-//            appropriateVC = Storyboard.OnBoard.instantiate()
-//        }
+        var appropriateVC = UIViewController()
+        if User.isAuthorized() == true {
+            appropriateVC = Storyboard.Container.instantiate()
+        } else {
+            return
+        }
         
-        UINavigationController.main.pushViewController(appropriateVC, animated: false)
+        self.navigationController?.pushViewController(appropriateVC, animated: false)
     }
 }
 
@@ -41,7 +41,7 @@ class SignInViewController: BaseLoginViewController {
     }
 }
 
-class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSignInUIDelegate, VKDelegate {
+class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSignInUIDelegate, VKDelegate, GIDSignInDelegate {
     
     
     @IBOutlet weak var emailTextField: TextField!
@@ -55,6 +55,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     
     
     override func viewDidLoad() {
+        GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         loginManager = LoginManager()
         VK.configure(withAppId: "5748027", delegate: self)
@@ -66,10 +67,11 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         vkButton.circled = true
         facebookButton.circled = true
         googleButton.circled = true
+        
+        chooseNextContoller()
     }
     
     func vkWillAuthorize() -> Set<VK.Scope> {
-        //Called when SwiftyVK need authorization permissions.
         return  [.offline]
     }
     
@@ -78,7 +80,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
 
         VK.API.Users.get([VK.Arg.userId: userId]).send(
             onSuccess: {response in
-                print(response)
+//                User.createUserWithJSON(response)
         },
             onError: {error in print(error)}
         )
@@ -132,7 +134,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
                 let _  =  graphRequest?.start(completionHandler: { _, result, error in
                     guard let result = result as? NSDictionary else { return }
                     guard error == nil, let id = result["id"] else { return }
-                    print("\(result)")
+//                    User.createUser(result)
                 })
             }
         }
@@ -162,6 +164,21 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         var accessToken = AccessToken.current
         var httpMethod: GraphRequestHTTPMethod = .GET
         var apiVersion: GraphAPIVersion = .defaultVersion
+    }
+    
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if (error == nil) {
+            User.createUserWithGoogleUser(user: user)
+            chooseNextContoller()
+        } else {
+            print("\(error.localizedDescription)")
+        }
+    }
+    
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
+                withError error: NSError!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
     }
 }
 
