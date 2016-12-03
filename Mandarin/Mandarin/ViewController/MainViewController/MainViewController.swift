@@ -8,9 +8,12 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SegmentedControlDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SegmentedControlDelegate, UITextFieldDelegate {
     
+    @IBOutlet var searchTextField: TextField!
     @IBOutlet weak var segmentControl: SegmentControl?
+    var _products: [Products] = []
+    @IBOutlet weak var tableView: UITableView!
     
     fileprivate var internalProducts: [Products] = []
 
@@ -42,6 +45,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             internalProducts.append(product)
             
         }
+        _products = internalProducts
+    }
+   
+    @IBAction func searchClick(_ sender: Any) {
+        self.searchTextField.isHidden = !self.searchTextField.isHidden
     }
     
     //MARK: SegmentedControlDelegate
@@ -58,11 +66,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return internalProducts.count
+        return _products.count
         
     }
-    
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MainTableViewCell
@@ -72,5 +79,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.nameLabel?.text = productDetails.name
         
         return cell
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        _products =  self.internalProducts.filter {$0.name.contains(string)}
+        tableView.reloadData()
+        return true
     }
 }
