@@ -8,11 +8,10 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SegmentedControlDelegate, UITextFieldDelegate {
+class MainViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, SegmentedControlDelegate, UITextFieldDelegate {
     
-    @IBOutlet var searchTextField: TextField!
     @IBOutlet weak var segmentControl: SegmentControl?
-    var _products: [Products] = []
+
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate var internalProducts: [Products] = []
@@ -26,7 +25,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         segmentControl?.layer.borderWidth = 1.0
         segmentControl?.layer.masksToBounds = true
         segmentControl?.selectedSegment = 0
-        searchTextField.addTarget(self, action: #selector(self.searchTextChanged(sender:)), for: .editingChanged)
         
         for dictionary in Feeds.products {
             let name  =   dictionary["name"] as? String ?? ""
@@ -47,10 +45,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         }
         _products = internalProducts
-    }
-   
-    @IBAction func searchClick(_ sender: Any) {
-        self.searchTextField.isHidden = !self.searchTextField.isHidden
     }
     
     //MARK: SegmentedControlDelegate
@@ -82,7 +76,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
-    func searchTextChanged(sender: UITextField) {
+    override func searchTextChanged(sender: UITextField) {
         if let text = sender.text {
             if text.isEmpty {
                 _products = internalProducts;

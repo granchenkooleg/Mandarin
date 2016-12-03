@@ -41,7 +41,7 @@ class SignInViewController: BaseLoginViewController {
     }
 }
 
-class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSignInUIDelegate, VKDelegate {
+class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSignInUIDelegate, VKDelegate, GIDSignInDelegate {
     
     
     @IBOutlet weak var emailTextField: TextField!
@@ -55,6 +55,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     
     
     override func viewDidLoad() {
+        GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         loginManager = LoginManager()
         VK.configure(withAppId: "5748027", delegate: self)
@@ -78,7 +79,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
 
         VK.API.Users.get([VK.Arg.userId: userId]).send(
             onSuccess: {response in
-                print(response)
+//                User.createUser(response)
         },
             onError: {error in print(error)}
         )
@@ -132,7 +133,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
                 let _  =  graphRequest?.start(completionHandler: { _, result, error in
                     guard let result = result as? NSDictionary else { return }
                     guard error == nil, let id = result["id"] else { return }
-                    print("\(result)")
+//                    User.createUser(result)
                 })
             }
         }
@@ -162,6 +163,28 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         var accessToken = AccessToken.current
         var httpMethod: GraphRequestHTTPMethod = .GET
         var apiVersion: GraphAPIVersion = .defaultVersion
+    }
+    
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if (error == nil) {
+            
+            let userId = user.userID
+            let idToken = user.authentication.idToken
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+//            User.createUser(result)
+            // ...
+        } else {
+            print("\(error.localizedDescription)")
+        }
+    }
+    
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
+                withError error: NSError!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
     }
 }
 
