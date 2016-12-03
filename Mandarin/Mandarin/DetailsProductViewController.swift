@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailsViewController: BaseViewController {
+class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     
     @IBOutlet  var productsImageView: UIImageView!
     var productsImage: String! // name our image

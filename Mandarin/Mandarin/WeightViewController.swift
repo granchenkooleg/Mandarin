@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeightViewController: UIViewController {
+class WeightViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
