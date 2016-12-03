@@ -19,12 +19,12 @@ class BaseLoginViewController: BaseViewController {
     fileprivate func chooseNextContoller() {
         var appropriateVC: UIViewController = UIViewController()
         if User.isAuthorized() == true {
-//            appropriateVC = Storyboard.Container.instantiate()
+            appropriateVC = Storyboard.Container.instantiate()
         } else {
-//            appropriateVC = Storyboard.OnBoard.instantiate()
+            appropriateVC = Storyboard.Login.instantiate()
         }
         
-        UINavigationController.main.pushViewController(appropriateVC, animated: false)
+        self.navigationController?.pushViewController(appropriateVC, animated: false)
     }
 }
 
@@ -72,7 +72,6 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     }
     
     func vkWillAuthorize() -> Set<VK.Scope> {
-        //Called when SwiftyVK need authorization permissions.
         return  [.offline]
     }
     
@@ -81,7 +80,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
 
         VK.API.Users.get([VK.Arg.userId: userId]).send(
             onSuccess: {response in
-//                User.createUser(response)
+//                User.createUserWithJSON(response)
         },
             onError: {error in print(error)}
         )
@@ -169,7 +168,8 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
-           User.createUserWithGoogleUser(user: user)
+            User.createUserWithGoogleUser(user: user)
+            chooseNextContoller()
         } else {
             print("\(error.localizedDescription)")
         }

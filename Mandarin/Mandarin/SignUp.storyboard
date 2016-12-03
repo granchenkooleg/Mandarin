@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="fTx-gk-9QI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="as0-v0-Nc3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,6 +17,22 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="3vr-eJ-n5a">
+            <objects>
+                <navigationController id="as0-v0-Nc3" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="A14-rB-iBu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fTx-gk-9QI" kind="relationship" relationship="rootViewController" id="dPz-Nu-5n7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xx0-UF-27f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="582" y="427"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="skR-6m-96P">
             <objects>
@@ -212,6 +228,7 @@
                             <constraint firstItem="Yug-fK-8ng" firstAttribute="top" secondItem="5Sh-Nu-ww6" secondAttribute="top" id="iFP-Ka-Z3O"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="wKv-XP-MNJ"/>
                     <connections>
                         <outlet property="emailTextField" destination="TfW-l3-J4z" id="DoI-fZ-rwQ"/>
                         <outlet property="facebookButton" destination="orR-Xa-d7Q" id="HFt-Dl-qtI"/>

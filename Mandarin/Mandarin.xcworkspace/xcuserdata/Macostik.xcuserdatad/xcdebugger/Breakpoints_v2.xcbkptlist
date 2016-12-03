@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mandarin/ViewController/BaseViewController/BaseLoginViewController.swift"
-            timestampString = "502483805.918685"
+            timestampString = "502485509.268931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
@@ -154,12 +154,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mandarin/ViewController/BaseViewController/BaseLoginViewController.swift"
-            timestampString = "502484088.315839"
+            timestampString = "502485178.019313"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "chooseNextContoller()"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "vkDidAuthorizeWith(parameters:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -170,11 +170,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mandarin/ViewController/BaseViewController/BaseLoginViewController.swift"
-            timestampString = "502483794.698119"
+            timestampString = "502485391.168888"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "faceBookLogin(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mandarin.LoginViewController.(faceBookLogin (Mandarin.Button) -&gt; ()).(closure #1)"
+                  moduleName = "Mandarin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Mac_data/Projects/Mandarin/Mandarin/Mandarin/ViewController/BaseViewController/BaseLoginViewController.swift"
+                  timestampString = "502485893.22776"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "3048">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mandarin.LoginViewController.(faceBookLogin (Mandarin.Button) -&gt; ()).(closure #1)"
+                  moduleName = "Mandarin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Mac_data/Projects/Mandarin/Mandarin/Mandarin/ViewController/BaseViewController/BaseLoginViewController.swift"
+                  timestampString = "502485893.229364"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "3188">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mandarin/ViewController/BaseViewController/BaseLoginViewController.swift"
+            timestampString = "502485698.672536"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "chooseNextContoller()"
             landmarkType = "7">
          </BreakpointContent>
