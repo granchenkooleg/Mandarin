@@ -18,11 +18,11 @@ class BaseLoginViewController: BaseViewController {
     
     fileprivate func chooseNextContoller() {
         var appropriateVC: UIViewController = UIViewController()
-//        if User.isAuthorized() == true {
+        if User.isAuthorized() == true {
 //            appropriateVC = Storyboard.Container.instantiate()
-//        } else {
+        } else {
 //            appropriateVC = Storyboard.OnBoard.instantiate()
-//        }
+        }
         
         UINavigationController.main.pushViewController(appropriateVC, animated: false)
     }
@@ -67,6 +67,8 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         vkButton.circled = true
         facebookButton.circled = true
         googleButton.circled = true
+        
+        chooseNextContoller()
     }
     
     func vkWillAuthorize() -> Set<VK.Scope> {
@@ -167,15 +169,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
-            
-            let userId = user.userID
-            let idToken = user.authentication.idToken
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
-//            User.createUser(result)
-            // ...
+           User.createUserWithGoogleUser(user: user)
         } else {
             print("\(error.localizedDescription)")
         }
