@@ -169,6 +169,24 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         // Perform any operations when the user disconnects from app here.
         // ...
     }
+    
+    @IBAction func loginClick(sender: Button) {
+        sender.loading = true
+        guard let email = emailTextField.text, let password = passwordTextField.text,
+        email.isValidEmail == true && password.isEmpty == false else {
+                UIAlertController.alert("Input data isn't valid.".ls).show()
+                sender.loading = false
+                return
+        }
+        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79", "email" : /*"test1@mail.ru"*/ email, "password" : /*"123123"*/ password]
+        UserRequest.makelogin(param as [String : AnyObject], completion: { success in
+            if success == true {
+                UINavigationController.main.pushViewController(Storyboard.Container.instantiate(), animated: false)
+            }
+            
+            sender.loading = false
+        })
+    }
 }
 
 class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate {

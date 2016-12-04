@@ -120,6 +120,7 @@ class Menu: UIView {
         GIDSignIn.sharedInstance().signOut()
         LoginManager().logOut()
         VK.logOut()
+        User.deleteUser()
         let signInViewController = Storyboard.Login.instantiate()
         UINavigationController.main.pushViewController(signInViewController, animated: false)
     }

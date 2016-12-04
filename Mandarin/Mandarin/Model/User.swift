@@ -28,12 +28,17 @@ class User: Object {
     deinit {
     }
     
-    class func setupUser(id: String, firstName: String, lastName: String, email: String = "", phone: String = "") {
-        
+    static func setConfig() {
         let realm = try! Realm()
         if let url = realm.configuration.fileURL {
             Logger.log("FileURL of DataBase - \(url)", color: .Orange)
         }
+    }
+    
+    class func setupUser(id: String = "", firstName: String = "", lastName: String = "", email: String = "", phone: String = "") {
+        
+        setConfig()
+        
         let userData: Dictionary = [
             "id" :          id,
             "firstName" :   firstName,
@@ -43,6 +48,7 @@ class User: Object {
         
         let user = User(value: userData)
         
+        let realm = try! Realm()
         try! realm.write {
             realm.add(user, update: true)
         }
@@ -55,24 +61,11 @@ class User: Object {
         return user
     }()
     
-    class func createUserWithJSON(_ json: JSON) {
-//        guard let accessToken = json["access_token"].string else { return }
-//        UserDefaults.standard.setValue(accessToken, forKey: "user_auth_token")
-//        Logger.log("AccessToken - \(accessToken)", color: .Orange)
-        
-        let userData: Dictionary = [
-            "id" :          json["id"].string ?? "",
-            "firstName" :   json["first_name"].string ?? "",
-            "lastName" :    json["last_name"].string ?? "",
-            "email" :       json["email"].string ?? "",
-            "phone" :       json["phone"].string ?? ""]
-        
-        let user = User(value: userData)
-        
+    static func deleteUser() {
         let realm = try! Realm()
-        
+        guard let user = realm.objects(User.self).first else { return }
         try! realm.write {
-            realm.add(user, update: true)
+            realm.delete(user)
         }
     }
     
@@ -91,7 +84,7 @@ class User: Object {
     class func isAuthorized() -> Bool {
         let realm = try! Realm()
         
-        guard let user = realm.objects(User.self).first, user.firstName?.isEmpty == false && user.lastName?.isEmpty == false else { return false }
+        guard let user = realm.objects(User.self).first, user.firstName?.isEmpty == false else { return false }
         return true
     }
 }

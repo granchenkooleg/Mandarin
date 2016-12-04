@@ -71,9 +71,6 @@ func requestHandler(_ function: Any, URLRequest: URLRequestConvertible, completi
 
 let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URLRequest) = { method, parameters, url in
     var _urlRequest = URLRequest(url: url)
-    if let token = UserDefaults.standard.value(forKey: "user_auth_token") {
-        _urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-    }
 
     _urlRequest.httpMethod = method.rawValue
     return try URLEncoding.default.encode(_urlRequest, with: parameters)
@@ -84,7 +81,7 @@ enum UserRequest: URLRequestConvertible {
     case get(String)
     case create([String: AnyObject])
     case update(Int)
-    case authorization([String: AnyObject])
+    case login([String: AnyObject])
     case logOut(String)
     case statistics(String)
     case trades(String)
@@ -95,9 +92,9 @@ enum UserRequest: URLRequestConvertible {
         
         var method: HTTPMethod {
             switch self {
-            case .get, .statistics, .trades, .amount:
+            case .get, .statistics, .trades, .amount, .login:
                 return .get
-            case .create, .update, .authorization, .logOut, .trans:
+            case .create, .update, .logOut, .trans:
                 return .post
             }
         }
@@ -110,7 +107,7 @@ enum UserRequest: URLRequestConvertible {
                 return newPost
             case .trans( _, let newPost):
                 return  newPost
-            case .authorization(let newPost):
+            case .login(let newPost):
                 return newPost
             case .amount(let newPost):
                 return newPost
@@ -126,8 +123,8 @@ enum UserRequest: URLRequestConvertible {
                 relativePath = "users"
             case .update(let userIdentifier):
                 relativePath = "users/\(userIdentifier)"
-            case .authorization:
-                relativePath = "oauth2/token"
+            case .login:
+                relativePath = "login"
             case .logOut(let userIdentifier):
                 relativePath = "logout/\(userIdentifier)"
             case .statistics(let userIdentifier):
@@ -174,17 +171,18 @@ enum UserRequest: URLRequestConvertible {
 //        })
 //    }
 //    
-//    static func performAuthorization(_ entryParams: EntryParametersPresenting, completion: @escaping (Bool) -> Void) {
-//        requestHandler(#function, URLRequest: authorization(entryParams.params)) { json in
-//            guard let json = json else {
-//                completion(false)
-//                return
-//            }
-//            setupUser(json)
-//            completion(true)
-//        }
-//    }
-//    
+    static func makelogin(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
+        requestHandler(#function, URLRequest: login(entryParams)) { json in
+            guard let json = json else {
+                completion(false)
+                return
+            }
+            
+            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
+            completion(true)
+        }
+    }
+//
 //    static fileprivate func setupUser(_ json: JSON?) {
 //        guard let json = json else { return }
 //        User.createUser(json)

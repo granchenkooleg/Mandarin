@@ -85,6 +85,9 @@
                                                 <integer key="value" value="3"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="loginClickWithSender:" destination="fTx-gk-9QI" eventType="touchUpInside" id="ZrO-VS-SEO"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jj8-iv-Ajj">
                                         <rect key="frame" x="102" y="370" width="141" height="29"/>
