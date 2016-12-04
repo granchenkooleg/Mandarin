@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import FacebookLogin
+import FacebookCore
+import SwiftyVK
 
 class ContainerViewController: BaseViewController {
     
@@ -23,15 +26,10 @@ class ContainerViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        menuContainerView.completion = { [weak self] in
-//            self?.showMenu(false, animated: false)
-//        }
-//        amountButton.setTitle(User.currentUser?.preferedAmountTrade , for: UIControlState())
-//        User.notifier.subscribe(self, block: {[weak self] _, user in
-//            Dispatch.mainQueue.async {
-//                self?.amountButton.setTitle("\(user.preferedAmountTrade ?? "")" , for: UIControlState())
-//            }
-//            })
+        menuContainerView.completion = { [weak self] in
+            self?.showMenu(false, animated: false)
+        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +76,7 @@ class ContainerViewController: BaseViewController {
 class Menu: UIView {
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var balanceButton: UIButton!
+    @IBOutlet weak var loginButton: Button!
     var completion: Block? = nil
     
     override func awakeFromNib() {
@@ -87,12 +85,7 @@ class Menu: UIView {
     }
     
     func setup()  {
-//        nameLabel.text = User.currentUser?.firstName
-//        balanceButton.setTitle(User.currentUser?.statistic?.balance, for: UIControlState())
-//        User.notifier.subscribe(self, block: {[weak self] in
-//            self?.nameLabel.text = $1.firstName
-//            self?.balanceButton.setTitle($1.statistic?.balance, for: UIControlState())
-//            })
+        loginButton.setTitle(User.isAuthorized() ? "Выйти" : "Войти", for: .normal)
     }
     
     @IBAction func toggleSwitch(_ sender: UISwitch) {
@@ -124,7 +117,10 @@ class Menu: UIView {
 //        presetingSettingsViewController(Storyboard.Help.instantiate())
     }
     @IBAction func logoutClick(_ sender: AnyObject) {
-        let signInViewController = Storyboard.SignIn.instantiate() as BaseLoginViewController
+        GIDSignIn.sharedInstance().signOut()
+        LoginManager().logOut()
+        VK.logOut()
+        let signInViewController = Storyboard.Login.instantiate()
         UINavigationController.main.pushViewController(signInViewController, animated: false)
     }
     

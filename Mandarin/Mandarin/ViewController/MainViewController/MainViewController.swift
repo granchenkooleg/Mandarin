@@ -86,4 +86,9 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
         }
         tableView.reloadData()
     }
+    
+    @IBAction func menuClick(_ sender: AnyObject) {
+        guard let containerViewController = self.parent as? ContainerViewController else { return }
+        containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
+    }
 }

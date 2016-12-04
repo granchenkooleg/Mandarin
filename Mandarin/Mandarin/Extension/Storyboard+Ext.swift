@@ -42,7 +42,6 @@ struct Storyboard {
 extension UIStoryboard {
     
     @nonobjc static let main = UIStoryboard(name: "Main", bundle: nil)
-    @nonobjc static let introduction = UIStoryboard(name: "Introduction", bundle: nil)
     @nonobjc static let signUp = UIStoryboard(name: "SignUp", bundle: nil)
     
     func present(_ animated: Bool) {
@@ -58,11 +57,11 @@ extension UIWindow {
     @nonobjc static let mainWindow = UIWindow(frame: UIScreen.main.bounds)
 }
 
-
 extension UINavigationController {
     
     @nonobjc static let main = specify(UINavigationController()) {
         UIWindow.mainWindow.rootViewController = $0
+        UIWindow.mainWindow.makeKeyAndVisible()
         $0.isNavigationBarHidden = true
     }
     
