@@ -51,9 +51,6 @@
                                         <state key="normal" title="a">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="back:" destination="fTx-gk-9QI" eventType="touchUpInside" id="m4h-ze-Q7i"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Авторизация" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYb-Ic-T5k">
                                         <frame key="frameInset" minX="120" minY="17" width="135" height="27"/>
@@ -172,6 +169,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <segue destination="2rc-a0-tuk" kind="push" id="eEH-Od-1Ry"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -369,7 +369,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fda-1h-K1c" firstAttribute="top" secondItem="nGU-ha-Ttz" secondAttribute="bottom" constant="14" id="86d-6Y-zr6"/>
                             <constraint firstItem="5wD-vb-smO" firstAttribute="leading" secondItem="KSJ-UJ-Do1" secondAttribute="leading" id="PfN-89-EI3"/>
@@ -381,6 +381,7 @@
                             <constraint firstItem="5wD-vb-smO" firstAttribute="centerX" secondItem="nGU-ha-Ttz" secondAttribute="centerX" id="uRh-yE-j7Y"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="nXU-UV-WUV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qg3-aU-Yya" sceneMemberID="firstResponder"/>
             </objects>

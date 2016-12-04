@@ -175,8 +175,8 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         }
     }
     
-    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
-                withError error: NSError!) {
+    private func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
+                withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...
     }

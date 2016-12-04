@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class ListOfProductsByWeightViewController: MainViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,22 +24,36 @@ class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataS
     
     // MARK: - Table view data source
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return _products.count
         
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ListOfProductsByWeightViewController"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ListOfProductsByWeightTableViewCell
-
         
+        let sortProductDetails = _products[(indexPath as NSIndexPath).row]
+        cell.thubnailImageView?.image = UIImage(named: sortProductDetails.photo)
+        cell.nameLabel?.text = sortProductDetails.name
+
         return cell
+    }
+    
+    override func searchTextChanged(sender: UITextField) {
+        if let text = sender.text {
+            if text.isEmpty {
+                _products = internalProducts;
+            } else {
+                _products =  self.internalProducts.filter { $0.name.lowercased().range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil }
+            }
+        }
+        tableView.reloadData()
     }
 
     
