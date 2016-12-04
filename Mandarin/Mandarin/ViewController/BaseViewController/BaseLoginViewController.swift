@@ -17,16 +17,11 @@ import SwiftyVK
 class BaseLoginViewController: BaseViewController {
     
     fileprivate func chooseNextContoller() {
-        var appropriateVC = UIViewController()
-        if User.isAuthorized() == true {
-            appropriateVC = Storyboard.Container.instantiate()
-        } else {
-            return
-        }
-        
-        self.navigationController?.pushViewController(appropriateVC, animated: false)
+        guard User.isAuthorized() == true else { return }
+        self.navigationController?.pushViewController(Storyboard.Container.instantiate(), animated: false)
     }
 }
+
 
 class SignInViewController: BaseLoginViewController {
     
@@ -67,8 +62,6 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         vkButton.circled = true
         facebookButton.circled = true
         googleButton.circled = true
-        
-        chooseNextContoller()
     }
     
     func vkWillAuthorize() -> Set<VK.Scope> {
@@ -79,8 +72,11 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         let userId = parameters["user_id"]!
 
         VK.API.Users.get([VK.Arg.userId: userId]).send(
-            onSuccess: {response in
-//                User.createUserWithJSON(response)
+            onSuccess: {[weak self] response in
+                Dispatch.mainQueue.async({ _ in
+                    User.setupUser(id: "\(response[0]["id"])", firstName: "\(response[0]["first_name"])", lastName: "\(response[0]["last_name"])")
+                    self?.chooseNextContoller()
+                })
         },
             onError: {error in print(error)}
         )
@@ -131,10 +127,11 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
             case .success(_, _, _):
                 print("Logged in!")
                 let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, email, first_name, last_name, location"])
-                let _  =  graphRequest?.start(completionHandler: { _, result, error in
+                let _  =  graphRequest?.start(completionHandler: {[weak self] _, result, error  in
                     guard let result = result as? NSDictionary else { return }
                     guard error == nil, let id = result["id"] else { return }
-//                    User.createUser(result)
+                    User.setupUser(id: "\(id)", firstName: "\(result["first_name"])", lastName: "\(result["last_name"])", email: "\(result["email"])")
+                    self?.chooseNextContoller()
                 })
             }
         }
@@ -142,14 +139,6 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     
     override func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
         return adjustment.defaultConstant + 60.0
-    }
-    
-    @IBAction func didTapGoogleSignOut(sender: AnyObject) {
-        GIDSignIn.sharedInstance().signOut()
-    }
-    
-    @IBAction func didTapFaceBookSignOut(sender: AnyObject) {
-        loginManager.logOut()
     }
     
     struct MyProfileRequest: GraphRequestProtocol {
@@ -168,7 +157,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
-            User.createUserWithGoogleUser(user: user)
+            User.setupUser(id: user.userID, firstName: user.profile.givenName, lastName: user.profile.familyName, email: user.profile.email)
             chooseNextContoller()
         } else {
             print("\(error.localizedDescription)")

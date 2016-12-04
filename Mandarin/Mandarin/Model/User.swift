@@ -28,30 +28,32 @@ class User: Object {
     deinit {
     }
     
+    class func setupUser(id: String, firstName: String, lastName: String, email: String = "", phone: String = "") {
+        
+        let realm = try! Realm()
+        if let url = realm.configuration.fileURL {
+            Logger.log("FileURL of DataBase - \(url)", color: .Orange)
+        }
+        let userData: Dictionary = [
+            "id" :          id,
+            "firstName" :   firstName,
+            "lastName" :    lastName,
+            "email" :       email,
+            "phone" :       phone]
+        
+        let user = User(value: userData)
+        
+        try! realm.write {
+            realm.add(user, update: true)
+        }
+    }
+    
     static var currentUser: User? = {
         let realm = try! Realm()
         let user = realm.objects(User.self).first
         
         return user
     }()
-    
-    class func createUserWithGoogleUser(user: GIDGoogleUser) {
-
-        let userData: Dictionary = [
-            "id" :          user.userID,
-            "firstName" :   user.profile.givenName,
-            "lastName" :    user.profile.familyName,
-            "email" :       user.profile.email,
-            "phone" :       ""]
-        
-        let user = User(value: userData)
-        
-        let realm = try! Realm()
-        
-        try! realm.write {
-            realm.add(user, update: true)
-        }
-    }
     
     class func createUserWithJSON(_ json: JSON) {
 //        guard let accessToken = json["access_token"].string else { return }
@@ -88,10 +90,8 @@ class User: Object {
     
     class func isAuthorized() -> Bool {
         let realm = try! Realm()
-        if let url = realm.configuration.fileURL {
-            Logger.log("FileURL of DataBase - \(url)", color: .Orange)
-        }
-        guard let user = realm.objects(User.self).first, user.firstName?.isEmpty == false && user.email?.isEmpty == false else { return false }
+        
+        guard let user = realm.objects(User.self).first, user.firstName?.isEmpty == false && user.lastName?.isEmpty == false else { return false }
         return true
     }
 }

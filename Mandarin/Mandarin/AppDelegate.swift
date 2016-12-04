@@ -18,6 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         googleSignIn()
+        
+        if User.isAuthorized() {
+            UINavigationController.main.viewControllers = [UIStoryboard.main["container"]!]
+        } else {
+            UINavigationController.main.viewControllers = [UIStoryboard.signUp["login"]!]
+        }
+        
         return true
     }
     

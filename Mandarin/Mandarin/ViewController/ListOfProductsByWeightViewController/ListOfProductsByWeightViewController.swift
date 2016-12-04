@@ -45,16 +45,16 @@ class ListOfProductsByWeightViewController: MainViewController {
         return cell
     }
     
-    override func searchTextChanged(sender: UITextField) {
-        if let text = sender.text {
-            if text.isEmpty {
-                _products = internalProducts;
-            } else {
-                _products =  self.internalProducts.filter { $0.name.lowercased().range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil }
-            }
-        }
-        tableView.reloadData()
-    }
+//    override func searchTextChanged(sender: UITextField) {
+//        if let text = sender.text {
+//            if text.isEmpty {
+//                _products = internalProducts;
+//            } else {
+//                _products =  self.internalProducts.filter { $0.name.lowercased().range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil }
+//            }
+//        }
+//        tableView.reloadData()
+//    }
 
     
 
