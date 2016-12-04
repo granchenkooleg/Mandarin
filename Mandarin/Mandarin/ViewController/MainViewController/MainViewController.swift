@@ -13,8 +13,6 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var segmentControl: SegmentControl?
 
     @IBOutlet weak var tableView: UITableView!
-    
-    fileprivate var internalProducts: [Products] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,26 +23,39 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
         segmentControl?.layer.borderWidth = 1.0
         segmentControl?.layer.masksToBounds = true
         segmentControl?.selectedSegment = 0
-        
-        for dictionary in Feeds.products {
-            let name  =   dictionary["name"] as? String ?? ""
-            let capacity = dictionary ["capacity"] as? Int ?? 0
-            let photo = dictionary["photo"] as? String ?? ""
-            let description = dictionary["description"] as? String ?? ""
-            let price = dictionary["price"] as? Int ?? 0
-            let manufacturer  =   dictionary["manufacturer"] as? String ?? ""
-            let calories = dictionary["ccalories"] as? Int ?? 0
-            let proteins = dictionary["proteins"] as? Int ?? 0
-            let fats = dictionary["fats"] as? Int ?? 0
-            let carbohydrates = dictionary["carbohydrates"] as? Int ?? 0
-            let specialPrice = dictionary["specialPrice"] as? Int ?? 0
-            let weightOfgoods = dictionary["weightOfgoods"] as? Int ?? 0
-            
-            let product = Products(price: price, name: name, photo: photo, description: description, manufacturer: manufacturer, capacity: capacity,  calories: calories, proteins: proteins, fats: fats, carbohydrates: carbohydrates, specialPrice: specialPrice, weightOfgoods: weightOfgoods)
-            internalProducts.append(product)
-            
-        }
-        _products = internalProducts
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+        UserRequest.getAllProducts(param as [String : AnyObject], completion: {[weak self] json in
+            json.forEach { _, json in
+                print (">>self - \(json["name"])<<")
+                let id = json["id"].string ?? ""
+                let description = json["description"].string ?? ""
+                let proteins = json["proteins"].string ?? ""
+                let calories = json["calories"].string ?? ""
+                let zhiry = json["zhiry"].string ?? ""
+                let favorite = json["favorite"].string ?? ""
+                let category_id = json["category_id"].string ?? ""
+                let brand = json["brand"].string ?? ""
+                let price_sale = json["price_sale"].string ?? ""
+                let weight = json["weight"].string ?? ""
+                let status = json["status"].string ?? ""
+                let expire_date = json["expire_date"].string ?? ""
+                let price = json["proteins"].string ?? ""
+                let created_at = json["created_at"].string ?? ""
+                let icon = json["icon"].string ?? ""
+                let category_name = json["category_name"].string ?? ""
+                let name = json["name"].string ?? ""
+                let uglevody = json["uglevody"].string ?? ""
+                
+                let product = Product(id: id, descriptionm: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody)
+                self?.internalProducts.append(product)
+            }
+            self?._products = (self?.internalProducts)!
+            self?.tableView.reloadData()
+        })
     }
     
     //MARK: SegmentedControlDelegate
@@ -70,20 +81,14 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MainTableViewCell
         
         let productDetails = _products[(indexPath as NSIndexPath).row]
-        cell.thubnailImageView?.image = UIImage(named: productDetails.photo)
+        cell.thubnailImageView?.image = UIImage(named: productDetails.icon)
         cell.nameLabel?.text = productDetails.name
         
         return cell
     }
     
     override func searchTextChanged(sender: UITextField) {
-        if let text = sender.text {
-            if text.isEmpty {
-                _products = internalProducts;
-            } else {
-                _products =  self.internalProducts.filter { $0.name.lowercased().range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil }
-            }
-        }
+        super.searchTextChanged(sender: sender)
         tableView.reloadData()
     }
     

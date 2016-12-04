@@ -46,7 +46,9 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     var viewAppeared = false
     
-    var _products: [Products] = []
+    var _products: [Product] = []
+    
+    var internalProducts: [Product] = []
         
     fileprivate lazy var keyboardAdjustments: [KeyboardAdjustment] = []
     
@@ -189,6 +191,15 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         searchTextField.isHidden = !searchTextField.isHidden
     }
     
-    func searchTextChanged(sender: UITextField) {}
+    func searchTextChanged(sender: UITextField) {
+        if let text = sender.text {
+            if text.isEmpty {
+                _products = internalProducts;
+            } else {
+                _products =  self.internalProducts.filter { $0.name.lowercased().range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil }
+            }
+        }
+        
+    }
    
 }

@@ -14,7 +14,7 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
-    fileprivate var internalProducts: [Products] = []
+//    fileprivate var internalProducts: [Products] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +34,11 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
             let specialPrice = dictionary["specialPrice"] as? Int ?? 0
             let weightOfgoods = dictionary["weightOfgoods"] as? Int ?? 0
             
-            let product = Products(price: price, name: name, photo: photo, description: description, manufacturer: manufacturer, capacity: capacity,  calories: calories, proteins: proteins, fats: fats, carbohydrates: carbohydrates, specialPrice: specialPrice, weightOfgoods: weightOfgoods)
-            internalProducts.append(product)
+//            let product = Products(price: price, name: name, photo: photo, description: description, manufacturer: manufacturer, capacity: capacity,  calories: calories, proteins: proteins, fats: fats, carbohydrates: carbohydrates, specialPrice: specialPrice, weightOfgoods: weightOfgoods)
+//            internalProducts.append(product)
         }
         
-        _products = internalProducts
+//        _products = internalProducts
    }
     
     // MARK: - Table view data source
@@ -56,22 +56,11 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
         let cellIdentifier = "CategoryTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CategoryTableViewCell
         
-        let productDetails = _products[(indexPath as NSIndexPath).row]
-        cell.thubnailImageView?.image = UIImage(named: productDetails.photo)
-        cell.nameLabel?.text = productDetails.name
+//        let productDetails = _products[(indexPath as NSIndexPath).row]
+//        cell.thubnailImageView?.image = UIImage(named: productDetails.photo)
+//        cell.nameLabel?.text = productDetails.name
         
         return cell
-    }
-    
-    override func searchTextChanged(sender: UITextField) {
-        if let text = sender.text {
-            if text.isEmpty {
-                _products = internalProducts;
-            } else {
-                _products =  self.internalProducts.filter { $0.name.lowercased().range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil }
-            }
-        }
-        tableView.reloadData()
     }
 }
 

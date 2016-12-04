@@ -38,9 +38,9 @@ class ListOfProductsByWeightViewController: MainViewController {
         let cellIdentifier = "ListOfProductsByWeightViewController"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ListOfProductsByWeightTableViewCell
         
-        let sortProductDetails = _products[(indexPath as NSIndexPath).row]
-        cell.thubnailImageView?.image = UIImage(named: sortProductDetails.photo)
-        cell.nameLabel?.text = sortProductDetails.name
+//        let sortProductDetails = _products[(indexPath as NSIndexPath).row]
+//        cell.thubnailImageView?.image = UIImage(named: sortProductDetails.photo)
+//        cell.nameLabel?.text = sortProductDetails.name
 
         return cell
     }

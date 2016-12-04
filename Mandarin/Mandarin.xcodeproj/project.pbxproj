@@ -26,6 +26,7 @@
 		563474331DEDBC1B004ECDC4 /* GenericCollections+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563474321DEDBC1B004ECDC4 /* GenericCollections+Ext.swift */; };
 		563474351DEDC0DE004ECDC4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563474341DEDC0DE004ECDC4 /* MainViewController.swift */; };
 		563474371DEDC3E9004ECDC4 /* Feeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563474361DEDC3E9004ECDC4 /* Feeds.swift */; };
+		563F94FF1DF4C4A90053EFF0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F94FE1DF4C4A90053EFF0 /* Product.swift */; };
 		56574A931DF33241009C2466 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56574A921DF33241009C2466 /* User.swift */; };
 		56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56899DCF1DE9879B00EF02FE /* GoogleService-Info.plist */; };
 		56B0FBD01DE97B4800DC1600 /* mandarin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B0FBCF1DE97B4500DC1600 /* mandarin.ttf */; };
@@ -73,6 +74,7 @@
 		563474321DEDBC1B004ECDC4 /* GenericCollections+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GenericCollections+Ext.swift"; path = "Extension/GenericCollections+Ext.swift"; sourceTree = "<group>"; };
 		563474341DEDC0DE004ECDC4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewController/MainViewController/MainViewController.swift; sourceTree = "<group>"; };
 		563474361DEDC3E9004ECDC4 /* Feeds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feeds.swift; path = Model/Feeds.swift; sourceTree = "<group>"; };
+		563F94FE1DF4C4A90053EFF0 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Model/Product.swift; sourceTree = "<group>"; };
 		56574A921DF33241009C2466 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mandarin-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		56899DCF1DE9879B00EF02FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				7C36EE901DE5F791007506BC /* Products.swift */,
+				563F94FE1DF4C4A90053EFF0 /* Product.swift */,
 				563474361DEDC3E9004ECDC4 /* Feeds.swift */,
 				56574A921DF33241009C2466 /* User.swift */,
 			);
@@ -426,6 +429,7 @@
 				56CEB7871DE4862B00E84345 /* BezierPath+Ext.swift in Sources */,
 				5621B5831DE2DF7500C3B612 /* Logger.swift in Sources */,
 				7C0949631DE222250038018F /* AppDelegate.swift in Sources */,
+				563F94FF1DF4C4A90053EFF0 /* Product.swift in Sources */,
 				5621B5971DE2E0F000C3B612 /* Label.swift in Sources */,
 				5621B5811DE2DF1700C3B612 /* Keyboard.swift in Sources */,
 				7C36EE8D1DE5F6FE007506BC /* MainTableViewCell.swift in Sources */,

@@ -78,8 +78,7 @@ let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URL
 
 enum UserRequest: URLRequestConvertible {
     
-    case get(String)
-    case create([String: AnyObject])
+    case getProducts([String: AnyObject])
     case update(Int)
     case login([String: AnyObject])
     case logOut(String)
@@ -92,18 +91,18 @@ enum UserRequest: URLRequestConvertible {
         
         var method: HTTPMethod {
             switch self {
-            case .get, .statistics, .trades, .amount, .login:
+            case .statistics, .trades, .amount, .login, .getProducts:
                 return .get
-            case .create, .update, .logOut, .trans:
+            case .update, .logOut, .trans:
                 return .post
             }
         }
         
         let params: ([String: AnyObject]?) = {
             switch self {
-            case .get, .update, .logOut, .statistics, .trades:
+            case .update, .logOut, .statistics, .trades:
                 return (nil)
-            case .create(let newPost):
+            case .getProducts(let newPost):
                 return newPost
             case .trans( _, let newPost):
                 return  newPost
@@ -117,10 +116,8 @@ enum UserRequest: URLRequestConvertible {
         let url: URL = {
             let relativePath:String?
             switch self {
-            case .get(let userIdentifier):
-                relativePath = "users/\(userIdentifier)"
-            case .create:
-                relativePath = "users"
+            case .getProducts:
+                relativePath = "products"
             case .update(let userIdentifier):
                 relativePath = "users/\(userIdentifier)"
             case .login:
@@ -164,13 +161,15 @@ enum UserRequest: URLRequestConvertible {
 //        }
 //    }
 //    
-//    static func getUser() {
-//         guard let id = User.currentUser?.id , id.isEmpty == false else { return }
-//        requestHandler(#function, URLRequest: get(id), completionHandler: { json in
-//            setupUser(json)
-//        })
-//    }
-//    
+    static func getAllProducts(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
+        requestHandler(#function, URLRequest: getProducts(entryParams), completionHandler: { json in
+            guard let json = json else {
+                return
+            }
+            completion(json)
+        })
+    }
+    
     static func makelogin(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
         requestHandler(#function, URLRequest: login(entryParams)) { json in
             guard let json = json else {
