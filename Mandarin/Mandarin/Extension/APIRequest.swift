@@ -78,6 +78,7 @@ let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URL
 
 enum UserRequest: URLRequestConvertible {
     
+    case getCategories([String: AnyObject])
     case getProducts([String: AnyObject])
     case update(Int)
     case login([String: AnyObject])
@@ -91,7 +92,7 @@ enum UserRequest: URLRequestConvertible {
         
         var method: HTTPMethod {
             switch self {
-            case .statistics, .trades, .amount, .login, .getProducts:
+            case .statistics, .trades, .amount, .login, .getProducts, .getCategories:
                 return .get
             case .update, .logOut, .trans:
                 return .post
@@ -102,6 +103,8 @@ enum UserRequest: URLRequestConvertible {
             switch self {
             case .update, .logOut, .statistics, .trades:
                 return (nil)
+            case .getCategories(let newPost):
+                return newPost
             case .getProducts(let newPost):
                 return newPost
             case .trans( _, let newPost):
@@ -116,6 +119,8 @@ enum UserRequest: URLRequestConvertible {
         let url: URL = {
             let relativePath:String?
             switch self {
+            case .getCategories:
+                relativePath = "categories"
             case .getProducts:
                 relativePath = "products"
             case .update(let userIdentifier):
@@ -161,6 +166,16 @@ enum UserRequest: URLRequestConvertible {
 //        }
 //    }
 //    
+    
+    static func getAllCategories(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
+        requestHandler(#function, URLRequest: getCategories(entryParams), completionHandler: { json in
+            guard let json = json else {
+                return
+            }
+                completion(json)
+        })
+    }
+    
     static func getAllProducts(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
         requestHandler(#function, URLRequest: getProducts(entryParams), completionHandler: { json in
             guard let json = json else {

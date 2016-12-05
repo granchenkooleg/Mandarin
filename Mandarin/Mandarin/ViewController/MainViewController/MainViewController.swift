@@ -28,7 +28,7 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-        UserRequest.getAllProducts(param as [String : AnyObject], completion: {[weak self] json in
+        UserRequest.getAllCategories(param as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
                 print (">>self - \(json["name"])<<")
                 let id = json["id"].string ?? ""
