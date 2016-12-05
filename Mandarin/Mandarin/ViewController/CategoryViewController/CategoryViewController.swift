@@ -8,9 +8,10 @@
 
 import UIKit
 
-class CategoryViewController: MainViewController {
+class CategoryViewController: BaseViewController,UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     var categoryId: String?
     
     // @IBOutlet weak var tableView: UITableView!
@@ -24,10 +25,10 @@ class CategoryViewController: MainViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : categoryId]
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : "6"]
         UserRequest.getAllProducts(param as [String : AnyObject], completion: {[weak self] json in
+           print (">>self - \(self?.categoryId)<<")
             json.forEach { _, json in
-                print (">>self - \(json["name"])<<")
                 let id = json["id"].string ?? ""
                 let description = json["description"].string ?? ""
                 let proteins = json["proteins"].string ?? ""
@@ -59,20 +60,20 @@ class CategoryViewController: MainViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return _products.count
         
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "CategoryTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CategoryTableViewCell
         
-        let productDetails = _products[(indexPath as NSIndexPath).row]
+        let productDetails = _products[indexPath.row]
         Dispatch.mainQueue.async { _ in
             let imageData: Data = try! Data(contentsOf: URL(string: productDetails.icon)!)
             cell.thubnailImageView?.image = UIImage(data: imageData)

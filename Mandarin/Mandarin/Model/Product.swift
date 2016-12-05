@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Product {
+struct Product : Feeds {
     var id = ""
     var description = ""
     var proteins = ""

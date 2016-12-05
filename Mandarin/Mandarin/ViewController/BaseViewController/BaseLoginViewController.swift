@@ -233,11 +233,11 @@ class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate 
             sender.loading = false
             return
         }
-        let login = LoginEntry(params: ["username": userName as AnyObject, "password": password as AnyObject])
-        UserRequest.createUser(login, completion: {
-            sender.loading = false
-           UINavigationController.main.pushViewController(Storyboard.Container.instantiate(), animated: false)
-        })
+//        let login = LoginEntry(params: ["username": userName as AnyObject, "password": password as AnyObject])
+//        UserRequest.createUser(login, completion: {
+//            sender.loading = false
+//           UINavigationController.main.pushViewController(Storyboard.Container.instantiate(), animated: false)
+//        })
     }
     
     override func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
