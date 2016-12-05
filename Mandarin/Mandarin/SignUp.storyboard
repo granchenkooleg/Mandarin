@@ -203,10 +203,10 @@
             </objects>
             <point key="canvasLocation" x="1008.5" y="426.5"/>
         </scene>
-        <!--Registration View Controller-->
+        <!--Create Account View Controller-->
         <scene sceneID="FTy-nk-5Jp">
             <objects>
-                <viewController id="2rc-a0-tuk" customClass="RegistrationViewController" customModule="Mandarin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2rc-a0-tuk" customClass="CreateAccountViewController" customModule="Mandarin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qP3-Bl-1s3"/>
                         <viewControllerLayoutGuide type="bottom" id="fda-1h-K1c"/>
@@ -303,10 +303,10 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="createAccount:" destination="2rc-a0-tuk" eventType="touchUpInside" id="Pkr-hx-3NN"/>
+                                            <action selector="createAccount:" destination="2rc-a0-tuk" eventType="touchUpInside" id="Tr2-Gx-H2i"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="35" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ваше ФИО" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8u-dA-eTA">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="35" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ваше Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8u-dA-eTA">
                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.90269396550000003" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Ojo-1a-Ag4"/>
@@ -358,12 +358,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="birthdayLabel" destination="nQx-gc-fEZ" id="UNt-fr-CiU"/>
-                        <outlet property="emailLabel" destination="KwE-AI-1yK" id="H5t-Tc-eRa"/>
-                        <outlet property="nameLabel" destination="m8u-dA-eTA" id="1UM-Uw-hyn"/>
-                        <outlet property="passwordLabel" destination="BlS-kb-s2c" id="Bxh-uM-xDA"/>
-                        <outlet property="repeatPasswordLabel" destination="ls9-F6-SCg" id="CT2-K5-77X"/>
-                        <outlet property="telephoneLabel" destination="tjv-kc-xg2" id="292-71-iy1"/>
+                        <outlet property="birthdayTextField" destination="nQx-gc-fEZ" id="Sp9-bF-Xh9"/>
+                        <outlet property="emailTextField" destination="KwE-AI-1yK" id="Ygc-MB-E1e"/>
+                        <outlet property="passwordTextField" destination="BlS-kb-s2c" id="D8K-E4-eXP"/>
+                        <outlet property="phoneTextField" destination="tjv-kc-xg2" id="Okc-xB-HMQ"/>
+                        <outlet property="repeatPasswordTextField" destination="ls9-F6-SCg" id="CI0-1G-jXo"/>
+                        <outlet property="userNameTextField" destination="m8u-dA-eTA" id="KvW-OP-nUZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qg3-aU-Yya" sceneMemberID="firstResponder"/>
