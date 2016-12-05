@@ -78,6 +78,7 @@ let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URL
 
 enum UserRequest: URLRequestConvertible {
     
+    case create([String: AnyObject])
     case getCategories([String: AnyObject])
     case getProducts([String: AnyObject])
     case update(Int)
@@ -94,7 +95,7 @@ enum UserRequest: URLRequestConvertible {
             switch self {
             case .statistics, .trades, .amount, .login, .getProducts, .getCategories:
                 return .get
-            case .update, .logOut, .trans:
+            case .create, .update, .logOut, .trans:
                 return .post
             }
         }
@@ -103,6 +104,8 @@ enum UserRequest: URLRequestConvertible {
             switch self {
             case .update, .logOut, .statistics, .trades:
                 return (nil)
+            case .create(let newPost):
+                return newPost
             case .getCategories(let newPost):
                 return newPost
             case .getProducts(let newPost):
@@ -119,6 +122,8 @@ enum UserRequest: URLRequestConvertible {
         let url: URL = {
             let relativePath:String?
             switch self {
+            case .create:
+                relativePath = "users"
             case .getCategories:
                 relativePath = "categories"
             case .getProducts:
@@ -166,6 +171,18 @@ enum UserRequest: URLRequestConvertible {
 //        }
 //    }
 //    
+    
+    static func createUser(_ entryParams: EntryParametersPresenting, completion: @escaping Block) {
+        requestHandler(#function, URLRequest: create(entryParams.params)) { json in
+            guard let json = json else {
+                completion(false)
+                return
+            }
+            
+            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
+            completion(true)
+        }
+    }
     
     static func getAllCategories(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
         requestHandler(#function, URLRequest: getCategories(entryParams), completionHandler: { json in
