@@ -10,7 +10,7 @@ import Foundation
 
 struct Product {
     var id = ""
-    var descriptionm = ""
+    var description = ""
     var proteins = ""
     var calories = ""
     var zhiry = ""

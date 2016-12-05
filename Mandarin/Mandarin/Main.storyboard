@@ -436,7 +436,6 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="Qo3-L4-hj7" id="BJ2-IC-OXP"/>
                                             <outlet property="thubnailImageView" destination="Uee-yR-dJj" id="qjf-ZB-tbn"/>
-                                            <segue destination="Hn5-Rg-Tjm" kind="show" identifier="showCategoryProduct" id="X5p-b0-JjS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1647,7 +1646,7 @@
         <!--CategoryViewController-->
         <scene sceneID="Dhz-bc-KVb">
             <objects>
-                <viewController id="Hn5-Rg-Tjm" userLabel="CategoryViewController" customClass="CategoryViewController" customModule="Mandarin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="category" id="Hn5-Rg-Tjm" userLabel="CategoryViewController" customClass="CategoryViewController" customModule="Mandarin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LFF-FD-VIK"/>
                         <viewControllerLayoutGuide type="bottom" id="pgN-5D-UEi"/>
