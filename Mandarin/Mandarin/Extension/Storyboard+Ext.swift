@@ -37,6 +37,7 @@ struct Storyboard {
     static let CreateAccount = StoryboardObject<CreateAccountViewController>("createAccount", UIStoryboard.signUp)
     static let Container = StoryboardObject<ContainerViewController>("container")
     static let Main = StoryboardObject<MainViewController>("main")
+    static let Category = StoryboardObject<CategoryViewController>("category")
 }
 
 extension UIStoryboard {

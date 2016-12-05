@@ -50,7 +50,7 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
                 let name = json["name"].string ?? ""
                 let uglevody = json["uglevody"].string ?? ""
                 
-                let product = Product(id: id, descriptionm: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody)
+                let product = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody)
                 self?.internalProducts.append(product)
             }
             self?._products = (self?.internalProducts)!
@@ -81,10 +81,20 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MainTableViewCell
         
         let productDetails = _products[(indexPath as NSIndexPath).row]
-        cell.thubnailImageView?.image = UIImage(named: productDetails.icon)
+        Dispatch.mainQueue.async { _ in
+            let imageData: Data = try! Data(contentsOf: URL(string: productDetails.icon)!)
+            cell.thubnailImageView?.image = UIImage(data: imageData)
+        }
+        
         cell.nameLabel?.text = productDetails.name
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let categoryViewController = Storyboard.Category.instantiate()
+        categoryViewController.categoryId = _products[indexPath.row].id
+        self.present(categoryViewController, animated: true, completion: nil)
     }
     
     override func searchTextChanged(sender: UITextField) {
