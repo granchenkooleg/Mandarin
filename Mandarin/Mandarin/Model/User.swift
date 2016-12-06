@@ -84,7 +84,7 @@ class User: Object {
     class func isAuthorized() -> Bool {
         let realm = try! Realm()
         
-        guard let user = realm.objects(User.self).first, user.firstName?.isEmpty == false else { return false }
+        guard let user = realm.objects(User.self).first, user.id?.isEmpty == false else { return false }
         return true
     }
 }

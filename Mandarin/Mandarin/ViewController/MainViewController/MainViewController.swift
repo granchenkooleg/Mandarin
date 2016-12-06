@@ -23,10 +23,7 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
         segmentControl?.layer.borderWidth = 1.0
         segmentControl?.layer.masksToBounds = true
         segmentControl?.selectedSegment = 0
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.getAllCategories(param as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
@@ -35,7 +32,7 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
                 let created_at = json["created_at"].string ?? ""
                 let icon = json["icon"].string ?? ""
                 let name = json["name"].string ?? ""
-             
+                
                 let category = Category(id: id, icon: icon, name: name, created_at: created_at)
                 self?.internalProducts.append(category)
             }

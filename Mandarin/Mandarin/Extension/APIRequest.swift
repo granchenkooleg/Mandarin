@@ -81,7 +81,7 @@ enum UserRequest: URLRequestConvertible {
     case create([String: AnyObject])
     case getCategories([String: AnyObject])
     case getProductsCategory(String, [String: AnyObject])
-    case update(Int)
+    case registration([String: AnyObject])
     case login([String: AnyObject])
     case logOut(String)
     case statistics(String)
@@ -93,22 +93,24 @@ enum UserRequest: URLRequestConvertible {
         
         var method: HTTPMethod {
             switch self {
-            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories:
+            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration:
                 return .get
-            case .create, .update, .logOut, .trans:
+            case .create, .logOut, .trans:
                 return .post
             }
         }
         
         let params: ([String: AnyObject]?) = {
             switch self {
-            case .update, .logOut, .statistics, .trades:
+            case .logOut, .statistics, .trades:
                 return (nil)
             case .create(let newPost):
                 return newPost
             case .getCategories(let newPost):
                 return newPost
             case .getProductsCategory(_, let newPost):
+                return newPost
+            case .registration(let newPost):
                 return newPost
             case .trans( _, let newPost):
                 return  newPost
@@ -128,8 +130,8 @@ enum UserRequest: URLRequestConvertible {
                 relativePath = "categories"
             case .getProductsCategory(let categoryIdentifier, _):
                 relativePath = "subcategories/\(categoryIdentifier)"
-            case .update(let userIdentifier):
-                relativePath = "users/\(userIdentifier)"
+            case .registration:
+                relativePath = "registration"
             case .login:
                 relativePath = "login"
             case .logOut(let userIdentifier):
@@ -212,11 +214,18 @@ enum UserRequest: URLRequestConvertible {
             completion(true)
         }
     }
-    //
-    //    static fileprivate func setupUser(_ json: JSON?) {
-    //        guard let json = json else { return }
-    //        User.createUser(json)
-    //    }
+    
+     static func makeRegistration(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
+        requestHandler(#function, URLRequest: registration(entryParams)) { json in
+            guard let json = json else {
+                completion(false)
+                return
+            }
+            print (">>registration - \(json)<<")
+            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
+            completion(true)
+        }
+    }
     //
     //    static func logoutUser() {
     //        guard let saveDeviceID = UserDefaults.standard.value(forKey: "deviceID") as? [String: Any],
