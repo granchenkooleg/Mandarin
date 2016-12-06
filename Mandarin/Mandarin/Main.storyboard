@@ -943,10 +943,6 @@
                                     </connections>
                                 </tableViewCell>
                             </prototypes>
-                            <connections>
-                                <outlet property="dataSource" destination="Hn5-Rg-Tjm" id="9tY-ad-0LS"/>
-                                <outlet property="delegate" destination="Hn5-Rg-Tjm" id="77i-hA-s2H"/>
-                            </connections>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1661,8 +1657,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="Hn5-Rg-Tjm" id="Ktw-n8-mFe"/>
-                                    <outlet property="delegate" destination="Hn5-Rg-Tjm" id="Pyr-Wc-a4a"/>
+                                    <outlet property="dataSource" destination="Hn5-Rg-Tjm" id="WT0-Co-FMR"/>
+                                    <outlet property="delegate" destination="Hn5-Rg-Tjm" id="Fg5-oM-8j6"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -1680,7 +1676,7 @@
                     <connections>
                         <outlet property="categoryLabel" destination="CmX-xU-dsP" id="ZvZ-rf-haP"/>
                         <outlet property="searchTextField" destination="QjT-uy-BiV" id="7tT-PF-Et8"/>
-                        <outlet property="tableView" destination="QA1-uI-hkw" id="lOs-e9-IWP"/>
+                        <outlet property="tableView" destination="QA1-uI-hkw" id="PHj-2E-S3L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LRD-iG-uRX" userLabel="First Responder" sceneMemberID="firstResponder"/>

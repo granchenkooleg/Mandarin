@@ -8,95 +8,14 @@
 
 import UIKit
 
-class Feeds: NSObject {
+protocol Feeds {
     
-    static var products: [[String:Any]] = [
-        [
-            "name": "Soup",
-            "capacity": 500,
-            "photo": "IconMandarin-76",
-            "description": "Йогурт Активна с черносливом",
-            "price": 222,
-            "manufacturer": "Ukraine",
-            "calories": 1000,
-            "proteins": 23,
-            "fats": 22,
-            "carbohydrates": 122,
-            "specialPrice": 100,
-            "weightOfgoods": 550
-        ],
-        [
-            "name": "Drink",
-            "capacity": 500,
-            "photo": "Icon-76",
-            "description": "Йогурт Активна с черносливом",
-            "price": 222,
-            "manufacturer": "Ukraine",
-            "calories": 1000,
-            "proteins": 23,
-            "fats": 22,
-            "carbohydrates": 122,
-            "specialPrice": 100,
-            "weightOfgoods": 550
-        ],
-        
-        [
-            "name": "Milk",
-            "capacity": 500,
-            "photo": "IconMandarin-76",
-            "description": "Йогурт Активна с черносливом",
-            "price": 222,
-            "manufacturer": "Ukraine",
-            "calories": 1000,
-            "proteins": 23,
-            "fats": 22,
-            "carbohydrates": 122,
-            "specialPrice": 100,
-            "weightOfgoods": 550,
-            ],
-        [
-            "name": "Potato",
-            "capacity": 500,
-            "photo": "IconMandarin-76",
-            "description": "Йогурт Активна с черносливом",
-            "price": 222,
-            "manufacturer": "Ukraine",
-            "calories": 1000,
-            "proteins": 23,
-            "fats": 22,
-            "carbohydrates": 122,
-            "specialPrice": 100,
-            "weightOfgoods": 550
-        ],
-        [
-            "name": "Cucumber",
-            "capacity": 500,
-            "photo": "Icon-76",
-            "description": "Йогурт Активна с черносливом",
-            "price": 222,
-            "manufacturer": "Ukraine",
-            "calories": 1000,
-            "proteins": 23,
-            "fats": 22,
-            "carbohydrates": 122,
-            "specialPrice": 100,
-            "weightOfgoods": 550
-        ],
-        
-        [
-            "name": "Tea",
-            "capacity": 500,
-            "photo": "IconMandarin-76",
-            "description": "Йогурт Активна с черносливом",
-            "price": 222,
-            "manufacturer": "Ukraine",
-            "calories": 1000,
-            "proteins": 23,
-            "fats": 22,
-            "carbohydrates": 122,
-            "specialPrice": 100,
-            "weightOfgoods": 550,
-            ]
-        
-    ]
+    var id: String { get set }
+    var icon: String { get set }
+    var name: String { get set }
+    var created_at: String { get set }
+    
 }
+
+    
+   
