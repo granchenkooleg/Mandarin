@@ -78,12 +78,7 @@ let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URL
 
 enum UserRequest: URLRequestConvertible {
     
-<<<<<<< HEAD
-    //
-    
-=======
     case create([String: AnyObject])
->>>>>>> 0043382f83ceadc564b62b05c8504dc672ab8ff6
     case getCategories([String: AnyObject])
     case getProductsCategory(String, [String: AnyObject])
     case update(Int)
