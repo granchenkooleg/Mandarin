@@ -80,6 +80,7 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let categoryViewController = Storyboard.Category.instantiate()
         categoryViewController.categoryId = _products[indexPath.row].id
+        categoryViewController.name = _products[indexPath.row].name
         UINavigationController.main.pushViewController(categoryViewController, animated: true)
     }
     
