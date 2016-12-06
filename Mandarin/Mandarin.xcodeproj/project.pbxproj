@@ -52,7 +52,6 @@
 		7C36EE8F1DE5F742007506BC /* DetailsProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE8E1DE5F742007506BC /* DetailsProductViewController.swift */; };
 		7C36EE911DE5F791007506BC /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE901DE5F791007506BC /* Products.swift */; };
 		7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C36EE921DE63C63007506BC /* check_v1-05.jpg */; };
-		7CC1E7C21DF627B900798951 /* PostRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC1E7C11DF627B900798951 /* PostRequestHelper.swift */; };
 		ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,7 +108,6 @@
 		7C36EE8E1DE5F742007506BC /* DetailsProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsProductViewController.swift; sourceTree = "<group>"; };
 		7C36EE901DE5F791007506BC /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Products.swift; path = Model/Products.swift; sourceTree = "<group>"; };
 		7C36EE921DE63C63007506BC /* check_v1-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "check_v1-05.jpg"; sourceTree = "<group>"; };
-		7CC1E7C11DF627B900798951 /* PostRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRequestHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +146,6 @@
 				563F94FE1DF4C4A90053EFF0 /* Product.swift */,
 				563474361DEDC3E9004ECDC4 /* Feeds.swift */,
 				56574A921DF33241009C2466 /* User.swift */,
-				7CC1E7C11DF627B900798951 /* PostRequestHelper.swift */,
 				56737B9A1DF616950007518C /* Category.swift */,
 			);
 			name = Model;
@@ -436,7 +433,6 @@
 				56CEB7871DE4862B00E84345 /* BezierPath+Ext.swift in Sources */,
 				5621B5831DE2DF7500C3B612 /* Logger.swift in Sources */,
 				7C0949631DE222250038018F /* AppDelegate.swift in Sources */,
-				7CC1E7C21DF627B900798951 /* PostRequestHelper.swift in Sources */,
 				563F94FF1DF4C4A90053EFF0 /* Product.swift in Sources */,
 				5621B5971DE2E0F000C3B612 /* Label.swift in Sources */,
 				5621B5811DE2DF1700C3B612 /* Keyboard.swift in Sources */,

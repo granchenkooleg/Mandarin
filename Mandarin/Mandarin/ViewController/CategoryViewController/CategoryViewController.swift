@@ -10,9 +10,11 @@ import UIKit
 
 class CategoryViewController: BaseViewController,UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var categoryId: String?
+    var name: String?
     
     // @IBOutlet weak var tableView: UITableView!
     
@@ -25,8 +27,9 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : "6"]
-        UserRequest.getAllProducts(param as [String : AnyObject], completion: {[weak self] json in
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+        guard let categoryId = categoryId else { return }
+        UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in
            print (">>self - \(self?.categoryId)<<")
             json.forEach { _, json in
                 let id = json["id"].string ?? ""

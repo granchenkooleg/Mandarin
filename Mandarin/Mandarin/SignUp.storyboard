@@ -148,6 +148,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <segue destination="2rc-a0-tuk" kind="push" id="qzY-7v-xqN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -227,6 +230,9 @@
                                         <state key="normal" title="a">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backClick:" destination="2rc-a0-tuk" eventType="touchUpInside" id="xqL-0S-nd2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.30191646799999999" blue="0.040223739379999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -303,7 +309,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="createAccount:" destination="2rc-a0-tuk" eventType="touchUpInside" id="Tr2-Gx-H2i"/>
+                                            <action selector="createAccount:" destination="2rc-a0-tuk" eventType="touchUpInside" id="nfx-Mp-m4b"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="35" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ваше Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m8u-dA-eTA">
@@ -345,7 +351,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fda-1h-K1c" firstAttribute="top" secondItem="nGU-ha-Ttz" secondAttribute="bottom" constant="14" id="86d-6Y-zr6"/>
                             <constraint firstItem="5wD-vb-smO" firstAttribute="leading" secondItem="KSJ-UJ-Do1" secondAttribute="leading" id="PfN-89-EI3"/>
@@ -357,13 +363,14 @@
                             <constraint firstItem="5wD-vb-smO" firstAttribute="centerX" secondItem="nGU-ha-Ttz" secondAttribute="centerX" id="uRh-yE-j7Y"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="vJq-4N-hRh"/>
                     <connections>
-                        <outlet property="birthdayTextField" destination="nQx-gc-fEZ" id="Sp9-bF-Xh9"/>
-                        <outlet property="emailTextField" destination="KwE-AI-1yK" id="Ygc-MB-E1e"/>
-                        <outlet property="passwordTextField" destination="BlS-kb-s2c" id="D8K-E4-eXP"/>
-                        <outlet property="phoneTextField" destination="tjv-kc-xg2" id="Okc-xB-HMQ"/>
-                        <outlet property="repeatPasswordTextField" destination="ls9-F6-SCg" id="CI0-1G-jXo"/>
-                        <outlet property="userNameTextField" destination="m8u-dA-eTA" id="KvW-OP-nUZ"/>
+                        <outlet property="birthdayTextField" destination="nQx-gc-fEZ" id="9Nc-SX-tpl"/>
+                        <outlet property="emailTextField" destination="KwE-AI-1yK" id="VkM-zE-J8a"/>
+                        <outlet property="passwordTextField" destination="BlS-kb-s2c" id="Csr-DB-vDM"/>
+                        <outlet property="phoneTextField" destination="tjv-kc-xg2" id="nOK-2a-TI0"/>
+                        <outlet property="repeatPasswordTextField" destination="ls9-F6-SCg" id="Nvg-gz-s2S"/>
+                        <outlet property="userNameTextField" destination="m8u-dA-eTA" id="sTH-Ad-1Oy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qg3-aU-Yya" sceneMemberID="firstResponder"/>

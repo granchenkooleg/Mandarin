@@ -1577,14 +1577,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QjT-uy-BiV" customClass="TextField" customModule="Mandarin" customModuleProvider="target">
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="TLf-Ah-IKN" id="K9e-ks-Xl1"/>
-                                        </connections>
-                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.30191646799999999" blue="0.040223739379999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1592,7 +1584,6 @@
                                     <constraint firstAttribute="width" constant="375" id="6ZI-BY-ZLr"/>
                                     <constraint firstItem="Cyk-jx-UjG" firstAttribute="leading" secondItem="CmX-xU-dsP" secondAttribute="trailing" constant="5" id="8tQ-Ww-0Kh"/>
                                     <constraint firstItem="CmX-xU-dsP" firstAttribute="centerY" secondItem="Cyk-jx-UjG" secondAttribute="centerY" id="MJQ-Do-vQQ"/>
-                                    <constraint firstItem="Cyk-jx-UjG" firstAttribute="leading" secondItem="QjT-uy-BiV" secondAttribute="trailing" id="OQC-z2-0im"/>
                                     <constraint firstItem="e39-iP-mka" firstAttribute="centerY" secondItem="f1M-RW-Fmb" secondAttribute="centerY" id="Uj5-3s-lix"/>
                                     <constraint firstItem="Cyk-jx-UjG" firstAttribute="centerY" secondItem="iCY-Ll-XZh" secondAttribute="centerY" id="Ver-D4-Z0j"/>
                                     <constraint firstItem="CmX-xU-dsP" firstAttribute="top" secondItem="cxP-7i-kJG" secondAttribute="top" constant="10" id="aEP-HV-FBG"/>
@@ -1600,9 +1591,7 @@
                                     <constraint firstAttribute="height" constant="60" id="geA-CN-4pM"/>
                                     <constraint firstItem="f1M-RW-Fmb" firstAttribute="centerY" secondItem="iCY-Ll-XZh" secondAttribute="centerY" id="ghr-2G-WJ7"/>
                                     <constraint firstItem="CmX-xU-dsP" firstAttribute="centerX" secondItem="cxP-7i-kJG" secondAttribute="centerX" id="hsd-87-n5y"/>
-                                    <constraint firstItem="QjT-uy-BiV" firstAttribute="leading" secondItem="e39-iP-mka" secondAttribute="trailing" id="qcP-Qo-KsM"/>
                                     <constraint firstItem="CmX-xU-dsP" firstAttribute="centerY" secondItem="cxP-7i-kJG" secondAttribute="centerY" id="rvW-lX-Dt7"/>
-                                    <constraint firstItem="QjT-uy-BiV" firstAttribute="centerY" secondItem="e39-iP-mka" secondAttribute="centerY" id="vRh-Te-nyY"/>
                                     <constraint firstItem="CmX-xU-dsP" firstAttribute="leading" secondItem="e39-iP-mka" secondAttribute="trailing" constant="11" id="xDW-dj-YFK"/>
                                 </constraints>
                             </view>
@@ -1675,7 +1664,7 @@
                     </view>
                     <connections>
                         <outlet property="categoryLabel" destination="CmX-xU-dsP" id="ZvZ-rf-haP"/>
-                        <outlet property="searchTextField" destination="QjT-uy-BiV" id="7tT-PF-Et8"/>
+                        <outlet property="headerLabel" destination="CmX-xU-dsP" id="PSa-LV-Pep"/>
                         <outlet property="tableView" destination="QA1-uI-hkw" id="PHj-2E-S3L"/>
                     </connections>
                 </viewController>

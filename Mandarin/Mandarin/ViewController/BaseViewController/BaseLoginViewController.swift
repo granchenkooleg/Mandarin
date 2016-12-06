@@ -220,36 +220,30 @@ class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate 
 //        navigationController?.pushViewController(Storyboard.SignIn.instantiate(), animated: true)
 //    }
     
-//    
-//    @IBAction func createAccount(_ sender: Button) {
-//        sender.loading = true
-//        guard let userName = userNameTextField.text, let password = passwordTextField.text ,
-//            userName.isEmpty == false && password.isEmpty == false else {
-//                UIAlertController.alert("Не введен пароль или ваше имя.".ls).show()
-//                sender.loading = false
-//                return
-//        }
-//        guard let email = emailTextField.text , email.isValidEmail == true  else {
-//            UIAlertController.alert("Неправильно введен адрес электронной почты.".ls).show()
-//            sender.loading = false
-//            return
-//        }
-//        
-//        let login = LoginEntry(params: ["username": userName as AnyObject, "password": password as AnyObject])
-//        UserRequest.createUser(login, completion: {
-//            sender.loading = false
-//            UINavigationController.main.pushViewController(Storyboard.Container.instantiate(), animated: false)
-//        })
-//        
-//        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79", "email" : /*"test1@mail.ru"*/ email, "userName" : /*Oleg*/ userName , "password" : /*"123123"*/ password]
-//        UserRequest.createUser(param as [String : AnyObject], completion: {[weak self] success in
-//            if success == true {
-//                self?.chooseNextContoller()
-//            }
-//            
-//            sender.loading = false
-//            })
-//        
+    
+    @IBAction func createAccount(_ sender: Button) {
+        sender.loading = true
+        guard let userName = userNameTextField.text, let password = passwordTextField.text,
+            userName.isEmpty == false && password.isEmpty == false else {
+                UIAlertController.alert("Не введен пароль или ваше имя.".ls).show()
+                sender.loading = false
+                return
+        }
+        guard let email = emailTextField.text , email.isValidEmail == true  else {
+            UIAlertController.alert(" Неправильно введен адрес электронной почты .".ls).show()
+            sender.loading = false
+            return
+        }
+        
+        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79", "email" : /*"test1@mail.ru"*/ email, "username" : /*Oleg*/ userName , "password" : /*"123123"*/ password]
+        UserRequest.createUser(param as [String : AnyObject], completion: {[weak self] success in
+            if success == true {
+                self?.chooseNextContoller()
+            }
+            
+            sender.loading = false
+            })
+        
 ////        let login = LoginEntry(params: ["username": userName as AnyObject, "password": password as AnyObject])
 ////        UserRequest.createUser(login, completion: {
 ////            sender.loading = false
@@ -257,8 +251,9 @@ class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate 
 ////        })
 //    }
     
-    override func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
-        return adjustment.defaultConstant + 145.0
-    }
+//    func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
+//        return adjustment.defaultConstant + 145.0
+//    }
     
+  }
 }
