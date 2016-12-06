@@ -171,18 +171,18 @@ enum UserRequest: URLRequestConvertible {
 //        }
 //    }
 //    
-    
-    static func createUser(_ entryParams: EntryParametersPresenting, completion: @escaping Block) {
-        requestHandler(#function, URLRequest: create(entryParams.params)) { json in
-            guard let json = json else {
-                completion(false)
-                return
-            }
-            
-            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
-            completion(true)
-        }
-    }
+//    
+//    static func createUser(_ entryParams: EntryParametersPresenting, completion: @escaping Block) {
+//        requestHandler(#function, URLRequest: create(entryParams.params)) { json in
+//            guard let json = json else {
+//                completion(false)
+//                return
+//            }
+//            
+//            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
+//            completion(true)
+//        }
+//    }
     
     static func getAllCategories(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
         requestHandler(#function, URLRequest: getCategories(entryParams), completionHandler: { json in
