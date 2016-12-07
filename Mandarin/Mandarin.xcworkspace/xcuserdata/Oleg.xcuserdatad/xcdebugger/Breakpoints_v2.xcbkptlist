@@ -65,38 +65,6 @@
             endingLineNumber = "239"
             landmarkName = "createAccount(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mandarin.CreateAccountViewController.createAccount (Mandarin.Button) -&gt; ()"
-                  moduleName = "Mandarin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Oleg/Projects/Mandarin/Mandarin/Mandarin/ViewController/BaseViewController/BaseLoginViewController.swift"
-                  timestampString = "502752554.062076"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "239"
-                  endingLineNumber = "239"
-                  offsetFromSymbolStart = "2403">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mandarin.CreateAccountViewController.(createAccount (Mandarin.Button) -&gt; ()).(closure #1)"
-                  moduleName = "Mandarin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Oleg/Projects/Mandarin/Mandarin/Mandarin/ViewController/BaseViewController/BaseLoginViewController.swift"
-                  timestampString = "502752554.066782"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "239"
-                  endingLineNumber = "239"
-                  offsetFromSymbolStart = "103">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

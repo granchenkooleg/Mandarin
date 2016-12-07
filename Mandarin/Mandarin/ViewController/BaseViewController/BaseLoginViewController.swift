@@ -192,64 +192,55 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
 class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate {
     
     
-    @IBOutlet weak var userNameTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var middleNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var repeatPasswordTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField.tag + 1 {
-        case emailTextField.tag:
-            emailTextField.becomeFirstResponder()
-        case phoneTextField.tag:
-            phoneTextField.becomeFirstResponder()
-        case passwordTextField.tag:
-            passwordTextField.becomeFirstResponder()
-        default: break
-        }
-        if textField.returnKeyType == .done {
-            textField.resignFirstResponder()
-        }
-        
-        return true
-    }
-    
-//    @IBAction func helperButtonClick(_ sender: AnyObject) {
-//        navigationController?.pushViewController(Storyboard.SignIn.instantiate(), animated: true)
-//    }
-    
     
     @IBAction func createAccount(_ sender: Button) {
         sender.loading = true
-        guard let userName = userNameTextField.text, let password = passwordTextField.text,
-            userName.isEmpty == false && password.isEmpty == false else {
-                UIAlertController.alert("Не введен пароль или ваше имя.".ls).show()
+        guard let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let middleName = middleNameTextField.text, let password = passwordTextField.text,
+            firstName.isEmpty == false && password.isEmpty == false && middleName.isEmpty == false && lastName.isEmpty == false else {
+                UIAlertController.alert("Не введен пароль или ваше данные.".ls).show()
                 sender.loading = false
                 return
         }
-        guard let email = emailTextField.text , email.isValidEmail == true  else {
-            UIAlertController.alert(" Неправильно введен адрес электронной почты .".ls).show()
+        guard let email = emailTextField.text, email.isValidEmail == true  else {
+            UIAlertController.alert("Неправильно введен адрес электронной почты .".ls).show()
             sender.loading = false
             return
         }
+        guard let birthday = birthdayTextField.text, birthday.isEmpty == false  else {
+            UIAlertController.alert("Неправильный формат дня рождения.".ls).show()
+            sender.loading = false
+            return
+        }
+        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                 "email" : email,
+                                 "firstname" : firstName,
+                                 "lastname" : lastName,
+                                 "middlename" : middleName,
+                                 "password" : password,
+                                 "birthday" : birthday]
+
         
-        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79", "email" : /*"test1@mail.ru"*/ email, "username" : /*Oleg*/ userName , "password" : /*"123123"*/ password]
-        UserRequest.createUser(param as [String : AnyObject], completion: {[weak self] success in
+//        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+//                                 "email" : "test\(arc4random())@mail.ru",
+//                                 "firstname" : "Oleg",
+//                                 "lastname" : "Granchenko",
+//                                 "password" : "123123",
+//                                 "middlename" : "Sergeevich",
+//                                 "birthday" : "1981-01-29"]
+        
+        UserRequest.makeRegistration(param as [String : AnyObject], completion: {[weak self] success in
             if success == true {
                 self?.chooseNextContoller()
             }
             
             sender.loading = false
-            })
-        
-////        let login = LoginEntry(params: ["username": userName as AnyObject, "password": password as AnyObject])
-////        UserRequest.createUser(login, completion: {
-////            sender.loading = false
-////           UINavigationController.main.pushViewController(Storyboard.Container.instantiate(), animated: false)
-////        })
-//    }
+        })
     
 //    func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
 //        return adjustment.defaultConstant + 145.0

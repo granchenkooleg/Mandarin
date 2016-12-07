@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mandarin/Extension/APIRequest.swift"
-            timestampString = "502580206.024702"
+            timestampString = "502751278.085971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "asURLRequest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -169,13 +169,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mandarin/ViewController/MainViewController/MainViewController.swift"
-            timestampString = "502668171.119559"
+            filePath = "Mandarin/ViewController/BaseViewController/BaseLoginViewController.swift"
+            timestampString = "502755345.421596"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "viewDidAppear(_:)"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "createAccount(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
