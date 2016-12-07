@@ -23,22 +23,18 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
         super.viewDidLoad()
         
         headerLabel.text = nameText
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         guard let categoryId = categoryId else { return }
         UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in
-           print (">>self - \(self?.categoryId)<<")
+            print (">>self - \(self?.categoryId)<<")
             json.forEach { _, json in
                 let id = json["id"].string ?? ""
                 let category_id = json["category_id"].string ?? ""
                 let created_at = json["created_at"].string ?? ""
                 let icon = json["icon"].string ?? ""
-       
+                
                 let name = json["name"].string ?? ""
-      
+                
                 let units = json["units"].string ?? ""
                 
                 let productCategory = Category (id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
@@ -46,10 +42,8 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
             }
             self?._products = (self?.internalProducts)!
             self?.tableView.reloadData()
-            })
+        })
     }
-    
-    
     
     // MARK: - Table view data source
     
@@ -80,9 +74,9 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
     //MARK: Segue
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let weightViewController = Storyboard.Weight.instantiate()
-//        weightViewController.unitsProduct = _products[indexPath.row].units
-//        weightViewController.nameText = _products[indexPath.row].name
-//        weightViewController.podcategoryId = _products[indexPath.row].category_id
+        weightViewController.weight = _products[indexPath.row].units
+        weightViewController.weigthProduct = _products[indexPath.row].name
+        weightViewController.category_id = _products[indexPath.row].category_id
         UINavigationController.main.pushViewController(weightViewController, animated: true)
     }
         
