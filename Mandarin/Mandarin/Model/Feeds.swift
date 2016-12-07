@@ -14,6 +14,9 @@ protocol Feeds {
     var icon: String { get set }
     var name: String { get set }
     var created_at: String { get set }
+    var units: String { get set }
+    var weight: String { get set }
+
     
 }
 

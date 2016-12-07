@@ -9,11 +9,16 @@
 import UIKit
 
 class WeightViewController: BaseViewController {
+    
+    @IBOutlet weak var weightHeaderLabel: UILabel!
+    
+    var unitsProduct, weight, nameText: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        weightHeaderLabel.text = nameText
     }
 
     override func didReceiveMemoryWarning() {

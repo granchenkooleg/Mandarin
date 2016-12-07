@@ -14,5 +14,7 @@ struct Category : Feeds {
     var icon = ""
     var name = ""
     var created_at = ""
+    var units = ""
+    var weight = ""
 }
 

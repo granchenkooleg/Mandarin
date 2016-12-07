@@ -27,4 +27,5 @@ struct Product : Feeds {
     var category_name = ""
     var name = ""
     var uglevody = ""
+    var units = ""
 }

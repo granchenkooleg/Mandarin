@@ -32,8 +32,10 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
                 let created_at = json["created_at"].string ?? ""
                 let icon = json["icon"].string ?? ""
                 let name = json["name"].string ?? ""
+                let weight = json["weight"].string ?? ""
+                let units = json["units"].string ?? ""
                 
-                let category = Category(id: id, icon: icon, name: name, created_at: created_at)
+                let category = Category(id: id, icon: icon, name: name, created_at: created_at, units: units, weight: weight)
                 self?.internalProducts.append(category)
             }
             self?._products = (self?.internalProducts)!
@@ -74,10 +76,11 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
         return cell
     }
     
+    //MARK: Segue
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let categoryViewController = Storyboard.Category.instantiate()
         categoryViewController.categoryId = _products[indexPath.row].id
-        categoryViewController.name = _products[indexPath.row].name
+        categoryViewController.nameText = _products[indexPath.row].name
         UINavigationController.main.pushViewController(categoryViewController, animated: true)
     }
     
@@ -86,8 +89,5 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
         tableView.reloadData()
     }
     
-    @IBAction func menuClick(_ sender: AnyObject) {
-        guard let containerViewController = self.parent as? ContainerViewController else { return }
-        containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
-    }
+    
 }

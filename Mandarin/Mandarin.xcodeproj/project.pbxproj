@@ -145,8 +145,8 @@
 				7C36EE901DE5F791007506BC /* Products.swift */,
 				563F94FE1DF4C4A90053EFF0 /* Product.swift */,
 				563474361DEDC3E9004ECDC4 /* Feeds.swift */,
-				56574A921DF33241009C2466 /* User.swift */,
 				56737B9A1DF616950007518C /* Category.swift */,
+				56574A921DF33241009C2466 /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";

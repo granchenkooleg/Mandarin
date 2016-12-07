@@ -23,6 +23,7 @@ struct Products {
     var weightOfgoods = 0
     
     
+    
     //    init(name: String, age: Int, photo: String, description: String, remainedMe: Bool = false) {
     //            self.name = name   //        self.age = age
     //            self.photo = photo

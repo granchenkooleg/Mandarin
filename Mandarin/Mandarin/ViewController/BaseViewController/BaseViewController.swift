@@ -177,7 +177,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     func keyboardDidHide(_ keyboard: Keyboard) {}
     
-    //Back Button in header
+    //MARK: Back Button in header
     @IBAction func backClick(_ sender: AnyObject) {
         if (self.presentedViewController != nil) {
             self.dismiss(animated: true, completion: nil)
@@ -186,6 +186,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         }
     }
     
+    //MARK: Search
     @IBAction func searchClick(_ sender: Any) {
         guard let searchTextField = self.searchTextField else { return }
         searchTextField.isHidden = !searchTextField.isHidden
@@ -200,6 +201,12 @@ class BaseViewController: UIViewController, KeyboardNotifying {
             }
         }
         
+    }
+    
+    //MARK: MenuClick
+    @IBAction func menuClick(_ sender: AnyObject) {
+        guard let containerViewController = self.parent as? ContainerViewController else { return }
+        containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
     }
    
 }
