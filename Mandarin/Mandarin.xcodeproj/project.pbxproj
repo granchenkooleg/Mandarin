@@ -53,6 +53,11 @@
 		7C36EE911DE5F791007506BC /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE901DE5F791007506BC /* Products.swift */; };
 		7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C36EE921DE63C63007506BC /* check_v1-05.jpg */; };
 		7CF26A8B1DF8A4C9004C627E /* WeightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF26A8A1DF8A4C9004C627E /* WeightCollectionViewCell.swift */; };
+		7CF26A9F1DF8BC64004C627E /* menuImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26A9A1DF8BC64004C627E /* menuImage.png */; };
+		7CF26AA01DF8BC64004C627E /* menuImage5.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26A9B1DF8BC64004C627E /* menuImage5.png */; };
+		7CF26AA11DF8BC64004C627E /* menuImage4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26A9C1DF8BC64004C627E /* menuImage4.png */; };
+		7CF26AA21DF8BC64004C627E /* menuImage3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26A9D1DF8BC64004C627E /* menuImage3.png */; };
+		7CF26AA31DF8BC64004C627E /* menuImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26A9E1DF8BC64004C627E /* menuImage2.png */; };
 		ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +115,11 @@
 		7C36EE901DE5F791007506BC /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Products.swift; path = Model/Products.swift; sourceTree = "<group>"; };
 		7C36EE921DE63C63007506BC /* check_v1-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "check_v1-05.jpg"; sourceTree = "<group>"; };
 		7CF26A8A1DF8A4C9004C627E /* WeightCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightCollectionViewCell.swift; sourceTree = "<group>"; };
+		7CF26A9A1DF8BC64004C627E /* menuImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuImage.png; sourceTree = "<group>"; };
+		7CF26A9B1DF8BC64004C627E /* menuImage5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuImage5.png; sourceTree = "<group>"; };
+		7CF26A9C1DF8BC64004C627E /* menuImage4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuImage4.png; sourceTree = "<group>"; };
+		7CF26A9D1DF8BC64004C627E /* menuImage3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuImage3.png; sourceTree = "<group>"; };
+		7CF26A9E1DF8BC64004C627E /* menuImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuImage2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +288,11 @@
 		7C2C700F1DE44CDC005DEDCA /* Images  */ = {
 			isa = PBXGroup;
 			children = (
+				7CF26A9A1DF8BC64004C627E /* menuImage.png */,
+				7CF26A9E1DF8BC64004C627E /* menuImage2.png */,
+				7CF26A9D1DF8BC64004C627E /* menuImage3.png */,
+				7CF26A9C1DF8BC64004C627E /* menuImage4.png */,
+				7CF26A9B1DF8BC64004C627E /* menuImage5.png */,
 				7C36EE921DE63C63007506BC /* check_v1-05.jpg */,
 				7C36EE881DE5CC98007506BC /* Odessa.jpg */,
 				7C2C70161DE4B617005DEDCA /* hello_v8-2-05.jpg */,
@@ -374,14 +389,19 @@
 			files = (
 				56B0FBD01DE97B4800DC1600 /* mandarin.ttf in Resources */,
 				7C2C70151DE45316005DEDCA /* registr_v4-05.jpg in Resources */,
+				7CF26AA01DF8BC64004C627E /* menuImage5.png in Resources */,
 				7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */,
 				7C2C70171DE4B617005DEDCA /* hello_v8-2-05.jpg in Resources */,
 				7C09496A1DE222250038018F /* Assets.xcassets in Resources */,
+				7CF26AA21DF8BC64004C627E /* menuImage3.png in Resources */,
 				7C28B2AA1DF6C0DE00E3114A /* Main.storyboard in Resources */,
 				7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */,
+				7CF26A9F1DF8BC64004C627E /* menuImage.png in Resources */,
 				56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */,
 				7C2D16C31DF45A4200A3CF92 /* SignUp.storyboard in Resources */,
+				7CF26AA11DF8BC64004C627E /* menuImage4.png in Resources */,
 				7C36EE891DE5CC98007506BC /* Odessa.jpg in Resources */,
+				7CF26AA31DF8BC64004C627E /* menuImage2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
