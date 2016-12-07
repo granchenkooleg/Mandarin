@@ -201,7 +201,7 @@ class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate 
     
     @IBAction func createAccount(_ sender: Button) {
         
-        let phone = phoneTextField.text
+        let phone = phoneTextField.text?.clearPhoneNumber()
         
         sender.loading = true
         guard let firstName = firstNameTextField.text, firstName.isEmpty == false else {
@@ -210,7 +210,9 @@ class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate 
                 return
         }
         
-        guard let password = passwordTextField.text, password.isEmpty == false else {
+        guard let password = passwordTextField.text,
+            let repeatPassword = repeatPasswordTextField.text,
+            password.isEmpty == false && repeatPassword.isEmpty == false && password == repeatPassword else {
                 UIAlertController.alert("Не введен пароль.".ls).show()
                 sender.loading = false
                 return
@@ -226,7 +228,7 @@ class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate 
                                  "email" : email,
                                  "username" : firstName,
                                  "password" : password,
-                                 "phone" : phone] as [String : Any]
+                                 "phone" : phone]
 
         
 //        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
