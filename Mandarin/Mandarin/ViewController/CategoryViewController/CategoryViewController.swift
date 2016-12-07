@@ -92,6 +92,7 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let weightViewController = Storyboard.Weight.instantiate()
         weightViewController.unitsProduct = _products[indexPath.row].units
+        weightViewController.weightProduct = _products[indexPath.row].weight
         weightViewController.nameText = _products[indexPath.row].name
         UINavigationController.main.pushViewController(weightViewController, animated: true)
     }

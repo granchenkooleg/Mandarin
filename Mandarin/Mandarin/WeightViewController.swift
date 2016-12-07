@@ -12,7 +12,7 @@ class WeightViewController: BaseViewController {
     
     @IBOutlet weak var weightHeaderLabel: UILabel!
     
-    var unitsProduct, weight, nameText: String?
+    var unitsProduct, weightProduct, nameText: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
