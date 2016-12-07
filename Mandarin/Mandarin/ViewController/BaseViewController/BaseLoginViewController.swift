@@ -193,46 +193,47 @@ class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate 
     
     
     @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var lastNameTextField: UITextField!
-    @IBOutlet weak var middleNameTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var repeatPasswordTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
     
     @IBAction func createAccount(_ sender: Button) {
+        
+        let phone = phoneTextField.text
+        
         sender.loading = true
-        guard let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let middleName = middleNameTextField.text, let password = passwordTextField.text,
-            firstName.isEmpty == false && password.isEmpty == false && middleName.isEmpty == false && lastName.isEmpty == false else {
-                UIAlertController.alert("Не введен пароль или ваше данные.".ls).show()
+        guard let firstName = firstNameTextField.text, firstName.isEmpty == false else {
+                UIAlertController.alert("Введите ваше имя.".ls).show()
                 sender.loading = false
                 return
         }
+        
+        guard let password = passwordTextField.text, password.isEmpty == false else {
+                UIAlertController.alert("Не введен пароль.".ls).show()
+                sender.loading = false
+                return
+        }
+
         guard let email = emailTextField.text, email.isValidEmail == true  else {
             UIAlertController.alert("Неправильно введен адрес электронной почты .".ls).show()
             sender.loading = false
             return
         }
-        guard let birthday = birthdayTextField.text, birthday.isEmpty == false  else {
-            UIAlertController.alert("Неправильный формат дня рождения.".ls).show()
-            sender.loading = false
-            return
-        }
+        
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                  "email" : email,
-                                 "firstname" : firstName,
-                                 "lastname" : lastName,
-                                 "middlename" : middleName,
+                                 "username" : firstName,
                                  "password" : password,
-                                 "birthday" : birthday]
+                                 "phone" : phone] as [String : Any]
 
         
 //        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
 //                                 "email" : "test\(arc4random())@mail.ru",
-//                                 "firstname" : "Oleg",
-//                                 "lastname" : "Granchenko",
+//                                 "username" : "Oleg",
 //                                 "password" : "123123",
-//                                 "middlename" : "Sergeevich",
-//                                 "birthday" : "1981-01-29"]
+//                                 "phone" : "0991231231"]
         
         UserRequest.makeRegistration(param as [String : AnyObject], completion: {[weak self] success in
             if success == true {

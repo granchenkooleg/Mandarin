@@ -187,10 +187,10 @@
                             <constraint firstAttribute="trailing" secondItem="CcU-yX-WHZ" secondAttribute="trailing" id="7qo-8L-h6D"/>
                             <constraint firstItem="VwL-NB-Wre" firstAttribute="top" secondItem="CcU-yX-WHZ" secondAttribute="bottom" constant="14" id="HvY-rp-CbP"/>
                             <constraint firstAttribute="trailing" secondItem="Yug-fK-8ng" secondAttribute="trailing" id="bfZ-h0-4jV"/>
-                            <constraint firstAttribute="topMargin" secondItem="Yug-fK-8ng" secondAttribute="top" id="bvh-zY-aCz"/>
                             <constraint firstItem="CcU-yX-WHZ" firstAttribute="top" secondItem="Yug-fK-8ng" secondAttribute="bottom" constant="15" id="e6t-xw-k7s"/>
                             <constraint firstItem="CcU-yX-WHZ" firstAttribute="leading" secondItem="5Sh-Nu-ww6" secondAttribute="leadingMargin" id="g7S-6W-SVj"/>
                             <constraint firstItem="Yug-fK-8ng" firstAttribute="leading" secondItem="5Sh-Nu-ww6" secondAttribute="leading" id="ggD-wB-sBO"/>
+                            <constraint firstItem="Yug-fK-8ng" firstAttribute="top" secondItem="5Sh-Nu-ww6" secondAttribute="top" id="iFP-Ka-Z3O"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wKv-XP-MNJ"/>
@@ -226,7 +226,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="backClick:" destination="2rc-a0-tuk" eventType="touchUpInside" id="fpf-SN-3tM"/>
+                                            <action selector="backClick:" destination="2rc-a0-tuk" eventType="touchUpInside" id="09V-ul-W2P"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Регистрация" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1E-ka-vyC">
@@ -254,28 +254,28 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="35" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Фамилия" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tjv-kc-xg2" userLabel="Last Name Text Field">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="35" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Телефон" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tjv-kc-xg2" userLabel="Last Name Text Field">
                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.90269396550000003" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="35" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ОТчество" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ls9-F6-SCg">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="35" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E -mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ls9-F6-SCg">
                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.90269396550000003" colorSpace="calibratedRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="35" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E -mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KwE-AI-1yK">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="35" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Придумайте пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KwE-AI-1yK">
                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.90269396550000003" colorSpace="calibratedRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="35" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Придумайте пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BlS-kb-s2c">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="35" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Повторите пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BlS-kb-s2c">
                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.90269396550000003" colorSpace="calibratedRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="35" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nQx-gc-fEZ">
                                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="0.90269396550000003" colorSpace="calibratedRGB"/>
@@ -337,8 +337,9 @@
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BiR-vU-P4w" secondAttribute="trailing" id="0d3-qh-MRF"/>
+                            <constraint firstItem="BiR-vU-P4w" firstAttribute="top" secondItem="KSJ-UJ-Do1" secondAttribute="top" id="5ao-UN-yfV"/>
                             <constraint firstItem="BiR-vU-P4w" firstAttribute="leading" secondItem="KSJ-UJ-Do1" secondAttribute="leading" id="5tH-Pq-m6Y"/>
-                            <constraint firstAttribute="topMargin" secondItem="BiR-vU-P4w" secondAttribute="top" id="6QO-Lg-4fy"/>
+                            <constraint firstAttribute="topMargin" secondItem="BiR-vU-P4w" secondAttribute="top" id="KJv-hv-s1B"/>
                             <constraint firstAttribute="trailing" secondItem="nGU-ha-Ttz" secondAttribute="trailing" id="ehc-F6-k4U"/>
                             <constraint firstItem="nGU-ha-Ttz" firstAttribute="leading" secondItem="KSJ-UJ-Do1" secondAttribute="leading" id="hom-jb-lsI"/>
                             <constraint firstItem="nGU-ha-Ttz" firstAttribute="top" secondItem="BiR-vU-P4w" secondAttribute="bottom" id="ucu-gt-s8S"/>
@@ -348,11 +349,11 @@
                     <navigationItem key="navigationItem" id="vJq-4N-hRh"/>
                     <connections>
                         <outlet property="birthdayTextField" destination="nQx-gc-fEZ" id="9Nc-SX-tpl"/>
-                        <outlet property="emailTextField" destination="KwE-AI-1yK" id="VkM-zE-J8a"/>
+                        <outlet property="emailTextField" destination="ls9-F6-SCg" id="XpE-Kr-mNj"/>
                         <outlet property="firstNameTextField" destination="m8u-dA-eTA" id="lpl-KX-siG"/>
-                        <outlet property="lastNameTextField" destination="tjv-kc-xg2" id="e0N-1w-81k"/>
-                        <outlet property="middleNameTextField" destination="ls9-F6-SCg" id="FSQ-CB-w6p"/>
-                        <outlet property="passwordTextField" destination="BlS-kb-s2c" id="Csr-DB-vDM"/>
+                        <outlet property="passwordTextField" destination="KwE-AI-1yK" id="UNR-DI-P2m"/>
+                        <outlet property="phoneTextField" destination="tjv-kc-xg2" id="iuz-cJ-auw"/>
+                        <outlet property="repeatPasswordTextField" destination="BlS-kb-s2c" id="VKX-u2-doL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qg3-aU-Yya" sceneMemberID="firstResponder"/>
