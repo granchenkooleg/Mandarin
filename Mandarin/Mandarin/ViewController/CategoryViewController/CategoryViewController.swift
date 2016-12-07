@@ -33,26 +33,15 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
            print (">>self - \(self?.categoryId)<<")
             json.forEach { _, json in
                 let id = json["id"].string ?? ""
-                //let description = json["description"].string ?? ""
-                //let proteins = json["proteins"].string ?? ""
-                //let calories = json["calories"].string ?? ""
-                //let zhiry = json["zhiry"].string ?? ""
-                //let favorite = json["favorite"].string ?? ""
-                //let category_id = json["category_id"].string ?? ""
-               // let brand = json["brand"].string ?? ""
-               // let price_sale = json["price_sale"].string ?? ""
-                let weight = json["weight"].string ?? ""
-               // let status = json["status"].string ?? ""
-               // let expire_date = json["expire_date"].string ?? ""
-               // let price = json["proteins"].string ?? ""
+                let category_id = json["category_id"].string ?? ""
                 let created_at = json["created_at"].string ?? ""
                 let icon = json["icon"].string ?? ""
-                //let category_name = json["category_name"].string ?? ""
+       
                 let name = json["name"].string ?? ""
-                //let uglevody = json["uglevody"].string ?? ""
+      
                 let units = json["units"].string ?? ""
                 
-                let productCategory = Category (id: id, icon: icon, name: name, created_at: created_at, units: units, weight: weight)
+                let productCategory = Category (id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
                 self?.internalProducts.append(productCategory)
             }
             self?._products = (self?.internalProducts)!
@@ -91,9 +80,9 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
     //MARK: Segue
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let weightViewController = Storyboard.Weight.instantiate()
-        weightViewController.unitsProduct = _products[indexPath.row].units
-        weightViewController.weightProduct = _products[indexPath.row].weight
-        weightViewController.nameText = _products[indexPath.row].name
+//        weightViewController.unitsProduct = _products[indexPath.row].units
+//        weightViewController.nameText = _products[indexPath.row].name
+//        weightViewController.podcategoryId = _products[indexPath.row].category_id
         UINavigationController.main.pushViewController(weightViewController, animated: true)
     }
         

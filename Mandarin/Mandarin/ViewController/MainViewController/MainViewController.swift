@@ -32,10 +32,10 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
                 let created_at = json["created_at"].string ?? ""
                 let icon = json["icon"].string ?? ""
                 let name = json["name"].string ?? ""
-                let weight = json["weight"].string ?? ""
                 let units = json["units"].string ?? ""
+                let category_id = json["category_id"].string ?? ""
                 
-                let category = Category(id: id, icon: icon, name: name, created_at: created_at, units: units, weight: weight)
+                let category = Category(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
                 self?.internalProducts.append(category)
             }
             self?._products = (self?.internalProducts)!

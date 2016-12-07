@@ -78,7 +78,8 @@ let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URL
 
 enum UserRequest: URLRequestConvertible {
     
-    case create([String: AnyObject])
+    case getWeight([String: AnyObject])
+    //case create([String: AnyObject])
     case getCategories([String: AnyObject])
     case getProductsCategory(String, [String: AnyObject])
     case registration([String: AnyObject])
@@ -93,19 +94,21 @@ enum UserRequest: URLRequestConvertible {
         
         var method: HTTPMethod {
             switch self {
-            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration:
+            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight:
                 return .get
-            case .create, .logOut, .trans:
+            case /*.create,*/ .logOut, .trans:
                 return .post
             }
         }
         
         let params: ([String: AnyObject]?) = {
             switch self {
+            case .getWeight(let newPost):
+                return newPost
             case .logOut, .statistics, .trades:
                 return (nil)
-            case .create(let newPost):
-                return newPost
+//            case .create(let newPost):
+//                return newPost
             case .getCategories(let newPost):
                 return newPost
             case .getProductsCategory(_, let newPost):
@@ -124,8 +127,10 @@ enum UserRequest: URLRequestConvertible {
         let url: URL = {
             let relativePath:String?
             switch self {
-            case .create:
-                relativePath = "registration"
+            case .getWeight:
+                relativePath = "weight"
+//            case .create:
+//                relativePath = "registration"
             case .getCategories:
                 relativePath = "categories"
             case .getProductsCategory(let categoryIdentifier, _):
@@ -174,16 +179,28 @@ enum UserRequest: URLRequestConvertible {
     //    }
     //
     
-    static func createUser(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
-        requestHandler(#function, URLRequest: create(entryParams)) { json in
+    
+    static func getWeightCategory(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
+        requestHandler(#function, URLRequest: getWeight(entryParams), completionHandler: { json in
             guard let json = json else {
-                completion(false)
                 return
             }
-            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
-            completion(true)
-        }
+            completion(json)
+        })
     }
+
+    
+    
+//    static func createUser(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
+//        requestHandler(#function, URLRequest: create(entryParams)) { json in
+//            guard let json = json else {
+//                completion(false)
+//                return
+//            }
+//            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
+//            completion(true)
+//        }
+//    }
     
     static func getAllCategories(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
         requestHandler(#function, URLRequest: getCategories(entryParams), completionHandler: { json in

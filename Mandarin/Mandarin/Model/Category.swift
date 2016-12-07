@@ -15,6 +15,7 @@ struct Category : Feeds {
     var name = ""
     var created_at = ""
     var units = ""
-    var weight = ""
+    var category_id = ""
+    
 }
 

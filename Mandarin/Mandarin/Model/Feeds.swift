@@ -15,9 +15,8 @@ protocol Feeds {
     var name: String { get set }
     var created_at: String { get set }
     var units: String { get set }
-    var weight: String { get set }
-
-    
+    var category_id: String {get set}
+   
 }
 
     
