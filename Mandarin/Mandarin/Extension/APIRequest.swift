@@ -96,7 +96,7 @@ enum UserRequest: URLRequestConvertible {
             switch self {
             case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight:
                 return .get
-            case /*.create,*/ .logOut, .trans:
+            case .logOut, .trans:
                 return .post
             }
         }
@@ -107,8 +107,6 @@ enum UserRequest: URLRequestConvertible {
                 return newPost
             case .logOut, .statistics, .trades:
                 return (nil)
-//            case .create(let newPost):
-//                return newPost
             case .getCategories(let newPost):
                 return newPost
             case .getProductsCategory(_, let newPost):
@@ -129,8 +127,6 @@ enum UserRequest: URLRequestConvertible {
             switch self {
             case .getWeight:
                 relativePath = "weight"
-//            case .create:
-//                relativePath = "registration"
             case .getCategories:
                 relativePath = "categories"
             case .getProductsCategory(let categoryIdentifier, _):

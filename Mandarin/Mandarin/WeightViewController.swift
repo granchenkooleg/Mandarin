@@ -8,9 +8,44 @@
 
 import UIKit
 
-class WeightViewController: BaseViewController {
+class WeightViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var weightHeaderLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
+    var weight: String = ""
+    var weigthProduct: String = ""
+    var category_id: String = ""
+    var contentWeightProduct = [String]()
+    
+   
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        weightHeaderLabel.text = weigthProduct
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : "\(5)"/*category_id*/]
+        UserRequest.getWeightCategory(param as [String : AnyObject], completion: {[weak self] json in
+            json.forEach { _, json in
+                let weight = json["weight"].string ?? ""
+                self?.contentWeightProduct.append(weight)
+            }
+            self?.collectionView.reloadData()
+        })
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return contentWeightProduct.count
+    }
+
+  
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weigthCell", for: indexPath) as? WeightCollectionViewCell
+        cell?.weightUnitsLabelOne.text = "\(contentWeightProduct[indexPath.row]) " + self.weight
+        
+        return cell ?? UICollectionViewCell()
+    }
 }
+
+
 
