@@ -13,17 +13,17 @@ class WeightViewController: BaseViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var weightHeaderLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var weight: String = ""
-    var weigthProduct: String = ""
-    var category_id: String = ""
+    var unitOfWeight: String = ""
+    var nameHeaderText: String = ""
+    var podCategory_id: String = ""
     var contentWeightProduct = [String]()
     
    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weightHeaderLabel.text = weigthProduct
-        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : "\(5)"/*category_id*/]
+        weightHeaderLabel.text = nameHeaderText
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : "\(podCategory_id)"]
         UserRequest.getWeightCategory(param as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
                 let weight = json["weight"].string ?? ""
@@ -41,7 +41,7 @@ class WeightViewController: BaseViewController, UICollectionViewDataSource, UICo
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weigthCell", for: indexPath) as? WeightCollectionViewCell
-        cell?.weightUnitsLabelOne.text = "\(contentWeightProduct[indexPath.row]) " + self.weight
+        cell?.weightUnitsLabelOne.text = "\(contentWeightProduct[indexPath.row]) " + self.unitOfWeight
         
         return cell ?? UICollectionViewCell()
     }

@@ -13,7 +13,7 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var categoryId: String?
-    var nameText: String?
+    var nameHeaderText: String?
     
     // @IBOutlet weak var tableView: UITableView!
     
@@ -22,7 +22,7 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        headerLabel.text = nameText
+        headerLabel.text = nameHeaderText
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         guard let categoryId = categoryId else { return }
         UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in
@@ -74,9 +74,9 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
     //MARK: Segue
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let weightViewController = Storyboard.Weight.instantiate()
-        weightViewController.weight = _products[indexPath.row].units
-        weightViewController.weigthProduct = _products[indexPath.row].name
-        weightViewController.category_id = _products[indexPath.row].category_id
+        weightViewController.unitOfWeight = _products[indexPath.row].units
+        weightViewController.nameHeaderText = _products[indexPath.row].name
+        weightViewController.podCategory_id = _products[indexPath.row].id
         UINavigationController.main.pushViewController(weightViewController, animated: true)
     }
         

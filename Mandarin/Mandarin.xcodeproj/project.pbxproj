@@ -275,11 +275,11 @@
 		7C0949751DE2368E0038018F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5634744B1DF16528004ECDC4 /* ListOfProductsByWeightViewController */,
-				5634744A1DF164E4004ECDC4 /* CategoryViewController */,
 				563474491DF164AC004ECDC4 /* BaseViewController */,
 				563474481DF16420004ECDC4 /* MainViewController */,
+				5634744A1DF164E4004ECDC4 /* CategoryViewController */,
 				7CF26A861DF82EC3004C627E /* WeightViewController */,
+				5634744B1DF16528004ECDC4 /* ListOfProductsByWeightViewController */,
 				7CF26A871DF82EFD004C627E /* DetailsProductViewController */,
 			);
 			name = "View Controllers";
