@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIWindow.mainWindow.makeKeyAndVisible()
         
         if User.isAuthorized() {
-            UINavigationController.main.viewControllers = [UIStoryboard.main["container"]!]
+            UINavigationController.main.viewControllers = [UIStoryboard.main["listOfWeightProducts"/*"container"*/]!] // for initial start
         } else {
             UIStoryboard.signUp.present(false)
         }

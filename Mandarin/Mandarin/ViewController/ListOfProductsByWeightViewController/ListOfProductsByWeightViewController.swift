@@ -10,13 +10,60 @@ import UIKit
 
 class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
     var nameListsOfProductsHeaderText: String?
+    //property for compare with allListProducts
     var weightOfWeightVC: String?
+    var idPodcategory: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+        UserRequest.listAllProducts(param as [String : AnyObject], completion: {[weak self] json in
+            json.forEach { _, json in
+                print (">>self - \(json["name"])<<")
+                let id = json["id"].string ?? ""
+                let created_at = json["created_at"].string ?? ""
+                let icon = json["icon"].string ?? ""
+                let name = json["name"].string ?? ""
+                let units = json["units"].string ?? ""
+                let category_id = json["category_id"].string ?? ""
+              
+                
+                 // !!!: These all data need be!
+                
+//                let weightListOfProducts = json["weight"].string ?? ""
+//                let description = json["description"].string ?? ""
+//                let brand = json["brand"].string ?? ""
+//                let calories = json["calories"].string ?? ""
+//                let proteins = json["proteins"].string ?? ""
+//                let zhiry = json["zhiry"].string ?? ""
+//                let uglevody = json["uglevody"].string ?? ""
+//                let price = json["price"].string ?? ""
+//                let favorite = json["favorite"].string ?? ""
+//                let status = json["status"].string ?? ""
+//                let expire_date = json["expire_date"].string ?? ""
+//                let category_name = json["category_name"].string ?? ""
+                
+                
+                /*!
+                 *  Here we doing compare 
+                 *                              if idPodcategory == category_id && weightOfWeightVC == weightListOfProducts {
+                 *  let category = Category(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id /*,weight: weight*/)
+                 *  self?.internalProducts.append(category)
+                 *  } else { return }
+                 *
+                 */
+                
+                let category = Category(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id /*,weight: weight*/)
+                self?.internalProducts.append(category)
+                
+            }
+            self?._products = (self?.internalProducts)!
+            self?.tableView.reloadData()
+            })
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,11 +87,15 @@ class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataS
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ListOfProductsByWeightViewController"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ListOfProductsByWeightTableViewCell
-        
-//        let sortProductDetails = _products[(indexPath as NSIndexPath).row]
-//        cell.thubnailImageView?.image = UIImage(named: sortProductDetails.photo)
-//        cell.nameLabel?.text = sortProductDetails.name
 
+        let productDetails = _products[(indexPath as NSIndexPath).row]
+        Dispatch.mainQueue.async { _ in
+            let imageData: Data = try! Data(contentsOf: URL(string: productDetails.icon)!)
+            cell.thubnailImageView?.image = UIImage(data: imageData)
+        }
+        
+        cell.nameLabel?.text = productDetails.name
+        
         return cell
     }
     

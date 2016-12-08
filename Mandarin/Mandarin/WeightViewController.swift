@@ -47,11 +47,15 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         return cell ?? UICollectionViewCell()
     }
     
+    //FIXME:This is broken
     //MARK: Segue
         func tableView(_ collectionView: UICollectionView, didSelectRowAt indexPath: IndexPath) {
         let listOfProductsByWeightViewController = Storyboard.ListOfWeightProducts.instantiate()
         listOfProductsByWeightViewController.nameListsOfProductsHeaderText = _products[indexPath.row].name
+            //for compare in ListsOfProductVC
         //listOfProductsByWeightViewController.weightOfWeightVC = _products[indexPath.row].weight
+        listOfProductsByWeightViewController.idPodcategory = _products[indexPath.row].id
+   
         UINavigationController.main.pushViewController(listOfProductsByWeightViewController, animated: true)
     }
 

@@ -78,6 +78,7 @@ let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URL
 
 enum UserRequest: URLRequestConvertible {
     
+    case getAllProducts([String: AnyObject])
     case getWeight([String: AnyObject])
     //case create([String: AnyObject])
     case getCategories([String: AnyObject])
@@ -94,7 +95,7 @@ enum UserRequest: URLRequestConvertible {
         
         var method: HTTPMethod {
             switch self {
-            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight:
+            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight, .getAllProducts:
                 return .get
             case .logOut, .trans:
                 return .post
@@ -103,6 +104,8 @@ enum UserRequest: URLRequestConvertible {
         
         let params: ([String: AnyObject]?) = {
             switch self {
+            case .getAllProducts(let newPost):
+                return newPost
             case .getWeight(let newPost):
                 return newPost
             case .logOut, .statistics, .trades:
@@ -125,6 +128,8 @@ enum UserRequest: URLRequestConvertible {
         let url: URL = {
             let relativePath:String?
             switch self {
+            case .getAllProducts:
+                relativePath = "products"
             case .getWeight:
                 relativePath = "weight"
             case .getCategories:
@@ -197,6 +202,15 @@ enum UserRequest: URLRequestConvertible {
 //            completion(true)
 //        }
 //    }
+    
+    static func listAllProducts(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
+        requestHandler(#function, URLRequest: getAllProducts(entryParams), completionHandler: { json in
+            guard let json = json else {
+                return
+            }
+            completion(json)
+        })
+    }
     
     static func getAllCategories(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
         requestHandler(#function, URLRequest: getCategories(entryParams), completionHandler: { json in
