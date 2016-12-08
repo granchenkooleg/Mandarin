@@ -55,6 +55,10 @@
 		7C2D73721DF9F8BB00A6400B /* ButtonMinus.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73711DF9F8BB00A6400B /* ButtonMinus.png */; };
 		7C2D73741DF9F8C200A6400B /* ButtonPlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73731DF9F8C200A6400B /* ButtonPlus.png */; };
 		7C2D73771DF9FB0600A6400B /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D73761DF9FB0600A6400B /* BasketViewController.swift */; };
+		7C2D73791DF9FF7100A6400B /* HeartWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73781DF9FF7100A6400B /* HeartWhite.png */; };
+		7C2D737C1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D737B1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift */; };
+		7C2D737F1DFA0A7B00A6400B /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D737E1DFA0A7B00A6400B /* PaymentViewController.swift */; };
+		7C2D73821DFA0B6D00A6400B /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D73811DFA0B6D00A6400B /* PasswordResetViewController.swift */; };
 		7C36EE891DE5CC98007506BC /* Odessa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C36EE881DE5CC98007506BC /* Odessa.jpg */; };
 		7C36EE8D1DE5F6FE007506BC /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE8C1DE5F6FE007506BC /* MainTableViewCell.swift */; };
 		7C36EE8F1DE5F742007506BC /* DetailsProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE8E1DE5F742007506BC /* DetailsProductViewController.swift */; };
@@ -125,6 +129,10 @@
 		7C2D73711DF9F8BB00A6400B /* ButtonMinus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMinus.png; sourceTree = "<group>"; };
 		7C2D73731DF9F8C200A6400B /* ButtonPlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonPlus.png; sourceTree = "<group>"; };
 		7C2D73761DF9FB0600A6400B /* BasketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
+		7C2D73781DF9FF7100A6400B /* HeartWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeartWhite.png; sourceTree = "<group>"; };
+		7C2D737B1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingUpOfAnOrderViewController.swift; sourceTree = "<group>"; };
+		7C2D737E1DFA0A7B00A6400B /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		7C2D73811DFA0B6D00A6400B /* PasswordResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		7C36EE881DE5CC98007506BC /* Odessa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Odessa.jpg; sourceTree = "<group>"; };
 		7C36EE8C1DE5F6FE007506BC /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTableViewCell.swift; path = ViewController/MainViewController/MainTableViewCell.swift; sourceTree = "<group>"; };
 		7C36EE8E1DE5F742007506BC /* DetailsProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsProductViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +307,9 @@
 				7CF26A871DF82EFD004C627E /* DetailsProductViewController */,
 				7C2D73701DF9F40400A6400B /* CheckViewController */,
 				7C2D73751DF9FAD600A6400B /* BasketViewController */,
+				7C2D737A1DFA032600A6400B /* DrawingUpOfAnOrderVC */,
+				7C2D737D1DFA09EA00A6400B /* PaymentViewController */,
+				7C2D73801DFA0B1000A6400B /* PasswordResetViewController */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -306,6 +317,7 @@
 		7C2C700F1DE44CDC005DEDCA /* Images  */ = {
 			isa = PBXGroup;
 			children = (
+				7C2D73781DF9FF7100A6400B /* HeartWhite.png */,
 				7C2D73731DF9F8C200A6400B /* ButtonPlus.png */,
 				7C2D73711DF9F8BB00A6400B /* ButtonMinus.png */,
 				7C2D736C1DF9EF1800A6400B /* check.png */,
@@ -339,6 +351,30 @@
 				7C2D73761DF9FB0600A6400B /* BasketViewController.swift */,
 			);
 			name = BasketViewController;
+			sourceTree = "<group>";
+		};
+		7C2D737A1DFA032600A6400B /* DrawingUpOfAnOrderVC */ = {
+			isa = PBXGroup;
+			children = (
+				7C2D737B1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift */,
+			);
+			name = DrawingUpOfAnOrderVC;
+			sourceTree = "<group>";
+		};
+		7C2D737D1DFA09EA00A6400B /* PaymentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7C2D737E1DFA0A7B00A6400B /* PaymentViewController.swift */,
+			);
+			name = PaymentViewController;
+			sourceTree = "<group>";
+		};
+		7C2D73801DFA0B1000A6400B /* PasswordResetViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7C2D73811DFA0B6D00A6400B /* PasswordResetViewController.swift */,
+			);
+			name = PasswordResetViewController;
 			sourceTree = "<group>";
 		};
 		7CF26A861DF82EC3004C627E /* WeightViewController */ = {
@@ -437,6 +473,7 @@
 				7CF26AA21DF8BC64004C627E /* menuImage3.png in Resources */,
 				7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */,
 				7C2D73741DF9F8C200A6400B /* ButtonPlus.png in Resources */,
+				7C2D73791DF9FF7100A6400B /* HeartWhite.png in Resources */,
 				7CF26A9F1DF8BC64004C627E /* menuImage.png in Resources */,
 				7C2D736D1DF9EF1800A6400B /* check.png in Resources */,
 				7C2D73631DF9AA4F00A6400B /* Calendar.png in Resources */,
@@ -513,8 +550,10 @@
 				5621B5851DE2DF8700C3B612 /* Storyboard+Ext.swift in Sources */,
 				7C2D736B1DF9BD0500A6400B /* MARKER.swift in Sources */,
 				7C2D736F1DF9F3F500A6400B /* CheckViewController.swift in Sources */,
+				7C2D737F1DFA0A7B00A6400B /* PaymentViewController.swift in Sources */,
 				5621B57C1DE2DDDE00C3B612 /* BaseViewController.swift in Sources */,
 				56737B9B1DF616950007518C /* Category.swift in Sources */,
+				7C2D73821DFA0B6D00A6400B /* PasswordResetViewController.swift in Sources */,
 				56CEB7851DE47A1800E84345 /* UIColor+Ext.swift in Sources */,
 				563474351DEDC0DE004ECDC4 /* MainViewController.swift in Sources */,
 				56CEB7871DE4862B00E84345 /* BezierPath+Ext.swift in Sources */,
@@ -542,6 +581,7 @@
 				563474311DEDBA21004ECDC4 /* SegmentControl.swift in Sources */,
 				5621B58F1DE2E07600C3B612 /* Constants.swift in Sources */,
 				563474331DEDBC1B004ECDC4 /* GenericCollections+Ext.swift in Sources */,
+				7C2D737C1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift in Sources */,
 				5621B5991DE2E0F600C3B612 /* Button.swift in Sources */,
 				56574A931DF33241009C2466 /* User.swift in Sources */,
 			);
