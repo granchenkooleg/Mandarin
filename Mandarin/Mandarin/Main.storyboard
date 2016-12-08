@@ -605,7 +605,7 @@
         <!--ListOfProductsByWeightView Controller-->
         <scene sceneID="EjC-ve-bQF">
             <objects>
-                <viewController id="4v8-2a-TI0" userLabel="ListOfProductsByWeightView Controller" customClass="ListOfProductsByWeightViewController" customModule="Mandarin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="listOfWeightProducts" id="4v8-2a-TI0" userLabel="ListOfProductsByWeightView Controller" customClass="ListOfProductsByWeightViewController" customModule="Mandarin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xqh-e9-D8c"/>
                         <viewControllerLayoutGuide type="bottom" id="cEZ-UN-ryO"/>

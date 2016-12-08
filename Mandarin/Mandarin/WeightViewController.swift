@@ -8,13 +8,13 @@
 
 import UIKit
 
-class WeightViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class WeightViewController: CategoryViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var weightHeaderLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var unitOfWeight: String = ""
-    var nameHeaderText: String = ""
+    var nameWeightHeaderText: String = ""
     var podCategory_id: String = ""
     var contentWeightProduct = [String]()
     
@@ -22,7 +22,8 @@ class WeightViewController: BaseViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weightHeaderLabel.text = nameHeaderText
+        weightHeaderLabel.text = nameWeightHeaderText
+        
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : "\(podCategory_id)"]
         UserRequest.getWeightCategory(param as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
@@ -45,6 +46,15 @@ class WeightViewController: BaseViewController, UICollectionViewDataSource, UICo
         
         return cell ?? UICollectionViewCell()
     }
+    
+    //MARK: Segue
+        func tableView(_ collectionView: UICollectionView, didSelectRowAt indexPath: IndexPath) {
+        let listOfProductsByWeightViewController = Storyboard.ListOfWeightProducts.instantiate()
+        listOfProductsByWeightViewController.nameListsOfProductsHeaderText = _products[indexPath.row].name
+        //listOfProductsByWeightViewController.weightOfWeightVC = _products[indexPath.row].weight
+        UINavigationController.main.pushViewController(listOfProductsByWeightViewController, animated: true)
+    }
+
 }
 
 

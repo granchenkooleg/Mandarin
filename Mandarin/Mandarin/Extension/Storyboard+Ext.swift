@@ -39,6 +39,7 @@ struct Storyboard {
     static let Main = StoryboardObject<MainViewController>("main")
     static let Category = StoryboardObject<CategoryViewController>("category")
     static let Weight = StoryboardObject<WeightViewController>("weight")
+    static let ListOfWeightProducts = StoryboardObject<ListOfProductsByWeightViewController>("listOfWeightProducts")
 }
 
 extension UIStoryboard {
