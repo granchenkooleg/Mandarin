@@ -1186,18 +1186,18 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJa-NU-hAB">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="Myi-qZ-klb"/>
-                                    <constraint firstAttribute="height" constant="40" id="Yhz-ql-qbJ"/>
+                                    <constraint firstAttribute="width" constant="35" id="Myi-qZ-klb"/>
+                                    <constraint firstAttribute="height" constant="35" id="Yhz-ql-qbJ"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="ire-ua-OWF"/>
                                 </constraints>
-                                <state key="normal" image="Heart.gif"/>
+                                <state key="normal" image="HeartWhite.png"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ldC-1o-ZyW" firstAttribute="top" secondItem="E8C-5Z-6fD" secondAttribute="bottom" constant="8" id="2YL-hj-QzD"/>
                             <constraint firstItem="ldC-1o-ZyW" firstAttribute="leading" secondItem="hGf-6J-p1h" secondAttribute="leading" constant="16" id="4d2-7Y-Ia7"/>
-                            <constraint firstItem="NJa-NU-hAB" firstAttribute="centerX" secondItem="PhN-kZ-L4A" secondAttribute="centerX" constant="2.5" id="4pc-Mh-L98"/>
+                            <constraint firstItem="NJa-NU-hAB" firstAttribute="centerX" secondItem="PhN-kZ-L4A" secondAttribute="centerX" id="4pc-Mh-L98"/>
                             <constraint firstItem="7Ig-FS-AGA" firstAttribute="trailing" secondItem="PhN-kZ-L4A" secondAttribute="trailing" constant="-14" id="4xF-fc-t4d"/>
                             <constraint firstItem="c4r-kc-XQJ" firstAttribute="leading" secondItem="a07-m2-VJe" secondAttribute="trailing" id="6Z1-Ig-aTF"/>
                             <constraint firstItem="Pei-qN-JGw" firstAttribute="leading" secondItem="hGf-6J-p1h" secondAttribute="leadingMargin" constant="6" id="7iE-gJ-76e"/>
@@ -1210,7 +1210,7 @@
                             <constraint firstItem="c4r-kc-XQJ" firstAttribute="bottom" secondItem="a07-m2-VJe" secondAttribute="bottom" id="SrJ-Pi-v7v"/>
                             <constraint firstItem="E8C-5Z-6fD" firstAttribute="centerX" secondItem="hGf-6J-p1h" secondAttribute="centerX" id="TZq-tE-2So"/>
                             <constraint firstItem="Pei-qN-JGw" firstAttribute="top" secondItem="4zm-kz-Mqh" secondAttribute="bottom" constant="31" id="Two-Ou-e1k"/>
-                            <constraint firstItem="NJa-NU-hAB" firstAttribute="centerY" secondItem="PhN-kZ-L4A" secondAttribute="centerY" constant="2.5" id="WE4-zx-z7G"/>
+                            <constraint firstItem="NJa-NU-hAB" firstAttribute="centerY" secondItem="PhN-kZ-L4A" secondAttribute="centerY" id="WE4-zx-z7G"/>
                             <constraint firstItem="4zm-kz-Mqh" firstAttribute="top" secondItem="hGf-6J-p1h" secondAttribute="top" id="WPP-kI-a4d"/>
                             <constraint firstItem="PhN-kZ-L4A" firstAttribute="top" secondItem="7Ig-FS-AGA" secondAttribute="bottom" constant="8" id="buX-yP-vym"/>
                             <constraint firstItem="E8C-5Z-6fD" firstAttribute="top" secondItem="hGf-6J-p1h" secondAttribute="top" constant="77" id="dGX-Mk-PuQ"/>
@@ -1223,7 +1223,7 @@
                             <constraint firstItem="a07-m2-VJe" firstAttribute="top" secondItem="4zm-kz-Mqh" secondAttribute="bottom" constant="29" id="oZv-jv-xHX"/>
                             <constraint firstItem="a07-m2-VJe" firstAttribute="leading" secondItem="ldC-1o-ZyW" secondAttribute="leading" id="oqx-Vd-CQo"/>
                             <constraint firstItem="2ka-Sw-y82" firstAttribute="trailing" secondItem="7Ig-FS-AGA" secondAttribute="trailing" id="sPA-pb-V45"/>
-                            <constraint firstItem="zv9-yK-cQB" firstAttribute="top" secondItem="NJa-NU-hAB" secondAttribute="bottom" constant="10" id="uqa-Xe-kKe"/>
+                            <constraint firstItem="zv9-yK-cQB" firstAttribute="top" secondItem="NJa-NU-hAB" secondAttribute="bottom" constant="15" id="uqa-Xe-kKe"/>
                             <constraint firstItem="PhN-kZ-L4A" firstAttribute="top" secondItem="2ka-Sw-y82" secondAttribute="bottom" constant="17" id="zZc-1t-vqs"/>
                         </constraints>
                     </view>
@@ -1899,6 +1899,7 @@
         <image name="ButtonPlus.png" width="24" height="24"/>
         <image name="Calendar.png" width="21" height="20"/>
         <image name="Heart.gif" width="25" height="25"/>
+        <image name="HeartWhite.png" width="40" height="41"/>
         <image name="Odessa.jpg" width="928" height="504"/>
         <image name="Sale.gif" width="28" height="26"/>
         <image name="check.png" width="647" height="740"/>
