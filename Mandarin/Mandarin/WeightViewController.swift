@@ -32,29 +32,27 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
             }
             self?.collectionView.reloadData()
         })
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return contentWeightProduct.count
     }
-
-  
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weigthCell", for: indexPath) as? WeightCollectionViewCell
         cell?.weightUnitsLabelOne.text = "\(contentWeightProduct[indexPath.row]) " + self.unitOfWeight
-        
         return cell ?? UICollectionViewCell()
     }
     
     //FIXME:This is broken
     //MARK: Segue
-        func tableView(_ collectionView: UICollectionView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
         let listOfProductsByWeightViewController = Storyboard.ListOfWeightProducts.instantiate()
-        listOfProductsByWeightViewController.nameListsOfProductsHeaderText = _products[indexPath.row].name
+//        listOfProductsByWeightViewController.nameListsOfProductsHeaderText = contentWeightProduct[indexPath.row].name
             //for compare in ListsOfProductVC
         //listOfProductsByWeightViewController.weightOfWeightVC = _products[indexPath.row].weight
-        listOfProductsByWeightViewController.idPodcategory = _products[indexPath.row].id
+        listOfProductsByWeightViewController.idPodcategory = categoryId
    
         UINavigationController.main.pushViewController(listOfProductsByWeightViewController, animated: true)
     }

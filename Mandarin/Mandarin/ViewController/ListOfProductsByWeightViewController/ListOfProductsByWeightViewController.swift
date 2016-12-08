@@ -16,8 +16,8 @@ class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataS
     var weightOfWeightVC: String?
     var idPodcategory: String?
     
-    var internalProductsForListOfWeightVC = [String]()
-    var _productsList = [String]()
+    var internalProductsForListOfWeightVC = [Product]()
+    var _productsList = [Product]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +56,8 @@ class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataS
                  *
                  */
                 
-//                let list = Products(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, price_sale: price_sale)
-//                self?.internalProductsForListOfWeightVC.append(list)
+                let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
+                self?.internalProductsForListOfWeightVC.append(list)
                 
             }
             self?._productsList = (self?.internalProductsForListOfWeightVC)!
@@ -65,29 +65,17 @@ class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataS
             })
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     // MARK: - Table view data source
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return _products.count
-        
+        return _productsList.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ListOfProductsByWeightViewController"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ListOfProductsByWeightTableViewCell
         
-        let productDetails = _products[(indexPath as NSIndexPath).row]
+        let productDetails = _productsList[indexPath.row]
         Dispatch.mainQueue.async { _ in
             let imageData: Data = try! Data(contentsOf: URL(string: productDetails.icon)!)
             cell.thubnailImageView?.image = UIImage(data: imageData)
@@ -112,11 +100,10 @@ class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataS
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()
-        detailsProductVC.iconDetailsVC = _products[indexPath.row].icon
+        detailsProductVC.iconDetailsVC = _productsList[indexPath.row].icon
         //detailsProductVC.DetailsVC = _products[indexPath.row].
-        detailsProductVC.created_atDetailsVC = _products[indexPath.row].created_at
-        detailsProductVC.nameHeaderTextDetailsVC = _products[indexPath.row].name
+        detailsProductVC.created_atDetailsVC = _productsList[indexPath.row].created_at
+        detailsProductVC.nameHeaderTextDetailsVC = _productsList[indexPath.row].name
         UINavigationController.main.pushViewController(detailsProductVC, animated: true)
     }
-    
 }

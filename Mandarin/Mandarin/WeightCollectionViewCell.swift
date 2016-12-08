@@ -13,6 +13,11 @@ class WeightCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var weightUnitsLabelOne: UILabel!
     var unitsProduct: String?
     
+    override var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? Color.mandarin : UIColor.white
+        }
+    }
     
     
 }

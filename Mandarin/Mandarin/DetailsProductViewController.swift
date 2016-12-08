@@ -24,14 +24,8 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         headerTextInDetailsVC.text = nameHeaderTextDetailsVC
-        
-//        productsImageView = UIImageView ()
-//        productsImageView.image = UIImage(named: iconDetailsVC)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        guard let imageData = try? Data.init(contentsOf: URL.init(string: iconDetailsVC)!) else {return}
+        productsImageView.image = UIImage(data: imageData)
     }
     
 }
