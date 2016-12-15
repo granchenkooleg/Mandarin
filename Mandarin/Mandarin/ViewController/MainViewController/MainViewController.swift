@@ -11,12 +11,12 @@ import UIKit
 class MainViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, SegmentedControlDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var segmentControl: SegmentControl?
-
+    
     @IBOutlet weak var tableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         segmentControl?.delegate = self
         segmentControl?.layer.cornerRadius = 5.0
         segmentControl?.layer.borderColor = Color.mandarin.cgColor
@@ -40,14 +40,14 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
             }
             self?._products = (self?.internalProducts)!
             self?.tableView.reloadData()
-        })
+            })
     }
     
     //MARK: SegmentedControlDelegate
     
     func segmentedControl(_ control: SegmentControl, didSelectSegment segment: Int) {
-//        guard let controller = viewController(SegmentTab(rawValue: segment)!) else { return }
-//        selectedControl?(controller)
+        //        guard let controller = viewController(SegmentTab(rawValue: segment)!) else { return }
+        //        selectedControl?(controller)
     }
     
     // MARK: - Table view data source
@@ -60,7 +60,7 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
         return _products.count
         
     }
-        
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MainTableViewCell

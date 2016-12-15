@@ -38,6 +38,13 @@
 		7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C09496B1DE222250038018F /* LaunchScreen.storyboard */; };
 		7C0949771DE236D40038018F /* ContainerViewCntroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0949761DE236D40038018F /* ContainerViewCntroller.swift */; };
 		7C09497D1DE240B10038018F /* BaseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C09497C1DE240B10038018F /* BaseLoginViewController.swift */; };
+		7C1668561DFAB54200E5F26B /* Hello.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1668551DFAB54200E5F26B /* Hello.png */; };
+		7C1668621DFABACF00E5F26B /* CartWithProducts.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C16685F1DFABACF00E5F26B /* CartWithProducts.png */; };
+		7C1668631DFABACF00E5F26B /* FenceForBanner.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1668601DFABACF00E5F26B /* FenceForBanner.png */; };
+		7C1668641DFABACF00E5F26B /* TextForBanner.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1668611DFABACF00E5F26B /* TextForBanner.png */; };
+		7C1668661DFABD2B00E5F26B /* PhotoOdessa1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1668651DFABD2B00E5F26B /* PhotoOdessa1.png */; };
+		7C1668681DFABE2800E5F26B /* SaleIcon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1668671DFABE2800E5F26B /* SaleIcon1.png */; };
+		7C16686A1DFABE6E00E5F26B /* HeartMandarin1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1668691DFABE6E00E5F26B /* HeartMandarin1.png */; };
 		7C24741F1DEEEB0B0012BD88 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C24741E1DEEEB0B0012BD88 /* CategoryViewController.swift */; };
 		7C2474211DEEEC6C0012BD88 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2474201DEEEC6C0012BD88 /* CategoryTableViewCell.swift */; };
 		7C2474251DEF5F2C0012BD88 /* WeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2474241DEF5F2C0012BD88 /* WeightViewController.swift */; };
@@ -47,8 +54,6 @@
 		7C2C70171DE4B617005DEDCA /* hello_v8-2-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C2C70161DE4B617005DEDCA /* hello_v8-2-05.jpg */; };
 		7C2D16C31DF45A4200A3CF92 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D16C11DF45A4200A3CF92 /* SignUp.storyboard */; };
 		7C2D73631DF9AA4F00A6400B /* Calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73621DF9AA4F00A6400B /* Calendar.png */; };
-		7C2D73651DF9AD4000A6400B /* Heart.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73641DF9AD4000A6400B /* Heart.gif */; };
-		7C2D73671DF9AD4800A6400B /* Sale.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73661DF9AD4800A6400B /* Sale.gif */; };
 		7C2D736B1DF9BD0500A6400B /* MARKER.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D736A1DF9BD0500A6400B /* MARKER.swift */; };
 		7C2D736D1DF9EF1800A6400B /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D736C1DF9EF1800A6400B /* check.png */; };
 		7C2D736F1DF9F3F500A6400B /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D736E1DF9F3F500A6400B /* CheckViewController.swift */; };
@@ -59,7 +64,7 @@
 		7C2D737C1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D737B1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift */; };
 		7C2D737F1DFA0A7B00A6400B /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D737E1DFA0A7B00A6400B /* PaymentViewController.swift */; };
 		7C2D73821DFA0B6D00A6400B /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D73811DFA0B6D00A6400B /* PasswordResetViewController.swift */; };
-		7C36EE891DE5CC98007506BC /* Odessa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C36EE881DE5CC98007506BC /* Odessa.jpg */; };
+		7C2D73841DFA0FC900A6400B /* _Cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73831DFA0FC900A6400B /* _Cart.png */; };
 		7C36EE8D1DE5F6FE007506BC /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE8C1DE5F6FE007506BC /* MainTableViewCell.swift */; };
 		7C36EE8F1DE5F742007506BC /* DetailsProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE8E1DE5F742007506BC /* DetailsProductViewController.swift */; };
 		7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C36EE921DE63C63007506BC /* check_v1-05.jpg */; };
@@ -112,6 +117,13 @@
 		7C09496E1DE222250038018F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C0949761DE236D40038018F /* ContainerViewCntroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContainerViewCntroller.swift; path = ViewController/MainViewController/ContainerViewCntroller.swift; sourceTree = "<group>"; };
 		7C09497C1DE240B10038018F /* BaseLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseLoginViewController.swift; path = ViewController/BaseViewController/BaseLoginViewController.swift; sourceTree = "<group>"; };
+		7C1668551DFAB54200E5F26B /* Hello.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hello.png; sourceTree = "<group>"; };
+		7C16685F1DFABACF00E5F26B /* CartWithProducts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CartWithProducts.png; sourceTree = "<group>"; };
+		7C1668601DFABACF00E5F26B /* FenceForBanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FenceForBanner.png; sourceTree = "<group>"; };
+		7C1668611DFABACF00E5F26B /* TextForBanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextForBanner.png; sourceTree = "<group>"; };
+		7C1668651DFABD2B00E5F26B /* PhotoOdessa1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PhotoOdessa1.png; sourceTree = "<group>"; };
+		7C1668671DFABE2800E5F26B /* SaleIcon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SaleIcon1.png; sourceTree = "<group>"; };
+		7C1668691DFABE6E00E5F26B /* HeartMandarin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeartMandarin1.png; sourceTree = "<group>"; };
 		7C24741E1DEEEB0B0012BD88 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryViewController.swift; path = ViewController/CategoryViewController/CategoryViewController.swift; sourceTree = "<group>"; };
 		7C2474201DEEEC6C0012BD88 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryTableViewCell.swift; path = ViewController/CategoryViewController/CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		7C2474241DEF5F2C0012BD88 /* WeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightViewController.swift; sourceTree = "<group>"; };
@@ -121,8 +133,6 @@
 		7C2C70161DE4B617005DEDCA /* hello_v8-2-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hello_v8-2-05.jpg"; sourceTree = "<group>"; };
 		7C2D16C11DF45A4200A3CF92 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		7C2D73621DF9AA4F00A6400B /* Calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calendar.png; sourceTree = "<group>"; };
-		7C2D73641DF9AD4000A6400B /* Heart.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Heart.gif; sourceTree = "<group>"; };
-		7C2D73661DF9AD4800A6400B /* Sale.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Sale.gif; sourceTree = "<group>"; };
 		7C2D736A1DF9BD0500A6400B /* MARKER.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MARKER.swift; sourceTree = "<group>"; };
 		7C2D736C1DF9EF1800A6400B /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		7C2D736E1DF9F3F500A6400B /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
@@ -133,7 +143,7 @@
 		7C2D737B1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingUpOfAnOrderViewController.swift; sourceTree = "<group>"; };
 		7C2D737E1DFA0A7B00A6400B /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		7C2D73811DFA0B6D00A6400B /* PasswordResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
-		7C36EE881DE5CC98007506BC /* Odessa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Odessa.jpg; sourceTree = "<group>"; };
+		7C2D73831DFA0FC900A6400B /* _Cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _Cart.png; sourceTree = "<group>"; };
 		7C36EE8C1DE5F6FE007506BC /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTableViewCell.swift; path = ViewController/MainViewController/MainTableViewCell.swift; sourceTree = "<group>"; };
 		7C36EE8E1DE5F742007506BC /* DetailsProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsProductViewController.swift; sourceTree = "<group>"; };
 		7C36EE921DE63C63007506BC /* check_v1-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "check_v1-05.jpg"; sourceTree = "<group>"; };
@@ -317,12 +327,18 @@
 		7C2C700F1DE44CDC005DEDCA /* Images  */ = {
 			isa = PBXGroup;
 			children = (
+				7C1668691DFABE6E00E5F26B /* HeartMandarin1.png */,
+				7C1668671DFABE2800E5F26B /* SaleIcon1.png */,
+				7C16685F1DFABACF00E5F26B /* CartWithProducts.png */,
+				7C1668601DFABACF00E5F26B /* FenceForBanner.png */,
+				7C1668611DFABACF00E5F26B /* TextForBanner.png */,
+				7C1668551DFAB54200E5F26B /* Hello.png */,
+				7C1668651DFABD2B00E5F26B /* PhotoOdessa1.png */,
+				7C2D73831DFA0FC900A6400B /* _Cart.png */,
 				7C2D73781DF9FF7100A6400B /* HeartWhite.png */,
 				7C2D73731DF9F8C200A6400B /* ButtonPlus.png */,
 				7C2D73711DF9F8BB00A6400B /* ButtonMinus.png */,
 				7C2D736C1DF9EF1800A6400B /* check.png */,
-				7C2D73661DF9AD4800A6400B /* Sale.gif */,
-				7C2D73641DF9AD4000A6400B /* Heart.gif */,
 				7C2D73621DF9AA4F00A6400B /* Calendar.png */,
 				7CF26A9A1DF8BC64004C627E /* menuImage.png */,
 				7CF26A9E1DF8BC64004C627E /* menuImage2.png */,
@@ -330,7 +346,6 @@
 				7CF26A9C1DF8BC64004C627E /* menuImage4.png */,
 				7CF26A9B1DF8BC64004C627E /* menuImage5.png */,
 				7C36EE921DE63C63007506BC /* check_v1-05.jpg */,
-				7C36EE881DE5CC98007506BC /* Odessa.jpg */,
 				7C2C70161DE4B617005DEDCA /* hello_v8-2-05.jpg */,
 				7C2C70141DE45316005DEDCA /* registr_v4-05.jpg */,
 			);
@@ -464,26 +479,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				56B0FBD01DE97B4800DC1600 /* mandarin.ttf in Resources */,
+				7C1668681DFABE2800E5F26B /* SaleIcon1.png in Resources */,
+				7C16686A1DFABE6E00E5F26B /* HeartMandarin1.png in Resources */,
+				7C1668661DFABD2B00E5F26B /* PhotoOdessa1.png in Resources */,
+				7C1668621DFABACF00E5F26B /* CartWithProducts.png in Resources */,
+				7C1668631DFABACF00E5F26B /* FenceForBanner.png in Resources */,
 				7C2C70151DE45316005DEDCA /* registr_v4-05.jpg in Resources */,
 				7CF26AA01DF8BC64004C627E /* menuImage5.png in Resources */,
 				7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */,
 				7C2C70171DE4B617005DEDCA /* hello_v8-2-05.jpg in Resources */,
-				7C2D73671DF9AD4800A6400B /* Sale.gif in Resources */,
 				7C09496A1DE222250038018F /* Assets.xcassets in Resources */,
 				7CF26AA21DF8BC64004C627E /* menuImage3.png in Resources */,
 				7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */,
+				7C1668561DFAB54200E5F26B /* Hello.png in Resources */,
 				7C2D73741DF9F8C200A6400B /* ButtonPlus.png in Resources */,
 				7C2D73791DF9FF7100A6400B /* HeartWhite.png in Resources */,
 				7CF26A9F1DF8BC64004C627E /* menuImage.png in Resources */,
 				7C2D736D1DF9EF1800A6400B /* check.png in Resources */,
 				7C2D73631DF9AA4F00A6400B /* Calendar.png in Resources */,
+				7C1668641DFABACF00E5F26B /* TextForBanner.png in Resources */,
 				56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */,
 				7CF26AA51DF8C4DD004C627E /* Main.storyboard in Resources */,
 				7C2D73721DF9F8BB00A6400B /* ButtonMinus.png in Resources */,
-				7C2D73651DF9AD4000A6400B /* Heart.gif in Resources */,
 				7C2D16C31DF45A4200A3CF92 /* SignUp.storyboard in Resources */,
 				7CF26AA11DF8BC64004C627E /* menuImage4.png in Resources */,
-				7C36EE891DE5CC98007506BC /* Odessa.jpg in Resources */,
+				7C2D73841DFA0FC900A6400B /* _Cart.png in Resources */,
 				7CF26AA31DF8BC64004C627E /* menuImage2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
