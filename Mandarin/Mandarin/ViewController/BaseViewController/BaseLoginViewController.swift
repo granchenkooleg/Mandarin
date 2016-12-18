@@ -13,6 +13,7 @@ import CryptoSwift
 import FacebookCore
 import FacebookLogin
 import SwiftyVK
+import SwiftValidator
 
 class BaseLoginViewController: BaseViewController {
     
@@ -191,13 +192,15 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
 
 class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate {
     
-    
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
+    
+    
+    
     
     @IBAction func createAccount(_ sender: Button) {
         
