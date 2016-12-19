@@ -123,6 +123,11 @@
 			<key>orderHint</key>
 			<integer>17</integer>
 		</dict>
+		<key>SwiftValidator.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>20</integer>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -168,6 +173,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>41849441C636502280D3D40156255A81</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>44CAD6CE523055ED339E87154473A254</key>
 		<dict>
 			<key>primary</key>
@@ -179,6 +189,11 @@
 			<true/>
 		</dict>
 		<key>593E9479C06FB200807D11AB29EB50BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5B39E45FC15B8732832931F701884EF3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -233,7 +248,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>97E6A91342AF82DC29496CDDDA9B6E7D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A293FE617478859FF53D99EF062E8A3B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A3DF4A4ABF1858838F201C8AEA11B3E3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A7FEAA14E89971698ACA148F7F7202F2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AD432E29C64508B916D9DBE2926603D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -259,6 +294,11 @@
 			<true/>
 		</dict>
 		<key>C4944FEC314D1A66588651D006273ADE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C82F032C310EDBFF9422E01854AC360E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

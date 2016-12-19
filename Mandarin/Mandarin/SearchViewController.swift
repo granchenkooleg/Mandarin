@@ -12,9 +12,6 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
-    var internalProductsForListOfWeightVC = [Product]()
-    var _productsList = [Product]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,10 +41,10 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
                 
                 
                 let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
-                self?.internalProductsForListOfWeightVC.append(list)
+                self?.internalProducts.append(list)
                 
             }
-            self?._productsList = (self?.internalProductsForListOfWeightVC)!
+            self?._products = (self?.internalProducts)!
             self?.tableView.reloadData()
             })
     }
@@ -65,31 +62,36 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         // center and scale background image
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         
         // Set the background color to match better
         //        tableView.backgroundColor = UIColor.lightGray
         
         // blur it
-        //        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-        //        let blurView = UIVisualEffectView(effect: blurEffect)
-        //        blurView.frame = imageView.bounds
-        //        imageView.addSubview(blurView)
+//                let blurEffect = UIBlurEffect(style: .extraLight)
+//                let blurView = UIVisualEffectView(effect: blurEffect)
+//                blurView.frame = imageView.bounds
+//                imageView.addSubview(blurView)
+    }
+    
+    override func searchTextChanged(sender: UITextField) {
+        super.searchTextChanged(sender: sender)
+        self.tableView.reloadData()
     }
     
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return _productsList.count
+        return _products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "SearchViewController"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SearchTableViewCell
         
-        let productDetails = _productsList[indexPath.row]
+        let productDetails = _products[indexPath.row]
         Dispatch.mainQueue.async { _ in
-            let imageData: Data = try! Data(contentsOf: URL(string: productDetails.icon)!)
+            guard let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon)!) else { return }
             cell.thubnailImageView?.image = UIImage(data: imageData)
         }
         
@@ -98,35 +100,18 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    //Making UITableView Cells Transparent
-    /* Next we’ll deal with the table view cells hiding the backgound image. It might seem reasonable work in tableView: cellForRowAtIndexPath: to do that but that function can get pretty cluttered. Instead there’s a UITableViewDelegate function just for making tweaks to the cell’s appearance just before it gets displayed */
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        // translucent cell backgrounds so we can see the image but still easily read the contents
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.1) /*UIColor.clear*/
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.1)
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 class SearchTableViewCell: UITableViewCell {
-    
     
     @IBOutlet weak var thubnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         thubnailImageView?.layer.cornerRadius = 30
         thubnailImageView?.layer.masksToBounds = true
@@ -135,8 +120,5 @@ class SearchTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
-    
 }

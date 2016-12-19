@@ -179,7 +179,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     //MARK: Back Button in header
     @IBAction func backClick(_ sender: AnyObject) {
-        if (self.presentedViewController != nil) {
+        if (self.presentingViewController != nil) {
             self.dismiss(animated: true, completion: nil)
         } else {
             self.navigationController?.popViewController(animated: true)
@@ -188,8 +188,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     //MARK: Search
     @IBAction func searchClick(_ sender: Any) {
-        guard let searchTextField = self.searchTextField else { return }
-        searchTextField.isHidden = !searchTextField.isHidden
+        present(UIStoryboard.main["search"]!, animated: true, completion: nil)
     }
     
     func searchTextChanged(sender: UITextField) {
@@ -200,7 +199,6 @@ class BaseViewController: UIViewController, KeyboardNotifying {
                 _products =  self.internalProducts.filter { $0.name.lowercased().range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil }
             }
         }
-        
     }
     
     //MARK: MenuClick

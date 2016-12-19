@@ -63,7 +63,7 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
         
         let productDetails = _products[indexPath.row]
         Dispatch.mainQueue.async { _ in
-            let imageData: Data = try! Data(contentsOf: URL(string: productDetails.icon)!)
+            guard let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon)!) else { return }
             cell.thubnailImageView?.image = UIImage(data: imageData)
         }
         
