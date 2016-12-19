@@ -44,12 +44,12 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         return cell ?? UICollectionViewCell()
     }
     
-    //FIXME:This is broken
+    
     //MARK: Segue
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
         let listOfProductsByWeightViewController = Storyboard.ListOfWeightProducts.instantiate()
-//        listOfProductsByWeightViewController.nameListsOfProductsHeaderText = contentWeightProduct[indexPath.row].name
+        listOfProductsByWeightViewController.nameListsOfProductsHeaderText = nameWeightHeaderText
             //for compare in ListsOfProductVC
         //listOfProductsByWeightViewController.weightOfWeightVC = _products[indexPath.row].weight
         listOfProductsByWeightViewController.idPodcategory = categoryId

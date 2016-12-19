@@ -10,7 +10,9 @@ import UIKit
 
 class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var listHeaderLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
     var nameListsOfProductsHeaderText: String?
     //property for compare with allListProducts
     var weightOfWeightVC: String?
@@ -21,6 +23,8 @@ class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        listHeaderLabel.text = nameListsOfProductsHeaderText
         
         // Do any additional setup after loading the view.
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
@@ -100,6 +104,14 @@ class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataS
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()
+        detailsProductVC.descriptionDetailsVC = _productsList[indexPath.row].description
+        detailsProductVC.uglevodyDetailsVC = _productsList[indexPath.row].uglevody
+        detailsProductVC.zhiryDetailsVC = _productsList[indexPath.row].zhiry
+
+        detailsProductVC.proteinsDetailsVC = _productsList[indexPath.row].proteins
+        detailsProductVC.caloriesDetailsVC = _productsList[indexPath.row].calories
+        detailsProductVC.expire_dateDetailsVC = _productsList[indexPath.row].expire_date
+        detailsProductVC.brandDetailsVC = _productsList[indexPath.row].brand
         detailsProductVC.iconDetailsVC = _productsList[indexPath.row].icon
         //detailsProductVC.DetailsVC = _products[indexPath.row].
         detailsProductVC.created_atDetailsVC = _productsList[indexPath.row].created_at

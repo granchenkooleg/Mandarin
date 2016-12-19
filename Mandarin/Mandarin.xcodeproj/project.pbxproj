@@ -70,6 +70,7 @@
 		7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C36EE921DE63C63007506BC /* check_v1-05.jpg */; };
 		7CA19A761E06CB5100A433A0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA19A751E06CB5100A433A0 /* SearchViewController.swift */; };
 		7CA19A781E06CFD900A433A0 /* SearchHello.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA19A771E06CFD900A433A0 /* SearchHello.png */; };
+		7CA19A7A1E071C0800A433A0 /* ContexForValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA19A791E071C0800A433A0 /* ContexForValidation.swift */; };
 		7CF26A8B1DF8A4C9004C627E /* WeightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF26A8A1DF8A4C9004C627E /* WeightCollectionViewCell.swift */; };
 		7CF26A9F1DF8BC64004C627E /* menuImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26A9A1DF8BC64004C627E /* menuImage.png */; };
 		7CF26AA01DF8BC64004C627E /* menuImage5.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26A9B1DF8BC64004C627E /* menuImage5.png */; };
@@ -151,6 +152,7 @@
 		7C36EE921DE63C63007506BC /* check_v1-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "check_v1-05.jpg"; sourceTree = "<group>"; };
 		7CA19A751E06CB5100A433A0 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7CA19A771E06CFD900A433A0 /* SearchHello.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SearchHello.png; sourceTree = "<group>"; };
+		7CA19A791E071C0800A433A0 /* ContexForValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContexForValidation.swift; sourceTree = "<group>"; };
 		7CF26A8A1DF8A4C9004C627E /* WeightCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightCollectionViewCell.swift; sourceTree = "<group>"; };
 		7CF26A9A1DF8BC64004C627E /* menuImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuImage.png; sourceTree = "<group>"; };
 		7CF26A9B1DF8BC64004C627E /* menuImage5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuImage5.png; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			children = (
 				5621B57B1DE2DDDE00C3B612 /* BaseViewController.swift */,
 				7C09497C1DE240B10038018F /* BaseLoginViewController.swift */,
+				7CA19A791E071C0800A433A0 /* ContexForValidation.swift */,
 			);
 			name = BaseViewController;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				7C2D736B1DF9BD0500A6400B /* MARKER.swift in Sources */,
 				7C2D736F1DF9F3F500A6400B /* CheckViewController.swift in Sources */,
 				7C2D737F1DFA0A7B00A6400B /* PaymentViewController.swift in Sources */,
+				7CA19A7A1E071C0800A433A0 /* ContexForValidation.swift in Sources */,
 				5621B57C1DE2DDDE00C3B612 /* BaseViewController.swift in Sources */,
 				56737B9B1DF616950007518C /* Category.swift in Sources */,
 				7C2D73821DFA0B6D00A6400B /* PasswordResetViewController.swift in Sources */,
