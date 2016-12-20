@@ -68,10 +68,10 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         //        tableView.backgroundColor = UIColor.lightGray
         
         // blur it
-//                let blurEffect = UIBlurEffect(style: .extraLight)
-//                let blurView = UIVisualEffectView(effect: blurEffect)
-//                blurView.frame = imageView.bounds
-//                imageView.addSubview(blurView)
+        //                let blurEffect = UIBlurEffect(style: .extraLight)
+        //                let blurView = UIVisualEffectView(effect: blurEffect)
+        //                blurView.frame = imageView.bounds
+        //                imageView.addSubview(blurView)
     }
     
     override func searchTextChanged(sender: UITextField) {
