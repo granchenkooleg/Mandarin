@@ -320,11 +320,13 @@ class RecoveryPasswordViewController: BaseLoginViewController, UITextFieldDelega
                                  "email" : /*"test1@mail.ru"*/ emailOrPhone,
                                  "password" : "111222" /*password*/]
         
-        UserRequest.recoveryPassword(param as [String : AnyObject], completion: {[weak self] success in
+        UserRequest.recoveryPassword(param as [String : AnyObject], completion: {/*[weak self]*/ success in
             if success == true {
-                self?.chooseNextContoller()
+                //self?.chooseNextContoller()
+                UINavigationController.main.pushViewController(Storyboard.Login.instantiate(), animated: false)
+                UIAlertController.alert("Новый пароль выслан на ваш email.".ls).show()
+                
             }
-            
             sender.loading = false
             })
         

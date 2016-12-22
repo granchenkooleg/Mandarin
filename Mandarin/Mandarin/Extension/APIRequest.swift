@@ -202,7 +202,7 @@ enum UserRequest: URLRequestConvertible {
                 return
             }
             
-            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
+            User.deleteUser()
             completion(true)
         }
     }
