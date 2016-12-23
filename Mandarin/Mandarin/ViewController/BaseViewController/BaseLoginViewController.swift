@@ -175,7 +175,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         sender.loading = true
         guard let email = emailTextField.text, let password = passwordTextField.text,
             email.isValidEmail == true && password.isEmpty == false else {
-                UIAlertController.alert("Input data isn't valid.".ls).show()
+                UIAlertController.alert("Неправильный email или пароль!.".ls).show()
                 sender.loading = false
                 return
         }
@@ -301,3 +301,36 @@ class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate 
         
     }
 }
+
+class RecoveryPasswordViewController: BaseLoginViewController, UITextFieldDelegate {
+    
+    
+    @IBOutlet weak var emailOrPhoneTextField: UITextField!
+    
+    @IBAction func sendButton(sender: Button) {
+        
+        sender.loading = true
+        guard let emailOrPhone = emailOrPhoneTextField.text, emailOrPhone.isEmpty == false else {
+            UIAlertController.alert("Введите ваш email или номер телефона!".ls).show()
+            sender.loading = false
+            return
+        }
+        
+        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                 "email" : /*"test1@mail.ru"*/ emailOrPhone,
+                                 "password" : "111222" /*password*/]
+        
+        UserRequest.recoveryPassword(param as [String : AnyObject], completion: {/*[weak self]*/ success in
+            if success == true {
+                //self?.chooseNextContoller()
+                UINavigationController.main.pushViewController(Storyboard.Login.instantiate(), animated: false)
+                UIAlertController.alert("Новый пароль выслан на ваш email.".ls).show()
+                
+            }
+            sender.loading = false
+            })
+        
+    }
+    
+}
+

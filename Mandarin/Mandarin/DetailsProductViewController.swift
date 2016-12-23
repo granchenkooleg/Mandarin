@@ -10,7 +10,7 @@ import UIKit
 
 class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     
-    
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var uglevodyLabel: UILabel!
     @IBOutlet weak var zhiryLabel: UILabel!
@@ -36,6 +36,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        nameLabel.text = nameHeaderTextDetailsVC
         descriptionTextField.text = descriptionDetailsVC
         uglevodyLabel.text = uglevodyDetailsVC
         zhiryLabel.text = zhiryDetailsVC

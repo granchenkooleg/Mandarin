@@ -78,6 +78,7 @@ let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URL
 
 enum UserRequest: URLRequestConvertible {
     
+    case getPassword([String: AnyObject])
     case getAllProducts([String: AnyObject])
     case getWeight([String: AnyObject])
     //case create([String: AnyObject])
@@ -95,7 +96,7 @@ enum UserRequest: URLRequestConvertible {
         
         var method: HTTPMethod {
             switch self {
-            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight, .getAllProducts:
+            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight, .getAllProducts, .getPassword:
                 return .get
             case .logOut, .trans:
                 return .post
@@ -104,6 +105,8 @@ enum UserRequest: URLRequestConvertible {
         
         let params: ([String: AnyObject]?) = {
             switch self {
+            case .getPassword(let newPost):
+                return newPost
             case .getAllProducts(let newPost):
                 return newPost
             case .getWeight(let newPost):
@@ -128,6 +131,8 @@ enum UserRequest: URLRequestConvertible {
         let url: URL = {
             let relativePath:String?
             switch self {
+            case.getPassword:
+                relativePath = "restorePass"
             case .getAllProducts:
                 relativePath = "products"
             case .getWeight:
@@ -190,18 +195,17 @@ enum UserRequest: URLRequestConvertible {
         })
     }
 
-    
-    
-//    static func createUser(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
-//        requestHandler(#function, URLRequest: create(entryParams)) { json in
-//            guard let json = json else {
-//                completion(false)
-//                return
-//            }
-//            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
-//            completion(true)
-//        }
-//    }
+    static func recoveryPassword(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
+        requestHandler(#function, URLRequest: getPassword(entryParams)) { json in
+            guard let json = json else {
+                completion(false)
+                return
+            }
+            
+            User.deleteUser()
+            completion(true)
+        }
+    }
     
     static func listAllProducts(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
         requestHandler(#function, URLRequest: getAllProducts(entryParams), completionHandler: { json in
