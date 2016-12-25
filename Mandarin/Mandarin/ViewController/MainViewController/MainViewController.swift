@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, SegmentedControlDelegate, UITextFieldDelegate {
     
@@ -23,31 +24,69 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
         segmentControl?.layer.borderWidth = 1.0
         segmentControl?.layer.masksToBounds = true
         segmentControl?.selectedSegment = 0
-        
-        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-        UserRequest.getAllCategories(param as [String : AnyObject], completion: {[weak self] json in
-            json.forEach { _, json in
-                print (">>self - \(json["name"])<<")
-                let id = json["id"].string ?? ""
-                let created_at = json["created_at"].string ?? ""
-                let icon = json["icon"].string ?? ""
-                let name = json["name"].string ?? ""
-                let units = json["units"].string ?? ""
-                let category_id = json["category_id"].string ?? ""
-                
-                let category = Category(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
-                self?.internalProducts.append(category)
-            }
-            self?._products = (self?.internalProducts)!
-            self?.tableView.reloadData()
-            })
+        self.segmentedControl(self.segmentControl!, didSelectSegment: 0)
     }
     
     //MARK: SegmentedControlDelegate
     
     func segmentedControl(_ control: SegmentControl, didSelectSegment segment: Int) {
-        //        guard let controller = viewController(SegmentTab(rawValue: segment)!) else { return }
-        //        selectedControl?(controller)
+        self.internalProducts = []
+        if segment == 0 {
+            let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+            UserRequest.getAllCategories(param as [String : AnyObject], completion: {[weak self] json in
+                json.forEach { _, json in
+                    print (">>self - \(json["name"])<<")
+                    let id = json["id"].string ?? ""
+                    let created_at = json["created_at"].string ?? ""
+                    let icon = json["icon"].string ?? ""
+                    let name = json["name"].string ?? ""
+                    let units = json["units"].string ?? ""
+                    let category_id = json["category_id"].string ?? ""
+                    
+                    let category = Category(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
+                    self?.internalProducts.append(category)
+                }
+                self?._products = (self?.internalProducts)!
+                self?.tableView.reloadData()
+            })
+            
+        } else {
+            let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+            UserRequest.listAllProducts(param as [String : AnyObject], completion: {[weak self] json in
+                json.forEach { _, json in
+                    print (">>self - \(json["name"])<<")
+                    let id = json["id"].string ?? ""
+                    let created_at = json["created_at"].string ?? ""
+                    let icon = json["icon"].string ?? ""
+                    let name = json["name"].string ?? ""
+                    let category_id = json["category_id"].string ?? ""
+                    let weight = json["weight"].string ?? ""
+                    let description = json["description"].string ?? ""
+                    let brand = json["brand"].string ?? ""
+                    let calories = json["calories"].string ?? ""
+                    let proteins = json["proteins"].string ?? ""
+                    let zhiry = json["zhiry"].string ?? ""
+                    let uglevody = json["uglevody"].string ?? ""
+                    let price = json["price"].string ?? ""
+                    let favorite = json["favorite"].string ?? ""
+                    let status = json["status"].string ?? ""
+                    let expire_date = json["expire_date"].string ?? ""
+                    let category_name = json["category_name"].string ?? ""
+                    let price_sale = json["price_sale"].string ?? ""
+                    
+                    let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
+                    self?.internalProducts.append(list)
+                    let products = ProductsForRealm.setupProduct(id: id, descriptionForProduct: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
+                    let realm = try! Realm()
+                    try! realm.write {
+                       User.currentUser?.products.append(products)
+                    }
+                }
+                self?._products = (self?.internalProducts)!
+                self?.tableView.reloadData()
+            })
+        }
+       
     }
     
     // MARK: - Table view data source

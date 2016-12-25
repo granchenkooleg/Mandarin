@@ -37,15 +37,13 @@ class ProductsForRealmViewController: BaseViewController {
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
                 
-                
                 let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
                 self?.internalProducts.append(list)
-                
+                let products = ProductsForRealm(value: list)
+                User.currentUser?.products.append(products)
             }
             self?._products = (self?.internalProducts)!
-            
-            })
-        let listForRealm = ProductsForRealm.setupProduct(id: "\(_products[0].id)", descriptionForProduct: "\(self._products[0].description)", proteins: "\(self._products[0].proteins)", calories: "\(self._products[0].calories)", zhiry: "\(self._products[0].zhiry)", favorite: "\(self._products[0].favorite)", category_id: "\(self._products[0].category_id)", brand: "\(self._products[0].brand)", price_sale: "\(self._products[0].price_sale)", weight: "\(self._products[0].weight)", status: "\(self._products[0].status)", expire_date: "\(self._products[0].expire_date)", price: "\(self._products[0].price)", created_at: "\(self._products[0].created_at)", icon: "\(self._products[0].icon)", category_name: "\(self._products[0].category_name)", name: "\(self._products[0].name)", uglevody: "\(self._products[0].uglevody)", units: "\(self._products[0].units)")
+        })
     }
-
+    
 }

@@ -120,7 +120,6 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     }
     
     @IBAction func faceBookLogin(_ sender: Button) {
-        sender.loading = true
         loginManager.logIn([ .publicProfile, .userFriends, .email ], viewController: self) { loginResult in
             switch loginResult {
             case .failed(let error):

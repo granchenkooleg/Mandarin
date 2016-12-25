@@ -32,23 +32,13 @@ class ProductsForRealm : Object {
     dynamic var uglevody: String? = ""
     dynamic var units: String? = ""
     
+    dynamic var owner: User?
+    
     override static func primaryKey() -> String? {
         return "id"
     }
-    
-    deinit {
-    }
-    
-    class func setConfig() {
-        let realm = try! Realm()
-        if let url = realm.configuration.fileURL {
-            print("FileURL of DataBase - \(url)")
-        }
-    }
-    
-    class func setupProduct(id: String = "", descriptionForProduct: String = "", proteins: String = "", calories: String = "", zhiry: String = "", favorite: String = "", category_id: String = "", brand: String = "", price_sale: String = "", weight: String = "", status: String = "", expire_date: String = "", price: String = "", created_at: String = "", icon: String = "", category_name: String = "", name: String = "", uglevody: String = "", units: String = "") {
-        
-        setConfig()
+
+    class func setupProduct(id: String = "", descriptionForProduct: String = "", proteins: String = "", calories: String = "", zhiry: String = "", favorite: String = "", category_id: String = "", brand: String = "", price_sale: String = "", weight: String = "", status: String = "", expire_date: String = "", price: String = "", created_at: String = "", icon: String = "", category_name: String = "", name: String = "", uglevody: String = "", units: String = "") -> ProductsForRealm {
         
         let productData: Dictionary = [
             "id" : id,
@@ -77,5 +67,6 @@ class ProductsForRealm : Object {
         try! realm.write {
             realm.add(product, update: true)
         }
+        return product
     }
 }
