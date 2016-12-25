@@ -31,7 +31,7 @@ class User: Object {
     static func setConfig() {
         let realm = try! Realm()
         if let url = realm.configuration.fileURL {
-            Logger.log("FileURL of DataBase - \(url)", color: .Orange)
+            print("FileURL of DataBase - \(url)")
         }
     }
     
