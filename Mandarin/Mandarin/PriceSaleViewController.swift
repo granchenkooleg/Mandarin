@@ -1,14 +1,14 @@
 //
-//  PasswordResetViewController.swift
+//  PriceSaleViewController.swift
 //  Mandarin
 //
-//  Created by Oleg on 12/8/16.
+//  Created by Oleg on 12/22/16.
 //  Copyright © 2016 Oleg. All rights reserved.
 //
 
 import UIKit
 
-class PasswordResetViewController: BaseViewController {
+class PriceSaleViewController: ListOfProductsByWeightViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
