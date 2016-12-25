@@ -50,29 +50,29 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: - Transparent Table View With a Background Image
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Add a background view to the table view
-        let backgroundImage = UIImage(named: "SearchHello.png")
-        let imageView = UIImageView(image: backgroundImage)
-        self.tableView.backgroundView = imageView
-        
-        // no lines where there aren't cells
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
-        
-        // center and scale background image
-        imageView.contentMode = .scaleAspectFill
-        
-        // Set the background color to match better
-        //        tableView.backgroundColor = UIColor.lightGray
-        
-        // blur it
-        //                let blurEffect = UIBlurEffect(style: .extraLight)
-        //                let blurView = UIVisualEffectView(effect: blurEffect)
-        //                blurView.frame = imageView.bounds
-        //                imageView.addSubview(blurView)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        // Add a background view to the table view
+//        let backgroundImage = UIImage(named: "SearchHello.png")
+//        let imageView = UIImageView(image: backgroundImage)
+//        self.tableView.backgroundView = imageView
+//        
+//        // no lines where there aren't cells
+//        tableView.tableFooterView = UIView(frame: CGRect.zero)
+//        
+//        // center and scale background image
+//        imageView.contentMode = .scaleAspectFill
+//        
+//        // Set the background color to match better
+//        //        tableView.backgroundColor = UIColor.lightGray
+//        
+//        // blur it
+//        //                let blurEffect = UIBlurEffect(style: .extraLight)
+//        //                let blurView = UIVisualEffectView(effect: blurEffect)
+//        //                blurView.frame = imageView.bounds
+//        //                imageView.addSubview(blurView)
+//    }
     
     override func searchTextChanged(sender: UITextField) {
         super.searchTextChanged(sender: sender)

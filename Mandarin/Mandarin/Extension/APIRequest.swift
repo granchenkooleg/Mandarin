@@ -194,7 +194,7 @@ enum UserRequest: URLRequestConvertible {
             completion(json)
         })
     }
-
+    
     static func recoveryPassword(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
         requestHandler(#function, URLRequest: getPassword(entryParams)) { json in
             guard let json = json else {
@@ -236,19 +236,21 @@ enum UserRequest: URLRequestConvertible {
     
     static func makelogin(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
         requestHandler(#function, URLRequest: login(entryParams)) { json in
-            guard let json = json else {
+            guard let json = json, json[0]["error"] == false else {
+                UIAlertController.alert("Введите корректные данные!".ls).show()
                 completion(false)
                 return
             }
-            
+            print (">>makelogin - \(json)<<")
             User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
             completion(true)
         }
     }
     
-     static func makeRegistration(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
+    static func makeRegistration(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
         requestHandler(#function, URLRequest: registration(entryParams)) { json in
-            guard let json = json else {
+            guard let json = json, json[0]["error"] == false else {
+                UIAlertController.alert(".....".ls).show()
                 completion(false)
                 return
             }
