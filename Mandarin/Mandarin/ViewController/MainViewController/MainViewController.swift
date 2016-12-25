@@ -50,7 +50,7 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
                 self?.tableView.reloadData()
             })
             
-        } else {
+        } else if segment == 1 {
             let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
             UserRequest.listAllProducts(param as [String : AnyObject], completion: {[weak self] json in
                 json.forEach { _, json in
@@ -85,7 +85,7 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
                 self?._products = (self?.internalProducts)!
                 self?.tableView.reloadData()
             })
-        }
+        } else {self.tableView.reloadData()}
        
     }
     
