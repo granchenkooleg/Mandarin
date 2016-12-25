@@ -71,6 +71,8 @@
 		7CA19A761E06CB5100A433A0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA19A751E06CB5100A433A0 /* SearchViewController.swift */; };
 		7CA19A781E06CFD900A433A0 /* SearchHello.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA19A771E06CFD900A433A0 /* SearchHello.png */; };
 		7CA19A7A1E071C0800A433A0 /* ContexForValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA19A791E071C0800A433A0 /* ContexForValidation.swift */; };
+		7CDEB7B81E103A7100D44B05 /* ProductsForRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEB7B71E103A7100D44B05 /* ProductsForRealm.swift */; };
+		7CDEB7BA1E1043F100D44B05 /* ProductsForRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEB7B91E1043F100D44B05 /* ProductsForRealmViewController.swift */; };
 		7CF26A8B1DF8A4C9004C627E /* WeightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF26A8A1DF8A4C9004C627E /* WeightCollectionViewCell.swift */; };
 		7CF26A9F1DF8BC64004C627E /* menuImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26A9A1DF8BC64004C627E /* menuImage.png */; };
 		7CF26AA01DF8BC64004C627E /* menuImage5.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26A9B1DF8BC64004C627E /* menuImage5.png */; };
@@ -153,6 +155,8 @@
 		7CA19A751E06CB5100A433A0 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7CA19A771E06CFD900A433A0 /* SearchHello.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SearchHello.png; sourceTree = "<group>"; };
 		7CA19A791E071C0800A433A0 /* ContexForValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContexForValidation.swift; sourceTree = "<group>"; };
+		7CDEB7B71E103A7100D44B05 /* ProductsForRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsForRealm.swift; sourceTree = "<group>"; };
+		7CDEB7B91E1043F100D44B05 /* ProductsForRealmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsForRealmViewController.swift; sourceTree = "<group>"; };
 		7CF26A8A1DF8A4C9004C627E /* WeightCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightCollectionViewCell.swift; sourceTree = "<group>"; };
 		7CF26A9A1DF8BC64004C627E /* menuImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuImage.png; sourceTree = "<group>"; };
 		7CF26A9B1DF8BC64004C627E /* menuImage5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuImage5.png; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 				563474361DEDC3E9004ECDC4 /* Feeds.swift */,
 				56737B9A1DF616950007518C /* Category.swift */,
 				56574A921DF33241009C2466 /* User.swift */,
+				7CDEB7B71E103A7100D44B05 /* ProductsForRealm.swift */,
 				7C2D736A1DF9BD0500A6400B /* MARKER.swift */,
 			);
 			name = Model;
@@ -328,6 +333,7 @@
 				7C2D737A1DFA032600A6400B /* DrawingUpOfAnOrderVC */,
 				7C2D737D1DFA09EA00A6400B /* PaymentViewController */,
 				7CA19A721E06B87000A433A0 /* SearchViewController */,
+				7CDEB7BB1E10440400D44B05 /* ProductsForRealmViewController */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -407,6 +413,14 @@
 				7CA19A751E06CB5100A433A0 /* SearchViewController.swift */,
 			);
 			name = SearchViewController;
+			sourceTree = "<group>";
+		};
+		7CDEB7BB1E10440400D44B05 /* ProductsForRealmViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7CDEB7B91E1043F100D44B05 /* ProductsForRealmViewController.swift */,
+			);
+			name = ProductsForRealmViewController;
 			sourceTree = "<group>";
 		};
 		7CF26A861DF82EC3004C627E /* WeightViewController */ = {
@@ -590,6 +604,7 @@
 				7C2D736F1DF9F3F500A6400B /* CheckViewController.swift in Sources */,
 				7C2D737F1DFA0A7B00A6400B /* PaymentViewController.swift in Sources */,
 				7CA19A7A1E071C0800A433A0 /* ContexForValidation.swift in Sources */,
+				7CDEB7B81E103A7100D44B05 /* ProductsForRealm.swift in Sources */,
 				7C40B7AF1E0C5D2A00A2F4D5 /* PriceSaleViewController.swift in Sources */,
 				5621B57C1DE2DDDE00C3B612 /* BaseViewController.swift in Sources */,
 				56737B9B1DF616950007518C /* Category.swift in Sources */,
@@ -609,6 +624,7 @@
 				7CF26A8B1DF8A4C9004C627E /* WeightCollectionViewCell.swift in Sources */,
 				7C2474211DEEEC6C0012BD88 /* CategoryTableViewCell.swift in Sources */,
 				5621B5931DE2E0D200C3B612 /* UIAlertController+Ext.swift in Sources */,
+				7CDEB7BA1E1043F100D44B05 /* ProductsForRealmViewController.swift in Sources */,
 				5621B5871DE2DF8E00C3B612 /* String+Ext.swift in Sources */,
 				5621B58B1DE2DFB500C3B612 /* APIRequest.swift in Sources */,
 				7C09497D1DE240B10038018F /* BaseLoginViewController.swift in Sources */,

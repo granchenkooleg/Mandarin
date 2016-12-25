@@ -45,6 +45,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
                 
             }
             self?._products = (self?.internalProducts)!
+            print ("\(self?._products[0].id)")
             self?.tableView.reloadData()
             })
     }
@@ -57,7 +58,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
 //        let backgroundImage = UIImage(named: "SearchHello.png")
 //        let imageView = UIImageView(image: backgroundImage)
 //        self.tableView.backgroundView = imageView
-//        
+//
 //        // no lines where there aren't cells
 //        tableView.tableFooterView = UIView(frame: CGRect.zero)
 //        
@@ -74,6 +75,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
 //        //                imageView.addSubview(blurView)
 //    }
     
+    //for search
     override func searchTextChanged(sender: UITextField) {
         super.searchTextChanged(sender: sender)
         self.tableView.reloadData()

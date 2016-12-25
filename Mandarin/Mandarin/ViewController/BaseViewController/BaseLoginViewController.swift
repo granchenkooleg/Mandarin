@@ -13,7 +13,7 @@ import CryptoSwift
 import FacebookCore
 import FacebookLogin
 import SwiftyVK
-import SwiftValidator
+//import SwiftValidator
 
 class BaseLoginViewController: BaseViewController {
     
@@ -65,6 +65,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         googleButton.circled = true
     }
     
+    //start VK
     func vkWillAuthorize() -> Set<VK.Scope> {
         return  [.offline]
     }
@@ -112,6 +113,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     @IBAction func signInTouchUp(_ sender: AnyObject) {
         VK.logIn()
     }
+    // the end VK
     
     @IBAction func googleLogin(_ sender: Button) {
         GIDSignIn.sharedInstance().signIn()
