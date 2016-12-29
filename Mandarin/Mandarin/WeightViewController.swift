@@ -51,8 +51,9 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         let listOfProductsByWeightViewController = Storyboard.ListOfWeightProducts.instantiate()
         listOfProductsByWeightViewController.nameListsOfProductsHeaderText = nameWeightHeaderText
             //for compare in ListsOfProductVC
-        //listOfProductsByWeightViewController.weightOfWeightVC = _products[indexPath.row].weight
-        listOfProductsByWeightViewController.idPodcategory = categoryId
+        listOfProductsByWeightViewController.weightOfWeightVC = contentWeightProduct[indexPath.row]
+        listOfProductsByWeightViewController.idPodcategory = podCategory_id
+        listOfProductsByWeightViewController.unitOfWeightForListOfProductsByWeightVC = self.unitOfWeight
    
         UINavigationController.main.pushViewController(listOfProductsByWeightViewController, animated: true)
     }

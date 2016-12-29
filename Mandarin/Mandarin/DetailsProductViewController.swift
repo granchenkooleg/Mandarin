@@ -20,6 +20,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBOutlet weak var dateExpireLabel: UILabel!
     @IBOutlet weak var headerTextInDetailsVC: UILabel!
     @IBOutlet weak var productsImageView: UIImageView!
+    @IBOutlet weak var priceLabel: UILabel!
     var productsImage: String! // name our image
     var nameHeaderTextDetailsVC: String?
     var created_atDetailsVC: String?
@@ -31,11 +32,13 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     var zhiryDetailsVC: String?
     var uglevodyDetailsVC: String?
     var descriptionDetailsVC: String?
+    var priceDetailsVC: String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        priceLabel.text = priceDetailsVC! + " грн."
         nameLabel.text = nameHeaderTextDetailsVC
         descriptionTextField.text = descriptionDetailsVC
         uglevodyLabel.text = uglevodyDetailsVC

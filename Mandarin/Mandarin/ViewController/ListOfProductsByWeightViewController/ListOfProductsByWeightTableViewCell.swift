@@ -12,6 +12,10 @@ class ListOfProductsByWeightTableViewCell: UITableViewCell {
     
     @IBOutlet weak var thubnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var priceOldLabel: UILabel!
+    @IBOutlet weak var priceSaleLabel: UILabel!
     
     
     override func awakeFromNib() {
