@@ -11,7 +11,10 @@ import UIKit
 class WeightCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var weightUnitsLabelOne: UILabel!
+    @IBOutlet weak var iconWeightImageViev: UIImageView!
     var unitsProduct: String?
+    
+    
     
     override var isHighlighted: Bool {
         didSet {

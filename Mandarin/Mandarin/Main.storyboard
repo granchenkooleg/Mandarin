@@ -701,20 +701,26 @@
                                             <rect key="frame" x="0.0" y="0.0" width="164" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weight" translatesAutoresizingMaskIntoConstraints="NO" id="y8x-LY-Eb9"/>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Egc-EJ-34s">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y8x-LY-Eb9">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="y8x-LY-Eb9" secondAttribute="height" multiplier="1:1" id="XaT-wV-mr2"/>
+                                                        <constraint firstAttribute="width" constant="38" id="bDI-eQ-Rsi"/>
+                                                        <constraint firstAttribute="height" constant="38" id="sis-D0-tJh"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="y8x-LY-Eb9" firstAttribute="top" secondItem="qck-Y4-ecf" secondAttribute="top" constant="6" id="1C1-2M-Ybw"/>
+                                            <constraint firstItem="y8x-LY-Eb9" firstAttribute="leading" secondItem="qck-Y4-ecf" secondAttribute="leading" constant="19" id="D5P-Hl-Thb"/>
                                             <constraint firstItem="Egc-EJ-34s" firstAttribute="centerX" secondItem="qck-Y4-ecf" secondAttribute="centerX" id="R79-1x-R3X"/>
                                             <constraint firstItem="Egc-EJ-34s" firstAttribute="centerY" secondItem="qck-Y4-ecf" secondAttribute="centerY" id="XHP-iM-JYo"/>
-                                            <constraint firstItem="Egc-EJ-34s" firstAttribute="leading" secondItem="y8x-LY-Eb9" secondAttribute="trailing" constant="5" id="kgd-Qa-8FQ"/>
-                                            <constraint firstItem="y8x-LY-Eb9" firstAttribute="centerY" secondItem="qck-Y4-ecf" secondAttribute="centerYWithinMargins" id="nfu-3x-o8e"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -722,6 +728,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="iconWeightImageViev" destination="y8x-LY-Eb9" id="QtS-hO-aa8"/>
                                             <outlet property="weightUnitsLabelOne" destination="Egc-EJ-34s" id="O4I-Nf-UgA"/>
                                         </connections>
                                     </collectionViewCell>
@@ -1994,6 +2001,5 @@
         <image name="menuImage3.png" width="90" height="90"/>
         <image name="menuImage4.png" width="90" height="90"/>
         <image name="menuImage5.png" width="90" height="90"/>
-        <image name="weight" width="32" height="32"/>
     </resources>
 </document>
