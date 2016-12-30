@@ -60,7 +60,6 @@
 		7C2D73721DF9F8BB00A6400B /* ButtonMinus.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73711DF9F8BB00A6400B /* ButtonMinus.png */; };
 		7C2D73741DF9F8C200A6400B /* ButtonPlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73731DF9F8C200A6400B /* ButtonPlus.png */; };
 		7C2D73771DF9FB0600A6400B /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D73761DF9FB0600A6400B /* BasketViewController.swift */; };
-		7C2D73791DF9FF7100A6400B /* HeartWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73781DF9FF7100A6400B /* HeartWhite.png */; };
 		7C2D737C1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D737B1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift */; };
 		7C2D737F1DFA0A7B00A6400B /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D737E1DFA0A7B00A6400B /* PaymentViewController.swift */; };
 		7C2D73841DFA0FC900A6400B /* _Cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73831DFA0FC900A6400B /* _Cart.png */; };
@@ -68,6 +67,8 @@
 		7C36EE8F1DE5F742007506BC /* DetailsProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C36EE8E1DE5F742007506BC /* DetailsProductViewController.swift */; };
 		7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7C36EE921DE63C63007506BC /* check_v1-05.jpg */; };
 		7C40B7AF1E0C5D2A00A2F4D5 /* PriceSaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C40B7AE1E0C5D2A00A2F4D5 /* PriceSaleViewController.swift */; };
+		7C4971821E167F47004805D5 /* HeartWhiteNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4971811E167F47004805D5 /* HeartWhiteNew.png */; };
+		7C4971841E168964004805D5 /* HeartCleanBillWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4971831E168964004805D5 /* HeartCleanBillWhite.png */; };
 		7CA19A761E06CB5100A433A0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA19A751E06CB5100A433A0 /* SearchViewController.swift */; };
 		7CA19A781E06CFD900A433A0 /* SearchHello.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA19A771E06CFD900A433A0 /* SearchHello.png */; };
 		7CA19A7A1E071C0800A433A0 /* ContexForValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA19A791E071C0800A433A0 /* ContexForValidation.swift */; };
@@ -144,7 +145,6 @@
 		7C2D73711DF9F8BB00A6400B /* ButtonMinus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMinus.png; sourceTree = "<group>"; };
 		7C2D73731DF9F8C200A6400B /* ButtonPlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonPlus.png; sourceTree = "<group>"; };
 		7C2D73761DF9FB0600A6400B /* BasketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
-		7C2D73781DF9FF7100A6400B /* HeartWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeartWhite.png; sourceTree = "<group>"; };
 		7C2D737B1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingUpOfAnOrderViewController.swift; sourceTree = "<group>"; };
 		7C2D737E1DFA0A7B00A6400B /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		7C2D73831DFA0FC900A6400B /* _Cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _Cart.png; sourceTree = "<group>"; };
@@ -152,6 +152,8 @@
 		7C36EE8E1DE5F742007506BC /* DetailsProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsProductViewController.swift; sourceTree = "<group>"; };
 		7C36EE921DE63C63007506BC /* check_v1-05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "check_v1-05.jpg"; sourceTree = "<group>"; };
 		7C40B7AE1E0C5D2A00A2F4D5 /* PriceSaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceSaleViewController.swift; sourceTree = "<group>"; };
+		7C4971811E167F47004805D5 /* HeartWhiteNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeartWhiteNew.png; sourceTree = "<group>"; };
+		7C4971831E168964004805D5 /* HeartCleanBillWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeartCleanBillWhite.png; sourceTree = "<group>"; };
 		7CA19A751E06CB5100A433A0 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7CA19A771E06CFD900A433A0 /* SearchHello.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SearchHello.png; sourceTree = "<group>"; };
 		7CA19A791E071C0800A433A0 /* ContexForValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContexForValidation.swift; sourceTree = "<group>"; };
@@ -341,6 +343,8 @@
 		7C2C700F1DE44CDC005DEDCA /* Images  */ = {
 			isa = PBXGroup;
 			children = (
+				7C4971831E168964004805D5 /* HeartCleanBillWhite.png */,
+				7C4971811E167F47004805D5 /* HeartWhiteNew.png */,
 				7CA19A771E06CFD900A433A0 /* SearchHello.png */,
 				7C1668691DFABE6E00E5F26B /* HeartMandarin1.png */,
 				7C1668671DFABE2800E5F26B /* SaleIcon1.png */,
@@ -350,7 +354,6 @@
 				7C1668551DFAB54200E5F26B /* Hello.png */,
 				7C1668651DFABD2B00E5F26B /* PhotoOdessa1.png */,
 				7C2D73831DFA0FC900A6400B /* _Cart.png */,
-				7C2D73781DF9FF7100A6400B /* HeartWhite.png */,
 				7C2D73731DF9F8C200A6400B /* ButtonPlus.png */,
 				7C2D73711DF9F8BB00A6400B /* ButtonMinus.png */,
 				7C2D736C1DF9EF1800A6400B /* check.png */,
@@ -524,9 +527,10 @@
 				7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */,
 				7C1668561DFAB54200E5F26B /* Hello.png in Resources */,
 				7C2D73741DF9F8C200A6400B /* ButtonPlus.png in Resources */,
-				7C2D73791DF9FF7100A6400B /* HeartWhite.png in Resources */,
+				7C4971821E167F47004805D5 /* HeartWhiteNew.png in Resources */,
 				7CF26A9F1DF8BC64004C627E /* menuImage.png in Resources */,
 				7C2D736D1DF9EF1800A6400B /* check.png in Resources */,
+				7C4971841E168964004805D5 /* HeartCleanBillWhite.png in Resources */,
 				7C2D73631DF9AA4F00A6400B /* Calendar.png in Resources */,
 				7C1668641DFABACF00E5F26B /* TextForBanner.png in Resources */,
 				7CA19A781E06CFD900A433A0 /* SearchHello.png in Resources */,

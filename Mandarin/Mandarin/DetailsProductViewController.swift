@@ -10,6 +10,10 @@ import UIKit
 
 class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     
+    
+    
+    @IBOutlet weak var overPlusAndMinusButton: UIButton!
+    @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var uglevodyLabel: UILabel!
@@ -38,6 +42,15 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //display iconHeart for Autorized user
+        if User.isAuthorized()  {
+            buttonHeart()
+        }
+        
+        //call overPlusAndMinusButton function for display
+        determinantForOverPlusAndMinusButton()
+        
+        
         priceLabel.text = priceDetailsVC! + " грн."
         nameLabel.text = nameHeaderTextDetailsVC
         descriptionTextField.text = descriptionDetailsVC
@@ -51,5 +64,32 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         guard let imageData = try? Data.init(contentsOf: URL.init(string: iconDetailsVC)!) else {return}
         productsImageView.image = UIImage(data: imageData)
     }
+    
+    //setting overPlusAndMinusButton
+    func determinantForOverPlusAndMinusButton() -> Void {
+        overPlusAndMinusButton.setBackgroundColor(Color.mandarin, animated: true)
+        overPlusAndMinusButton.setTitle("В корзину", for: UIControlState.normal)
+        overPlusAndMinusButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+    }
+    
+    //setting heartButton
+    func buttonHeart() -> Void {
+        //then @IBAction func heartButton establish .selected
+        heartButton.setImage(UIImage(named: "HeartCleanBillWhite" ), for: .selected)
+        //at first establish .normal
+        heartButton.setImage(UIImage(named: "HeartWhiteNew" ), for: .normal)
+        
+    }
+    
+    // button for addition to section "💛Я люблю"
+    @IBAction func heartButton(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
+    
+    //hidden overButton
+    @IBAction func overButtonHidden(_ sender: UIButton) {
+        overPlusAndMinusButton.isHidden = true
+    }
+    
     
 }
