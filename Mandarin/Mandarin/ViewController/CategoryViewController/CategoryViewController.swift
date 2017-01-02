@@ -12,6 +12,7 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
     
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    //from segue
     var categoryId: String?
     var nameHeaderText: String?
     
@@ -27,7 +28,7 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         guard let categoryId = categoryId else { return }
         UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in
-            print (">>self - \(self?.categoryId)<<")
+            //print (">>self - \(self?.categoryId)<<")
             json.forEach { _, json in
                 let id = json["id"].string ?? ""
                 let category_id = json["category_id"].string ?? ""
