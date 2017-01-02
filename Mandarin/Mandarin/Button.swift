@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 protocol Highlightable: class {
     var highlighted: Bool { get set }
@@ -28,7 +29,7 @@ extension UILabel: Highlightable, Selectable {
 
 class Button : UIButton {
     
-    convenience init(icon: String, font: UIFont = UIFont.binarySwipe(UIFont.systemFontSize), size: CGFloat = UIFont.systemFontSize, textColor: UIColor = UIColor.white) {
+    convenience init(icon: String, font: UIFont = UIFont.mandarin(UIFont.systemFontSize), size: CGFloat = UIFont.systemFontSize, textColor: UIColor = UIColor.white) {
         self.init()
         titleLabel?.font = font
         setTitle(icon, for: UIControlState())
@@ -42,6 +43,7 @@ class Button : UIButton {
     
     @IBOutlet var highlightings: [UIView] = []
     @IBOutlet var selectings: [UIView] = []
+    
     
     @IBInspectable var insets: CGSize = CGSize.zero
     @IBInspectable var spinnerColor: UIColor?
@@ -114,14 +116,14 @@ class Button : UIButton {
     override var isHighlighted: Bool {
         didSet {
             update()
-            highlightings.forEach({ ($0 as? Highlightable)?.highlighted = isHighlighted })
+            highlightings.all({ ($0 as? Highlightable)?.highlighted = isHighlighted })
         }
     }
     
     override var isSelected: Bool {
         didSet {
             update()
-            selectings.forEach({ ($0 as? Selectable)?.selected = isSelected })
+            selectings.all({ ($0 as? Selectable)?.selected = isSelected })
         }
     }
     
@@ -198,10 +200,104 @@ class PressButton: Button {
     }
 }
 
+final class IconSegmentButton: Button {
+    
+    @IBInspectable var iconColor: UIColor = UIColor.clear
+    @IBInspectable var textColor: UIColor = UIColor.clear
+    @IBInspectable var text: String? {
+        willSet {
+            textLabel.text = newValue?.ls
+        }
+    }
+    
+    @IBInspectable var textIconSize: CGFloat = UIFont.systemFontSize
+    @IBInspectable var icon: String? {
+        willSet {
+            iconLabel.text = newValue
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        selectionView.isHidden = true
+        selectionView.backgroundColor = UIColor.clear
+        iconLabel.textColor = iconColor
+        iconLabel.font = UIFont.mandarin(textIconSize)
+        iconLabel.highlightedTextColor = UIColor.white
+        textLabel.highlightedTextColor = UIColor.white
+        textLabel.font = titleLabel?.font
+        textLabel.textColor = textColor
+        let view = UIView()
+        view.isUserInteractionEnabled = false
+        addSubview(view)
+        view.addSubview(iconLabel)
+        view.addSubview(textLabel)
+        addSubview(selectionView)
+        view.snp.makeConstraints { $0.center.equalTo(self) }
+        switch contentMode {
+        case .bottom:
+            textLabel.snp.makeConstraints {
+                $0.centerX.equalTo(view)
+                $0.bottom.equalTo(view.snp.centerY)
+            }
+            iconLabel.snp.makeConstraints {
+                $0.centerX.equalTo(view)
+                $0.top.equalTo(textLabel.snp.bottom)
+            }
+        case .top:
+            iconLabel.snp.makeConstraints {
+                $0.centerX.equalTo(view)
+                $0.bottom.equalTo(view.snp.centerY)
+            }
+            textLabel.snp.makeConstraints {
+                $0.top.equalTo(iconLabel.snp.bottom)
+                $0.centerX.equalTo(iconLabel)
+            }
+        case .right:
+            textLabel.snp.makeConstraints {
+                $0.leading.centerY.equalTo(view)
+                $0.trailing.equalTo(iconLabel.snp.leading).offset(-5)
+            }
+            iconLabel.snp.makeConstraints {
+                $0.centerY.trailing.equalTo(view)
+            }
+        default:
+            iconLabel.snp.makeConstraints {
+                $0.leading.centerY.equalTo(view)
+                $0.trailing.equalTo(textLabel.snp.leading).offset(-5)
+            }
+            textLabel.snp.makeConstraints {
+                $0.centerY.trailing.equalTo(view)
+            }
+            break
+        }
+        selectionView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalTo(self)
+            $0.height.equalTo(4)
+        }
+        layoutIfNeeded()
+    }
+    
+    private var selectionView = UIView()
+    
+    private var iconLabel = Label(icon: "", size: 24, textColor: UIColor.white)
+    
+    private var textLabel: UILabel = UILabel()
+    
+    override var isSelected: Bool {
+        willSet {
+            selectionView.isHidden = !newValue
+            iconLabel.isHighlighted = newValue
+            textLabel.isHighlighted = newValue
+        }
+    }
+}
+
+
 extension UIFont {
     
-    class func binarySwipe(_ size: CGFloat) -> UIFont! {
-        return UIFont(name: "binarySwipe", size: size)
+    class func mandarin(_ size: CGFloat) -> UIFont! {
+        return UIFont(name: "mandarin", size: size)
     }
 }
 

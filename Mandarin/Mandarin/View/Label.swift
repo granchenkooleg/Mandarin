@@ -13,7 +13,7 @@ class Label: UILabel {
     
     convenience init(icon: String, size: CGFloat = UIFont.systemFontSize, textColor: UIColor = UIColor.white) {
         self.init()
-        font = UIFont.binarySwipe(size)
+        font = UIFont.mandarin(size)
         text = icon
         self.textColor = textColor
     }

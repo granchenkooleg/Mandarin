@@ -10,13 +10,16 @@ import Foundation
 import UIKit
 
 @objc protocol SegmentedControlDelegate {
-    @objc optional func segmentedControl(_ control: SegmentControl, didSelectSegment segment: Int)
-    @objc optional func segmentedControl(_ control: SegmentControl, shouldSelectSegment segment: Int) -> Bool
+    @objc optional func segmentedControl(_ control: SegmentedControl, didSelectSegment segment: Int)
+    @objc optional func segmentedControl(_ control: SegmentedControl, shouldSelectSegment segment: Int) -> Bool
 }
 
-final class SegmentControl: UIControl {
+final class SegmentedControl: UIControl {
     
     @IBInspectable var showHighlightLine: Bool = false
+    @IBInspectable var setSelectedDefault: Int = 0 {
+        willSet { setSelectedControl(controlForSegment(newValue)) }
+    }
     
     fileprivate lazy var controls: [UIControl] = self.subviews.reduce([UIControl](), {
         if let control = $1 as? UIControl {
@@ -28,7 +31,7 @@ final class SegmentControl: UIControl {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        controls.forEach({ $0.addTarget(self, action: #selector(self.selectSegmentTap(_:)), for: .touchUpInside) })
+        controls.all({ $0.addTarget(self, action: #selector(self.selectSegmentTap(_:)), for: .touchUpInside) })
     }
     
     var selectedSegment: Int {
@@ -55,7 +58,7 @@ final class SegmentControl: UIControl {
     }
     
     fileprivate func setSelectedControl(_ control: UIControl?) {
-        controls.forEach({ $0.isSelected = $0 == control })
+        controls.all({ $0.isSelected = $0 == control })
     }
     
     func controlForSegment(_ segment: Int) -> UIControl? {
@@ -66,7 +69,7 @@ final class SegmentControl: UIControl {
         if showHighlightLine == true {
             guard let selectedControl = controlForSegment(selectedSegment == NSNotFound ? 0 : selectedSegment) else { return }
             let path = UIBezierPath()
-            path.move(selectedControl.x ^ height).line(selectedControl.width + selectedControl.x ^ height)
+            path.move(selectedControl.x ^ height).line(40 + selectedControl.x ^ height)
             UIColor.white.setStroke()
             path.lineWidth = 10.0 / max(2, UIScreen.main.scale)
             path.stroke()

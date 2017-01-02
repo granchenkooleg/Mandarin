@@ -11,7 +11,7 @@ import RealmSwift
 
 class MainViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, SegmentedControlDelegate, UITextFieldDelegate {
     
-    @IBOutlet weak var segmentControl: SegmentControl?
+    @IBOutlet var segmentControl: SegmentedControl?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,7 +29,7 @@ class MainViewController: BaseViewController, UITableViewDataSource, UITableView
     
     //MARK: SegmentedControlDelegate
     
-    func segmentedControl(_ control: SegmentControl, didSelectSegment segment: Int) {
+    func segmentedControl(_ control: SegmentedControl, didSelectSegment segment: Int) {
         self.internalProducts = []
         if segment == 0 {
             let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
