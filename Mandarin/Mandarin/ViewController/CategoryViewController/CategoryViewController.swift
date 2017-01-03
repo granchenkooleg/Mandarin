@@ -26,25 +26,44 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
         headerLabel?.text = nameHeaderText
         
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-        guard let categoryId = categoryId else { return }
-        UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in
-            //print (">>self - \(self?.categoryId)<<")
+        UserRequest.getAllCategories(param as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
+                print (">>self - \(json["name"])<<")
                 let id = json["id"].string ?? ""
-                let category_id = json["category_id"].string ?? ""
                 let created_at = json["created_at"].string ?? ""
                 let icon = json["icon"].string ?? ""
-                
                 let name = json["name"].string ?? ""
-                
                 let units = json["units"].string ?? ""
+                let category_id = json["category_id"].string ?? ""
                 
-                let productCategory = Category (id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
-                self?.internalProducts.append(productCategory)
+                let category = Category(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
+                self?.internalProducts.append(category)
             }
             self?._products = (self?.internalProducts)!
             self?.tableView.reloadData()
         })
+
+        
+//        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+//        guard let categoryId = categoryId else { return }
+//        UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in
+//            //print (">>self - \(self?.categoryId)<<")
+//            json.forEach { _, json in
+//                let id = json["id"].string ?? ""
+//                let category_id = json["category_id"].string ?? ""
+//                let created_at = json["created_at"].string ?? ""
+//                let icon = json["icon"].string ?? ""
+//                
+//                let name = json["name"].string ?? ""
+//                
+//                let units = json["units"].string ?? ""
+//                
+//                let productCategory = Category (id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
+//                self?.internalProducts.append(productCategory)
+//            }
+//            self?._products = (self?.internalProducts)!
+//            self?.tableView.reloadData()
+//        })
     }
     
     // MARK: - Table view data source

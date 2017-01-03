@@ -9,126 +9,110 @@
 import UIKit
 import RealmSwift
 
-class MainViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, SegmentedControlDelegate, UITextFieldDelegate {
+enum SegmentTab: Int {
     
-    @IBOutlet var segmentControl: SegmentedControl?
+    case category, favorite, list
     
-    @IBOutlet weak var tableView: UITableView!
+    func toString() -> String {
+        switch self {
+        case .category: return "category"
+        case .favorite: return "favorite"
+        case .list: return "list"
+        }
+    }
+}
+
+class SegmentControlWrapper: NSObject, SegmentedControlDelegate {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBOutlet var segmentedCotrol: SegmentedControl!
+    
+    fileprivate var container = [String: UIViewController]()
+    fileprivate var selectedControl: ((UIViewController) -> Void)?
+    
+    
+    func setup(_ viewControllers: [UIViewController], selectedControl: @escaping ((UIViewController) -> Void)) {
         
-        segmentControl?.delegate = self
-        segmentControl?.layer.cornerRadius = 5.0
-        segmentControl?.layer.borderColor = Color.mandarin.cgColor
-        segmentControl?.layer.borderWidth = 1.0
-        segmentControl?.layer.masksToBounds = true
-        segmentControl?.selectedSegment = 0
-        self.segmentedControl(self.segmentControl!, didSelectSegment: 0)
+        for (index, value) in viewControllers.enumerated() {
+            self.container[SegmentTab(rawValue: index)?.toString() ?? ""] = value
+        }
+        
+        segmentedCotrol?.delegate = self
+        
+        self.selectedControl = selectedControl
+    }
+    
+    func viewController(_ segmentTab: SegmentTab) -> UIViewController? {
+        switch segmentTab {
+        case .category: return container[SegmentTab.category.toString()]
+        case .favorite: return container[SegmentTab.favorite.toString()]
+        case .list: return container[SegmentTab.list.toString()]
+        }
     }
     
     //MARK: SegmentedControlDelegate
     
     func segmentedControl(_ control: SegmentedControl, didSelectSegment segment: Int) {
-        self.internalProducts = []
-        if segment == 0 {
-            let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-            UserRequest.getAllCategories(param as [String : AnyObject], completion: {[weak self] json in
-                json.forEach { _, json in
-                    print (">>self - \(json["name"])<<")
-                    let id = json["id"].string ?? ""
-                    let created_at = json["created_at"].string ?? ""
-                    let icon = json["icon"].string ?? ""
-                    let name = json["name"].string ?? ""
-                    let units = json["units"].string ?? ""
-                    let category_id = json["category_id"].string ?? ""
-                    
-                    let category = Category(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
-                    self?.internalProducts.append(category)
-                }
-                self?._products = (self?.internalProducts)!
-                self?.tableView.reloadData()
-                })
-            
-        } else if segment == 1 {
-            let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-            UserRequest.listAllProducts(param as [String : AnyObject], completion: {[weak self] json in
-                json.forEach { _, json in
-                    print (">>self - \(json["name"])<<")
-                    let id = json["id"].string ?? ""
-                    let created_at = json["created_at"].string ?? ""
-                    let icon = json["icon"].string ?? ""
-                    let name = json["name"].string ?? ""
-                    let category_id = json["category_id"].string ?? ""
-                    let weight = json["weight"].string ?? ""
-                    let description = json["description"].string ?? ""
-                    let brand = json["brand"].string ?? ""
-                    let calories = json["calories"].string ?? ""
-                    let proteins = json["proteins"].string ?? ""
-                    let zhiry = json["zhiry"].string ?? ""
-                    let uglevody = json["uglevody"].string ?? ""
-                    let price = json["price"].string ?? ""
-                    let favorite = json["favorite"].string ?? ""
-                    let status = json["status"].string ?? ""
-                    let expire_date = json["expire_date"].string ?? ""
-                    let category_name = json["category_name"].string ?? ""
-                    let price_sale = json["price_sale"].string ?? ""
-                    
-                    let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
-                    self?.internalProducts.append(list)
-                    
-                    //for Realm
-                    let products = ProductsForRealm.setupProduct(id: id, descriptionForProduct: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
-                    let realm = try! Realm()
-                    try! realm.write {
-                        User.currentUser?.products.append(products)
-                    }
-                }
-                self?._products = (self?.internalProducts)!
-                self?.tableView.reloadData()
-                })
-        } else {self.tableView.reloadData()}
+        guard let controller = viewController(SegmentTab(rawValue: segment)!) else { return }
+        selectedControl?(controller)
+    }
+}
+
+
+class MainViewController: BaseViewController {
+    
+    @IBOutlet var segmentControlWrapper: SegmentControlWrapper!
+    @IBOutlet var containerView: UIView!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-    }
-    
-    // MARK: - Table view data source
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return _products.count
+        segmentControlWrapper.segmentedCotrol.layer.cornerRadius = 5.0
+        segmentControlWrapper.segmentedCotrol?.layer.borderColor = Color.mandarin.cgColor
+        segmentControlWrapper.segmentedCotrol?.layer.borderWidth = 1.0
+        segmentControlWrapper.segmentedCotrol?.layer.masksToBounds = true
+        segmentControlWrapper.segmentedCotrol?.selectedSegment = 0
         
+        segmentControlWrapper.setup([
+            Storyboard.Category.instantiate(),
+            Storyboard.FavoriteProducts.instantiate(),
+            Storyboard.ListOfWeightProducts.instantiate()],
+                                     selectedControl: { [weak self] viewControllerr in
+                                        self?.addController(viewControllerr)
+        })
+        selectTab(.category)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "Cell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MainTableViewCell
-        
-        let productDetails = _products[(indexPath as NSIndexPath).row]
-        Dispatch.mainQueue.async { _ in
-            let imageData: Data = try! Data(contentsOf: URL(string: productDetails.icon)!)
-            cell.thubnailImageView?.image = UIImage(data: imageData)
-        }
-        
-        cell.nameLabel?.text = productDetails.name
-        
-        return cell
+    func selectTab(_ segmentTab: SegmentTab) {
+        guard let controller = segmentControlWrapper.viewController(segmentTab) else { return }
+        segmentControlWrapper.segmentedCotrol.selectedSegment = segmentTab.rawValue
+        addController(controller)
     }
     
-    //MARK: Segue
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let categoryViewController = Storyboard.Category.instantiate()
-        categoryViewController.categoryId = _products[indexPath.row].id
-        categoryViewController.nameHeaderText = _products[indexPath.row].name
-        UINavigationController.main.pushViewController(categoryViewController, animated: true)
+    func addController(_ controller: UIViewController) {
+        containerView.subviews.all({ $0.removeFromSuperview() })
+        childViewControllers.all { $0.removeFromParentViewController() }
+        addChildViewController(controller)
+        containerView.addSubview(controller.view)
+        containerView.add(controller.view) { $0.edges.equalTo(containerView) }
+        controller.didMove(toParentViewController: self)
+        view.layoutIfNeeded()
     }
+
+
     
-    override func searchTextChanged(sender: UITextField) {
-        super.searchTextChanged(sender: sender)
-        tableView.reloadData()
-    }
+//    //MARK: Segue
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let categoryViewController = Storyboard.Category.instantiate()
+//        categoryViewController.categoryId = _products[indexPath.row].id
+//        categoryViewController.nameHeaderText = _products[indexPath.row].name
+//        UINavigationController.main.pushViewController(categoryViewController, animated: true)
+//    }
+//    
+//    override func searchTextChanged(sender: UITextField) {
+//        super.searchTextChanged(sender: sender)
+//        tableView.reloadData()
+//    }
     
     
 }

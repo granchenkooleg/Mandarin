@@ -26,7 +26,7 @@ class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        listHeaderLabel.text = nameListsOfProductsHeaderText
+        listHeaderLabel?.text = nameListsOfProductsHeaderText
         
         // Do any additional setup after loading the view.
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
@@ -53,10 +53,9 @@ class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataS
                 let price_sale = json["price_sale"].string ?? ""
                 
                 
-                if self?.idPodcategory == category_id && self?.weightOfWeightVC == weight {//Here we make a comparison to accurately display the product by weight
-                    let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
-                    self?.internalProductsForListOfWeightVC.append(list)
-                } else { return }
+                let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
+                self?.internalProductsForListOfWeightVC.append(list)
+                
                 
             }
             self?._productsList = (self?.internalProductsForListOfWeightVC)!
@@ -82,7 +81,7 @@ class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataS
         
         cell.nameLabel?.text = productDetails.name
         cell.descriptionLabel?.text = productDetails.description
-        cell.weightLabel?.text = productDetails.weight + " " + unitOfWeightForListOfProductsByWeightVC!
+        cell.weightLabel?.text = productDetails.weight + " " + (unitOfWeightForListOfProductsByWeightVC ?? "")
         cell.priceOldLabel?.text = productDetails.price + " грн."
         //if price_sale != 0.00 грн, set it
         guard productDetails.price_sale != "0.00" else {
