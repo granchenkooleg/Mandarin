@@ -180,7 +180,11 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
                 sender.loading = false
                 return
         }
-        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79", "email" : /*"test1@mail.ru"*/ email, "password" : /*"123123"*/ password]
+        
+        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                 "email" : /*"test1@mail.ru"*/ email,
+                                 "password" : /*"123123"*/ password]
+        
         UserRequest.makelogin(param as [String : AnyObject], completion: {[weak self] success in
             if success == true {
                 self?.chooseNextContoller()

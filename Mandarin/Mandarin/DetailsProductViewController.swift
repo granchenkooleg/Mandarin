@@ -25,6 +25,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBOutlet weak var headerTextInDetailsVC: UILabel!
     @IBOutlet weak var productsImageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
+    var idProductDetailsVC: String!
     var productsImage: String! // name our image
     var nameHeaderTextDetailsVC: String?
     var created_atDetailsVC: String?
@@ -70,6 +71,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         overPlusAndMinusButton.setBackgroundColor(Color.mandarin, animated: true)
         overPlusAndMinusButton.setTitle("В корзину", for: UIControlState.normal)
         overPlusAndMinusButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        
     }
     
     //setting heartButton
@@ -83,7 +85,46 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     
     // button for addition to section "💛Я люблю"
     @IBAction func heartButton(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        
+        //sender.loading = true
+        
+        if sender.isSelected == false {
+            
+            //adding to Favorite
+            let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                     "product_id" : idProductDetailsVC,
+                                     "user_id" : "127"] as [String : Any]
+            
+            UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
+                if success == true {
+                    UIAlertController.alert("Товар добавлен в \"Любимые\"!".ls).show()
+                }
+                //sender.loading = false
+            })
+            
+            //it for fill heart white color. Look func buttonHeart(). [start
+            sender.isSelected = !sender.isSelected
+            // end
+            ///////////////////////////////////////////////////////////////////////////
+        } else {
+            
+            //remove from Favorite
+            let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                     "product_id" : idProductDetailsVC,
+                                     "user_id" : "127",
+                                     "remove" : "1"] as [String : Any]
+            
+            UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
+                if success == true {
+                    UIAlertController.alert("Товар удален из любимых!.".ls).show()
+                }
+                //sender.loading = false
+            })
+            
+            //it for fill heart white color. Look func buttonHeart(). [start
+            sender.isSelected = !sender.isSelected
+            // end]
+        }
     }
     
     //hidden overButton

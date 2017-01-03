@@ -78,10 +78,10 @@ let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URL
 
 enum UserRequest: URLRequestConvertible {
     
+    case addFavoriteProduct([String: AnyObject])
     case getPassword([String: AnyObject])
     case getAllProducts([String: AnyObject])
     case getWeight([String: AnyObject])
-    //case create([String: AnyObject])
     case getCategories([String: AnyObject])
     case getProductsCategory(String, [String: AnyObject])
     case registration([String: AnyObject])
@@ -96,7 +96,7 @@ enum UserRequest: URLRequestConvertible {
         
         var method: HTTPMethod {
             switch self {
-            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight, .getAllProducts, .getPassword:
+            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight, .getAllProducts, .getPassword, .addFavoriteProduct:
                 return .get
             case .logOut, .trans:
                 return .post
@@ -105,6 +105,8 @@ enum UserRequest: URLRequestConvertible {
         
         let params: ([String: AnyObject]?) = {
             switch self {
+            case .addFavoriteProduct(let newPost):
+                return newPost
             case .getPassword(let newPost):
                 return newPost
             case .getAllProducts(let newPost):
@@ -131,6 +133,8 @@ enum UserRequest: URLRequestConvertible {
         let url: URL = {
             let relativePath:String?
             switch self {
+            case.addFavoriteProduct:
+                relativePath = "addFavorite"
             case.getPassword:
                 relativePath = "restorePass"
             case .getAllProducts:
@@ -186,6 +190,29 @@ enum UserRequest: URLRequestConvertible {
     //
     
     
+    static func addToFavorite(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
+        requestHandler(#function, URLRequest: addFavoriteProduct(entryParams)) { json in
+            
+            ///! omission in "successful " here spetial! So it is in the server!
+            if json?[0]["message"] == "successful "  {
+                print (">>addToFavorite - \(json?[0]["message"])<<")
+                //            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
+                completion(true)
+                ///! omission in "Product remove from favorite list " here spetial! So it is in the server!
+            } else if json?[0]["message"] == "Product remove from favorite list " {
+                print (">>addToFavorite - \(json?[0]["message"])<<")
+                //            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
+                completion(true)
+
+            } else {
+                print (">>addToFavorite - \(json?[0]["message"])<<")
+                UIAlertController.alert("Этот продукт был уже добавлен в избранное, вами ранее!".ls).show()
+                completion(false)
+                return
+            }
+        }
+    }
+    
     static func getWeightCategory(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
         requestHandler(#function, URLRequest: getWeight(entryParams), completionHandler: { json in
             guard let json = json else {
@@ -201,7 +228,7 @@ enum UserRequest: URLRequestConvertible {
                 completion(false)
                 return
             }
-            
+            print (">>recoveryPassword - \(json)<<")
             User.deleteUser()
             completion(true)
         }
@@ -249,8 +276,8 @@ enum UserRequest: URLRequestConvertible {
     
     static func makeRegistration(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
         requestHandler(#function, URLRequest: registration(entryParams)) { json in
-            guard let json = json, json[0]["error"] == false else {
-                UIAlertController.alert(".....".ls).show()
+            guard let json = json/*, json[0]["error"] == false*/ else {
+                UIAlertController.alert("ошибка APIRequest".ls).show()
                 completion(false)
                 return
             }
