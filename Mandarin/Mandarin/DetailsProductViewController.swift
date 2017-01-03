@@ -93,7 +93,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             //adding to Favorite
             let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                      "product_id" : idProductDetailsVC,
-                                     "user_id" : "127"] as [String : Any]
+                                     "user_id" : User.isAuthorized()] as [String : Any]
             
             UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
                 if success == true {
@@ -111,7 +111,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             //remove from Favorite
             let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                      "product_id" : idProductDetailsVC,
-                                     "user_id" : "127",
+                                     "user_id" : User.isAuthorized(),
                                      "remove" : "1"] as [String : Any]
             
             UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
