@@ -63,7 +63,6 @@ class MainViewController: BaseViewController {
     @IBOutlet var segmentControlWrapper: SegmentControlWrapper!
     @IBOutlet var containerView: UIView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -98,21 +97,4 @@ class MainViewController: BaseViewController {
         controller.didMove(toParentViewController: self)
         view.layoutIfNeeded()
     }
-
-
-    
-//    //MARK: Segue
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let categoryViewController = Storyboard.Category.instantiate()
-//        categoryViewController.categoryId = _products[indexPath.row].id
-//        categoryViewController.nameHeaderText = _products[indexPath.row].name
-//        UINavigationController.main.pushViewController(categoryViewController, animated: true)
-//    }
-//    
-//    override func searchTextChanged(sender: UITextField) {
-//        super.searchTextChanged(sender: sender)
-//        tableView.reloadData()
-//    }
-    
-    
 }

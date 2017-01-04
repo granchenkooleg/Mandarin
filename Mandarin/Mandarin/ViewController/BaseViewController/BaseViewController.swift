@@ -182,7 +182,8 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         if (self.presentingViewController != nil) {
             self.dismiss(animated: true, completion: nil)
         } else {
-            self.navigationController?.popViewController(animated: true)
+            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+            containerViewController.addController(Storyboard.Main.instantiate())
         }
     }
     
@@ -203,7 +204,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     //MARK: MenuClick
     @IBAction func menuClick(_ sender: AnyObject) {
-        guard let containerViewController = self.parent as? ContainerViewController else { return }
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
     }
    

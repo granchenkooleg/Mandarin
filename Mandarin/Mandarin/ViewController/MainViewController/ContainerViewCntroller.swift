@@ -15,7 +15,7 @@ class ContainerViewController: BaseViewController {
     
     @IBOutlet weak var menuContainerView: Menu!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var amountButton: UIButton!
+    @IBOutlet weak var containerView: UIView!
     
     var showingMenu = false
     
@@ -29,7 +29,6 @@ class ContainerViewController: BaseViewController {
         menuContainerView.completion = { [weak self] in
             self?.showMenu(false, animated: false)
         }
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +69,16 @@ class ContainerViewController: BaseViewController {
         let rotateTransform = CATransform3DRotate(identity, CGFloat(angle), 0.0, 1.0, 0.0)
         let translateTransform = CATransform3DMakeTranslation(xOffset, 0.0, 0.0)
         return CATransform3DConcat(rotateTransform, translateTransform)
+    }
+    
+    func addController(_ controller: UIViewController) {
+        containerView.subviews.all({ $0.removeFromSuperview() })
+        childViewControllers.all { $0.removeFromParentViewController() }
+        addChildViewController(controller)
+        containerView.addSubview(controller.view)
+        containerView.add(controller.view) { $0.edges.equalTo(containerView) }
+        controller.didMove(toParentViewController: self)
+        view.layoutIfNeeded()
     }
 }
 

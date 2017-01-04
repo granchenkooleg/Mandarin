@@ -21,7 +21,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.separatorStyle = .none
+        tableView?.separatorStyle = .none
         
         headerLabel?.text = nameHeaderText
         getAllCategory()
@@ -82,7 +82,8 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         let categoryViewController = Storyboard.Category.instantiate()
         categoryViewController.categoryId = _products[indexPath.row].id
         categoryViewController.nameHeaderText = _products[indexPath.row].name
-        UINavigationController.main.pushViewController(categoryViewController, animated: true)
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        containerViewController.addController(categoryViewController)
     }
 }
 
@@ -122,7 +123,8 @@ class CategoryViewController: CategoryViewControllerSegment {
         weightViewController.unitOfWeight = _products[indexPath.row].units
         weightViewController.nameWeightHeaderText = _products[indexPath.row].name
         weightViewController.podCategory_id = _products[indexPath.row].id
-        UINavigationController.main.pushViewController(weightViewController, animated: true)
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        containerViewController.addController(weightViewController)
     }
 }
 
