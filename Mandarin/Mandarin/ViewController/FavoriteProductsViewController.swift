@@ -17,6 +17,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.separatorStyle = .none
         
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                  "user_id" : User.isAuthorized()] as [String : Any]
