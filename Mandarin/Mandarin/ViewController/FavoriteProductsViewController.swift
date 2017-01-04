@@ -71,7 +71,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         
         cell.nameLabel?.text = productDetails.name
         cell.descriptionLabel?.text = productDetails.description
-        //cell.weightLabel?.text = productDetails.weight + " " + (unitOfWeightForListOfProductsByWeightVC ?? "")
+        cell.weightLabel?.text = productDetails.weight  //+ " " + (unitOfWeightForListOfProductsByWeightVC ?? "")
         cell.priceOldLabel?.text = productDetails.price + " грн."
         
         //if price_sale != 0.00 грн, set it
