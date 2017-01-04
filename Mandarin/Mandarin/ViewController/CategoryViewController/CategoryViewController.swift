@@ -21,6 +21,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.separatorStyle = .none
         
         headerLabel?.text = nameHeaderText
         getAllCategory()
