@@ -78,6 +78,7 @@ let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URL
 
 enum UserRequest: URLRequestConvertible {
     
+    case favoriteProduct([String: AnyObject])
     case addFavoriteProduct([String: AnyObject])
     case getPassword([String: AnyObject])
     case getAllProducts([String: AnyObject])
@@ -96,7 +97,7 @@ enum UserRequest: URLRequestConvertible {
         
         var method: HTTPMethod {
             switch self {
-            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight, .getAllProducts, .getPassword, .addFavoriteProduct:
+            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight, .getAllProducts, .getPassword, .addFavoriteProduct, .favoriteProduct:
                 return .get
             case .logOut, .trans:
                 return .post
@@ -105,6 +106,8 @@ enum UserRequest: URLRequestConvertible {
         
         let params: ([String: AnyObject]?) = {
             switch self {
+            case .favoriteProduct(let newPost):
+                return newPost
             case .addFavoriteProduct(let newPost):
                 return newPost
             case .getPassword(let newPost):
@@ -133,6 +136,9 @@ enum UserRequest: URLRequestConvertible {
         let url: URL = {
             let relativePath:String?
             switch self {
+                
+            case.favoriteProduct:
+                relativePath = "favorite"
             case.addFavoriteProduct:
                 relativePath = "addFavorite"
             case.getPassword:
@@ -189,6 +195,16 @@ enum UserRequest: URLRequestConvertible {
     //    }
     //
     
+    
+    static func favorite(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
+        requestHandler(#function, URLRequest: favoriteProduct(entryParams), completionHandler: { json in
+            guard let json = json else {
+                return
+            }
+            print (">>favorite - \(json)<<")
+            completion(json)
+        })
+    }
     
     static func addToFavorite(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
         requestHandler(#function, URLRequest: addFavoriteProduct(entryParams)) { json in

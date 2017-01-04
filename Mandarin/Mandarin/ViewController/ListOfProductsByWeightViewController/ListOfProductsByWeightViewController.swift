@@ -55,9 +55,8 @@ class ListOfProductsByWeightViewController: BaseViewController, UITableViewDataS
                 
                 let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
                 self?.internalProductsForListOfWeightVC.append(list)
-                
-                
             }
+            
             self?._productsList = (self?.internalProductsForListOfWeightVC)!
             self?.tableView.reloadData()
             })
