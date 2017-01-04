@@ -8,12 +8,11 @@
 
 import UIKit
 
-class CategoryViewController: BaseViewController,UITableViewDataSource, UITableViewDelegate {
+class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     //from segue
-    var categoryId: String?
     var nameHeaderText: String?
     
     // @IBOutlet weak var tableView: UITableView!
@@ -24,7 +23,10 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
         super.viewDidLoad()
         
         headerLabel?.text = nameHeaderText
-        
+        getAllCategory()
+    }
+    
+    func getAllCategory () {
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.getAllCategories(param as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
@@ -42,28 +44,6 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
             self?._products = (self?.internalProducts)!
             self?.tableView.reloadData()
         })
-
-        
-//        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-//        guard let categoryId = categoryId else { return }
-//        UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in
-//            //print (">>self - \(self?.categoryId)<<")
-//            json.forEach { _, json in
-//                let id = json["id"].string ?? ""
-//                let category_id = json["category_id"].string ?? ""
-//                let created_at = json["created_at"].string ?? ""
-//                let icon = json["icon"].string ?? ""
-//                
-//                let name = json["name"].string ?? ""
-//                
-//                let units = json["units"].string ?? ""
-//                
-//                let productCategory = Category (id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
-//                self?.internalProducts.append(productCategory)
-//            }
-//            self?._products = (self?.internalProducts)!
-//            self?.tableView.reloadData()
-//        })
     }
     
     // MARK: - Table view data source
@@ -94,13 +74,54 @@ class CategoryViewController: BaseViewController,UITableViewDataSource, UITableV
     
     //MARK: Segue
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        getWeigth(indexPath: indexPath)
+    }
+    
+    func getWeigth(indexPath: IndexPath) {
+        let categoryViewController = Storyboard.Category.instantiate()
+        categoryViewController.categoryId = _products[indexPath.row].id
+        categoryViewController.nameHeaderText = _products[indexPath.row].name
+        UINavigationController.main.pushViewController(categoryViewController, animated: true)
+    }
+}
+
+class CategoryViewController: CategoryViewControllerSegment {
+    
+    var categoryId: String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func getAllCategory() {
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+        guard let categoryId = categoryId else { return }
+        UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in
+            //print (">>self - \(self?.categoryId)<<")
+            json.forEach { _, json in
+                let id = json["id"].string ?? ""
+                let category_id = json["category_id"].string ?? ""
+                let created_at = json["created_at"].string ?? ""
+                let icon = json["icon"].string ?? ""
+                
+                let name = json["name"].string ?? ""
+                
+                let units = json["units"].string ?? ""
+                
+                let productCategory = Category (id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
+                self?.internalProducts.append(productCategory)
+            }
+            self?._products = (self?.internalProducts)!
+            self?.tableView.reloadData()
+        })
+    }
+    
+    override func getWeigth(indexPath: IndexPath) {
         let weightViewController = Storyboard.Weight.instantiate()
         weightViewController.unitOfWeight = _products[indexPath.row].units
         weightViewController.nameWeightHeaderText = _products[indexPath.row].name
         weightViewController.podCategory_id = _products[indexPath.row].id
         UINavigationController.main.pushViewController(weightViewController, animated: true)
     }
-        
-        
 }
 
