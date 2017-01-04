@@ -59,9 +59,8 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 
                 let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
                 self?.internalProductsForListOfWeightVC.append(list)
-                
-                
             }
+            
             self?._productsList = (self?.internalProductsForListOfWeightVC)!
             self?.tableView.reloadData()
         })
@@ -106,6 +105,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()
+        detailsProductVC.idProductDetailsVC = _productsList[indexPath.row].id
         detailsProductVC.priceDetailsVC = _productsList[indexPath.row].price
         detailsProductVC.descriptionDetailsVC = _productsList[indexPath.row].description
         detailsProductVC.uglevodyDetailsVC = _productsList[indexPath.row].uglevody
