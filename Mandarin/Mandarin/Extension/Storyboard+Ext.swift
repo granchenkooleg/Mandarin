@@ -42,6 +42,9 @@ struct Storyboard {
     static let ListOfWeightProducts = StoryboardObject<ListOfProductsByWeightViewController>("listOfWeightProducts")
     static let DetailsProduct = StoryboardObject<DetailsProductViewController>("detailsProduct")
     static let FavoriteProducts = StoryboardObject<FavoriteProductsViewController>("favorite")
+    
+    static let ListOfWeightProductsSegment = StoryboardObject<ListOfProductsByWeightViewControllerSegment>("listOfWeightProductsSegment")
+    static let CategorySegment = StoryboardObject<CategoryViewControllerSegment>("categorySegment")
 }
 
 extension UIStoryboard {

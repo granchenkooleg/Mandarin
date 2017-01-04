@@ -74,9 +74,9 @@ class MainViewController: BaseViewController {
         segmentControlWrapper.segmentedCotrol?.selectedSegment = 0
         
         segmentControlWrapper.setup([
-            Storyboard.Category.instantiate(),
+            Storyboard.CategorySegment.instantiate(),
             Storyboard.FavoriteProducts.instantiate(),
-            Storyboard.ListOfWeightProducts.instantiate()],
+            Storyboard.ListOfWeightProductsSegment.instantiate()],
                                      selectedControl: { [weak self] viewControllerr in
                                         self?.addController(viewControllerr)
         })
