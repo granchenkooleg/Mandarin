@@ -334,8 +334,8 @@
 			isa = PBXGroup;
 			children = (
 				563474491DF164AC004ECDC4 /* BaseViewController */,
-				565EA5BE1E1C0C5E00E389FF /* FavoriteProductsViewController */,
 				563474481DF16420004ECDC4 /* MainViewController */,
+				565EA5BE1E1C0C5E00E389FF /* FavoriteProductsViewController */,
 				5634744A1DF164E4004ECDC4 /* CategoryViewController */,
 				7CF26A861DF82EC3004C627E /* WeightViewController */,
 				5634744B1DF16528004ECDC4 /* ListOfProductsByWeightViewController */,
