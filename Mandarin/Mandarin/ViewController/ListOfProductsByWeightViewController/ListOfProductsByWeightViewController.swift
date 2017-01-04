@@ -29,7 +29,8 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         listHeaderLabel?.text = nameListsOfProductsHeaderText
         
         // Do any additional setup after loading the view.
-      listOfProduct()
+        listOfProduct()
+        tableView.separatorStyle = .none
     }
     
     func listOfProduct() {
@@ -67,6 +68,8 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     }
     
     // MARK: - Table view data source
+    
+   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return _productsList.count
