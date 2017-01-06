@@ -12,18 +12,19 @@ import RealmSwift
 class BasketViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     
+    @IBOutlet weak var quantityProductsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var productsInBasket: Results<ProductsForRealm>!
     
-    var quantityProductsInCart = productsInBasket.count
+    var quantityProductsInCart: Any?
     
     override func viewDidLoad() {
         let realm = try! Realm()
         productsInBasket = realm.objects(ProductsForRealm.self)
         
-        
-        
+        //for display quantity products in cart
+        quantityProductsInCart = self.productsInBasket.count
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,6 +35,9 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        
+        //display quantity products in cart
+        quantityProductsLabel.text = NSString(format:"%d", quantityProductsInCart as! CVarArg) as String
     }
     
     // MARK: - Table view data source
