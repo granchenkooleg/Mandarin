@@ -11,19 +11,21 @@ import RealmSwift
 
 class BasketViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var buttonDeleteAll: UIButton!
+    
     @IBOutlet weak var tableView: UITableView!
     
     var productsInBasket: Results<ProductsForRealm>!
+    
+    var quantityProductsInCart = productsInBasket.count
     
     override func viewDidLoad() {
         let realm = try! Realm()
         productsInBasket = realm.objects(ProductsForRealm.self)
         
-       // buttonDeleteAll.layer.borderColor = UIColor.red.cgColor
+        
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,7 +35,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-
+    
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -60,11 +62,11 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             try! productsInBasket.realm!.write {
                 let product = self.productsInBasket[indexPath.row]
@@ -73,18 +75,35 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    // button red color
+    @IBAction func deleteAllButton(_ sender: AnyObject) {
+        
+        //Create the AlertController
+        let actionSheetController: UIAlertController = UIAlertController(title: "Удалить корзину?", message: "Вы на самом деле собираетесь удалить все продукты из корзины?", preferredStyle: .alert)
+        
+        //Create and add the Cancel action
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Нет", style: .cancel) { action -> Void in
+            //Do some stuff
+        }
+        actionSheetController.addAction(cancelAction)
+        //Create and an option action
+        let nextAction: UIAlertAction = UIAlertAction(title: "Удалить", style: .destructive) { action -> Void in
+            //Do some other stuff
+            ProductsForRealm.deleteAllProducts()
+            try! self.productsInBasket.realm!.write {
+                let product = self.productsInBasket
+                self.productsInBasket.realm!.delete(product!)
+                self.tableView.reloadData()
+            }
+        }
+        actionSheetController.addAction(nextAction)
+        
+        //Present the AlertController
+        self.present(actionSheetController, animated: true, completion: nil)
+        
     }
-    */
-
+    
 }
 
 class BasketTableViewCell: UITableViewCell {

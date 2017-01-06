@@ -1385,14 +1385,25 @@
                                     <outlet property="delegate" destination="qxi-2N-2Mq" id="Vcy-SD-OxW"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gz2-Rf-Tmm">
+                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gz2-Rf-Tmm">
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GgC-Na-lrK"/>
                                     <constraint firstAttribute="width" constant="100" id="IY7-xr-ddA"/>
                                 </constraints>
-                                <state key="normal" title="Удалить все" backgroundImage="Ray">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="15"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Удалить все">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteAllButton:" destination="qxi-2N-2Mq" eventType="touchUpInside" id="P2d-Dk-U32"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2488,7 +2499,6 @@
         <image name="CartWithProducts.png" width="232" height="201"/>
         <image name="FenceForBanner.png" width="688" height="482"/>
         <image name="PhotoOdessa1.png" width="604" height="350"/>
-        <image name="Ray" width="230" height="219"/>
         <image name="TextForBanner.png" width="400" height="77"/>
         <image name="check.png" width="647" height="740"/>
         <image name="menuImage.png" width="90" height="90"/>
