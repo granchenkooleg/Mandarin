@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import RealmSwift
 
 struct KeyboardAdjustment {
     let isBottom: Bool
@@ -29,6 +30,12 @@ func performWhenLoaded<T: BaseViewController>(_ controller: T, block: @escaping 
 }
 
 class BaseViewController: UIViewController, KeyboardNotifying {
+    
+    //var it contains Realm data my table ProductsForRealm
+//    var productsInBasket: Results<ProductsForRealm>!
+    
+    //var for cart
+//    var quantityProductsInCart: Any?
     
     @IBInspectable var statusBarDefault = false
     
@@ -86,6 +93,13 @@ class BaseViewController: UIViewController, KeyboardNotifying {
             whenLoadedBlocks.removeAll()
         }
         searchTextField?.addTarget(self, action: #selector(self.searchTextChanged(sender:)), for: .editingChanged)
+        
+        //get our objects from table ProductsForRealm
+//        let realm = try! Realm()
+//        productsInBasket = realm.objects(ProductsForRealm.self)
+        
+        //for display quantity products in cart
+//        quantityProductsInCart = self.productsInBasket.count
     }
     
     fileprivate var whenLoadedBlocks = [Block]()

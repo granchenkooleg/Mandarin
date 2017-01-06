@@ -12,11 +12,14 @@ import RealmSwift
 class BasketViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     
+    @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var quantityProductsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    //it spetial for Realm
     var productsInBasket: Results<ProductsForRealm>!
     
+    //init
     var quantityProductsInCart: Any?
     
     override func viewDidLoad() {
@@ -25,6 +28,13 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         
         //for display quantity products in cart
         quantityProductsInCart = self.productsInBasket.count
+        
+        //display quantity products in cart            //it part spetial for convert int to string
+        quantityProductsLabel.text = NSString(format:"%d", quantityProductsInCart as! CVarArg) as String
+        
+        //display total price
+        totalPriceLabel.text = (totalPriceInCart() + " грн.")
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,8 +46,16 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         super.viewWillAppear(animated)
         tableView.reloadData()
         
-        //display quantity products in cart
-        quantityProductsLabel.text = NSString(format:"%d", quantityProductsInCart as! CVarArg) as String
+        //quantityProductsLabel.text = NSString(format:"%d", quantityProductsInCart as! CVarArg) as String
+    }
+    
+    //for total price
+    func totalPriceInCart() -> String {
+        var totalPrice: Float = 0
+        for product in  productsInBasket {
+            totalPrice += Float(product.price!)!
+        }
+        return String(totalPrice)
     }
     
     // MARK: - Table view data source
@@ -66,6 +84,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
+    //it for selete rows [start
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -79,6 +98,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    //end]
     
     // button red color
     @IBAction func deleteAllButton(_ sender: AnyObject) {
