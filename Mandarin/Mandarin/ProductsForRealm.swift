@@ -37,8 +37,18 @@ class ProductsForRealm : Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+    
+    //path to Realm
+    static func setConfig() {
+        let realm = try! Realm()
+        if let url = realm.configuration.fileURL {
+            print("FileURL of DataBase - \(url)")
+        }
+    }
 
     class func setupProduct(id: String = "", descriptionForProduct: String = "", proteins: String = "", calories: String = "", zhiry: String = "", favorite: String = "", category_id: String = "", brand: String = "", price_sale: String = "", weight: String = "", status: String = "", expire_date: String = "", price: String = "", created_at: String = "", icon: String = "", category_name: String = "", name: String = "", uglevody: String = "", units: String = "") -> ProductsForRealm {
+        
+        setConfig()
         
         let productData: Dictionary = [
             "id" : id,

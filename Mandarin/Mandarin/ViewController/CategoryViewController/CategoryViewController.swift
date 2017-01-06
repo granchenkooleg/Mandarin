@@ -118,6 +118,7 @@ class CategoryViewController: CategoryViewControllerSegment {
         })
     }
     
+    //segue
     override func getWeigth(indexPath: IndexPath) {
         let weightViewController = Storyboard.Weight.instantiate()
         weightViewController.unitOfWeight = _products[indexPath.row].units

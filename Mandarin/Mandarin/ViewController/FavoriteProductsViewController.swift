@@ -43,9 +43,10 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
                 let expire_date = json["expire_date"].string ?? ""
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
+                let units = json["units"].string ?? ""
                 
                 
-                let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
+                let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units)
                 self?.internalProductsForListOfWeightVC.append(list)
             }
             
@@ -72,7 +73,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         
         cell.nameLabel?.text = productDetails.name
         cell.descriptionLabel?.text = productDetails.description
-        cell.weightLabel?.text = productDetails.weight  //+ " " + (unitOfWeightForListOfProductsByWeightVC ?? "")
+        cell.weightLabel?.text = productDetails.weight  + " " + productDetails.units
         cell.priceOldLabel?.text = productDetails.price + " грн."
         
         //if price_sale != 0.00 грн, set it
@@ -89,6 +90,31 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         // set attributed text on a UILabel
         cell.priceOldLabel?.attributedText = myAttrString
         return cell
+    }
+    
+    // MARK: - Navigation
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        detailsVC (indexPath: indexPath)
+    }
+    
+    func detailsVC (indexPath: IndexPath) {
+        let detailsProductVC = Storyboard.DetailsProduct.instantiate()
+        detailsProductVC.idProductDetailsVC = _productsList[indexPath.row].id
+        detailsProductVC.priceDetailsVC = _productsList[indexPath.row].price
+        detailsProductVC.descriptionDetailsVC = _productsList[indexPath.row].description
+        detailsProductVC.uglevodyDetailsVC = _productsList[indexPath.row].uglevody
+        detailsProductVC.zhiryDetailsVC = _productsList[indexPath.row].zhiry
+        
+        detailsProductVC.proteinsDetailsVC = _productsList[indexPath.row].proteins
+        detailsProductVC.caloriesDetailsVC = _productsList[indexPath.row].calories
+        detailsProductVC.expire_dateDetailsVC = _productsList[indexPath.row].expire_date
+        detailsProductVC.brandDetailsVC = _productsList[indexPath.row].brand
+        detailsProductVC.iconDetailsVC = _productsList[indexPath.row].icon
+        //detailsProductVC.DetailsVC = _products[indexPath.row].
+        detailsProductVC.created_atDetailsVC = _productsList[indexPath.row].created_at
+        detailsProductVC.nameHeaderTextDetailsVC = _productsList[indexPath.row].name
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        containerViewController.addController(detailsProductVC)
     }
     
 //    func numberOfSections(in tableView: UITableView) -> Int {

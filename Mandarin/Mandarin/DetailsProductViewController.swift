@@ -11,7 +11,7 @@ import UIKit
 class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     
     
-    
+    @IBOutlet weak var quantityCartLabel: UILabel!
     @IBOutlet weak var overPlusAndMinusButton: UIButton!
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
@@ -38,7 +38,8 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     var uglevodyDetailsVC: String?
     var descriptionDetailsVC: String?
     var priceDetailsVC: String?
-    
+    //for cart
+    //var quantityProducts: String
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         //call overPlusAndMinusButton function for display
         determinantForOverPlusAndMinusButton()
         
-        
+        //quantityCartLabel.text = quantityProducts
         priceLabel.text = priceDetailsVC! + " грн."
         nameLabel.text = nameHeaderTextDetailsVC
         descriptionTextField.text = descriptionDetailsVC
@@ -116,7 +117,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             
             UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
                 if success == true {
-                    UIAlertController.alert("Товар удален из любимых!.".ls).show()
+                    UIAlertController.alert("Товар удален из любимых!".ls).show()
                 }
                 //sender.loading = false
             })
@@ -131,6 +132,24 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBAction func overButtonHidden(_ sender: UIButton) {
         overPlusAndMinusButton.isHidden = true
     }
+    
+    //button cart
+    @IBAction func createCart(_ sender: AnyObject) {
+        
+//        let list = ProductsForRealm.setupProduct(id: id, descriptionForProduct: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
+//        self?.internalProducts.append(list)
+//        let products = ProductsForRealm(value: list)
+//        User.currentUser?.products.append(products)
+        
+        
+        let list = ProductsForRealm.setupProduct(id: idProductDetailsVC ?? "", descriptionForProduct: descriptionDetailsVC ?? "", proteins: proteinsDetailsVC ?? "", calories: caloriesDetailsVC ?? "", zhiry: zhiryDetailsVC ?? "", favorite: "", category_id: "", brand: brandDetailsVC ?? "", price_sale: "", weight: "", status: "", expire_date: expire_dateDetailsVC ?? "", price: priceDetailsVC ?? "", created_at: created_atDetailsVC ?? "", icon: iconDetailsVC ?? "", category_name: "", name: nameHeaderTextDetailsVC ?? "" , uglevody: uglevodyDetailsVC ?? "" , units: "")
+        
+        UIAlertController.alert("Товар добавлен в корзину.".ls).show()
+        //        navigationController!.popViewController(animated: true)
+        
+        // quantityProducts  = "2"
+    }
+
     
     
 }

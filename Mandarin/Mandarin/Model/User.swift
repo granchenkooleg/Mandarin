@@ -14,13 +14,15 @@ var token: NotificationToken?
 
 class User: Object {
     
-    dynamic var id: String? = ""
+    dynamic var id: String? = "" // or dynamic var id = UUID().uuidString
     dynamic var firstName: String? = ""
     dynamic var lastName: String? = ""
     dynamic var email: String? = ""
     dynamic var password: String? = ""
     dynamic var phone: String? = ""
     var products = List<ProductsForRealm>()
+    
+    
 
     override static func primaryKey() -> String? {
         return "id"

@@ -20,6 +20,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     var weightOfWeightVC: String?
     var idPodcategory: String?
     
+    var list: Any?
     var internalProductsForListOfWeightVC = [Product]()
     var _productsList = [Product]()
     
@@ -37,7 +38,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.listAllProducts(param as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
-                print (">>self - \(json["name"])<<")
+                print (">>self - \(json)<<")
                 let id = json["id"].string ?? ""
                 let created_at = json["created_at"].string ?? ""
                 let icon = json["icon"].string ?? ""
@@ -57,19 +58,21 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
                 
+                if Double(price_sale)! > Double(0.00) {
+                    self?.list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
+                    self?.internalProductsForListOfWeightVC.append(self?.list as! Product)
+                } else {return}
                 
-                let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
-                self?.internalProductsForListOfWeightVC.append(list)
             }
             
             self?._productsList = (self?.internalProductsForListOfWeightVC)!
             self?.tableView.reloadData()
-        })
+            })
     }
     
     // MARK: - Table view data source
     
-   
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return _productsList.count
@@ -166,7 +169,7 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
             }
             self?._productsList = (self?.internalProductsForListOfWeightVC)!
             self?.tableView.reloadData()
-        })
+            })
     }
-
+    
 }
