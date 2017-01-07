@@ -338,11 +338,11 @@
 				5634744B1DF16528004ECDC4 /* ListOfProductsByWeightViewController */,
 				7CF26A871DF82EFD004C627E /* DetailsProductViewController */,
 				7C2D73751DF9FAD600A6400B /* BasketViewController */,
-				7C40B7AD1E0C5C0600A2F4D5 /* PriceSaleViewController */,
-				7C2D73701DF9F40400A6400B /* CheckViewController */,
 				7C2D737A1DFA032600A6400B /* DrawingUpOfAnOrderVC */,
 				7C2D737D1DFA09EA00A6400B /* PaymentViewController */,
+				7C2D73701DF9F40400A6400B /* CheckViewController */,
 				7CA19A721E06B87000A433A0 /* SearchViewController */,
+				7C40B7AD1E0C5C0600A2F4D5 /* PriceSaleViewController */,
 				7CDEB7BB1E10440400D44B05 /* ProductsForRealmViewController */,
 			);
 			name = "View Controllers";

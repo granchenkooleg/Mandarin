@@ -12,6 +12,7 @@ import RealmSwift
 
 class ProductsForRealm : Object {
     
+    //dynamic var created = Date()
     dynamic var id: String? = ""
     dynamic var descriptionForProduct: String? = ""
     dynamic var proteins: String? = ""

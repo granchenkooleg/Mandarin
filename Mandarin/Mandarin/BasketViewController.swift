@@ -11,7 +11,6 @@ import RealmSwift
 
 class BasketViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var quantityProductsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -29,12 +28,6 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         //for display quantity products in cart
         quantityProductsInCart = self.productsInBasket.count
         
-        //display quantity products in cart            //it part spetial for convert int to string
-        quantityProductsLabel.text = NSString(format:"%d", quantityProductsInCart as! CVarArg) as String
-        
-        //display total price
-        totalPriceLabel.text = (totalPriceInCart() + " грн.")
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,9 +37,15 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
         
-        //quantityProductsLabel.text = NSString(format:"%d", quantityProductsInCart as! CVarArg) as String
+        //display quantity products in cart            //it part spetial for convert int to string
+        quantityProductsLabel.text = NSString(format:"%d", quantityProductsInCart as! CVarArg) as String
+        
+        //display total price
+        totalPriceLabel.text = (totalPriceInCart() + " грн.")
+        
+        
+        tableView.reloadData()
     }
     
     //for total price
@@ -55,6 +54,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         for product in  productsInBasket {
             totalPrice += Float(product.price!)!
         }
+        
         return String(totalPrice)
     }
     
@@ -80,6 +80,8 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         }
         
         cell.nameLabel?.text = productDetails.name
+        cell.weightLabel?.text = productDetails.weight! + productDetails.units!
+        cell.priceLabel?.text = productDetails.price! + " грн."
         
         return cell
     }
@@ -100,7 +102,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
     }
     //end]
     
-    // button red color
+    // button delete red color
     @IBAction func deleteAllButton(_ sender: AnyObject) {
         
         //Create the AlertController
@@ -128,11 +130,17 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         
     }
     
+    //MARK: Sender DrawingUpOfAnOrderVC
+    @IBAction func DrawingUpOrderClick(_ sender: UIButton) {
+        present(UIStoryboard.main["drawingUpOrder"]!, animated: true, completion: nil)
+    }
+    
 }
 
 class BasketTableViewCell: UITableViewCell {
     
-    
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var thubnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
