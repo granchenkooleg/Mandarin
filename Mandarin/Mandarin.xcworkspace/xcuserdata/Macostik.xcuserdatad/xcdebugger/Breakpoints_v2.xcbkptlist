@@ -170,29 +170,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mandarin/ViewController/BaseViewController/BaseViewController.swift"
-            timestampString = "503873913.033999"
+            timestampString = "505501347.558435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "searchTextChanged(sender:)"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "backClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mandarin/ViewController/CategoryViewController/CategoryViewController.swift"
-            timestampString = "505486088.063946"
+            filePath = "Mandarin/ViewController/BaseViewController/BaseViewController.swift"
+            timestampString = "505501347.558435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "getWeigth(indexPath:)"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
+            landmarkName = "updateProductInBasket()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mandarin.BaseViewController.updateProductInBasket () -&gt; ()"
+                  moduleName = "Mandarin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Mac_data/Projects/Mandarin/Mandarin/Mandarin/ViewController/BaseViewController/BaseViewController.swift"
+                  timestampString = "505500233.27706"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "236"
+                  endingLineNumber = "236"
+                  offsetFromSymbolStart = "111">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mandarin.BaseViewController.(updateProductInBasket () -&gt; ()).(closure #1)"
+                  moduleName = "Mandarin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Mac_data/Projects/Mandarin/Mandarin/Mandarin/ViewController/BaseViewController/BaseViewController.swift"
+                  timestampString = "505500233.278663"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "236"
+                  endingLineNumber = "236"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mandarin.BaseViewController.(updateProductInBasket () -&gt; ()).(closure #2)"
+                  moduleName = "Mandarin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Mac_data/Projects/Mandarin/Mandarin/Mandarin/ViewController/BaseViewController/BaseViewController.swift"
+                  timestampString = "505500233.280195"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "236"
+                  endingLineNumber = "236"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

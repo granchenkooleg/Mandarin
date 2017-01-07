@@ -69,10 +69,11 @@
 		7C40B7AF1E0C5D2A00A2F4D5 /* PriceSaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C40B7AE1E0C5D2A00A2F4D5 /* PriceSaleViewController.swift */; };
 		7C4971821E167F47004805D5 /* HeartWhiteNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4971811E167F47004805D5 /* HeartWhiteNew.png */; };
 		7C4971841E168964004805D5 /* HeartCleanBillWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4971831E168964004805D5 /* HeartCleanBillWhite.png */; };
+		7C7157801E2160B600C1DCAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C71577F1E2160B600C1DCAC /* Main.storyboard */; };
+		7C7157821E21610F00C1DCAC /* ProductsForRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7157811E21610F00C1DCAC /* ProductsForRealm.swift */; };
 		7CA19A761E06CB5100A433A0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA19A751E06CB5100A433A0 /* SearchViewController.swift */; };
 		7CA19A781E06CFD900A433A0 /* SearchHello.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA19A771E06CFD900A433A0 /* SearchHello.png */; };
 		7CA19A7A1E071C0800A433A0 /* ContexForValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA19A791E071C0800A433A0 /* ContexForValidation.swift */; };
-		7CDEB7B81E103A7100D44B05 /* ProductsForRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEB7B71E103A7100D44B05 /* ProductsForRealm.swift */; };
 		7CDEB7BA1E1043F100D44B05 /* ProductsForRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDEB7B91E1043F100D44B05 /* ProductsForRealmViewController.swift */; };
 		7CF26A8B1DF8A4C9004C627E /* WeightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF26A8A1DF8A4C9004C627E /* WeightCollectionViewCell.swift */; };
 		7CF26A9F1DF8BC64004C627E /* menuImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26A9A1DF8BC64004C627E /* menuImage.png */; };
@@ -80,7 +81,6 @@
 		7CF26AA11DF8BC64004C627E /* menuImage4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26A9C1DF8BC64004C627E /* menuImage4.png */; };
 		7CF26AA21DF8BC64004C627E /* menuImage3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26A9D1DF8BC64004C627E /* menuImage3.png */; };
 		7CF26AA31DF8BC64004C627E /* menuImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26A9E1DF8BC64004C627E /* menuImage2.png */; };
-		7CF26AA51DF8C4DD004C627E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CF26AA41DF8C4DD004C627E /* Main.storyboard */; };
 		ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */; };
 /* End PBXBuildFile section */
 
@@ -154,10 +154,11 @@
 		7C40B7AE1E0C5D2A00A2F4D5 /* PriceSaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceSaleViewController.swift; sourceTree = "<group>"; };
 		7C4971811E167F47004805D5 /* HeartWhiteNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeartWhiteNew.png; sourceTree = "<group>"; };
 		7C4971831E168964004805D5 /* HeartCleanBillWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeartCleanBillWhite.png; sourceTree = "<group>"; };
+		7C71577F1E2160B600C1DCAC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		7C7157811E21610F00C1DCAC /* ProductsForRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsForRealm.swift; sourceTree = "<group>"; };
 		7CA19A751E06CB5100A433A0 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7CA19A771E06CFD900A433A0 /* SearchHello.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SearchHello.png; sourceTree = "<group>"; };
 		7CA19A791E071C0800A433A0 /* ContexForValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContexForValidation.swift; sourceTree = "<group>"; };
-		7CDEB7B71E103A7100D44B05 /* ProductsForRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsForRealm.swift; sourceTree = "<group>"; };
 		7CDEB7B91E1043F100D44B05 /* ProductsForRealmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsForRealmViewController.swift; sourceTree = "<group>"; };
 		7CF26A8A1DF8A4C9004C627E /* WeightCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightCollectionViewCell.swift; sourceTree = "<group>"; };
 		7CF26A9A1DF8BC64004C627E /* menuImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuImage.png; sourceTree = "<group>"; };
@@ -165,7 +166,6 @@
 		7CF26A9C1DF8BC64004C627E /* menuImage4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuImage4.png; sourceTree = "<group>"; };
 		7CF26A9D1DF8BC64004C627E /* menuImage3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuImage3.png; sourceTree = "<group>"; };
 		7CF26A9E1DF8BC64004C627E /* menuImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuImage2.png; sourceTree = "<group>"; };
-		7CF26AA41DF8C4DD004C627E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,11 +200,11 @@
 		5621B57D1DE2DEDB00C3B612 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7C7157811E21610F00C1DCAC /* ProductsForRealm.swift */,
 				563F94FE1DF4C4A90053EFF0 /* Product.swift */,
 				563474361DEDC3E9004ECDC4 /* Feeds.swift */,
 				56737B9A1DF616950007518C /* Category.swift */,
 				56574A921DF33241009C2466 /* User.swift */,
-				7CDEB7B71E103A7100D44B05 /* ProductsForRealm.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -316,7 +316,7 @@
 				5621B57E1DE2DEE400C3B612 /* Extension */,
 				7C2C700F1DE44CDC005DEDCA /* Images  */,
 				7C2D16C11DF45A4200A3CF92 /* SignUp.storyboard */,
-				7CF26AA41DF8C4DD004C627E /* Main.storyboard */,
+				7C71577F1E2160B600C1DCAC /* Main.storyboard */,
 				7C0949691DE222250038018F /* Assets.xcassets */,
 				7C09496B1DE222250038018F /* LaunchScreen.storyboard */,
 				7C09496E1DE222250038018F /* Info.plist */,
@@ -543,8 +543,8 @@
 				7C1668641DFABACF00E5F26B /* TextForBanner.png in Resources */,
 				7CA19A781E06CFD900A433A0 /* SearchHello.png in Resources */,
 				56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */,
-				7CF26AA51DF8C4DD004C627E /* Main.storyboard in Resources */,
 				7C2D73721DF9F8BB00A6400B /* ButtonMinus.png in Resources */,
+				7C7157801E2160B600C1DCAC /* Main.storyboard in Resources */,
 				7C2D16C31DF45A4200A3CF92 /* SignUp.storyboard in Resources */,
 				7CF26AA11DF8BC64004C627E /* menuImage4.png in Resources */,
 				7C2D73841DFA0FC900A6400B /* _Cart.png in Resources */,
@@ -615,7 +615,6 @@
 				7C2D736F1DF9F3F500A6400B /* CheckViewController.swift in Sources */,
 				7C2D737F1DFA0A7B00A6400B /* PaymentViewController.swift in Sources */,
 				7CA19A7A1E071C0800A433A0 /* ContexForValidation.swift in Sources */,
-				7CDEB7B81E103A7100D44B05 /* ProductsForRealm.swift in Sources */,
 				7C40B7AF1E0C5D2A00A2F4D5 /* PriceSaleViewController.swift in Sources */,
 				5621B57C1DE2DDDE00C3B612 /* BaseViewController.swift in Sources */,
 				56737B9B1DF616950007518C /* Category.swift in Sources */,
@@ -632,6 +631,7 @@
 				7C2474291DEF60890012BD88 /* ListOfProductsByWeightTableViewCell.swift in Sources */,
 				5621B5951DE2E0E300C3B612 /* ConfirmView.swift in Sources */,
 				56D6F1DE1E1AC756001C1FDC /* Button.swift in Sources */,
+				7C7157821E21610F00C1DCAC /* ProductsForRealm.swift in Sources */,
 				7C24741F1DEEEB0B0012BD88 /* CategoryViewController.swift in Sources */,
 				7CF26A8B1DF8A4C9004C627E /* WeightCollectionViewCell.swift in Sources */,
 				7C2474211DEEEC6C0012BD88 /* CategoryTableViewCell.swift in Sources */,

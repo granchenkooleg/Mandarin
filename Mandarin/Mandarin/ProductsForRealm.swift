@@ -12,9 +12,8 @@ import RealmSwift
 
 class ProductsForRealm : Object {
     
-
-    dynamic var quantity: String? = ""
-    dynamic var id: String? = ""
+    dynamic var quantity: String = ""
+    dynamic var id: String = ""
     dynamic var descriptionForProduct: String? = ""
     dynamic var proteins: String? = ""
     dynamic var calories: String? = ""
@@ -49,13 +48,7 @@ class ProductsForRealm : Object {
         }
     }
 
-
     class func setupProduct(id: String = "", descriptionForProduct: String = "", proteins: String = "", calories: String = "", zhiry: String = "", favorite: String = "", category_id: String = "", brand: String = "", price_sale: String = "", weight: String = "", status: String = "", expire_date: String = "", price: String = "", created_at: String = "", icon: String = "", category_name: String = "", name: String = "", uglevody: String = "", units: String = "", quantity: String = "") -> ProductsForRealm {
-
-    
-
-        
-        setConfig()
         
         let productData: Dictionary = [
             "id" : id,
