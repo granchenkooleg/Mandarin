@@ -137,13 +137,13 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     
     @IBAction func addProduct(sender: AnyObject) {
         quantity += 1
-        quantityLabel.text = "\(quantity)шт."
+        quantityLabel.text = "\(quantity) шт."
     }
     
     @IBAction func subProduct(sender: AnyObject) {
-        guard quantity > 0 else { return }
+        guard quantity > 1 else { return }
         quantity -= 1
-        quantityLabel.text = "\(quantity)шт."
+        quantityLabel.text = "\(quantity) шт."
     }
     
     //button cart
