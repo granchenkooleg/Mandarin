@@ -25,6 +25,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBOutlet weak var headerTextInDetailsVC: UILabel!
     @IBOutlet weak var productsImageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
     var idProductDetailsVC: String!
     var productsImage: String! // name our image
     var nameHeaderTextDetailsVC: String?
@@ -38,6 +39,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     var uglevodyDetailsVC: String?
     var descriptionDetailsVC: String?
     var priceDetailsVC: String?
+    var quantity: Int = 1
     //for cart
     //var quantityProducts: String
     
@@ -133,23 +135,31 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         overPlusAndMinusButton.isHidden = true
     }
     
+    @IBAction func addProduct(sender: AnyObject) {
+        quantity += 1
+        quantityLabel.text = "\(quantity)шт."
+    }
+    
+    @IBAction func subProduct(sender: AnyObject) {
+        guard quantity > 0 else { return }
+        quantity -= 1
+        quantityLabel.text = "\(quantity)шт."
+    }
+    
     //button cart
     @IBAction func createCart(_ sender: AnyObject) {
         
-//        let list = ProductsForRealm.setupProduct(id: id, descriptionForProduct: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
+//        let list = ProductsForRealm.setupProduct(id: id, descriptiqonForProduct: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_salquglevody, units: "")
 //        self?.internalProducts.append(list)
 //        let products = ProductsForRealm(value: list)
 //        User.currentUser?.products.append(products)
         
         
-        let list = ProductsForRealm.setupProduct(id: idProductDetailsVC ?? "", descriptionForProduct: descriptionDetailsVC ?? "", proteins: proteinsDetailsVC ?? "", calories: caloriesDetailsVC ?? "", zhiry: zhiryDetailsVC ?? "", favorite: "", category_id: "", brand: brandDetailsVC ?? "", price_sale: "", weight: "", status: "", expire_date: expire_dateDetailsVC ?? "", price: priceDetailsVC ?? "", created_at: created_atDetailsVC ?? "", icon: iconDetailsVC ?? "", category_name: "", name: nameHeaderTextDetailsVC ?? "" , uglevody: uglevodyDetailsVC ?? "" , units: "")
+        let _ = ProductsForRealm.setupProduct(id: idProductDetailsVC ?? "", descriptionForProduct: descriptionDetailsVC ?? "", proteins: proteinsDetailsVC ?? "", calories: caloriesDetailsVC ?? "", zhiry: zhiryDetailsVC ?? "", favorite: "", category_id: "", brand: brandDetailsVC ?? "", price_sale: "", weight: "", status: "", expire_date: expire_dateDetailsVC ?? "", price: priceDetailsVC ?? "", created_at: created_atDetailsVC ?? "", icon: iconDetailsVC ?? "", category_name: "", name: nameHeaderTextDetailsVC ?? "" , uglevody: uglevodyDetailsVC ?? "" , units: "", quantity: "\(quantity)")
         
         UIAlertController.alert("Товар добавлен в корзину.".ls).show()
         //        navigationController!.popViewController(animated: true)
         
         // quantityProducts  = "2"
     }
-
-    
-    
 }

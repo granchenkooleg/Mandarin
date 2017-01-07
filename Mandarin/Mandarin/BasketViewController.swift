@@ -52,7 +52,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
     func totalPriceInCart() -> String {
         var totalPrice: Float = 0
         for product in  productsInBasket {
-            totalPrice += Float(product.price!)!
+            totalPrice += Float(product.price!)! * Float(product.quantity!)!
         }
         
         return String(totalPrice)
