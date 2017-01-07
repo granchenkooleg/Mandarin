@@ -12,7 +12,10 @@ import RealmSwift
 
 class ProductsForRealm : Object {
     
+<<<<<<< Updated upstream
     dynamic var quantity: String? = ""
+=======
+>>>>>>> Stashed changes
     dynamic var id: String? = ""
     dynamic var descriptionForProduct: String? = ""
     dynamic var proteins: String? = ""
@@ -32,6 +35,7 @@ class ProductsForRealm : Object {
     dynamic var name: String? = ""
     dynamic var uglevody: String? = ""
     dynamic var units: String? = ""
+    //dynamic var created = Date()
     
     dynamic var owner: User?
     
@@ -46,8 +50,13 @@ class ProductsForRealm : Object {
             print("FileURL of DataBase - \(url)")
         }
     }
+<<<<<<< Updated upstream
 
     class func setupProduct(id: String = "", descriptionForProduct: String = "", proteins: String = "", calories: String = "", zhiry: String = "", favorite: String = "", category_id: String = "", brand: String = "", price_sale: String = "", weight: String = "", status: String = "", expire_date: String = "", price: String = "", created_at: String = "", icon: String = "", category_name: String = "", name: String = "", uglevody: String = "", units: String = "", quantity: String = "") -> ProductsForRealm {
+=======
+    
+    class func setupProduct(id: String = "", descriptionForProduct: String = "", proteins: String = "", calories: String = "", zhiry: String = "", favorite: String = "", category_id: String = "", brand: String = "", price_sale: String = "", weight: String = "", status: String = "", expire_date: String = "", price: String = "", created_at: String = "", icon: String = "", category_name: String = "", name: String = "", uglevody: String = "", units: String = "") -> ProductsForRealm {
+>>>>>>> Stashed changes
         
         setConfig()
         
@@ -83,14 +92,14 @@ class ProductsForRealm : Object {
     }
     
     static func deleteAllProducts() {
-//        try! productsInBasket.realm!.write {
-//            let product = self.productsInBasket[indexPath.row]
-//            self.productsInBasket.realm!.delete(product)
+        //        try! productsInBasket.realm!.write {
+        //            let product = self.productsInBasket[indexPath.row]
+        //            self.productsInBasket.realm!.delete(product)
         
-//        let realm = try! Realm()
-//        guard let allProducts = realm.objects(ProductsForRealm.self).first else { return }
-//        try! realm.write {
-//            realm.delete(allProducts)
-//        }
+        //        let realm = try! Realm()
+        //        guard let allProducts = realm.objects(ProductsForRealm.self).first else { return }
+        //        try! realm.write {
+        //            realm.delete(allProducts)
+        //        }
     }
 }
