@@ -21,36 +21,21 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
 
     
     override func viewDidLoad() {
+        updateProductInfo()
+    }
+    
+    func updateProductInfo() {
         let realm = try! Realm()
         productsInBasket = realm.objects(ProductsForRealm.self)
-        
-        quantityProductsLabel.text = "\(productsInBasket.map { Int($0.quantity ?? "")! }.reduce(0, { $0 + $1 }))"
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //display quantity products in cart            //it part spetial for convert int to string
-//        quantityProductsLabel.text = NSString(format:"%d", quantityProductsInCart as! CVarArg) as String
-        
-        //display total price
+        quantityProductsLabel.text = "\(productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 }))"
         totalPriceLabel.text = (totalPriceInCart() + " грн.")
-        
-        
-        tableView.reloadData()
     }
     
     //for total price
     func totalPriceInCart() -> String {
         var totalPrice: Float = 0
         for product in  productsInBasket {
-            totalPrice += Float(product.price!)! * Float(product.quantity!)!
+            totalPrice += Float(product.price!)! * Float(product.quantity)!
         }
         
         return String(totalPrice)
@@ -73,15 +58,19 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         
         let productDetails = productsInBasket[indexPath.row]
         Dispatch.mainQueue.async { _ in
-            guard let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon!)!) else { return }
+            guard let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon ?? "")!) else { return }
             cell.thubnailImageView?.image = UIImage(data: imageData)
         }
         
-        cell.productID = productDetails.id!
+        cell.productID = productDetails.id
+        cell.quantity = Int(productDetails.quantity) ?? 0
         cell.nameLabel?.text = productDetails.name
         cell.weightLabel?.text = productDetails.weight! + productDetails.units!
-        cell.priceLabel?.text = productDetails.price! + " грн."
+        cell.priceLabel?.text = productDetails.price ?? "" + " грн."
         cell.quantityLabel.text = productDetails.quantity
+        cell.completionBlock = {[weak self] in
+            self?.updateProductInfo()
+        }
         
         return cell
     }
@@ -98,6 +87,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
                 self.productsInBasket.realm!.delete(product)
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
+            updateProductInfo()
         }
     }
     //end]
@@ -144,8 +134,9 @@ class BasketTableViewCell: UITableViewCell {
     @IBOutlet weak var thubnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
-    var productID: String? = ""
+    var productID: String = ""
     var quantity: Int = 1
+    var completionBlock: Block?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -163,6 +154,7 @@ class BasketTableViewCell: UITableViewCell {
         quantity += 1
         quantityLabel.text = "\(quantity) шт."
         updateProduct()
+        completionBlock?()
     }
     
     @IBAction func subProduct(sender: AnyObject) {
@@ -170,10 +162,14 @@ class BasketTableViewCell: UITableViewCell {
         quantity -= 1
         quantityLabel.text = "\(quantity) шт."
         updateProduct()
+        completionBlock?()
     }
     
     func updateProduct () {
-        let _ = ProductsForRealm.setupProduct(id: productID ?? "", quantity: "\(quantity)")
+        let realm = try! Realm()
+        let product = realm.objects(ProductsForRealm.self).filter("id  == [c] %@", productID).first
+        try! realm.write {
+            product!.quantity = "\(quantity)"
+        }
     }
-    
 }

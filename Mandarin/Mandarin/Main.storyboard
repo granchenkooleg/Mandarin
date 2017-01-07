@@ -678,7 +678,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DqN-kN-rOJ">
-                                        <rect key="frame" x="332" y="13.5" width="30" height="32"/>
+                                        <rect key="frame" x="332" y="13" width="30" height="32"/>
                                         <fontDescription key="fontDescription" name="mandarin" family="mandarin" pointSize="19"/>
                                         <state key="normal" title="l">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1053,7 +1053,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 шт." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXG-GH-CJ9">
-                                                <rect key="frame" x="30.5" y="0.0" width="51" height="18"/>
+                                                <rect key="frame" x="30.5" y="6" width="51" height="18"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -1087,7 +1087,7 @@
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.40948275862068967" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="LcE-8F-gaZ" firstAttribute="top" secondItem="fXG-GH-CJ9" secondAttribute="top" id="0YQ-Ki-Pc0"/>
+                                            <constraint firstItem="fXG-GH-CJ9" firstAttribute="centerY" secondItem="Mk0-ch-zqz" secondAttribute="centerY" id="2fr-MF-wLf"/>
                                             <constraint firstAttribute="trailing" secondItem="LGV-Cx-tPk" secondAttribute="trailing" id="Mzf-r5-mKK"/>
                                             <constraint firstItem="LGV-Cx-tPk" firstAttribute="top" secondItem="Mk0-ch-zqz" secondAttribute="top" id="Np1-YY-R1c"/>
                                             <constraint firstAttribute="bottom" secondItem="LcE-8F-gaZ" secondAttribute="bottom" id="Pxh-oQ-0Od"/>
@@ -1394,7 +1394,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZr-IX-IHo">
-                                                            <rect key="frame" x="116" y="8" width="139" height="23"/>
+                                                            <rect key="frame" x="116" y="8" width="139" height="22"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="139" id="ca2-oT-2QS"/>
                                                             </constraints>
@@ -1419,13 +1419,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 грн." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QK7-Zh-GIg">
-<<<<<<< Updated upstream
                                                             <rect key="frame" x="281" y="8" width="64" height="23"/>
-=======
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="23" id="oo5-kH-zG3"/>
-                                                            </constraints>
->>>>>>> Stashed changes
                                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                             <color key="textColor" red="1" green="0.31372549020000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>

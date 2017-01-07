@@ -175,7 +175,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "195"
             endingLineNumber = "195"
-            landmarkName = "searchTextChanged(sender:)"
+            landmarkName = "backClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

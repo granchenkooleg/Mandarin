@@ -19,7 +19,7 @@ class BaseLoginViewController: BaseViewController {
     
     fileprivate func chooseNextContoller() {
         guard User.isAuthorized() == true else { return }
-        UINavigationController.main.pushViewController(Storyboard.Container.instantiate(), animated: false)
+        UINavigationController.main.viewControllers = [UIStoryboard.main["container"]!]
     }
 }
 
