@@ -18,15 +18,13 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
     //it spetial for Realm
     var productsInBasket: Results<ProductsForRealm>!
     
-    //init
-    var quantityProductsInCart: Any?
+
     
     override func viewDidLoad() {
         let realm = try! Realm()
         productsInBasket = realm.objects(ProductsForRealm.self)
         
-        //for display quantity products in cart
-        quantityProductsInCart = self.productsInBasket.count
+        quantityProductsLabel.text = "\(productsInBasket.map { Int($0.quantity ?? "")! }.reduce(0, { $0 + $1 }))"
         
     }
     
@@ -39,7 +37,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         super.viewWillAppear(animated)
         
         //display quantity products in cart            //it part spetial for convert int to string
-        quantityProductsLabel.text = NSString(format:"%d", quantityProductsInCart as! CVarArg) as String
+//        quantityProductsLabel.text = NSString(format:"%d", quantityProductsInCart as! CVarArg) as String
         
         //display total price
         totalPriceLabel.text = (totalPriceInCart() + " грн.")
@@ -79,9 +77,11 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
             cell.thubnailImageView?.image = UIImage(data: imageData)
         }
         
+        cell.productID = productDetails.id!
         cell.nameLabel?.text = productDetails.name
         cell.weightLabel?.text = productDetails.weight! + productDetails.units!
         cell.priceLabel?.text = productDetails.price! + " грн."
+        cell.quantityLabel.text = productDetails.quantity
         
         return cell
     }
@@ -143,6 +143,9 @@ class BasketTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var thubnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
+    var productID: String? = ""
+    var quantity: Int = 1
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -154,8 +157,23 @@ class BasketTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
+    }
+    
+    @IBAction func addProduct(sender: AnyObject) {
+        quantity += 1
+        quantityLabel.text = "\(quantity) шт."
+        updateProduct()
+    }
+    
+    @IBAction func subProduct(sender: AnyObject) {
+        guard quantity > 1 else { return }
+        quantity -= 1
+        quantityLabel.text = "\(quantity) шт."
+        updateProduct()
+    }
+    
+    func updateProduct () {
+        let _ = ProductsForRealm.setupProduct(id: productID ?? "", quantity: "\(quantity)")
     }
     
 }
