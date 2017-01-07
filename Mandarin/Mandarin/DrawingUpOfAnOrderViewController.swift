@@ -21,6 +21,10 @@ class DrawingUpOfAnOrderViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: Sender to PaymentVC
+    @IBAction func PaymentClick(_ sender: UIButton) {
+        present(UIStoryboard.main["payment"]!, animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

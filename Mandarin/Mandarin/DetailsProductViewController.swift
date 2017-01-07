@@ -141,7 +141,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     }
     
     @IBAction func subProduct(sender: AnyObject) {
-        guard quantity > 0 else { return }
+        guard quantity > 1 else { return }
         quantity -= 1
         quantityLabel.text = "\(quantity)шт."
     }
