@@ -10,8 +10,6 @@ import UIKit
 
 class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     
-    
-    @IBOutlet weak var quantityCartLabel: UILabel!
     @IBOutlet weak var overPlusAndMinusButton: UIButton!
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
@@ -67,6 +65,13 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         headerTextInDetailsVC.text = nameHeaderTextDetailsVC
         guard let imageData = try? Data.init(contentsOf: URL.init(string: iconDetailsVC)!) else {return}
         productsImageView.image = UIImage(data: imageData)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        quantity = 1
+        quantityLabel.text = "\(quantity) шт."
     }
     
     //setting overPlusAndMinusButton
@@ -158,6 +163,8 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         let _ = ProductsForRealm.setupProduct(id: idProductDetailsVC ?? "", descriptionForProduct: descriptionDetailsVC ?? "", proteins: proteinsDetailsVC ?? "", calories: caloriesDetailsVC ?? "", zhiry: zhiryDetailsVC ?? "", favorite: "", category_id: "", brand: brandDetailsVC ?? "", price_sale: "", weight: "", status: "", expire_date: expire_dateDetailsVC ?? "", price: priceDetailsVC ?? "", created_at: created_atDetailsVC ?? "", icon: iconDetailsVC ?? "", category_name: "", name: nameHeaderTextDetailsVC ?? "" , uglevody: uglevodyDetailsVC ?? "" , units: "", quantity: "\(quantity)")
         
         UIAlertController.alert("Товар добавлен в корзину.".ls).show()
+        updateProductInBasket()
+
         //        navigationController!.popViewController(animated: true)
         
         // quantityProducts  = "2"

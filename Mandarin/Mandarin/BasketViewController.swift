@@ -12,13 +12,10 @@ import RealmSwift
 class BasketViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var totalPriceLabel: UILabel!
-    @IBOutlet weak var quantityProductsLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     //it spetial for Realm
     var productsInBasket: Results<ProductsForRealm>!
-    
-
     
     override func viewDidLoad() {
         updateProductInfo()
@@ -27,8 +24,8 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
     func updateProductInfo() {
         let realm = try! Realm()
         productsInBasket = realm.objects(ProductsForRealm.self)
-        quantityProductsLabel.text = "\(productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 }))"
         totalPriceLabel.text = (totalPriceInCart() + " грн.")
+        updateProductInBasket()
     }
     
     //for total price

@@ -51,6 +51,8 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     @IBOutlet var searchTextField: TextField?
     
+    @IBOutlet weak var quantityCartLabel: UILabel?
+    
     var viewAppeared = false
     
     var _products: [Feeds] = []
@@ -117,6 +119,11 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     }
     
     static var lastAppearedScreenName: String?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateProductInBasket()
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -227,5 +234,11 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         present(UIStoryboard.main["basket"]!, animated: true, completion: nil)
     }
     
-    
+    func updateProductInBasket () {
+        let realm = try! Realm()
+        let productsInBasket = realm.objects(ProductsForRealm.self)
+        Dispatch.mainQueue.async {
+             self.quantityCartLabel?.text = "\(productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 }))"
+        }
+    }
 }
