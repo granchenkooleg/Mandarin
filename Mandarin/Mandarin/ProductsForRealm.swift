@@ -82,14 +82,10 @@ class ProductsForRealm : Object {
     }
     
     static func deleteAllProducts() {
-        //        try! productsInBasket.realm!.write {
-        //            let product = self.productsInBasket[indexPath.row]
-        //            self.productsInBasket.realm!.delete(product)
-        
-        //        let realm = try! Realm()
-        //        guard let allProducts = realm.objects(ProductsForRealm.self).first else { return }
-        //        try! realm.write {
-        //            realm.delete(allProducts)
-        //        }
+                let realm = try! Realm()
+                let allProducts = realm.objects(ProductsForRealm.self)
+                try! realm.write {
+                    realm.delete(allProducts)
+                }
     }
 }

@@ -24,7 +24,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
     func updateProductInfo() {
         let realm = try! Realm()
         productsInBasket = realm.objects(ProductsForRealm.self)
-        totalPriceLabel.text = (totalPriceInCart() + " грн.")
+        totalPriceLabel?.text = (totalPriceInCart() + " грн.")
         updateProductInBasket()
     }
     
@@ -63,7 +63,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         cell.quantity = Int(productDetails.quantity) ?? 0
         cell.nameLabel?.text = productDetails.name
         cell.weightLabel?.text = productDetails.weight! + productDetails.units!
-        cell.priceLabel?.text = productDetails.price ?? "" + " грн."
+        cell.priceLabel?.text = (productDetails.price ?? "") + " грн."
         cell.quantityLabel.text = productDetails.quantity
         cell.completionBlock = {[weak self] in
             self?.updateProductInfo()
@@ -101,19 +101,18 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         }
         actionSheetController.addAction(cancelAction)
         //Create and an option action
-        let nextAction: UIAlertAction = UIAlertAction(title: "Удалить", style: .destructive) { action -> Void in
+        let nextAction: UIAlertAction = UIAlertAction(title: "Удалить", style: .destructive) {[weak self] action -> Void in
             //Do some other stuff
             ProductsForRealm.deleteAllProducts()
-            try! self.productsInBasket.realm!.write {
-                let product = self.productsInBasket
-                self.productsInBasket.realm!.delete(product!)
-                self.tableView.reloadData()
-            }
+ 
+            self?.tableView.reloadData()
+            self?.updateProductInfo()
         }
         actionSheetController.addAction(nextAction)
         
         //Present the AlertController
         self.present(actionSheetController, animated: true, completion: nil)
+       
         
     }
     

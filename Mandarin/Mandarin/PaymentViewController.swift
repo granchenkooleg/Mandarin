@@ -8,19 +8,26 @@
 
 import UIKit
 
-class PaymentViewController: BaseViewController {
+class PaymentViewController: BasketViewController {
+    
+    @IBOutlet weak var totalPriceForPaymentVCLabel: UILabel!
 
-    override func viewDidLoad() {
+     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        totalPriceForPaymentVCLabel?.text = (totalPriceInCart() + " грн.")
     }
 
-    override func didReceiveMemoryWarning() {
+     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: Sender to CheckVC
+    @IBAction func CheckClick(_ sender: UIButton) {
+        present(UIStoryboard.main["checkVC"]!, animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation

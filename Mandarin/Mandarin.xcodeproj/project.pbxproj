@@ -71,6 +71,7 @@
 		7C4971841E168964004805D5 /* HeartCleanBillWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4971831E168964004805D5 /* HeartCleanBillWhite.png */; };
 		7C7157801E2160B600C1DCAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C71577F1E2160B600C1DCAC /* Main.storyboard */; };
 		7C7157821E21610F00C1DCAC /* ProductsForRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7157811E21610F00C1DCAC /* ProductsForRealm.swift */; };
+		7C7157841E21856900C1DCAC /* InfoAboutUserForOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */; };
 		7CA19A761E06CB5100A433A0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA19A751E06CB5100A433A0 /* SearchViewController.swift */; };
 		7CA19A781E06CFD900A433A0 /* SearchHello.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CA19A771E06CFD900A433A0 /* SearchHello.png */; };
 		7CA19A7A1E071C0800A433A0 /* ContexForValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA19A791E071C0800A433A0 /* ContexForValidation.swift */; };
@@ -156,6 +157,7 @@
 		7C4971831E168964004805D5 /* HeartCleanBillWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeartCleanBillWhite.png; sourceTree = "<group>"; };
 		7C71577F1E2160B600C1DCAC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7C7157811E21610F00C1DCAC /* ProductsForRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsForRealm.swift; sourceTree = "<group>"; };
+		7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoAboutUserForOrder.swift; sourceTree = "<group>"; };
 		7CA19A751E06CB5100A433A0 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7CA19A771E06CFD900A433A0 /* SearchHello.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SearchHello.png; sourceTree = "<group>"; };
 		7CA19A791E071C0800A433A0 /* ContexForValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContexForValidation.swift; sourceTree = "<group>"; };
@@ -200,11 +202,12 @@
 		5621B57D1DE2DEDB00C3B612 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7C7157811E21610F00C1DCAC /* ProductsForRealm.swift */,
 				563F94FE1DF4C4A90053EFF0 /* Product.swift */,
 				563474361DEDC3E9004ECDC4 /* Feeds.swift */,
 				56737B9A1DF616950007518C /* Category.swift */,
 				56574A921DF33241009C2466 /* User.swift */,
+				7C7157811E21610F00C1DCAC /* ProductsForRealm.swift */,
+				7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				7C09497D1DE240B10038018F /* BaseLoginViewController.swift in Sources */,
 				5621B5911DE2E0CA00C3B612 /* View+Ext.swift in Sources */,
 				7C2D73771DF9FB0600A6400B /* BasketViewController.swift in Sources */,
+				7C7157841E21856900C1DCAC /* InfoAboutUserForOrder.swift in Sources */,
 				5621B59B1DE2E1F400C3B612 /* TextField.swift in Sources */,
 				7C2474251DEF5F2C0012BD88 /* WeightViewController.swift in Sources */,
 				565EA5C01E1C0C8900E389FF /* FavoriteProductsViewController.swift in Sources */,

@@ -21,7 +21,7 @@ class User: Object {
     dynamic var password: String? = ""
     dynamic var phone: String? = ""
     var products = List<ProductsForRealm>()
-    
+    var homeUserData = List<InfoAboutUserForOrder>()
     
 
     override static func primaryKey() -> String? {
