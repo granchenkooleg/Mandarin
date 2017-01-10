@@ -3181,10 +3181,10 @@
             </objects>
             <point key="canvasLocation" x="2350" y="322"/>
         </scene>
-        <!--Sdacha View Controller-->
+        <!--PaymentViewController-->
         <scene sceneID="G5C-RD-QXF">
             <objects>
-                <viewController storyboardIdentifier="payment" id="iXZ-ob-fYv" userLabel="Sdacha View Controller" customClass="PaymentViewController" customModule="Mandarin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="payment" id="iXZ-ob-fYv" userLabel="PaymentViewController" customClass="PaymentViewController" customModule="Mandarin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FFe-yX-aDN"/>
                         <viewControllerLayoutGuide type="bottom" id="6pt-2x-xsW"/>
@@ -3321,6 +3321,9 @@
                                         <integer key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="needChangeButton:" destination="iXZ-ob-fYv" eventType="touchUpInside" id="rwW-0i-2Ww"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btR-Aq-6jO">
                                 <color key="backgroundColor" red="1" green="0.30191646799999999" blue="0.040223739379999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -3336,6 +3339,9 @@
                                         <integer key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="noButton:" destination="iXZ-ob-fYv" eventType="touchUpInside" id="pxx-Jl-TwE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxx-T9-2Uj">
                                 <color key="backgroundColor" red="1" green="0.30191646799999999" blue="0.040223739379999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -3372,6 +3378,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="continueButton" destination="kxx-T9-2Uj" id="sIr-GV-2af"/>
+                        <outlet property="needChangeButton" destination="2ll-6k-fAU" id="o6Y-d3-G1H"/>
+                        <outlet property="noButton" destination="btR-Aq-6jO" id="uP6-zh-3qk"/>
                         <outlet property="quantityCartLabel" destination="U43-aN-Fee" id="et6-kY-B8V"/>
                         <outlet property="totalPriceForPaymentVCLabel" destination="jNs-8t-wS0" id="zlh-RM-ioq"/>
                     </connections>
