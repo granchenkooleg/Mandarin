@@ -9,6 +9,7 @@
 import UIKit
 
 class PriceSaleViewController: ListOfProductsByWeightViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

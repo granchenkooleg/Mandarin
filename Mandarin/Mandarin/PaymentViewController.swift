@@ -16,7 +16,7 @@ class PaymentViewController: BasketViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        totalPriceForPaymentVCLabel?.text = (totalPriceInCart() + " грн.")
+        totalPriceForPaymentVCLabel?.text = (totalPriceInCart() + " грн.,")
     }
 
      override func didReceiveMemoryWarning() {

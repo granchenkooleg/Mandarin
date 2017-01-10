@@ -59,12 +59,13 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
             cell.thubnailImageView?.image = UIImage(data: imageData)
         }
         
+        cell.descriptionLabel?.text = productDetails.descriptionForProduct
         cell.productID = productDetails.id
         cell.quantity = Int(productDetails.quantity) ?? 0
         cell.nameLabel?.text = productDetails.name
         cell.weightLabel?.text = productDetails.weight! + productDetails.units!
         cell.priceLabel?.text = (productDetails.price ?? "") + " грн."
-        cell.quantityLabel.text = productDetails.quantity
+        cell.quantityLabel?.text = productDetails.quantity + " шт."
         cell.completionBlock = {[weak self] in
             self?.updateProductInfo()
         }
@@ -125,6 +126,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
 
 class BasketTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var thubnailImageView: UIImageView!
