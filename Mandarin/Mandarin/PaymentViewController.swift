@@ -76,7 +76,7 @@ class PaymentViewController: BasketViewController {
         //sender.loading = true
         
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" : 127 /*User.isAuthorized()*/,
+                                 "user_id" :  Int((User.currentUser?.id)!),
                                  "product_id[]" : "7"] as [String : Any]
         
         
