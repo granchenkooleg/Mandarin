@@ -21,17 +21,18 @@ class CheckViewController: BasketViewController {
     @IBOutlet weak var amountMoneyOfOrderLabel: UILabel!
     @IBOutlet weak var deliveryTimeLabel: UILabel!
     
+    // Date
     func dateFormatter() -> String {
         let date = NSDate()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MMM-yyyy hh:mm:ss"
         let dateString = dateFormatter.string(from: date as Date)
-        //Custom Date Format  28-Feb-2016 11:41:51
+        // Custom Date Format  28-Feb-2016 11:41:51
         return String(dateString)
     }
     
     
-    //it spetial for Realm
+    // It spetial for Realm
     var infoOfUser: Results<InfoAboutUserForOrder>!
     
     override func viewDidLoad() {
@@ -49,29 +50,11 @@ class CheckViewController: BasketViewController {
         dateOrderLabel.text = dateFormatter()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    
-    
-    //MARK: Sender to BasketVC
+    // MARK: Sender to BasketVC
     @IBAction func showGoodsButton(_ sender: UIButton) {
         present(UIStoryboard.main["basketAfterpayment"]!, animated: true, completion: nil)
     }
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 

@@ -58,6 +58,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
                 
+                // It sort for segment "Скидки"
                 if Double(price_sale)! > Double(0.00) {
                     self?.list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
                     self?.internalProductsForListOfWeightVC.append(self?.list as! Product)

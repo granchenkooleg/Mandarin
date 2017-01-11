@@ -78,6 +78,7 @@ let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URL
 
 enum UserRequest: URLRequestConvertible {
     
+    case addOrderToSite([String: AnyObject])
     case favoriteProduct([String: AnyObject])
     case addFavoriteProduct([String: AnyObject])
     case getPassword([String: AnyObject])
@@ -97,7 +98,7 @@ enum UserRequest: URLRequestConvertible {
         
         var method: HTTPMethod {
             switch self {
-            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight, .getAllProducts, .getPassword, .addFavoriteProduct, .favoriteProduct:
+            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight, .getAllProducts, .getPassword, .addFavoriteProduct, .favoriteProduct, .addOrderToSite:
                 return .get
             case .logOut, .trans:
                 return .post
@@ -106,6 +107,9 @@ enum UserRequest: URLRequestConvertible {
         
         let params: ([String: AnyObject]?) = {
             switch self {
+                
+            case .addOrderToSite(let newPost):
+                return newPost
             case .favoriteProduct(let newPost):
                 return newPost
             case .addFavoriteProduct(let newPost):
@@ -136,7 +140,9 @@ enum UserRequest: URLRequestConvertible {
         let url: URL = {
             let relativePath:String?
             switch self {
-                
+              
+            case.addOrderToSite:
+                relativePath = "addOrder"
             case.favoriteProduct:
                 relativePath = "favorite"
             case.addFavoriteProduct:
@@ -194,6 +200,18 @@ enum UserRequest: URLRequestConvertible {
     //        }
     //    }
     //
+    
+    
+    static func addOrderToServer(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
+        requestHandler(#function, URLRequest: addOrderToSite(entryParams)) { json in
+            guard let json = json else {
+                completion(false)
+                return
+            }
+            print (">>addOrderToServer - \(json)<<")
+            completion(true)
+        }
+    }
     
     
     static func favorite(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
