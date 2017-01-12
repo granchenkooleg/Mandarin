@@ -75,12 +75,13 @@ class PaymentViewController: BasketViewController {
         
         //sender.loading = true
         
-        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+        var param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                  "user_id" :  Int((User.currentUser?.id)!),
-                                 "product_id[]" : 7,
                                  "order_id" :  /*тут должно быть adressUserFromRealm[0].idOrder*/"2"] as [String : Any]
-        
-        
+        for i in productsInBasket {
+            param["product_id[]"] = i.id
+        }
+  
         UserRequest.addOrderToServer(param as [String : AnyObject], completion: {[weak self] success in
             if success == true {
                 self?.present(UIStoryboard.main["checkVC"]!, animated: true, completion: nil)

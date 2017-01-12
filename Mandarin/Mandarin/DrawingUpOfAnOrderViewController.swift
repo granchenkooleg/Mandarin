@@ -32,17 +32,17 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
         
         // If table InfoAboutUserForOrder isEmpty, we will not come in here
         if (adressUserFromRealm.isEmpty == false)  {
-            
-            nameUserTextField?.text = adressUserFromRealm[0].name
-            phoneTextField?.text = adressUserFromRealm[0].phone
-            cityTextField?.text = adressUserFromRealm[0].city
-            regionTextField?.text = adressUserFromRealm[0].region
-            streetTextField?.text = adressUserFromRealm[0].street
-            numberHouseTextField?.text = adressUserFromRealm[0].house
-            porchTextField?.text = adressUserFromRealm[0].porch
-            numberApartmentTextField?.text = adressUserFromRealm[0].apartment
-            floorTextField?.text = adressUserFromRealm[0].floor
-            commitOfUserTextField?.text = adressUserFromRealm[0].commit
+            // Get last data because user can change last self data
+            nameUserTextField?.text = adressUserFromRealm.last?.name
+            phoneTextField?.text = adressUserFromRealm.last?.phone
+            cityTextField?.text = adressUserFromRealm.last?.city
+            regionTextField?.text = adressUserFromRealm.last?.region
+            streetTextField?.text = adressUserFromRealm.last?.street
+            numberHouseTextField?.text = adressUserFromRealm.last?.house
+            porchTextField?.text = adressUserFromRealm.last?.porch
+            numberApartmentTextField?.text = adressUserFromRealm.last?.apartment
+            floorTextField?.text = adressUserFromRealm.last?.floor
+            commitOfUserTextField?.text = adressUserFromRealm.last?.commit
         }
     }
     
