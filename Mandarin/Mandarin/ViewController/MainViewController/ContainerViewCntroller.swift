@@ -85,11 +85,12 @@ class ContainerViewController: BaseViewController {
     }
 }
 
-class Menu: UIView {
+class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView?
     @IBOutlet weak var loginButton: Button!
     var completion: Block? = nil
+    var categoryContainer = [Category]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -98,36 +99,9 @@ class Menu: UIView {
     
     func setup()  {
         loginButton.setTitle(User.isAuthorized() ? "Выйти" : "Войти", for: .normal)
+        getAllCategory()
     }
-    
-    @IBAction func toggleSwitch(_ sender: UISwitch) {
-        sender.thumbTintColor = sender.isOn ? Color.green : UIColor(hex: 0x666d9f)
-    }
-    
-    @IBAction func myAccountClick(_ sender: AnyObject) {
-//        presetingSettingsViewController(Storyboard.Account.instantiate())
-    }
-    @IBAction func dashboardClick(_ sender: AnyObject) {
-//        presetingSettingsViewController(Storyboard.DashBoard.instantiate())
-    }
-    @IBAction func withDrawClick(_ sender: AnyObject) {
-//        presetingSettingsViewController(Storyboard.WithDrawProfits.instantiate())
-    }
-    @IBAction func recomenedBrokerClick(_ sender: AnyObject) {
-    }
-    @IBAction func tradesClick(_ sender: AnyObject) {
-//        AmountTradeView.sharedView.show()
-    }
-    @IBAction func introductionClick(_ sender: AnyObject) {
-//        let videoIntoductionVC = Storyboard.VideoIntoduction.instantiate()
-//        performWhenLoaded(videoIntoductionVC, block: {
-//            $0.showBackButton(true)
-//        })
-//        presetingSettingsViewController(videoIntoductionVC)
-    }
-    @IBAction func helpClick(_ sender: AnyObject) {
-//        presetingSettingsViewController(Storyboard.Help.instantiate())
-    }
+
     @IBAction func logoutClick(_ sender: AnyObject) {
         GIDSignIn.sharedInstance().signOut()
         LoginManager().logOut()
@@ -139,7 +113,68 @@ class Menu: UIView {
     
     func presetingSettingsViewController(_ viewcontroller: BaseViewController) {
         UINavigationController.main.present(viewcontroller, animated: true, completion: completion)
+    }
+    
+    func getAllCategory () {
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+        UserRequest.getAllCategories(param as [String : AnyObject], completion: {[weak self] json in
+            let category = Category(id: "", icon: "HeartCleanBillWhite", name: "Главная", created_at: "", units: "", category_id: "")
+            var container = [Category]()
+            container.append(category)
+            json.forEach { _, json in
+                print (">>self - \(json["name"])<<")
+                let id = json["id"].string ?? ""
+                let created_at = json["created_at"].string ?? ""
+                let icon = json["icon"].string ?? ""
+                let name = json["name"].string ?? ""
+                let units = json["units"].string ?? ""
+                let category_id = json["category_id"].string ?? ""
+                
+                let category = Category(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
+                container.append(category)
+            }
+            self?.categoryContainer = container
+            self?.tableView?.reloadData()
+        })
+    }
+    
+    
+    // MARK: - Table view data source
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categoryContainer.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "CategoryTableViewCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CategoryTableViewCell
         
+        let productDetails = categoryContainer[indexPath.row]
+        Dispatch.mainQueue.async { _ in
+            if indexPath.row == 0 {
+                cell.thubnailImageView?.image = UIImage(named: productDetails.icon)
+                cell.nameLabel?.text = productDetails.name
+            } else {
+                guard productDetails.icon.isEmpty == false, let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon)!) else { return }
+                cell.thubnailImageView?.image = UIImage(data: imageData)
+                cell.nameLabel?.text = productDetails.name
+            }
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row != 0 else { return }
+        let categoryViewController = Storyboard.Category.instantiate()
+        categoryViewController.categoryId = categoryContainer[indexPath.row].id
+        categoryViewController.nameHeaderText = categoryContainer[indexPath.row].name
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        containerViewController.addController(categoryViewController)
     }
 }
 
