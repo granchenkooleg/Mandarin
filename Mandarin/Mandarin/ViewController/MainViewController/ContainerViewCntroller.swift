@@ -17,6 +17,7 @@ class ContainerViewController: BaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var containerView: UIView!
     
+    var mainViewController: MainViewController? = nil
     var showingMenu = false
     
 //    func mainViewController () -> MainViewController? {
@@ -29,6 +30,8 @@ class ContainerViewController: BaseViewController {
         menuContainerView.completion = { [weak self] in
             self?.showMenu(false, animated: false)
         }
+        guard let viewController = self.childViewControllers.first as? MainViewController? else { return }
+        mainViewController = viewController
     }
     
     override func viewWillAppear(_ animated: Bool) {

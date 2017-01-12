@@ -64,11 +64,10 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         
         let productDetails = _products[indexPath.row]
         Dispatch.mainQueue.async { _ in
-            guard let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon)!) else { return }
+            guard productDetails.icon.isEmpty == false, let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon)!) else { return }
             cell.thubnailImageView?.image = UIImage(data: imageData)
+            cell.nameLabel?.text = productDetails.name
         }
-        
-        cell.nameLabel?.text = productDetails.name
         
         return cell
     }

@@ -204,7 +204,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
             self.dismiss(animated: true, completion: nil)
         } else {
             guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-            containerViewController.addController(Storyboard.Main.instantiate())
+            containerViewController.addController(containerViewController.mainViewController ?? UIViewController())
         }
     }
     
