@@ -12,7 +12,7 @@ import RealmSwift
 
 class InfoAboutUserForOrder : Object {
     
-    dynamic var id: String = ""
+    dynamic var idOrder = UUID().uuidString
     dynamic var name: String = ""
     dynamic var phone: String = ""
     dynamic var city: String? = ""
@@ -29,7 +29,7 @@ class InfoAboutUserForOrder : Object {
     dynamic var owner: User?
     
     override class func primaryKey() -> String? {
-        return "id"
+        return "idOrder"
     }
 
     
@@ -41,12 +41,12 @@ class InfoAboutUserForOrder : Object {
         }
     }
     
-    class func setupAllUserInfo(id: String = "", name: String = "", phone: String = "", city: String = "", region: String = "", street: String = "", house: String = "", porch: String = "", apartment: String = "", floor: String = "", commit: String = "") {
+    class func setupAllUserInfo(/*idOrder: String *//*= "",*/ name: String = "", phone: String = "", city: String = "", region: String = "", street: String = "", house: String = "", porch: String = "", apartment: String = "", floor: String = "", commit: String = "") {
         
         setConfig()
         
         let homeInfoUser: Dictionary = [
-            "id" : id,
+            /*"idOrder" : idOrder,*/
             "name" : name,
             "phone" : phone,
             "city" : city,

@@ -43,9 +43,10 @@ class CheckViewController: BasketViewController {
         
         // Do any additional setup after loading the view.
         //dateOrderLabel.text
+        numberOrderLabel.text = infoOfUser[0].idOrder
         nameCustomerLabel.text = infoOfUser[0].name
         phoneCustomerLabel.text = infoOfUser[0].phone
-        adressCustomerLabel.text = infoOfUser[0].city! + infoOfUser[0].street! + infoOfUser[0].house! + infoOfUser[0].apartment!
+        adressCustomerLabel.text = infoOfUser[0].city! + "/" + infoOfUser[0].street! + "/" + infoOfUser[0].house! + "/" + infoOfUser[0].apartment!
         amountMoneyOfOrderLabel.text = (totalPriceInCart() + " грн.")
         dateOrderLabel.text = dateFormatter()
     }
