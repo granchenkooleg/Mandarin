@@ -74,9 +74,9 @@ class PaymentViewController: BasketViewController {
     @IBAction func CheckClick(_ sender: Button) {
         
         //sender.loading = true
-        
+        guard let id  = User.currentUser?.id else { return }
         var param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" :  Int((User.currentUser?.id)!),
+                                 "user_id" :  id,
                                  "order_id" :  /*тут должно быть adressUserFromRealm[0].idOrder*/"2"] as [String : Any]
         for i in productsInBasket {
             param["product_id[]"] = i.id
