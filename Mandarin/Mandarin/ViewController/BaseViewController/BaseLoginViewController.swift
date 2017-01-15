@@ -269,6 +269,7 @@ class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate 
                 return
         }
         
+         let birthday = birthdayTextField.text
         
         
         // Usage for InputValidator
@@ -283,7 +284,8 @@ class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate 
                                  "email" : email,
                                  "username" : firstName,
                                  "password" : password,
-                                 "phone" : phone]
+                                 "phone" : phone,
+                                 "birthday": birthday ?? ""] as [String: Any]
         
         //
         //        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
