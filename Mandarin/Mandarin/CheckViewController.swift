@@ -54,8 +54,8 @@ class CheckViewController: BasketViewController {
     
     // MARK: Sender to BasketVC
     @IBAction func showGoodsButton(_ sender: UIButton) {
-        present(UIStoryboard.main["basketAfterpayment"]!, animated: true, completion: nil)
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        containerViewController.addController(UIStoryboard.main["basketAfterpayment"]!)
     }
-    
 }
 

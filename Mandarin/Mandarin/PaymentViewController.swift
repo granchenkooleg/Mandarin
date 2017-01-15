@@ -84,7 +84,8 @@ class PaymentViewController: BasketViewController {
   
         UserRequest.addOrderToServer(param as [String : AnyObject], completion: {[weak self] success in
             if success == true {
-                self?.present(UIStoryboard.main["checkVC"]!, animated: true, completion: nil)
+                guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+                containerViewController.addController(UIStoryboard.main["checkVC"]!)
             }
             //sender.loading = false
             })

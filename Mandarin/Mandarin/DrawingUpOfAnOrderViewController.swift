@@ -163,7 +163,8 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         let _ = InfoAboutUserForOrder.setupAllUserInfo(/*idOrder: idOrder ,*/ name: nameUser, phone: phone, city: city, region: region ?? "", street: street, house: numberHouse, porch: porch , apartment: apartment , floor: floor ?? "", commit: commit ?? "")
         
         //MARK: Sender to PaymentVC
-        present(UIStoryboard.main["payment"]!, animated: true, completion: nil)
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        containerViewController.addController(UIStoryboard.main["payment"]!)
         let _name = "NameUser: " + nameUser + "\n"
         let _phone = "Phone: " + phone + "\n"
         let _city = "City: " + city + "\n"

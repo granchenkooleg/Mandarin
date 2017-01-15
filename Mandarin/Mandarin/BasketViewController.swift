@@ -119,7 +119,8 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
     
     //MARK: Sender to DrawingUpOfAnOrderVC
     @IBAction func DrawingUpOrderClick(_ sender: UIButton) {
-        present(UIStoryboard.main["drawingUpOrder"]!, animated: true, completion: nil)
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        containerViewController.addController(UIStoryboard.main["drawingUpOrder"]!)
     }
     
 }
