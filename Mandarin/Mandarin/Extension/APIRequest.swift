@@ -140,7 +140,7 @@ enum UserRequest: URLRequestConvertible {
         let url: URL = {
             let relativePath:String?
             switch self {
-              
+                
             case.addOrderToSite:
                 relativePath = "addOrder"
             case.favoriteProduct:
@@ -237,7 +237,7 @@ enum UserRequest: URLRequestConvertible {
                 print (">>addToFavorite - \(json?[0]["message"])<<")
                 //            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
                 completion(true)
-
+                
             } else {
                 print (">>addToFavorite - \(json?[0]["message"])<<")
                 UIAlertController.alert("Этот продукт был уже добавлен в избранное, вами ранее!".ls).show()
@@ -310,8 +310,8 @@ enum UserRequest: URLRequestConvertible {
     
     static func makeRegistration(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
         requestHandler(#function, URLRequest: registration(entryParams)) { json in
-            guard let json = json/*, json[0]["error"] == false*/ else {
-                UIAlertController.alert("ошибка APIRequest".ls).show()
+            guard let json = json, json[0]["error"] == false else {
+                UIAlertController.alert("Пользователь с такими данными уже зарегистрирован!".ls).show()
                 completion(false)
                 return
             }

@@ -169,12 +169,16 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.row != 0 else { return }
+        guard indexPath.row != 0 else {
+            
+            return
+        }
         let categoryViewController = Storyboard.Category.instantiate()
         categoryViewController.categoryId = categoryContainer[indexPath.row].id
         categoryViewController.nameHeaderText = categoryContainer[indexPath.row].name
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         containerViewController.addController(categoryViewController)
+        containerViewController.showMenu(false, animated: true)
     }
 }
 

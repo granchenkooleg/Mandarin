@@ -10,5 +10,5 @@ import Foundation
 
 class BasketAfterPaymentViewController: BasketViewController {
     
-    /* Here calls scene BasketAfterPayment without few elements */
+    /* Here calls scene BasketAfterPayment without several elements */
 }

@@ -30,7 +30,6 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
     
     override func viewDidLoad() {
         updateAdressInfo()
-        
         // If table InfoAboutUserForOrder isEmpty, we will not come in here
         if (adressUserFromRealm.isEmpty == false)  {
             // Get last data because user can change last self data
@@ -53,7 +52,6 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
     }
     
     // end]
-    
     
     // Entring data from textField to Realm
     @IBAction func checkout(_ sender: UIButton)   {
@@ -163,8 +161,10 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         let _ = InfoAboutUserForOrder.setupAllUserInfo(/*idOrder: idOrder ,*/ name: nameUser, phone: phone, city: city, region: region ?? "", street: street, house: numberHouse, porch: porch , apartment: apartment , floor: floor ?? "", commit: commit ?? "")
         
         //MARK: Sender to PaymentVC
+
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         containerViewController.addController(UIStoryboard.main["payment"]!)
+
         let _name = "NameUser: " + nameUser + "\n"
         let _phone = "Phone: " + phone + "\n"
         let _city = "City: " + city + "\n"
@@ -176,6 +176,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         let _floor = "Floor: " + (floor ?? "") + "\n"
         let _commit = "Commit: " + (commit ?? "")
         sendMessage(body: _name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit, recipients: ["oleg_granchenko@mail.ru"])
+        
     }
     
     func sendMessage(body: String, recipients: [String]) {
@@ -194,16 +195,6 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         controller.dismiss(animated: true, completion: nil)
     }
 
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 
