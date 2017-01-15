@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class PaymentViewController: BasketViewController {
     
@@ -14,6 +15,9 @@ class PaymentViewController: BasketViewController {
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var totalPriceForPaymentVCLabel: UILabel!
+    
+    // var idOrder from Navigation DrawingUpOfVC
+    var idOrder: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,18 +73,27 @@ class PaymentViewController: BasketViewController {
         continueButton.isHidden = false
         noButton.isHidden = true
     }
-    
+
     // MARK: Sender to CheckVC
     @IBAction func CheckClick(_ sender: Button) {
         
         //sender.loading = true
-        guard let id  = User.currentUser?.id else { return }
-        var param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" :  id,
-                                 "order_id" :  /*тут должно быть adressUserFromRealm[0].idOrder*/"2"] as [String : Any]
+        guard let id  = User.currentUser?.id, let idOrder = idOrder else { return }
+        
+       // Doing it for product_id in Alamofire request(param)
+        var list: [JSON] = []
         for i in productsInBasket {
-            param["product_id[]"] = i.id
+            // Convert type String to Int
+            let q: Int = Int(i.quantity)!
+            for _ in 1...q {
+                list.append(JSON(i.id))
+            }
         }
+        
+        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                 "user_id" :  id,
+                                 "product_id": list,
+                                 "order_id" : idOrder] as [String : Any]
   
         UserRequest.addOrderToServer(param as [String : AnyObject], completion: {[weak self] success in
             if success == true {
