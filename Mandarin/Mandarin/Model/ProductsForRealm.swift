@@ -12,7 +12,7 @@ import RealmSwift
 
 class ProductsForRealm : Object {
     
-    dynamic var quantity: String = ""
+    dynamic var quantity = ""
     dynamic var id: String = ""
     dynamic var descriptionForProduct: String? = ""
     dynamic var proteins: String? = ""
