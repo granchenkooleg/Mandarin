@@ -118,7 +118,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     func getAllCategory () {
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.getAllCategories(param as [String : AnyObject], completion: {[weak self] json in
-            let category = Category(id: "", icon: "HeartCleanBillWhite", name: "Главная", created_at: "", units: "", category_id: "")
+            let category = Category(id: "", icon: "ic_main", name: "Главная", created_at: "", units: "", category_id: "")
             var container = [Category]()
             container.append(category)
             json.forEach { _, json in

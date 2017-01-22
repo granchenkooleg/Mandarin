@@ -162,9 +162,17 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         
         //MARK: Sender to PaymentVC
 
+//        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+//        let next = adressUserFromRealm.last?.idOrder
+//        let payment = (UIStoryboard.main["payment"]!)
+//        payment
+//        containerViewController.addController(UIStoryboard.main["payment"]!)
+        
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-        containerViewController.addController(UIStoryboard.main["payment"]!)
-
+        guard let paymentVC = UIStoryboard.main["payment"] as? PaymentViewController, let last = adressUserFromRealm.last else { return }
+        paymentVC.idOrder = last.idOrder
+        containerViewController.addController(paymentVC)
+        
         let _name = "NameUser: " + nameUser + "\n"
         let _phone = "Phone: " + phone + "\n"
         let _city = "City: " + city + "\n"

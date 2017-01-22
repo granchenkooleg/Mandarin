@@ -53,7 +53,7 @@ class PaymentViewController: BasketViewController {
         
         alertController.addTextField { (textField) -> Void in
             // Configure the attributes of the first text box.
-            textField.placeholder = "123"
+            textField.placeholder = "100"
         }
         
         // Add the buttons
@@ -72,6 +72,8 @@ class PaymentViewController: BasketViewController {
     @IBAction func noButton(_ sender: UIButton) {
         continueButton.isHidden = false
         noButton.isHidden = true
+        needChangeButton.isHidden = true
+
     }
 
     // MARK: Sender to CheckVC

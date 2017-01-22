@@ -25,7 +25,7 @@ class CheckViewController: BasketViewController {
     func dateFormatter() -> String {
         let date = NSDate()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MMM-yyyy hh:mm:ss"
+        dateFormatter.dateFormat = "MM-dd-yyyy hh:mm"
         let dateString = dateFormatter.string(from: date as Date)
         // Custom Date Format  28-Feb-2016 11:41:51
         return String(dateString)
@@ -43,10 +43,13 @@ class CheckViewController: BasketViewController {
         
         // Do any additional setup after loading the view.
         //dateOrderLabel.text
-        numberOrderLabel.text = infoOfUser[0].idOrder
-        nameCustomerLabel.text = infoOfUser[0].name
-        phoneCustomerLabel.text = infoOfUser[0].phone
-        adressCustomerLabel.text = infoOfUser[0].city! + "/" + infoOfUser[0].street! + "/" + infoOfUser[0].house! + "/" + infoOfUser[0].apartment!
+        numberOrderLabel.text = infoOfUser.last?.idOrder
+        nameCustomerLabel.text = infoOfUser.last?.name
+        phoneCustomerLabel.text = infoOfUser.last?.phone
+        
+        adressCustomerLabel.text = "\(infoOfUser.last?.city ?? "")," as String + "\(infoOfUser.last?.street ?? "")," as String + "\(infoOfUser.last?.house ?? "")," as String + "\(infoOfUser.last?.apartment ?? "")," as String
+        //adressCustomerLabel.text = infoOfUser.last?.street ?? ""
+//        (infoOfUser.last?.house) ?? "", (infoOfUser.last?.apartment) ?? ""
         amountMoneyOfOrderLabel.text = (totalPriceInCart() + " грн.")
         dateOrderLabel.text = dateFormatter()
     }

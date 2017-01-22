@@ -58,8 +58,6 @@
 		7C2D73631DF9AA4F00A6400B /* Calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73621DF9AA4F00A6400B /* Calendar.png */; };
 		7C2D736D1DF9EF1800A6400B /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D736C1DF9EF1800A6400B /* check.png */; };
 		7C2D736F1DF9F3F500A6400B /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D736E1DF9F3F500A6400B /* CheckViewController.swift */; };
-		7C2D73721DF9F8BB00A6400B /* ButtonMinus.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73711DF9F8BB00A6400B /* ButtonMinus.png */; };
-		7C2D73741DF9F8C200A6400B /* ButtonPlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D73731DF9F8C200A6400B /* ButtonPlus.png */; };
 		7C2D73771DF9FB0600A6400B /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D73761DF9FB0600A6400B /* BasketViewController.swift */; };
 		7C2D737C1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D737B1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift */; };
 		7C2D737F1DFA0A7B00A6400B /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2D737E1DFA0A7B00A6400B /* PaymentViewController.swift */; };
@@ -146,8 +144,6 @@
 		7C2D73621DF9AA4F00A6400B /* Calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calendar.png; sourceTree = "<group>"; };
 		7C2D736C1DF9EF1800A6400B /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		7C2D736E1DF9F3F500A6400B /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
-		7C2D73711DF9F8BB00A6400B /* ButtonMinus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMinus.png; sourceTree = "<group>"; };
-		7C2D73731DF9F8C200A6400B /* ButtonPlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonPlus.png; sourceTree = "<group>"; };
 		7C2D73761DF9FB0600A6400B /* BasketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		7C2D737B1DFA038700A6400B /* DrawingUpOfAnOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingUpOfAnOrderViewController.swift; sourceTree = "<group>"; };
 		7C2D737E1DFA0A7B00A6400B /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
@@ -370,8 +366,6 @@
 				7C1668551DFAB54200E5F26B /* Hello.png */,
 				7C1668651DFABD2B00E5F26B /* PhotoOdessa1.png */,
 				7C2D73831DFA0FC900A6400B /* _Cart.png */,
-				7C2D73731DF9F8C200A6400B /* ButtonPlus.png */,
-				7C2D73711DF9F8BB00A6400B /* ButtonMinus.png */,
 				7C2D736C1DF9EF1800A6400B /* check.png */,
 				7C2D73621DF9AA4F00A6400B /* Calendar.png */,
 				7CF26A9A1DF8BC64004C627E /* menuImage.png */,
@@ -544,7 +538,6 @@
 				7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */,
 				56FCEA5F1E34D28900E2E594 /* iTunesArtwork in Resources */,
 				7C1668561DFAB54200E5F26B /* Hello.png in Resources */,
-				7C2D73741DF9F8C200A6400B /* ButtonPlus.png in Resources */,
 				7C4971821E167F47004805D5 /* HeartWhiteNew.png in Resources */,
 				7CF26A9F1DF8BC64004C627E /* menuImage.png in Resources */,
 				7C2D736D1DF9EF1800A6400B /* check.png in Resources */,
@@ -553,7 +546,6 @@
 				7C1668641DFABACF00E5F26B /* TextForBanner.png in Resources */,
 				7CA19A781E06CFD900A433A0 /* SearchHello.png in Resources */,
 				56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */,
-				7C2D73721DF9F8BB00A6400B /* ButtonMinus.png in Resources */,
 				7C7157801E2160B600C1DCAC /* Main.storyboard in Resources */,
 				7C2D16C31DF45A4200A3CF92 /* SignUp.storyboard in Resources */,
 				7CF26AA11DF8BC64004C627E /* menuImage4.png in Resources */,
