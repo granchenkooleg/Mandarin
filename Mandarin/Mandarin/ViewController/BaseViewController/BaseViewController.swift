@@ -239,8 +239,8 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     func updateProductInBasket () {
         let realm = try! Realm()
         let productsInBasket = realm.objects(ProductsForRealm.self)
-        Dispatch.mainQueue.async {
+//        Dispatch.mainQueue.async {
              self.quantityCartLabel?.text = "\(productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 }))"
-        }
+//        }
     }
 }
