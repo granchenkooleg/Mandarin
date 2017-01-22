@@ -34,6 +34,7 @@
 		56D6F1DA1E1AC604001C1FDC /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D6F1D91E1AC604001C1FDC /* SegmentControl.swift */; };
 		56D6F1DC1E1AC61C001C1FDC /* mandarin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56D6F1DB1E1AC61C001C1FDC /* mandarin.ttf */; };
 		56D6F1DE1E1AC756001C1FDC /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D6F1DD1E1AC756001C1FDC /* Button.swift */; };
+		56FCEA5F1E34D28900E2E594 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 56FCEA5E1E34D28900E2E594 /* iTunesArtwork */; };
 		7C0949631DE222250038018F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0949621DE222250038018F /* AppDelegate.swift */; };
 		7C09496A1DE222250038018F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C0949691DE222250038018F /* Assets.xcassets */; };
 		7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C09496B1DE222250038018F /* LaunchScreen.storyboard */; };
@@ -116,6 +117,7 @@
 		56D6F1D91E1AC604001C1FDC /* SegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentControl.swift; sourceTree = "<group>"; };
 		56D6F1DB1E1AC61C001C1FDC /* mandarin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandarin.ttf; sourceTree = "<group>"; };
 		56D6F1DD1E1AC756001C1FDC /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		56FCEA5E1E34D28900E2E594 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Assets.xcassets/Icon/iTunesArtwork.dataset/iTunesArtwork; sourceTree = "<group>"; };
 		59C633C6F7C974462971A9F1 /* Pods-Mandarin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mandarin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mandarin/Pods-Mandarin.debug.xcconfig"; sourceTree = "<group>"; };
 		6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mandarin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C54CC98AB82A309CE8319DC /* Pods-Mandarin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mandarin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mandarin/Pods-Mandarin.release.xcconfig"; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 		7C2C700F1DE44CDC005DEDCA /* Images  */ = {
 			isa = PBXGroup;
 			children = (
+				56FCEA5E1E34D28900E2E594 /* iTunesArtwork */,
 				7C4971831E168964004805D5 /* HeartCleanBillWhite.png */,
 				7C4971811E167F47004805D5 /* HeartWhiteNew.png */,
 				7CA19A771E06CFD900A433A0 /* SearchHello.png */,
@@ -539,6 +542,7 @@
 				7C09496A1DE222250038018F /* Assets.xcassets in Resources */,
 				7CF26AA21DF8BC64004C627E /* menuImage3.png in Resources */,
 				7C36EE931DE63C63007506BC /* check_v1-05.jpg in Resources */,
+				56FCEA5F1E34D28900E2E594 /* iTunesArtwork in Resources */,
 				7C1668561DFAB54200E5F26B /* Hello.png in Resources */,
 				7C2D73741DF9F8C200A6400B /* ButtonPlus.png in Resources */,
 				7C4971821E167F47004805D5 /* HeartWhiteNew.png in Resources */,
