@@ -73,7 +73,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    //it for selete rows [start
+    // Delete rows [start
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }

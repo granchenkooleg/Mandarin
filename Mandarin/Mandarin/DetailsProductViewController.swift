@@ -155,6 +155,8 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     //button cart
     @IBAction func createCart(_ sender: AnyObject) {
         
+        overPlusAndMinusButton.isHidden = false
+        
 //        let list = ProductsForRealm.setupProduct(id: id, descriptiqonForProduct: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_salquglevody, units: "")
 //        self?.internalProducts.append(list)
 //        let products = ProductsForRealm(value: list)
