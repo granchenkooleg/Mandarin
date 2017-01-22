@@ -58,7 +58,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
             guard let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon ?? "")!) else { return }
             cell.thubnailImageView?.image = UIImage(data: imageData)
         }
-        
+        cell.productDetail = productDetails
         cell.descriptionLabel?.text = productDetails.descriptionForProduct
         cell.productID = productDetails.id
         cell.quantity = Int(productDetails.quantity) ?? 0
@@ -68,6 +68,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         cell.quantityLabel?.text = productDetails.quantity + " шт."
         cell.completionBlock = {[weak self] in
             self?.updateProductInfo()
+            self?.tableView.reloadData()
         }
         
         return cell
@@ -136,6 +137,7 @@ class BasketTableViewCell: UITableViewCell {
     var productID: String = ""
     var quantity: Int = 1
     var completionBlock: Block?
+    var productDetail: ProductsForRealm? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -169,6 +171,17 @@ class BasketTableViewCell: UITableViewCell {
         let product = realm.objects(ProductsForRealm.self).filter("id  == [c] %@", productID).first
         try! realm.write {
             product!.quantity = "\(quantity)"
+        }
+    }
+    
+    @IBAction func deleteProduct(sender: AnyObject) {
+        let realm = try? Realm()
+        guard let productDetail = productDetail else {
+            return
+        }
+        _ = try? realm?.write {
+            realm?.delete(productDetail)
+            completionBlock?()
         }
     }
 }

@@ -21,6 +21,9 @@ class CheckViewController: BasketViewController {
     @IBOutlet weak var amountMoneyOfOrderLabel: UILabel!
     @IBOutlet weak var deliveryTimeLabel: UILabel!
     
+    // Segue
+    var valueDeliveryTime: String = ""
+    
     // Date
     func dateFormatter() -> String {
         let date = NSDate()
@@ -37,7 +40,10 @@ class CheckViewController: BasketViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        deliveryTimeLabel.text = (valueDeliveryTime + " мин.")
         
+        // Realm start
         let realm = try! Realm()
         infoOfUser = realm.objects(InfoAboutUserForOrder.self)
         
@@ -48,8 +54,7 @@ class CheckViewController: BasketViewController {
         phoneCustomerLabel.text = infoOfUser.last?.phone
         
         adressCustomerLabel.text = "\(infoOfUser.last?.city ?? "")," as String + "\(infoOfUser.last?.street ?? "")," as String + "\(infoOfUser.last?.house ?? "")," as String + "\(infoOfUser.last?.apartment ?? "")," as String
-        //adressCustomerLabel.text = infoOfUser.last?.street ?? ""
-//        (infoOfUser.last?.house) ?? "", (infoOfUser.last?.apartment) ?? ""
+       
         amountMoneyOfOrderLabel.text = (totalPriceInCart() + " грн.")
         dateOrderLabel.text = dateFormatter()
     }
