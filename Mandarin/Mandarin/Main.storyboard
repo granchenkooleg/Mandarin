@@ -1862,7 +1862,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="backClick:" destination="XZp-aZ-aaZ" eventType="touchUpInside" id="g4r-bY-Bsg"/>
+                                            <action selector="backClickAndClearDatabaseWithSender:" destination="XZp-aZ-aaZ" eventType="touchUpInside" id="pCb-DR-jrr"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sd-Bm-IK8">
@@ -1871,7 +1871,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="menuClick:" destination="XZp-aZ-aaZ" eventType="touchUpInside" id="5db-7U-FVS"/>
+                                            <action selector="menuClickAndClearDatabase:" destination="XZp-aZ-aaZ" eventType="touchUpInside" id="t9E-gs-EiR"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Спасибо!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0YQ-Wn-okg">
@@ -1885,7 +1885,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="searchClick:" destination="XZp-aZ-aaZ" eventType="touchUpInside" id="doy-Ns-Bos"/>
+                                            <action selector="searchClickAndClearDatabase:" destination="XZp-aZ-aaZ" eventType="touchUpInside" id="NH5-iM-ydw"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGr-db-E7L">
@@ -1905,7 +1905,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="basketClick:" destination="XZp-aZ-aaZ" eventType="touchUpInside" id="YXD-p2-jLE"/>
+                                                    <action selector="basketClickAndClearDatabase:" destination="XZp-aZ-aaZ" eventType="touchUpInside" id="mxi-6p-dO5"/>
                                                 </connections>
                                             </button>
                                         </subviews>

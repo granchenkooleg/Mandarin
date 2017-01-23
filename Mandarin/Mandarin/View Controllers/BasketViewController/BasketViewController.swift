@@ -125,6 +125,51 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         containerViewController.addController(UIStoryboard.main["drawingUpOrder"]!)
     }
     
+    // MARK: Navigation and ClearDatabase for buttons in header BasketAfterPaymentVC and CheckVC [start
+    @IBAction func basketClickAndClearDatabase(_ sender: AnyObject) {
+        
+        ProductsForRealm.deleteAllProducts()
+        updateProductInfo()
+        
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        containerViewController.addController(UIStoryboard.main["basket"]!)
+    }
+    
+    @IBAction func searchClickAndClearDatabase(_ sender: AnyObject) {
+        
+        ProductsForRealm.deleteAllProducts()
+        updateProductInfo()
+        
+        present(UIStoryboard.main["search"]!, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func menuClickAndClearDatabase(_ sender: AnyObject) {
+        
+        ProductsForRealm.deleteAllProducts()
+        updateProductInfo()
+        
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
+    }
+    
+    @IBAction func backClickAndClearDatabase (sender: AnyObject) {
+        
+        ProductsForRealm.deleteAllProducts()
+        updateProductInfo()
+        
+        if (self.presentingViewController != nil) {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+            containerViewController.addController(containerViewController.mainViewController ?? UIViewController())
+        }
+
+        
+    }
+    // end]
+
+    
 }
 
 class BasketTableViewCell: UITableViewCell {
