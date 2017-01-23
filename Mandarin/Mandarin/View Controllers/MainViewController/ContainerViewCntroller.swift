@@ -11,7 +11,7 @@ import FacebookLogin
 import FacebookCore
 import SwiftyVK
 
-class ContainerViewController: BaseViewController {
+class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var menuContainerView: Menu!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -75,6 +75,7 @@ class ContainerViewController: BaseViewController {
     }
     
     func addController(_ controller: UIViewController) {
+        scrollView.isScrollEnabled = !(controller is BasketViewController)
         containerView.subviews.all({ $0.removeFromSuperview() })
         childViewControllers.all { $0.removeFromParentViewController() }
         addChildViewController(controller)
