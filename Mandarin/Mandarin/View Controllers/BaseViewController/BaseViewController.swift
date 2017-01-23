@@ -32,8 +32,8 @@ func performWhenLoaded<T: BaseViewController>(_ controller: T, block: @escaping 
 
 class BaseViewController: UIViewController, KeyboardNotifying {
     
-    //var it contains Realm data my table ProductsForRealm
-//    var productsInBasket: Results<ProductsForRealm>!
+   // var it contains Realm data my table ProductsForRealm
+    var productsInBasket: Results<ProductsForRealm>!
     
     //var for cart
 //    var quantityProductsInCart: Any?
@@ -53,6 +53,8 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     @IBOutlet var searchTextField: TextField?
     
     @IBOutlet weak var quantityCartLabel: UILabel?
+    
+    @IBOutlet weak var totalPriceLabel: UILabel?
     
     var viewAppeared = false
     
@@ -123,7 +125,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateProductInBasket()
+        updateProductInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -236,11 +238,29 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         containerViewController.addController(UIStoryboard.main["basket"]!)
     }
     
-    func updateProductInBasket () {
-        let realm = try! Realm()
-        let productsInBasket = realm.objects(ProductsForRealm.self)
+//    func updateProductInBasket () {
+//        let realm = try! Realm()
+//        let productsInBasket = realm.objects(ProductsForRealm.self)
 //        Dispatch.mainQueue.async {
-             self.quantityCartLabel?.text = "\(productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 }))"
+//             self.quantityCartLabel?.text = "\(productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 }))"
 //        }
+//    }
+    
+    // MARK: Basket Update and totalPrice
+    func updateProductInfo() {
+        let realm = try! Realm()
+        productsInBasket = realm.objects(ProductsForRealm.self)
+        totalPriceLabel?.text = (totalPriceInCart() + " грн.")
+        self.quantityCartLabel?.text = "\(productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 }))"
+    }
+    
+    //  Total price
+    func totalPriceInCart() -> String {
+        var totalPrice: Float = 0
+        for product in  productsInBasket {
+            totalPrice += Float(product.price!)! * Float(product.quantity)!
+        }
+        
+        return String(totalPrice)
     }
 }

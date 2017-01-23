@@ -164,7 +164,8 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         
         updateProduct()
         UIAlertController.alert("Товар добавлен в корзину.".ls).show()
-        updateProductInBasket()
+        //updateProductInBasket()
+        updateProductInfo()
 
         //        navigationController!.popViewController(animated: true)
         

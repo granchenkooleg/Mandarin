@@ -2252,7 +2252,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="menuClick:" destination="ovS-Z6-xTF" eventType="touchUpInside" id="Ykx-zb-qPG"/>
+                                            <action selector="menuClickAndClearDatabase:" destination="ovS-Z6-xTF" eventType="touchUpInside" id="aBb-g7-ocz"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ваш заказ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mlt-mt-XiO">
@@ -2269,7 +2269,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="searchClick:" destination="ovS-Z6-xTF" eventType="touchUpInside" id="xDJ-sX-hov"/>
+                                            <action selector="searchClickAndClearDatabase:" destination="ovS-Z6-xTF" eventType="touchUpInside" id="3f3-7g-NO0"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ogp-yx-P2x">
@@ -2280,7 +2280,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="basketClick:" destination="ovS-Z6-xTF" eventType="touchUpInside" id="CHy-ER-LJk"/>
+                                                    <action selector="basketClickAndClearDatabase:" destination="ovS-Z6-xTF" eventType="touchUpInside" id="W19-k5-olc"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YD-3P-yww">

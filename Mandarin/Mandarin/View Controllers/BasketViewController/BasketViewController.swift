@@ -11,32 +11,33 @@ import RealmSwift
 
 class BasketViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var totalPriceLabel: UILabel!
+    //@IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    //it spetial for Realm
-    var productsInBasket: Results<ProductsForRealm>!
+//    //it spetial for Realm
+//    var productsInBasket: Results<ProductsForRealm>!
     
     override func viewDidLoad() {
         updateProductInfo()
     }
     
-    func updateProductInfo() {
-        let realm = try! Realm()
-        productsInBasket = realm.objects(ProductsForRealm.self)
-        totalPriceLabel?.text = (totalPriceInCart() + " грн.")
-        updateProductInBasket()
-    }
+//    func updateProductInfo() {
+//        let realm = try! Realm()
+//        productsInBasket = realm.objects(ProductsForRealm.self)
+//        totalPriceLabel?.text = (totalPriceInCart() + " грн.")
+//        updateProductInBasket()
+//    }
+//    
+//    //for total price
+//    func totalPriceInCart() -> String {
+//        var totalPrice: Float = 0
+//        for product in  productsInBasket {
+//            totalPrice += Float(product.price!)! * Float(product.quantity)!
+//        }
+//        
+//        return String(totalPrice)
+//    }
     
-    //for total price
-    func totalPriceInCart() -> String {
-        var totalPrice: Float = 0
-        for product in  productsInBasket {
-            totalPrice += Float(product.price!)! * Float(product.quantity)!
-        }
-        
-        return String(totalPrice)
-    }
     
     // MARK: - Table view data source
     
