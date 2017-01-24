@@ -14,29 +14,29 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
     //@IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-//    //it spetial for Realm
-//    var productsInBasket: Results<ProductsForRealm>!
+    //    //it spetial for Realm
+    //    var productsInBasket: Results<ProductsForRealm>!
     
     override func viewDidLoad() {
         updateProductInfo()
     }
     
-//    func updateProductInfo() {
-//        let realm = try! Realm()
-//        productsInBasket = realm.objects(ProductsForRealm.self)
-//        totalPriceLabel?.text = (totalPriceInCart() + " грн.")
-//        updateProductInBasket()
-//    }
-//    
-//    //for total price
-//    func totalPriceInCart() -> String {
-//        var totalPrice: Float = 0
-//        for product in  productsInBasket {
-//            totalPrice += Float(product.price!)! * Float(product.quantity)!
-//        }
-//        
-//        return String(totalPrice)
-//    }
+    //    func updateProductInfo() {
+    //        let realm = try! Realm()
+    //        productsInBasket = realm.objects(ProductsForRealm.self)
+    //        totalPriceLabel?.text = (totalPriceInCart() + " грн.")
+    //        updateProductInBasket()
+    //    }
+    //
+    //    //for total price
+    //    func totalPriceInCart() -> String {
+    //        var totalPrice: Float = 0
+    //        for product in  productsInBasket {
+    //            totalPrice += Float(product.price!)! * Float(product.quantity)!
+    //        }
+    //
+    //        return String(totalPrice)
+    //    }
     
     
     // MARK: - Table view data source
@@ -65,7 +65,14 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         cell.quantity = Int(productDetails.quantity) ?? 0
         cell.nameLabel?.text = productDetails.name
         cell.weightLabel?.text = productDetails.weight! + productDetails.units!
-        cell.priceLabel?.text = (productDetails.price ?? "") + " грн."
+        
+        // Make a choice prices for to display prices
+        if Double(productDetails.price_sale ?? "") ?? 0 > Double(0.00) {
+            cell.priceLabel?.text = (productDetails.price_sale ?? "") + " грн."
+        } else {
+            cell.priceLabel?.text = (productDetails.price ?? "") + " грн."
+        }
+        
         cell.quantityLabel?.text = productDetails.quantity + " шт."
         cell.completionBlock = {[weak self] in
             self?.updateProductInfo()
@@ -107,7 +114,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         let nextAction: UIAlertAction = UIAlertAction(title: "Удалить", style: .destructive) {[weak self] action -> Void in
             //Do some other stuff
             ProductsForRealm.deleteAllProducts()
- 
+            
             self?.tableView.reloadData()
             self?.updateProductInfo()
         }
@@ -115,7 +122,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         
         //Present the AlertController
         self.present(actionSheetController, animated: true, completion: nil)
-       
+        
         
     }
     
@@ -164,11 +171,11 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
             guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
             containerViewController.addController(containerViewController.mainViewController ?? UIViewController())
         }
-
+        
         
     }
     // end]
-
+    
     
 }
 

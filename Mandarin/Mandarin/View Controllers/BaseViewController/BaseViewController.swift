@@ -258,7 +258,12 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     func totalPriceInCart() -> String {
         var totalPrice: Float = 0
         for product in  productsInBasket {
+            // Make a choice prices for to display prices
+            if Double(product.price_sale ?? "") ?? 0 > Double(0.00) {
+            totalPrice += Float(product.price_sale!)! * Float(product.quantity)!
+            } else {
             totalPrice += Float(product.price!)! * Float(product.quantity)!
+            }
         }
         
         return String(totalPrice)

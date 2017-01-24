@@ -25,6 +25,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBOutlet weak var productsImageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
+    var priceSaleDetailsVC: String?
     var idProductDetailsVC: String!
     var productsImage: String! // name our image
     var nameHeaderTextDetailsVC: String?
@@ -54,7 +55,13 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         determinantForOverPlusAndMinusButton()
         
         //quantityCartLabel.text = quantityProducts
-        priceLabel.text = priceDetailsVC! + " грн."
+        // Make a choice prices for to display prices
+        if Double(priceSaleDetailsVC ?? "") ?? 0 > Double(0.00) {
+            priceLabel?.text = String(priceSaleDetailsVC ?? "") + " грн."
+        } else {
+            priceLabel.text = priceDetailsVC! + " грн."
+        }
+        
         nameLabel.text = nameHeaderTextDetailsVC
         descriptionTextField.text = descriptionDetailsVC
         uglevodyLabel.text = uglevodyDetailsVC
@@ -157,16 +164,16 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         
         overPlusAndMinusButton.isHidden = false
         
-//        let list = ProductsForRealm.setupProduct(id: id, descriptiqonForProduct: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_salquglevody, units: "")
-//        self?.internalProducts.append(list)
-//        let products = ProductsForRealm(value: list)
-//        User.currentUser?.products.append(products)
+        //        let list = ProductsForRealm.setupProduct(id: id, descriptiqonForProduct: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_salquglevody, units: "")
+        //        self?.internalProducts.append(list)
+        //        let products = ProductsForRealm(value: list)
+        //        User.currentUser?.products.append(products)
         
         updateProduct()
         UIAlertController.alert("Товар добавлен в корзину.".ls).show()
         //updateProductInBasket()
         updateProductInfo()
-
+        
         //        navigationController!.popViewController(animated: true)
         
         // quantityProducts  = "2"
@@ -179,7 +186,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
                 product.quantity = "\((Int(product.quantity) ?? 0) + quantity)"
             }
         } else {
-            let _ = ProductsForRealm.setupProduct(id: idProductDetailsVC ?? "", descriptionForProduct: descriptionDetailsVC ?? "", proteins: proteinsDetailsVC ?? "", calories: caloriesDetailsVC ?? "", zhiry: zhiryDetailsVC ?? "", favorite: "", category_id: "", brand: brandDetailsVC ?? "", price_sale: "", weight: "", status: "", expire_date: expire_dateDetailsVC ?? "", price: priceDetailsVC ?? "", created_at: created_atDetailsVC ?? "", icon: iconDetailsVC ?? "", category_name: "", name: nameHeaderTextDetailsVC ?? "" , uglevody: uglevodyDetailsVC ?? "" , units: "", quantity: "\(quantity)")
+            let _ = ProductsForRealm.setupProduct(id: idProductDetailsVC ?? "", descriptionForProduct: descriptionDetailsVC ?? "", proteins: proteinsDetailsVC ?? "", calories: caloriesDetailsVC ?? "", zhiry: zhiryDetailsVC ?? "", favorite: "", category_id: "", brand: brandDetailsVC ?? "", price_sale: priceSaleDetailsVC ?? "", weight: "", status: "", expire_date: expire_dateDetailsVC ?? "", price: priceDetailsVC ?? "", created_at: created_atDetailsVC ?? "", icon: iconDetailsVC ?? "", category_name: "", name: nameHeaderTextDetailsVC ?? "" , uglevody: uglevodyDetailsVC ?? "" , units: "", quantity: "\(quantity)")
         }
     }
 }
