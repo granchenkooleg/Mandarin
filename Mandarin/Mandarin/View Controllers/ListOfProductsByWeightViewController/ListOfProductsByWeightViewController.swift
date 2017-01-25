@@ -21,8 +21,8 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     var idPodcategory: String?
     
     var list: Any?
-    var internalProductsForListOfWeightVC = [Product]()
-    var _productsList = [Product]()
+    var productsForListOfWeightVC = [Product]()
+    var productsList = [Product]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +37,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     func listOfProduct() {
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.listAllProducts(param as [String : AnyObject], completion: {[weak self] json in
+            guard let weakSelf = self else { return }
             json.forEach { _, json in
                 print (">>self - \(json)<<")
                 let id = json["id"].string ?? ""
@@ -57,17 +58,20 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 let expire_date = json["expire_date"].string ?? ""
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
-                
+                var image: Data? = nil
+                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon)!){
+                    image = imageData
+                }
                 // It sort for segment "Скидки"
                 if Double(price_sale)! > Double(0.00) {
-                    self?.list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
-                    self?.internalProductsForListOfWeightVC.append(self?.list as! Product)
+                    self?.list = Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "", image: image)
+                    self?.productsForListOfWeightVC.append(self?.list as! Product)
                 } else {return}
                 
             }
             
-            self?._productsList = (self?.internalProductsForListOfWeightVC)!
-            self?.tableView.reloadData()
+            weakSelf.productsList = weakSelf.productsForListOfWeightVC
+            weakSelf.tableView.reloadData()
             })
     }
     
@@ -76,21 +80,20 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return _productsList.count
+        return productsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ListOfProductsByWeightViewController"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ListOfProductsByWeightTableViewCell
         
-        let productDetails = _productsList[indexPath.row]
+        let productDetails = productsList[indexPath.row]
         Dispatch.mainQueue.async { _ in
-            let imageData: Data = try! Data(contentsOf: URL(string: productDetails.icon)!)
-            cell.thubnailImageView?.image = UIImage(data: imageData)
+            cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
             
             
             cell.nameLabel?.text = productDetails.name
-            cell.descriptionLabel?.text = productDetails.description
+            cell.descriptionLabel?.text = productDetails.description_
             cell.weightLabel?.text = productDetails.weight + " " + (self.unitOfWeightForListOfProductsByWeightVC ?? "")
             cell.priceOldLabel?.text = productDetails.price + " грн."
             //if price_sale != 0.00 грн, set it
@@ -112,26 +115,29 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()
-        detailsProductVC.idProductDetailsVC = _productsList[indexPath.row].id
-        detailsProductVC.priceDetailsVC = _productsList[indexPath.row].price
-        detailsProductVC.descriptionDetailsVC = _productsList[indexPath.row].description
-        detailsProductVC.uglevodyDetailsVC = _productsList[indexPath.row].uglevody
-        detailsProductVC.zhiryDetailsVC = _productsList[indexPath.row].zhiry
+        detailsProductVC.idProductDetailsVC = productsList[indexPath.row].id
+        detailsProductVC.priceDetailsVC = productsList[indexPath.row].price
+        detailsProductVC.descriptionDetailsVC = productsList[indexPath.row].description
+        detailsProductVC.uglevodyDetailsVC = productsList[indexPath.row].uglevody
+        detailsProductVC.zhiryDetailsVC = productsList[indexPath.row].zhiry
         
-        detailsProductVC.proteinsDetailsVC = _productsList[indexPath.row].proteins
-        detailsProductVC.caloriesDetailsVC = _productsList[indexPath.row].calories
-        detailsProductVC.expire_dateDetailsVC = _productsList[indexPath.row].expire_date
-        detailsProductVC.brandDetailsVC = _productsList[indexPath.row].brand
-        detailsProductVC.iconDetailsVC = _productsList[indexPath.row].icon
+        detailsProductVC.proteinsDetailsVC = productsList[indexPath.row].proteins
+        detailsProductVC.caloriesDetailsVC = productsList[indexPath.row].calories
+        detailsProductVC.expire_dateDetailsVC = productsList[indexPath.row].expire_date
+        detailsProductVC.brandDetailsVC = productsList[indexPath.row].brand
+        detailsProductVC.iconDetailsVC = productsList[indexPath.row].icon
         //detailsProductVC.DetailsVC = _products[indexPath.row].
-        detailsProductVC.created_atDetailsVC = _productsList[indexPath.row].created_at
-        detailsProductVC.nameHeaderTextDetailsVC = _productsList[indexPath.row].name
+        detailsProductVC.created_atDetailsVC = productsList[indexPath.row].created_at
+        detailsProductVC.nameHeaderTextDetailsVC = productsList[indexPath.row].name
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         containerViewController.addController(detailsProductVC)
     }
 }
 
 class ListOfProductsByWeightViewController: ListOfProductsByWeightViewControllerSegment {
+    
+    var products = [Product]()
+    var _productsArray = [Product]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -140,6 +146,7 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
     override func listOfProduct() {
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.listAllProducts(param as [String : AnyObject], completion: {[weak self] json in
+            guard let weakSelf = self else { return }
             json.forEach { _, json in
                 print (">>self - \(json["name"])<<")
                 let id = json["id"].string ?? ""
@@ -162,14 +169,16 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
                 let price_sale = json["price_sale"].string ?? ""
                 
                 
-                if self?.idPodcategory == category_id && self?.weightOfWeightVC == weight {//Here we make a comparison to accurately display the product by weight
-                    let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
-                    self?.internalProductsForListOfWeightVC.append(list)
-                } else { return }
+                var image: Data? = nil
+                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon)!){
+                    image = imageData
+                }
+                let list = Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "", image: image)
+                self?._productsArray.append(list)
                 
             }
-            self?._productsList = (self?.internalProductsForListOfWeightVC)!
-            self?.tableView.reloadData()
+            weakSelf.products = weakSelf._productsArray
+            weakSelf.tableView.reloadData()
             })
     }
     

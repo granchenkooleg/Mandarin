@@ -32,6 +32,7 @@ class ProductsForRealm : Object {
     dynamic var name: String? = ""
     dynamic var uglevody: String? = ""
     dynamic var units: String? = ""
+    dynamic var image: Data? = nil
     //dynamic var created = Date()
     
     dynamic var owner: User?
@@ -48,9 +49,9 @@ class ProductsForRealm : Object {
         }
     }
 
-    class func setupProduct(id: String = "", descriptionForProduct: String = "", proteins: String = "", calories: String = "", zhiry: String = "", favorite: String = "", category_id: String = "", brand: String = "", price_sale: String = "", weight: String = "", status: String = "", expire_date: String = "", price: String = "", created_at: String = "", icon: String = "", category_name: String = "", name: String = "", uglevody: String = "", units: String = "", quantity: String = "") -> ProductsForRealm {
+    class func setupProduct(id: String = "", descriptionForProduct: String = "", proteins: String = "", calories: String = "", zhiry: String = "", favorite: String = "", category_id: String = "", brand: String = "", price_sale: String = "", weight: String = "", status: String = "", expire_date: String = "", price: String = "", created_at: String = "", icon: String = "", category_name: String = "", name: String = "", uglevody: String = "", units: String = "", quantity: String = "", image: Data? = nil) -> ProductsForRealm {
         
-        let productData: Dictionary = [
+        let productData: Dictionary <String, Any> = [
             "id" : id,
             "descriptionForProduct" : descriptionForProduct,
             "proteins" : proteins,
@@ -70,7 +71,8 @@ class ProductsForRealm : Object {
             "name" : name,
             "uglevody" : uglevody,
             "units" : units,
-            "quantity" : quantity]
+            "quantity" : quantity,
+            "image": image ?? Data()]
         
         let product = ProductsForRealm(value: productData)
         

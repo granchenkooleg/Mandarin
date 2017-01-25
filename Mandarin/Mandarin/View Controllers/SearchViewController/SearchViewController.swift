@@ -12,12 +12,16 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
+    var products = [Product]()
+    var _productsArray = [Product]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.listAllProducts(param as [String : AnyObject], completion: {[weak self] json in
+            guard let weakSelf = self else { return }
             json.forEach { _, json in
                 print (">>self - \(json["name"])<<")
                 let id = json["id"].string ?? ""
@@ -39,14 +43,16 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
                 
-                
-                let list = Product(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "")
-                self?.internalProducts.append(list)
+                var image: Data? = nil
+                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon)!){
+                    image = imageData
+                }
+                let list = Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "", image: image)
+                self?._productsArray.append(list)
                 
             }
-            self?._products = (self?.internalProducts)!
-            print ("\(self?._products[0].id)")
-            self?.tableView.reloadData()
+            weakSelf.products = weakSelf._productsArray
+            weakSelf.tableView.reloadData()
             })
     }
     
@@ -84,17 +90,16 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return _products.count
+        return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "SearchViewController"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SearchTableViewCell
         
-        let productDetails = _products[indexPath.row]
+        let productDetails = products[indexPath.row]
         Dispatch.mainQueue.async { _ in
-            guard let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon)!) else { return }
-            cell.thubnailImageView?.image = UIImage(data: imageData)
+            cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
         }
         
         cell.nameLabel?.text = productDetails.name

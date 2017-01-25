@@ -55,8 +55,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         
         let productDetails = productsInBasket[indexPath.row]
         Dispatch.mainQueue.async { _ in
-            guard let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon ?? "")!) else { return }
-            cell.thubnailImageView?.image = UIImage(data: imageData)
+            cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
         }
         
         cell.descriptionLabel?.text = productDetails.descriptionForProduct

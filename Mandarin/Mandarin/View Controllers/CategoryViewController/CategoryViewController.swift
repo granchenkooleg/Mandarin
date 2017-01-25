@@ -17,7 +17,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     
     // @IBOutlet weak var tableView: UITableView!
     
-    //    fileprivate var internalProducts: [Products] = []
+    internal var categoryContainer = [Category]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,23 +28,8 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     }
     
     func getAllCategory () {
-        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-        UserRequest.getAllCategories(param as [String : AnyObject], completion: {[weak self] json in
-            json.forEach { _, json in
-                print (">>self - \(json["name"])<<")
-                let id = json["id"].string ?? ""
-                let created_at = json["created_at"].string ?? ""
-                let icon = json["icon"].string ?? ""
-                let name = json["name"].string ?? ""
-                let units = json["units"].string ?? ""
-                let category_id = json["category_id"].string ?? ""
-                
-                let category = Category(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
-                self?.internalProducts.append(category)
-            }
-            self?._products = (self?.internalProducts)!
-            self?.tableView.reloadData()
-        })
+        categoryContainer = Category.allCategories ?? []
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -54,7 +39,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return _products.count
+        return categoryContainer.count
         
     }
     
@@ -62,11 +47,10 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         let cellIdentifier = "CategoryTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CategoryTableViewCell
         
-        let productDetails = _products[indexPath.row]
+        let category = categoryContainer[indexPath.row]
         Dispatch.mainQueue.async { _ in
-            guard productDetails.icon.isEmpty == false, let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon)!) else { return }
-            cell.thubnailImageView?.image = UIImage(data: imageData)
-            cell.nameLabel?.text = productDetails.name
+            cell.thubnailImageView?.image = UIImage(data: category.image ?? Data())
+            cell.nameLabel?.text = category.name
         }
         
         return cell
@@ -79,8 +63,8 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     
     func getWeigth(indexPath: IndexPath) {
         let categoryViewController = Storyboard.Category.instantiate()
-        categoryViewController.categoryId = _products[indexPath.row].id
-        categoryViewController.nameHeaderText = _products[indexPath.row].name
+        categoryViewController.categoryId = categoryContainer[indexPath.row].id
+        categoryViewController.nameHeaderText = categoryContainer[indexPath.row].name
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         containerViewController.addController(categoryViewController)
     }
@@ -89,6 +73,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
 class CategoryViewController: CategoryViewControllerSegment {
     
     var categoryId: String?
+     internal var categories = [Category]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +83,7 @@ class CategoryViewController: CategoryViewControllerSegment {
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         guard let categoryId = categoryId else { return }
         UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in
-            //print (">>self - \(self?.categoryId)<<")
+            guard let weakSelf = self else { return }
             json.forEach { _, json in
                 let id = json["id"].string ?? ""
                 let category_id = json["category_id"].string ?? ""
@@ -109,20 +94,24 @@ class CategoryViewController: CategoryViewControllerSegment {
                 
                 let units = json["units"].string ?? ""
                 
-                let productCategory = Category (id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
-                self?.internalProducts.append(productCategory)
+                var image: Data? = nil
+                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon)!){
+                    image = imageData
+                }
+                let category = Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
+                self?.categories.append(category)
             }
-            self?._products = (self?.internalProducts)!
-            self?.tableView.reloadData()
+            weakSelf.categoryContainer = weakSelf.categories
+            weakSelf.tableView.reloadData()
         })
     }
     
     //segue
     override func getWeigth(indexPath: IndexPath) {
         let weightViewController = Storyboard.Weight.instantiate()
-        weightViewController.unitOfWeight = _products[indexPath.row].units
-        weightViewController.nameWeightHeaderText = _products[indexPath.row].name
-        weightViewController.podCategory_id = _products[indexPath.row].id
+        weightViewController.unitOfWeight = categoryContainer[indexPath.row].units
+        weightViewController.nameWeightHeaderText = categoryContainer[indexPath.row].name
+        weightViewController.podCategory_id = categoryContainer[indexPath.row].id
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         containerViewController.addController(weightViewController)
     }

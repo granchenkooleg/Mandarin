@@ -63,6 +63,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         vkButton.circled = true
         facebookButton.circled = true
         googleButton.circled = true
+        getAllCategory()
     }
     
     //start VK
@@ -192,6 +193,28 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
             
             sender.loading = false
             })
+    }
+    
+    func getAllCategory () {
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+        Category.setConfig()
+        UserRequest.getAllCategories(param as [String : AnyObject], completion: { json in
+            json.forEach { _, json in
+                print (">>self - \(json["name"])<<")
+                let id = json["id"].string ?? ""
+                let created_at = json["created_at"].string ?? ""
+                let icon = json["icon"].string ?? ""
+                let name = json["name"].string ?? ""
+                let units = json["units"].string ?? ""
+                let category_id = json["category_id"].string ?? ""
+                var image: Data? = nil
+                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon)!){
+                    image = imageData
+                }
+                
+                Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
+            }
+        })
     }
 }
 

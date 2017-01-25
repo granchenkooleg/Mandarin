@@ -117,26 +117,9 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func getAllCategory () {
-        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-        UserRequest.getAllCategories(param as [String : AnyObject], completion: {[weak self] json in
-            let category = Category(id: "", icon: "ic_main", name: "Главная", created_at: "", units: "", category_id: "")
-            var container = [Category]()
-            container.append(category)
-            json.forEach { _, json in
-                print (">>self - \(json["name"])<<")
-                let id = json["id"].string ?? ""
-                let created_at = json["created_at"].string ?? ""
-                let icon = json["icon"].string ?? ""
-                let name = json["name"].string ?? ""
-                let units = json["units"].string ?? ""
-                let category_id = json["category_id"].string ?? ""
-                
-                let category = Category(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id)
-                container.append(category)
-            }
-            self?.categoryContainer = container
-            self?.tableView?.reloadData()
-        })
+        categoryContainer = Category.allCategories ?? []
+        categoryContainer.insert(Category(), at: 0)
+        tableView?.reloadData()
     }
     
     
@@ -154,15 +137,14 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         let cellIdentifier = "CategoryTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CategoryTableViewCell
         
-        let productDetails = categoryContainer[indexPath.row]
+        let category = categoryContainer[indexPath.row]
         Dispatch.mainQueue.async { _ in
             if indexPath.row == 0 {
-                cell.thubnailImageView?.image = UIImage(named: productDetails.icon)
-                cell.nameLabel?.text = productDetails.name
+                cell.thubnailImageView?.image = UIImage(named: "ic_main")
+                cell.nameLabel?.text = "Главная"
             } else {
-                guard productDetails.icon.isEmpty == false, let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon)!) else { return }
-                cell.thubnailImageView?.image = UIImage(data: imageData)
-                cell.nameLabel?.text = productDetails.name
+                cell.thubnailImageView?.image = UIImage(data: category.image ?? Data())
+                cell.nameLabel?.text = category.name
             }
         }
         
