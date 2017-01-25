@@ -11,32 +11,33 @@ import RealmSwift
 
 class BasketViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var totalPriceLabel: UILabel!
+    //@IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    //it spetial for Realm
-    var productsInBasket: Results<ProductsForRealm>!
+    //    //it spetial for Realm
+    //    var productsInBasket: Results<ProductsForRealm>!
     
     override func viewDidLoad() {
         updateProductInfo()
     }
     
-    func updateProductInfo() {
-        let realm = try! Realm()
-        productsInBasket = realm.objects(ProductsForRealm.self)
-        totalPriceLabel?.text = (totalPriceInCart() + " грн.")
-        updateProductInBasket()
-    }
+    //    func updateProductInfo() {
+    //        let realm = try! Realm()
+    //        productsInBasket = realm.objects(ProductsForRealm.self)
+    //        totalPriceLabel?.text = (totalPriceInCart() + " грн.")
+    //        updateProductInBasket()
+    //    }
+    //
+    //    //for total price
+    //    func totalPriceInCart() -> String {
+    //        var totalPrice: Float = 0
+    //        for product in  productsInBasket {
+    //            totalPrice += Float(product.price!)! * Float(product.quantity)!
+    //        }
+    //
+    //        return String(totalPrice)
+    //    }
     
-    //for total price
-    func totalPriceInCart() -> String {
-        var totalPrice: Float = 0
-        for product in  productsInBasket {
-            totalPrice += Float(product.price!)! * Float(product.quantity)!
-        }
-        
-        return String(totalPrice)
-    }
     
     // MARK: - Table view data source
     
@@ -57,16 +58,24 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         Dispatch.mainQueue.async { _ in
             cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
         }
-        
+        cell.productDetail = productDetails
         cell.descriptionLabel?.text = productDetails.descriptionForProduct
         cell.productID = productDetails.id
         cell.quantity = Int(productDetails.quantity) ?? 0
         cell.nameLabel?.text = productDetails.name
         cell.weightLabel?.text = productDetails.weight! + productDetails.units!
-        cell.priceLabel?.text = (productDetails.price ?? "") + " грн."
+        
+        // Make a choice prices for to display prices
+        if Double(productDetails.price_sale ?? "") ?? 0 > Double(0.00) {
+            cell.priceLabel?.text = (productDetails.price_sale ?? "") + " грн."
+        } else {
+            cell.priceLabel?.text = (productDetails.price ?? "") + " грн."
+        }
+        
         cell.quantityLabel?.text = productDetails.quantity + " шт."
         cell.completionBlock = {[weak self] in
             self?.updateProductInfo()
+            self?.tableView.reloadData()
         }
         
         return cell
@@ -104,7 +113,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         let nextAction: UIAlertAction = UIAlertAction(title: "Удалить", style: .destructive) {[weak self] action -> Void in
             //Do some other stuff
             ProductsForRealm.deleteAllProducts()
- 
+            
             self?.tableView.reloadData()
             self?.updateProductInfo()
         }
@@ -112,7 +121,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         
         //Present the AlertController
         self.present(actionSheetController, animated: true, completion: nil)
-       
+        
         
     }
     
@@ -121,6 +130,51 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         containerViewController.addController(UIStoryboard.main["drawingUpOrder"]!)
     }
+    
+    // MARK: Navigation and ClearDatabase for buttons in header BasketAfterPaymentVC and CheckVC [start
+    @IBAction func basketClickAndClearDatabase(_ sender: AnyObject) {
+        
+        ProductsForRealm.deleteAllProducts()
+        updateProductInfo()
+        
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        containerViewController.addController(UIStoryboard.main["basket"]!)
+    }
+    
+    @IBAction func searchClickAndClearDatabase(_ sender: AnyObject) {
+        
+        ProductsForRealm.deleteAllProducts()
+        updateProductInfo()
+        
+        present(UIStoryboard.main["search"]!, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func menuClickAndClearDatabase(_ sender: AnyObject) {
+        
+        ProductsForRealm.deleteAllProducts()
+        updateProductInfo()
+        
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
+    }
+    
+    @IBAction func backClickAndClearDatabase (sender: AnyObject) {
+        
+        ProductsForRealm.deleteAllProducts()
+        updateProductInfo()
+        
+        if (self.presentingViewController != nil) {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+            containerViewController.addController(containerViewController.mainViewController ?? UIViewController())
+        }
+        
+        
+    }
+    // end]
+    
     
 }
 
@@ -135,6 +189,7 @@ class BasketTableViewCell: UITableViewCell {
     var productID: String = ""
     var quantity: Int = 1
     var completionBlock: Block?
+    var productDetail: ProductsForRealm? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -168,6 +223,17 @@ class BasketTableViewCell: UITableViewCell {
         let product = realm.objects(ProductsForRealm.self).filter("id  == [c] %@", productID).first
         try! realm.write {
             product!.quantity = "\(quantity)"
+        }
+    }
+    
+    @IBAction func deleteProduct(sender: AnyObject) {
+        let realm = try? Realm()
+        guard let productDetail = productDetail else {
+            return
+        }
+        _ = try? realm?.write {
+            realm?.delete(productDetail)
+            completionBlock?()
         }
     }
 }

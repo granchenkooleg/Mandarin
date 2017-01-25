@@ -16,11 +16,26 @@ class PaymentViewController: BasketViewController {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var totalPriceForPaymentVCLabel: UILabel!
     
+    // For request deliveryTime
+    var deliveryTime: String?
+    
     // var idOrder from Navigation DrawingUpOfVC
     var idOrder: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //  Request for delivery time of check
+        let param_2: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+        UserRequest.deliveryTime(param_2 as [String : AnyObject], completion: {[weak self] json in
+            json.forEach { _, json in
+                //                let id = json["id"].string ?? ""
+                //                let name = json["name"].string ?? ""
+                //                let alias = json["alias"].string ?? ""
+                self?.deliveryTime = json["value"].string ?? ""
+                
+            }
+            })
         
         // Do any additional setup after loading the view.
         totalPriceForPaymentVCLabel?.text = (totalPriceInCart() + " грн.,")
@@ -73,16 +88,16 @@ class PaymentViewController: BasketViewController {
         continueButton.isHidden = false
         noButton.isHidden = true
         needChangeButton.isHidden = true
-
+        
     }
-
+    
     // MARK: Sender to CheckVC
     @IBAction func CheckClick(_ sender: Button) {
         
         //sender.loading = true
         guard let id  = User.currentUser?.id, let idOrder = idOrder else { return }
         
-       // Doing it for product_id in Alamofire request(param)
+        // Doing it for product_id in Alamofire request(param)
         var list: [JSON] = []
         for i in productsInBasket {
             // Convert type String to Int
@@ -96,11 +111,15 @@ class PaymentViewController: BasketViewController {
                                  "user_id" :  id,
                                  "product_id": list,
                                  "order_id" : idOrder] as [String : Any]
-  
+        
         UserRequest.addOrderToServer(param as [String : AnyObject], completion: {[weak self] success in
             if success == true {
                 guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-                containerViewController.addController(UIStoryboard.main["checkVC"]!)
+                guard let checkVC = UIStoryboard.main["checkVC"] as? CheckViewController else { return }
+                checkVC.valueDeliveryTime = self?.deliveryTime ?? ""
+                containerViewController.addController(checkVC)
+
+//                containerViewController.addController(UIStoryboard.main["checkVC"]!)
             }
             //sender.loading = false
             })

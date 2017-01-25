@@ -74,6 +74,16 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         return CATransform3DConcat(rotateTransform, translateTransform)
     }
     
+//    func addController(_ controller: UIViewController) {
+//        containerView.subviews.all({ $0.removeFromSuperview() })
+//        childViewControllers.all { $0.removeFromParentViewController() }
+//        addChildViewController(controller)
+//        containerView.addSubview(controller.view)
+//        containerView.add(controller.view) { $0.edges.equalTo(containerView) }
+//        controller.didMove(toParentViewController: self)
+//        view.layoutIfNeeded()
+//    }
+    
     func addController(_ controller: UIViewController) {
         scrollView.isScrollEnabled = !(controller is BasketViewController)
         containerView.subviews.all({ $0.removeFromSuperview() })
@@ -84,6 +94,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         controller.didMove(toParentViewController: self)
         view.layoutIfNeeded()
     }
+
 }
 
 class Menu: UIView, UITableViewDataSource, UITableViewDelegate {

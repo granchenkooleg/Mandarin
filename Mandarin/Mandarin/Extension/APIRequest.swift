@@ -78,6 +78,7 @@ let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URL
 
 enum UserRequest: URLRequestConvertible {
     
+    case getDeliveryTime([String: AnyObject])
     case addOrderToSite([String: AnyObject])
     case favoriteProduct([String: AnyObject])
     case addFavoriteProduct([String: AnyObject])
@@ -98,7 +99,7 @@ enum UserRequest: URLRequestConvertible {
         
         var method: HTTPMethod {
             switch self {
-            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight, .getAllProducts, .getPassword, .addFavoriteProduct, .favoriteProduct, .addOrderToSite:
+            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight, .getAllProducts, .getPassword, .addFavoriteProduct, .favoriteProduct, .addOrderToSite, .getDeliveryTime:
                 return .get
             case .logOut, .trans:
                 return .post
@@ -107,7 +108,9 @@ enum UserRequest: URLRequestConvertible {
         
         let params: ([String: AnyObject]?) = {
             switch self {
-                
+             
+            case .getDeliveryTime(let newPost):
+                return newPost
             case .addOrderToSite(let newPost):
                 return newPost
             case .favoriteProduct(let newPost):
@@ -140,7 +143,9 @@ enum UserRequest: URLRequestConvertible {
         let url: URL = {
             let relativePath:String?
             switch self {
-                
+            
+            case.getDeliveryTime:
+                relativePath = "delivery"
             case.addOrderToSite:
                 relativePath = "addOrder"
             case.favoriteProduct:
@@ -200,6 +205,16 @@ enum UserRequest: URLRequestConvertible {
     //        }
     //    }
     //
+    
+    static func deliveryTime(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
+        requestHandler(#function, URLRequest: getDeliveryTime(entryParams), completionHandler: { json in
+            guard let json = json else {
+                return
+            }
+            print (">>self - \(json)<<")
+            completion(json)
+        })
+    }
     
     
     static func addOrderToServer(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
