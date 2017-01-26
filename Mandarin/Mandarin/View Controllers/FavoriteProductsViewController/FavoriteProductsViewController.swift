@@ -19,9 +19,23 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         super.viewDidLoad()
         tableView.separatorStyle = .none
         
+        guard let favoriteProducts = FavoriteProduct.allProducts, favoriteProducts.count != 0 else {
+            getFavoriteProducts()
+            return
+        }
+        productsList = favoriteProducts
+        tableView.reloadData()
+    }
+    
+    // MARK: - Table view data source
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return productsList.count
+    }
+    
+    func getFavoriteProducts() {
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                  "user_id" : User.isAuthorized()] as [String : Any]
-        
         UserRequest.favorite(param as [String : AnyObject], completion: {[weak self] json in
             guard let weakSelf = self else { return }
             json.forEach { _, json in
@@ -56,13 +70,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
             
             weakSelf.productsList = weakSelf.favoriteProductsArray
             weakSelf.tableView.reloadData()
-            })
-    }
-    
-    // MARK: - Table view data source
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productsList.count
+        })
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -30,7 +30,13 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         listHeaderLabel?.text = nameListsOfProductsHeaderText
         
         // Do any additional setup after loading the view.
-        listOfProduct()
+        guard let products = Product.allProducts, products.count != 0 else {
+            listOfProduct()
+            return
+        }
+        productsList = products.filter { Double($0.price_sale)! > Double(0.00) }
+        tableView.reloadData()
+        
         tableView.separatorStyle = .none
     }
     
