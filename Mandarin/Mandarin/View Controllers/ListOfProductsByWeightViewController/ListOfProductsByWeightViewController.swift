@@ -145,7 +145,7 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
     }
     
     override func listOfProduct(_ completion: @escaping Block) {
-        productsList = Product().allProducts()
+        productsList = Product().allProducts().filter { self.idPodcategory == $0.category_id && self.weightOfWeightVC == $0.weight }
         tableView.reloadData()
     }
     
