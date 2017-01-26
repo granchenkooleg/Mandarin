@@ -208,7 +208,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
                     let units = json["units"].string ?? ""
                     let category_id = json["category_id"].string ?? ""
                     var image: Data? = nil
-                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon)!){
+                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
                         image = imageData
                     }
                     
@@ -246,7 +246,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
                     let units = json["units"].string ?? ""
                     
                     var image: Data? = nil
-                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon)!){
+                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
                         image = imageData
                     }
                     FavoriteProduct.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
@@ -280,7 +280,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
                     let category_name = json["category_name"].string ?? ""
                     let price_sale = json["price_sale"].string ?? ""
                     var image: Data? = nil
-                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon)!){
+                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
                         image = imageData
                     }
                     

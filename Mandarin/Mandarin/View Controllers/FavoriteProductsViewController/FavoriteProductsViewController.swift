@@ -18,8 +18,8 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
-        
-        guard let favoriteProducts = FavoriteProduct.allProducts, favoriteProducts.count != 0 else {
+        let favoriteProducts = FavoriteProduct.allProducts
+        guard favoriteProducts.count != 0 else {
             getFavoriteProducts()
             return
         }
@@ -61,7 +61,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
                 let units = json["units"].string ?? ""
                 
                 var image: Data? = nil
-                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon)!){
+                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
                     image = imageData
                 }
                 let list = FavoriteProduct.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)

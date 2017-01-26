@@ -86,7 +86,7 @@ class Product : Object {
         return product
     }
     
-    static var allProducts: [Product]? = {
+    static var allProducts: [Product] = {
         let realm = try! Realm()
         return realm.objects(Product.self).array(ofType: Product.self)
     }()
@@ -169,7 +169,7 @@ class FavoriteProduct: Object{
         return product
     }
     
-    static var allProducts: [FavoriteProduct]? = {
+    static var allProducts: [FavoriteProduct] = {
         let realm = try! Realm()
         return realm.objects(FavoriteProduct.self).array(ofType: FavoriteProduct.self)
     }()

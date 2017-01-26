@@ -71,7 +71,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         brandLabel.text = brandDetailsVC
         dateExpireLabel.text = expire_dateDetailsVC
         headerTextInDetailsVC.text = nameHeaderTextDetailsVC
-        guard let imageData = try? Data.init(contentsOf: URL.init(string: iconDetailsVC)!) else {return}
+        guard let imageData = try? Data.init(contentsOf: URL.init(string: iconDetailsVC ?? "") ?? URL(fileURLWithPath: "")) else {return}
         productsImageView.image = UIImage(data: imageData)
     }
     
@@ -187,7 +187,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             }
         } else {
             var image: Data? = nil
-            if iconDetailsVC.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: iconDetailsVC)!){
+            if iconDetailsVC.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: iconDetailsVC) ?? URL(fileURLWithPath: "")){
                 image = imageData
             }
             let _ = ProductsForRealm.setupProduct(id: idProductDetailsVC ?? "", descriptionForProduct: descriptionDetailsVC ?? "", proteins: proteinsDetailsVC ?? "", calories: caloriesDetailsVC ?? "", zhiry: zhiryDetailsVC ?? "", favorite: "", category_id: "", brand: brandDetailsVC ?? "", price_sale: "", weight: "", status: "", expire_date: expire_dateDetailsVC ?? "", price: priceDetailsVC ?? "", created_at: created_atDetailsVC ?? "", icon: iconDetailsVC ?? "", category_name: "", name: nameHeaderTextDetailsVC ?? "" , uglevody: uglevodyDetailsVC ?? "" , units: "", quantity: "\(quantity)", image: image)

@@ -70,7 +70,7 @@ class Category: Object {
         return category
     }
     
-    static var allCategories: [Category]? = {
+    static var allCategories: [Category] = {
         let realm = try! Realm()
         return realm.objects(Category.self).array(ofType: Category.self)
     }()

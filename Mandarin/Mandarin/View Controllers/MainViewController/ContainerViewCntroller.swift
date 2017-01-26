@@ -164,6 +164,9 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row != 0 else {
+            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+            containerViewController.addController(containerViewController.mainViewController ?? UIViewController())
+            containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
             
             return
         }
