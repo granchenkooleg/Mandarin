@@ -10,8 +10,8 @@ import UIKit
 
 class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var headerLabel: UILabel?
+    @IBOutlet weak var tableView: UITableView?
     //from segue
     var nameHeaderText: String?
     
@@ -24,13 +24,40 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         tableView?.separatorStyle = .none
         
         headerLabel?.text = nameHeaderText
-        getAllCategory()
+        let favoriteProducts = Category().allCategories()
+        guard favoriteProducts.count != 0 else {
+            getAllCategory { [weak self] _ in
+                self?.categoryContainer = Category().allCategories()
+                self?.tableView?.reloadData()
+            }
+            
+            return
+        }
+        categoryContainer = favoriteProducts
+        tableView?.reloadData()
     }
     
-    func getAllCategory () {
-        categoryContainer = Category.allCategories ?? []
-        tableView.reloadData()
+    func getAllCategory (_ completion: @escaping Block) {
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+        UserRequest.getAllCategories(param as [String : AnyObject], completion: { json in
+            json.forEach { _, json in
+                let id = json["id"].string ?? ""
+                let created_at = json["created_at"].string ?? ""
+                let icon = json["icon"].string ?? ""
+                let name = json["name"].string ?? ""
+                let units = json["units"].string ?? ""
+                let category_id = json["category_id"].string ?? ""
+                var image: Data? = nil
+                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+                    image = imageData
+                }
+                
+                Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
+            }
+            completion()
+        })
     }
+    
     
     // MARK: - Table view data source
     
@@ -79,7 +106,7 @@ class CategoryViewController: CategoryViewControllerSegment {
         super.viewDidLoad()
     }
     
-    override func getAllCategory() {
+    override func getAllCategory(_ completion: @escaping Block) {
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         guard let categoryId = categoryId else { return }
         UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in
@@ -102,7 +129,7 @@ class CategoryViewController: CategoryViewControllerSegment {
                 self?.categories.append(category)
             }
             weakSelf.categoryContainer = weakSelf.categories
-            weakSelf.tableView.reloadData()
+            weakSelf.tableView?.reloadData()
         })
     }
     

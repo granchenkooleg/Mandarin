@@ -63,7 +63,6 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         vkButton.circled = true
         facebookButton.circled = true
         googleButton.circled = true
-        getAllCategory()
     }
     
     //start VK
@@ -193,101 +192,6 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
             
             sender.loading = false
             })
-    }
-    
-    func getAllCategory () {
-        Dispatch.backgroundQueue.async({
-            let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-            Category.setConfig()
-            UserRequest.getAllCategories(param as [String : AnyObject], completion: { [weak self] json in
-                json.forEach { _, json in
-                    let id = json["id"].string ?? ""
-                    let created_at = json["created_at"].string ?? ""
-                    let icon = json["icon"].string ?? ""
-                    let name = json["name"].string ?? ""
-                    let units = json["units"].string ?? ""
-                    let category_id = json["category_id"].string ?? ""
-                    var image: Data? = nil
-                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-                        image = imageData
-                    }
-                    
-                    Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
-                }
-                self?.getFavoriteProducts()
-            })
-        })
-    }
-    
-    func getFavoriteProducts() {
-        Dispatch.backgroundQueue.async({
-            let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                     "user_id" : User.isAuthorized()] as [String : Any]
-            UserRequest.favorite(param as [String : AnyObject], completion: { [weak self] json in
-                json.forEach { _, json in
-                    let id = json["id"].string ?? ""
-                    let created_at = json["created_at"].string ?? ""
-                    let icon = json["icon"].string ?? ""
-                    let name = json["name"].string ?? ""
-                    let category_id = json["category_id"].string ?? ""
-                    let weight = json["weight"].string ?? ""
-                    let description = json["description"].string ?? ""
-                    let brand = json["brand"].string ?? ""
-                    let calories = json["calories"].string ?? ""
-                    let proteins = json["proteins"].string ?? ""
-                    let zhiry = json["zhiry"].string ?? ""
-                    let uglevody = json["uglevody"].string ?? ""
-                    let price = json["price"].string ?? ""
-                    let favorite = json["favorite"].string ?? ""
-                    let status = json["status"].string ?? ""
-                    let expire_date = json["expire_date"].string ?? ""
-                    let category_name = json["category_name"].string ?? ""
-                    let price_sale = json["price_sale"].string ?? ""
-                    let units = json["units"].string ?? ""
-                    
-                    var image: Data? = nil
-                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-                        image = imageData
-                    }
-                    FavoriteProduct.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
-                }
-                self?.listOfProduct()
-            })
-        })
-    }
-    
-    func listOfProduct() {
-        Dispatch.backgroundQueue.async({
-            let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-            UserRequest.listAllProducts(param as [String : AnyObject], completion: { json in
-                json.forEach { _, json in
-                    let id = json["id"].string ?? ""
-                    let created_at = json["created_at"].string ?? ""
-                    let icon = json["icon"].string ?? ""
-                    let name = json["name"].string ?? ""
-                    let category_id = json["category_id"].string ?? ""
-                    let weight = json["weight"].string ?? ""
-                    let description = json["description"].string ?? ""
-                    let brand = json["brand"].string ?? ""
-                    let calories = json["calories"].string ?? ""
-                    let proteins = json["proteins"].string ?? ""
-                    let zhiry = json["zhiry"].string ?? ""
-                    let uglevody = json["uglevody"].string ?? ""
-                    let price = json["price"].string ?? ""
-                    let favorite = json["favorite"].string ?? ""
-                    let status = json["status"].string ?? ""
-                    let expire_date = json["expire_date"].string ?? ""
-                    let category_name = json["category_name"].string ?? ""
-                    let price_sale = json["price_sale"].string ?? ""
-                    var image: Data? = nil
-                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-                        image = imageData
-                    }
-                    
-                    Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "", image: image)
-                }
-            })
-        })
     }
 }
 

@@ -18,9 +18,13 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
-        let favoriteProducts = FavoriteProduct.allProducts
+        let favoriteProducts = FavoriteProduct().allProducts()
         guard favoriteProducts.count != 0 else {
-            getFavoriteProducts()
+            getFavoriteProducts {[weak self] _ in
+                self?.productsList = FavoriteProduct().allProducts()
+                self?.tableView.reloadData()
+            }
+           
             return
         }
         productsList = favoriteProducts
@@ -33,11 +37,11 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         return productsList.count
     }
     
-    func getFavoriteProducts() {
-        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" : User.isAuthorized()] as [String : Any]
-        UserRequest.favorite(param as [String : AnyObject], completion: {[weak self] json in
-            guard let weakSelf = self else { return }
+    func getFavoriteProducts(_ completion: @escaping Block) {
+        guard let id  = User.currentUser?.id else { return }
+        let param: Dictionary <String, Any> = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                 "user_id" :  id]
+        UserRequest.favorite(param as [String : AnyObject], completion: { json in
             json.forEach { _, json in
                 print (">>self - \(json["name"])<<")
                 let id = json["id"].string ?? ""
@@ -64,12 +68,9 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
                 if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
                     image = imageData
                 }
-                let list = FavoriteProduct.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
-                weakSelf.favoriteProductsArray.append(list)
+                FavoriteProduct.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
             }
-            
-            weakSelf.productsList = weakSelf.favoriteProductsArray
-            weakSelf.tableView.reloadData()
+            completion()
         })
     }
     

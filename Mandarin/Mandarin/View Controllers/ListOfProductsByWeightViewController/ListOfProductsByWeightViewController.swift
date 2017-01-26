@@ -21,7 +21,6 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     var idPodcategory: String?
     
     var list: Any?
-    var productsForListOfWeightVC = [Product]()
     var productsList = [Product]()
     
     override func viewDidLoad() {
@@ -30,11 +29,13 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         listHeaderLabel?.text = nameListsOfProductsHeaderText
         
         // Do any additional setup after loading the view.
-        let products = Product.allProducts
+        let products = Product().allProducts()
         guard products.count != 0 else {
-            listOfProduct()
-            productsList = Product.allProducts.filter { Double($0.price_sale)! > Double(0.00) }
-            tableView.reloadData()
+            listOfProduct {[weak self] _ in
+                self?.productsList = Product().allProducts().filter { Double($0.price_sale)! > Double(0.00) }
+                self?.tableView.reloadData()
+            }
+            
             return
         }
         productsList = products.filter { Double($0.price_sale)! > Double(0.00) }
@@ -43,7 +44,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         tableView.separatorStyle = .none
     }
     
-    func listOfProduct() {
+    func listOfProduct(_ completion: @escaping Block)  {
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.listAllProducts(param as [String : AnyObject], completion: {json in
             json.forEach { _, json in
@@ -72,6 +73,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 }
                 Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "", image: image)
             }
+            completion()
         })
     }
     
@@ -142,8 +144,8 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
         super.viewDidLoad()
     }
     
-    override func listOfProduct() {
-        productsList = Product.allProducts
+    override func listOfProduct(_ completion: @escaping Block) {
+        productsList = Product().allProducts()
         tableView.reloadData()
     }
     

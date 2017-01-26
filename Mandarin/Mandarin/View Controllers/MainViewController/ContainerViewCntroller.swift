@@ -36,7 +36,6 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        menuContainerView.setup()
         showMenu(showingMenu, animated: false)
     }
     
@@ -49,6 +48,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         let xOffset = menuContainerView.bounds.width
         scrollView.setContentOffset(show ? CGPoint.zero : CGPoint(x: xOffset, y: 0), animated: animated)
         showingMenu = show
+        menuContainerView.setup()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -127,8 +127,8 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         UINavigationController.main.present(viewcontroller, animated: true, completion: completion)
     }
     
-    func getAllCategory () {
-        categoryContainer = Category.allCategories ?? []
+    func getAllCategory() {
+        categoryContainer = Category().allCategories()
         categoryContainer.insert(Category(), at: 0)
         tableView?.reloadData()
     }

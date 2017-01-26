@@ -17,7 +17,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        products = Product.allProducts
+        products = Product().allProducts()
         tableView.reloadData()
     }
     
