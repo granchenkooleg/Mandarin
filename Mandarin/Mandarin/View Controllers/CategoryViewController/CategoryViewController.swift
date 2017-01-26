@@ -103,7 +103,9 @@ class CategoryViewController: CategoryViewControllerSegment {
      internal var categories = [Category]()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        tableView?.separatorStyle = .none
+        headerLabel?.text = nameHeaderText
+        getAllCategory({})
     }
     
     override func getAllCategory(_ completion: @escaping Block) {

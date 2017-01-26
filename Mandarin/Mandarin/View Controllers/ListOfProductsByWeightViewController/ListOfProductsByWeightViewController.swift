@@ -27,7 +27,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         super.viewDidLoad()
         
         listHeaderLabel?.text = nameListsOfProductsHeaderText
-        
+        tableView.separatorStyle = .none
         // Do any additional setup after loading the view.
         let products = Product().allProducts()
         guard products.count != 0 else {
@@ -40,8 +40,6 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         }
         productsList = products.filter { Double($0.price_sale)! > Double(0.00) }
         tableView.reloadData()
-        
-        tableView.separatorStyle = .none
     }
     
     func listOfProduct(_ completion: @escaping Block)  {
@@ -141,7 +139,9 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
     var _productsArray = [Product]()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        listHeaderLabel?.text = nameListsOfProductsHeaderText
+        tableView.separatorStyle = .none
+        listOfProduct({})
     }
     
     override func listOfProduct(_ completion: @escaping Block) {
