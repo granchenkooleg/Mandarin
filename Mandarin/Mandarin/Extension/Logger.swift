@@ -47,7 +47,7 @@ struct Logger {
         #if DEBUG
 //            Slim.debug("\(Escape)\(color.rawValue)\n\(message())\n\n\(Escape);", filename: filename, line: line)
         #else
-            Slim.info(message, filename: filename, line: line)
+//            Slim.info(message, filename: filename, line: line)
         #endif
     }
 }

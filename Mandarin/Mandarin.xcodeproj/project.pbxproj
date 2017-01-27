@@ -404,9 +404,9 @@
 				TargetAttributes = {
 					7C09495E1DE222250038018F = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 4PR4N2FLE7;
+						DevelopmentTeam = 224SJKKLQ3;
 						LastSwiftMigration = 0810;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -663,7 +663,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Mandarin/Mandarin.entitlements;
-				DEVELOPMENT_TEAM = 4PR4N2FLE7;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 224SJKKLQ3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/Facebook",
@@ -671,8 +672,10 @@
 				);
 				INFOPLIST_FILE = Mandarin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.export.project.mandarin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.mandarin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "85880b06-f957-45b9-adf9-7d27ff38ba00";
+				PROVISIONING_PROFILE_SPECIFIER = Mandarin_developer_profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "Mandarin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -686,7 +689,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Mandarin/Mandarin.entitlements;
-				DEVELOPMENT_TEAM = 4PR4N2FLE7;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 224SJKKLQ3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -694,8 +698,10 @@
 				);
 				INFOPLIST_FILE = Mandarin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.export.project.mandarin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.project.mandarin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "fdd07135-438b-4cab-9a29-fe09038a1f04";
+				PROVISIONING_PROFILE_SPECIFIER = Mandarin_AdHoc_profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "Mandarin-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
