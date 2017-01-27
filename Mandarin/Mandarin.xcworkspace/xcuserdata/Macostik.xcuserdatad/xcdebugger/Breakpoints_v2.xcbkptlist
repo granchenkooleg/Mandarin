@@ -170,12 +170,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mandarin/ViewController/BaseViewController/BaseViewController.swift"
-            timestampString = "503873913.033999"
+            timestampString = "505934486.012889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "searchTextChanged(sender:)"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "BaseViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mandarin/BasketViewController.swift"
+            timestampString = "506777693.878552"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "tableView(_:canEditRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -185,14 +201,46 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mandarin/View Controllers/BaseViewController/BaseLoginViewController.swift"
-            timestampString = "507133764.009107"
+            filePath = "Mandarin/View Controllers/ListOfProductsByWeightViewController/ListOfProductsByWeightViewController.swift"
+            timestampString = "507163040.206472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
-            landmarkName = "getFavoriteProducts()"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "listOfProduct(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mandarin.ListOfProductsByWeightViewController.listOfProduct (() -&gt; ()) -&gt; ()"
+                  moduleName = "Mandarin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Mac_data/Projects/Mandarin/Mandarin/Mandarin/View%20Controllers/ListOfProductsByWeightViewController/ListOfProductsByWeightViewController.swift"
+                  timestampString = "507163040.961337"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mandarin.ListOfProductsByWeightViewController.(listOfProduct (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Mandarin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Mac_data/Projects/Mandarin/Mandarin/Mandarin/View%20Controllers/ListOfProductsByWeightViewController/ListOfProductsByWeightViewController.swift"
+                  timestampString = "507163040.96295"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

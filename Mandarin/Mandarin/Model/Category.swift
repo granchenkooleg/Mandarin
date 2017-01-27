@@ -33,13 +33,6 @@ class Category: Object {
     dynamic var category_id = ""
     dynamic var image: Data? = nil
     
-    static func setConfig() {
-        let realm = try! Realm()
-        if let url = realm.configuration.fileURL {
-            print("FileURL of DataBase - \(url)")
-        }
-    }
-    
     override static func primaryKey() -> String? {
         return "id"
     }
@@ -70,9 +63,9 @@ class Category: Object {
         return category
     }
     
-    static var allCategories: [Category] = {
+    func allCategories() -> [Category] {
         let realm = try! Realm()
         return realm.objects(Category.self).array(ofType: Category.self)
-    }()
+    }
 }
 
