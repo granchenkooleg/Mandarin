@@ -190,7 +190,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             if iconDetailsVC.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: iconDetailsVC) ?? URL(fileURLWithPath: "")){
                 image = imageData
             }
-            let _ = ProductsForRealm.setupProduct(id: idProductDetailsVC ?? "", descriptionForProduct: descriptionDetailsVC ?? "", proteins: proteinsDetailsVC ?? "", calories: caloriesDetailsVC ?? "", zhiry: zhiryDetailsVC ?? "", favorite: "", category_id: "", brand: brandDetailsVC ?? "", price_sale: "", weight: "", status: "", expire_date: expire_dateDetailsVC ?? "", price: priceDetailsVC ?? "", created_at: created_atDetailsVC ?? "", icon: iconDetailsVC ?? "", category_name: "", name: nameHeaderTextDetailsVC ?? "" , uglevody: uglevodyDetailsVC ?? "" , units: "", quantity: "\(quantity)", image: image)
+            let _ = ProductsForRealm.setupProduct(id: idProductDetailsVC ?? "", descriptionForProduct: descriptionDetailsVC ?? "", proteins: proteinsDetailsVC ?? "", calories: caloriesDetailsVC ?? "", zhiry: zhiryDetailsVC ?? "", favorite: "", category_id: "", brand: brandDetailsVC ?? "", price_sale: priceSaleDetailsVC ?? "", weight: "", status: "", expire_date: expire_dateDetailsVC ?? "", price: priceDetailsVC ?? "", created_at: created_atDetailsVC ?? "", icon: iconDetailsVC ?? "", category_name: "", name: nameHeaderTextDetailsVC ?? "" , uglevody: uglevodyDetailsVC ?? "" , units: "", quantity: "\(quantity)", image: image)
         }
     }
 }

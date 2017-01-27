@@ -115,9 +115,10 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()
+        detailsProductVC.priceSaleDetailsVC = productsList[indexPath.row].price_sale
         detailsProductVC.idProductDetailsVC = productsList[indexPath.row].id
         detailsProductVC.priceDetailsVC = productsList[indexPath.row].price
-        detailsProductVC.descriptionDetailsVC = productsList[indexPath.row].description
+        detailsProductVC.descriptionDetailsVC = productsList[indexPath.row].description_
         detailsProductVC.uglevodyDetailsVC = productsList[indexPath.row].uglevody
         detailsProductVC.zhiryDetailsVC = productsList[indexPath.row].zhiry
         detailsProductVC.proteinsDetailsVC = productsList[indexPath.row].proteins

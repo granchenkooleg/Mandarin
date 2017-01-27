@@ -10,9 +10,18 @@ import Foundation
 import SwiftyJSON
 import RealmSwift
 
+// For randonm string idOrder
+let randomNum:UInt32 = arc4random_uniform(10000) // range is 0 to 9999
+
+// Convert the UInt32 to some other  types
+let someString:String = String(randomNum) //string works too
+
+
 class InfoAboutUserForOrder : Object {
     
-    dynamic var idOrder = UUID().uuidString
+    
+    
+    dynamic var idOrder = someString  //UUID().uuidString
     dynamic var name: String = ""
     dynamic var phone: String = ""
     dynamic var city: String? = ""

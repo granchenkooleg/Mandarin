@@ -63,6 +63,7 @@ class Product : Object {
             "calories" :       calories,
             "zhiry" :       zhiry,
             "favorite" : favorite,
+            "category_id": category_id,
             "brand" :   brand,
             "price_sale" :    price_sale,
             "weight" :       weight,
@@ -140,25 +141,26 @@ class FavoriteProduct: Object{
                                                 image: Data?  = nil) -> FavoriteProduct {
         
         let productData: Dictionary<String, Any> = [
-            "id" :          id,
-            "description_" :   description_,
-            "proteins" :    proteins,
-            "calories" :       calories,
-            "zhiry" :       zhiry,
-            "favorite" : favorite,
-            "brand" :   brand,
-            "price_sale" :    price_sale,
-            "weight" :       weight,
-            "status" :       status,
-            "expire_date" : expire_date,
-            "price" :   price,
-            "created_at" :    created_at,
-            "icon" :       icon,
-            "category_name" :       category_name,
-            "name" : name,
-            "uglevody" :    uglevody,
-            "units" :       units,
-            "image" : image ?? Data()]
+            "id" :            id,
+            "description_":   description_,
+            "proteins":       proteins,
+            "calories":       calories,
+            "zhiry":          zhiry,
+            "favorite":       favorite,
+            "category_id":    category_id,
+            "brand":          brand,
+            "price_sale":     price_sale,
+            "weight":         weight,
+            "status":         status,
+            "expire_date":    expire_date,
+            "price":          price,
+            "created_at":     created_at,
+            "icon":           icon,
+            "category_name" : category_name,
+            "name":           name,
+            "uglevody" :      uglevody,
+            "units":          units,
+            "image":          image ?? Data()]
         
         let product = FavoriteProduct(value: productData)
         
