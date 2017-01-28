@@ -23,12 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIWindow.mainWindow.makeKeyAndVisible()
         
-        if User.isAuthorized() {
-            UINavigationController.main.viewControllers = [UIStoryboard.main["container"]!]// for initial start
-        } else {
-            UIStoryboard.signUp.present(false)
-        }
-        
+        UINavigationController.main.viewControllers = [UIStoryboard.main["container"]!]// for initial start
+       
         return true
     }
     

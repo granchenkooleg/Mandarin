@@ -9,6 +9,30 @@
 import Foundation
 import RealmSwift
 
+
+struct Products {
+    var id = ""
+    var description = ""
+    var proteins = ""
+    var calories = ""
+    var zhiry = ""
+    var favorite = ""
+    var category_id = ""
+    var brand = ""
+    var price_sale = ""
+    var weight = ""
+    var status = ""
+    var expire_date = ""
+    var price = ""
+    var created_at = ""
+    var icon = ""
+    var category_name = ""
+    var name = ""
+    var uglevody = ""
+    var units = ""
+    var image = Data()
+}
+
 class Product : Object {
     dynamic var id = ""
     dynamic var description_ = ""

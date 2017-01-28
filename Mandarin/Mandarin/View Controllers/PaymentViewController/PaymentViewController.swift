@@ -19,8 +19,9 @@ class PaymentViewController: BasketViewController {
     // For request deliveryTime
     var deliveryTime: String?
     
-    // var idOrder from Navigation DrawingUpOfVC
+    // Navigation DrawingUpOfVC
     var idOrder: String?
+    var phoneUser: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +96,7 @@ class PaymentViewController: BasketViewController {
     @IBAction func CheckClick(_ sender: Button) {
         
         //sender.loading = true
-        guard let id  = User.currentUser?.id, let idOrder = idOrder else { return }
+        /*guard*/ let idOrPhone  = User.currentUser?.id ?? phoneUser /*, let idOrder = idOrder*/ /*else { return }*/
         
         // Doing it for product_id in Alamofire request(param)
         var list: [JSON] = []
@@ -108,7 +109,7 @@ class PaymentViewController: BasketViewController {
         }
         
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" :  id,
+                                 "user_id" :  idOrPhone,
                                  "product_id": list,
                                  "order_id" : idOrder] as [String : Any]
         

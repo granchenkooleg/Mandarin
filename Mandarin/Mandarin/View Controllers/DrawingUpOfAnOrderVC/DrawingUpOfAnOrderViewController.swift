@@ -171,6 +171,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         guard let paymentVC = UIStoryboard.main["payment"] as? PaymentViewController, let last = adressUserFromRealm.last else { return }
         paymentVC.idOrder = last.idOrder
+        paymentVC.phoneUser = last.phone
         containerViewController.addController(paymentVC)
         
         let _name = "NameUser: " + nameUser + "\n"

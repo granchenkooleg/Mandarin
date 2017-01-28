@@ -12,36 +12,29 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
     
     @IBOutlet weak var tableView: UITableView!
     
-    var favoriteProductsArray = [FavoriteProduct]()
-    var productsList = [FavoriteProduct]()
+    var internalProductsForListOfWeightVC = [Products]()
+    var _productsList = [Products]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.separatorStyle = .none
-        let favoriteProducts = FavoriteProduct().allProducts()
-        guard favoriteProducts.count != 0 else {
-            getFavoriteProducts {[weak self] _ in
-                self?.productsList = FavoriteProduct().allProducts()
-                self?.tableView.reloadData()
-            }
-           
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Only isAuthorized user can see it VC
+        guard  User.isAuthorized() else {
+            UIAlertController.alert("Только зарегистрированный пользователь может добавлять в избранные".ls).show()
             return
         }
-        productsList = favoriteProducts
-        tableView.reloadData()
-    }
-    
-    // MARK: - Table view data source
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productsList.count
-    }
-    
-    func getFavoriteProducts(_ completion: @escaping Block) {
-        guard let id  = User.currentUser?.id else { return }
-        let param: Dictionary <String, Any> = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" :  id]
-        UserRequest.favorite(param as [String : AnyObject], completion: { json in
+        internalProductsForListOfWeightVC = []
+        _productsList = []
+        guard let id = User.currentUser?.id else {return}
+        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                 "user_id" : Int(id)] as [String : Any]
+        
+        UserRequest.favorite(param as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
                 print (">>self - \(json["name"])<<")
                 let id = json["id"].string ?? ""
@@ -63,28 +56,36 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
                 let units = json["units"].string ?? ""
-                
-                var image: Data? = nil
+                var image = Data()
                 if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
                     image = imageData
                 }
-                FavoriteProduct.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
+                
+                let list = Products(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
+                self?.internalProductsForListOfWeightVC.append(list)
             }
-            completion()
-        })
+            
+            self?._productsList = (self?.internalProductsForListOfWeightVC)!
+            self?.tableView.reloadData()
+            })
+    }
+    
+    // MARK: - Table view data source
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return _productsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "FavoriteProductsViewController"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FavoriteProductsTableViewCell
         
-        let productDetails = productsList[indexPath.row]
+        let productDetails = _productsList[indexPath.row]
         Dispatch.mainQueue.async { _ in
-         
-            cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
+            cell.thubnailImageView?.image = UIImage(data: productDetails.image)
             
             cell.nameLabel?.text = productDetails.name
-            cell.descriptionLabel?.text = productDetails.description_
+            cell.descriptionLabel?.text = productDetails.description
             cell.weightLabel?.text = productDetails.weight  + " " + productDetails.units
             cell.priceOldLabel?.text = productDetails.price + " грн."
             
@@ -112,47 +113,47 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
     
     func detailsVC (indexPath: IndexPath) {
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()
-        detailsProductVC.priceSaleDetailsVC = productsList[indexPath.row].price_sale
-        detailsProductVC.idProductDetailsVC = productsList[indexPath.row].id
-        detailsProductVC.priceDetailsVC = productsList[indexPath.row].price
-        detailsProductVC.descriptionDetailsVC = productsList[indexPath.row].description_
-        detailsProductVC.uglevodyDetailsVC = productsList[indexPath.row].uglevody
-        detailsProductVC.zhiryDetailsVC = productsList[indexPath.row].zhiry
-        detailsProductVC.proteinsDetailsVC = productsList[indexPath.row].proteins
-        detailsProductVC.caloriesDetailsVC = productsList[indexPath.row].calories
-        detailsProductVC.expire_dateDetailsVC = productsList[indexPath.row].expire_date
-        detailsProductVC.brandDetailsVC = productsList[indexPath.row].brand
-        detailsProductVC.iconDetailsVC = productsList[indexPath.row].icon
+        detailsProductVC.idProductDetailsVC = _productsList[indexPath.row].id
+        detailsProductVC.priceDetailsVC = _productsList[indexPath.row].price
+        detailsProductVC.descriptionDetailsVC = _productsList[indexPath.row].description
+        detailsProductVC.uglevodyDetailsVC = _productsList[indexPath.row].uglevody
+        detailsProductVC.zhiryDetailsVC = _productsList[indexPath.row].zhiry
+        
+        detailsProductVC.proteinsDetailsVC = _productsList[indexPath.row].proteins
+        detailsProductVC.caloriesDetailsVC = _productsList[indexPath.row].calories
+        detailsProductVC.expire_dateDetailsVC = _productsList[indexPath.row].expire_date
+        detailsProductVC.brandDetailsVC = _productsList[indexPath.row].brand
+        detailsProductVC.iconDetailsVC = _productsList[indexPath.row].icon
         //detailsProductVC.DetailsVC = _products[indexPath.row].
-        detailsProductVC.created_atDetailsVC = productsList[indexPath.row].created_at
-        detailsProductVC.nameHeaderTextDetailsVC = productsList[indexPath.row].name
+        detailsProductVC.created_atDetailsVC = _productsList[indexPath.row].created_at
+        detailsProductVC.nameHeaderTextDetailsVC = _productsList[indexPath.row].name
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         containerViewController.addController(detailsProductVC)
     }
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 0
-//    }
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 0
-//        
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        //        let cellIdentifier = "CategoryTableViewCell"
-//        //        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CategoryTableViewCell
-//        //
-//        //        let productDetails = _products[indexPath.row]
-//        //        Dispatch.mainQueue.async { _ in
-//        //            guard let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon)!) else { return }
-//        //            cell.thubnailImageView?.image = UIImage(data: imageData)
-//        //        }
-//        //
-//        //        cell.nameLabel?.text = productDetails.name
-//        //        
-//        return UITableViewCell()
-//    }
+    //    func numberOfSections(in tableView: UITableView) -> Int {
+    //        return 0
+    //    }
+    //
+    //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    //        return 0
+    //
+    //    }
+    //
+    //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    //        //        let cellIdentifier = "CategoryTableViewCell"
+    //        //        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CategoryTableViewCell
+    //        //
+    //        //        let productDetails = _products[indexPath.row]
+    //        //        Dispatch.mainQueue.async { _ in
+    //        //            guard let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon)!) else { return }
+    //        //            cell.thubnailImageView?.image = UIImage(data: imageData)
+    //        //        }
+    //        //
+    //        //        cell.nameLabel?.text = productDetails.name
+    //        //
+    //        return UITableViewCell()
+    //    }
     
 }
 

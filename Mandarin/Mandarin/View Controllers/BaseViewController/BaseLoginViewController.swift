@@ -21,8 +21,11 @@ class BaseLoginViewController: BaseViewController {
         guard User.isAuthorized() == true else { return }
         UINavigationController.main.viewControllers = [UIStoryboard.main["container"]!]
     }
+   
+    @IBAction func backToMain(sender: AnyObject) {
+        UINavigationController.main.popViewController(animated: false)
+    }
 }
-
 
 class SignInViewController: BaseLoginViewController {
     
