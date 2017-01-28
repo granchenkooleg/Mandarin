@@ -41,7 +41,7 @@
 			<string>Bundle ID</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.export.project.mandarin</string>
+				<string>com.project.mandarin</string>
 			</array>
 		</dict>
 		<dict>

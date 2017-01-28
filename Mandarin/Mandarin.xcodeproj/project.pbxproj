@@ -20,6 +20,7 @@
 		5621B5951DE2E0E300C3B612 /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B5941DE2E0E300C3B612 /* ConfirmView.swift */; };
 		5621B5971DE2E0F000C3B612 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B5961DE2E0F000C3B612 /* Label.swift */; };
 		5621B59B1DE2E1F400C3B612 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B59A1DE2E1F400C3B612 /* TextField.swift */; };
+		562459711E3BAB9700C0430C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 562459701E3BAB9700C0430C /* Main.storyboard */; };
 		563474331DEDBC1B004ECDC4 /* GenericCollections+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563474321DEDBC1B004ECDC4 /* GenericCollections+Ext.swift */; };
 		563474371DEDC3E9004ECDC4 /* Feeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563474361DEDC3E9004ECDC4 /* Feeds.swift */; };
 		563F94FF1DF4C4A90053EFF0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F94FE1DF4C4A90053EFF0 /* Product.swift */; };
@@ -57,7 +58,6 @@
 		7C0949631DE222250038018F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0949621DE222250038018F /* AppDelegate.swift */; };
 		7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C09496B1DE222250038018F /* LaunchScreen.storyboard */; };
 		7C2D16C31DF45A4200A3CF92 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D16C11DF45A4200A3CF92 /* SignUp.storyboard */; };
-		7C7157801E2160B600C1DCAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C71577F1E2160B600C1DCAC /* Main.storyboard */; };
 		7C7157841E21856900C1DCAC /* InfoAboutUserForOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */; };
 		ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +76,7 @@
 		5621B5941DE2E0E300C3B612 /* ConfirmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfirmView.swift; path = View/ConfirmView.swift; sourceTree = "<group>"; };
 		5621B5961DE2E0F000C3B612 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Label.swift; path = View/Label.swift; sourceTree = "<group>"; };
 		5621B59A1DE2E1F400C3B612 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = View/TextField.swift; sourceTree = "<group>"; };
+		562459701E3BAB9700C0430C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		563474321DEDBC1B004ECDC4 /* GenericCollections+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GenericCollections+Ext.swift"; path = "Extension/GenericCollections+Ext.swift"; sourceTree = "<group>"; };
 		563474361DEDC3E9004ECDC4 /* Feeds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feeds.swift; sourceTree = "<group>"; };
 		563F94FE1DF4C4A90053EFF0 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		7C09496C1DE222250038018F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C09496E1DE222250038018F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C2D16C11DF45A4200A3CF92 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
-		7C71577F1E2160B600C1DCAC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoAboutUserForOrder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -283,7 +283,7 @@
 				5621B57E1DE2DEE400C3B612 /* Extension */,
 				7C2C700F1DE44CDC005DEDCA /* Resources */,
 				7C2D16C11DF45A4200A3CF92 /* SignUp.storyboard */,
-				7C71577F1E2160B600C1DCAC /* Main.storyboard */,
+				562459701E3BAB9700C0430C /* Main.storyboard */,
 				7C09496B1DE222250038018F /* LaunchScreen.storyboard */,
 				56FCEA621E34E49E00E2E594 /* Assets.xcassets */,
 				7C09496E1DE222250038018F /* Info.plist */,
@@ -438,12 +438,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				562459711E3BAB9700C0430C /* Main.storyboard in Resources */,
 				56D6F1DC1E1AC61C001C1FDC /* mandarin.ttf in Resources */,
 				56FCEA631E34E49E00E2E594 /* Assets.xcassets in Resources */,
 				7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */,
 				56FCEA5F1E34D28900E2E594 /* iTunesArtwork in Resources */,
 				56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */,
-				7C7157801E2160B600C1DCAC /* Main.storyboard in Resources */,
 				7C2D16C31DF45A4200A3CF92 /* SignUp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
