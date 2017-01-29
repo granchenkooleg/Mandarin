@@ -29,6 +29,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
     var adressUserFromRealm : Results<InfoAboutUserForOrder>!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         updateAdressInfo()
         // If table InfoAboutUserForOrder isEmpty, we will not come in here
         if (adressUserFromRealm.isEmpty == false)  {
@@ -212,7 +213,22 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
 //    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
 //        controller.dismiss(animated: true, completion: nil)
 //    }
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return  textField.resignFirstResponder()
+    }
+    
+    override func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
+        if regionTextField.isFirstResponder ||
+            commitOfUserTextField.isFirstResponder ||
+            numberApartmentTextField.isFirstResponder ||
+            floorTextField.isFirstResponder ||
+            numberHouseTextField.isFirstResponder ||
+            porchTextField.isFirstResponder {
+            return adjustment.defaultConstant + 350
+        }
+        return 0
+    }
+    
 }
 
 
