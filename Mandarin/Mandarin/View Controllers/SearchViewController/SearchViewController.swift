@@ -11,45 +11,60 @@ import UIKit
 class SearchViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var searchTextField: TextField?
     
     var products = [Product]()
+    var searchProduct = [Product]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchTextField?.addTarget(self, action: #selector(self.searchTextChanged(sender:)), for: .editingChanged)
         
-        products = Product().allProducts()
-        tableView.reloadData()
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+        UserRequest.listAllProducts(param as [String : AnyObject], completion: { [weak self] json in
+            guard let weakSelf = self else {return}
+            json.forEach { _, json in
+                print (">>self - \(json)<<")
+                let id = json["id"].string ?? ""
+                let created_at = json["created_at"].string ?? ""
+                let icon = json["icon"].string ?? ""
+                let name = json["name"].string ?? ""
+                let category_id = json["category_id"].string ?? ""
+                let weight = json["weight"].string ?? ""
+                let description = json["description"].string ?? ""
+                let brand = json["brand"].string ?? ""
+                let calories = json["calories"].string ?? ""
+                let proteins = json["proteins"].string ?? ""
+                let zhiry = json["zhiry"].string ?? ""
+                let uglevody = json["uglevody"].string ?? ""
+                let price = json["price"].string ?? ""
+                let favorite = json["favorite"].string ?? ""
+                let status = json["status"].string ?? ""
+                let expire_date = json["expire_date"].string ?? ""
+                let category_name = json["category_name"].string ?? ""
+                let price_sale = json["price_sale"].string ?? ""
+                var image: Data? = nil
+                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+                    image = imageData
+                }
+                let product = Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: "", image: image)
+                self?.searchProduct.append(product)
+            }
+            weakSelf.products = weakSelf.searchProduct
+            weakSelf.tableView.reloadData()
+        })
     }
     
-    //MARK: - Transparent Table View With a Background Image
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        
-//        // Add a background view to the table view
-//        let backgroundImage = UIImage(named: "SearchHello.png")
-//        let imageView = UIImageView(image: backgroundImage)
-//        self.tableView.backgroundView = imageView
-//
-//        // no lines where there aren't cells
-//        tableView.tableFooterView = UIView(frame: CGRect.zero)
-//        
-//        // center and scale background image
-//        imageView.contentMode = .scaleAspectFill
-//        
-//        // Set the background color to match better
-//        //        tableView.backgroundColor = UIColor.lightGray
-//        
-//        // blur it
-//        //                let blurEffect = UIBlurEffect(style: .extraLight)
-//        //                let blurView = UIVisualEffectView(effect: blurEffect)
-//        //                blurView.frame = imageView.bounds
-//        //                imageView.addSubview(blurView)
-//    }
-    
     //for search
-    override func searchTextChanged(sender: UITextField) {
-        super.searchTextChanged(sender: sender)
-        self.tableView.reloadData()
+    func searchTextChanged(sender: UITextField) {
+        if let text = sender.text {
+            if text.isEmpty {
+                products = searchProduct;
+            } else {
+                products =  self.searchProduct.filter { $0.name.lowercased().range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil }
+            }
+        }
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
