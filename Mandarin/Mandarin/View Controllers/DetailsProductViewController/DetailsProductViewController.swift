@@ -46,9 +46,12 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        heartButton.isHidden = true
+        
         //display iconHeart for Autorized user
         if User.isAuthorized()  {
             buttonHeart()
+            heartButton.isHidden = false
         }
         
         //call overPlusAndMinusButton function for display

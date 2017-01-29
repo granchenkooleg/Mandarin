@@ -8,8 +8,9 @@
 
 import UIKit
 import SwiftyJSON
+import MessageUI
 
-class PaymentViewController: BasketViewController {
+class PaymentViewController: BasketViewController, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var needChangeButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
@@ -20,8 +21,18 @@ class PaymentViewController: BasketViewController {
     var deliveryTime: String?
     
     // Navigation DrawingUpOfVC
-    var idOrder: String?
-    var phoneUser: String?
+    var idOrderPayment: String?
+    var phoneUserPayment: String?
+    var nameUserPayment: String?
+    var cityPayment: String?
+    var regionPayment: String?
+    var streetPayment: String?
+    var numberHousePayment: String?
+    var porchPayment: String?
+    var apartmentPayment: String?
+    var floorPayment: String?
+    var commitPayment: String?
+    var textUserInFildAlert: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,9 +73,9 @@ class PaymentViewController: BasketViewController {
         let actionOk = UIAlertAction(title: "Ок", style: .default) { (action:UIAlertAction) in
             // This is called when the user presses the login button.
             let textUser = alertController.textFields![0] as UITextField
-            
-            
-            print("The user entered:%@ ",textUser.text!);
+            guard let textUserInFildAlert = textUser.text else { return }
+            self.textUserInFildAlert = textUserInFildAlert
+            print("The user entered:%@ ",textUserInFildAlert);
         }
         
         alertController.addTextField { (textField) -> Void in
@@ -96,7 +107,7 @@ class PaymentViewController: BasketViewController {
     @IBAction func CheckClick(_ sender: Button) {
         
         //sender.loading = true
-        /*guard*/ let idOrPhone  = User.currentUser?.id ?? phoneUser /*, let idOrder = idOrder*/ /*else { return }*/
+        /*guard*/ let idOrPhone  = User.currentUser?.id ?? phoneUserPayment /*, let idOrder = idOrder*/ /*else { return }*/
         
         // Doing it for product_id in Alamofire request(param)
         var list: [JSON] = []
@@ -111,7 +122,7 @@ class PaymentViewController: BasketViewController {
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                  "user_id" :  idOrPhone,
                                  "product_id": list,
-                                 "order_id" : idOrder] as [String : Any]
+                                 "order_id" : idOrderPayment] as [String : Any]
         
         UserRequest.addOrderToServer(param as [String : AnyObject], completion: {[weak self] success in
             if success == true {
@@ -124,6 +135,37 @@ class PaymentViewController: BasketViewController {
             }
             //sender.loading = false
             })
+        
+        // For send mail to magazin
+        let _name = "NameUser: " + (nameUserPayment ?? "") + "\n"
+        let _phone = "Phone: " + (phoneUserPayment ?? "") + "\n"
+        let _city = "City: " + (cityPayment ?? "") + "\n"
+        let _region = "Region: " + (regionPayment ?? "") + "\n"
+        let _street = "Street" + streetPayment! + "\n"
+        let _numberHouse = "NumberHouse :" + (numberHousePayment ?? "") + "\n"
+        let _porch = "Porch: " + (porchPayment ?? "")  + "\n"
+        let _appartment = "Apartment: " + (apartmentPayment ?? "") + "\n"
+        let _floor = "Floor: " + (floorPayment ?? "") + "\n"
+        let _commit = "Commit: " + (commitPayment ?? "") + "\n"
+        let _bond = "Bond: " + (textUserInFildAlert ?? "") 
+        sendMessage(body: _name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit + _bond, recipients: ["oleg_granchenko@mail.ru"])
     }
+    
+       // For mail
+        func sendMessage(body: String, recipients: [String]) {
+            if MFMailComposeViewController.canSendMail() {
+                let mailComposeVC = MFMailComposeViewController()
+                mailComposeVC.mailComposeDelegate = self
+                mailComposeVC.setToRecipients(recipients)
+                mailComposeVC.setMessageBody(body, isHTML: false)
+                UINavigationController.main.present(mailComposeVC, animated: true, completion: nil)
+            }
+        }
+    
+        // MARK: MFMailComposeViewControllerDelegate
+    
+        func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+            controller.dismiss(animated: true, completion: nil)
+        }
     
 }

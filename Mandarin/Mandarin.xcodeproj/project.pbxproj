@@ -700,7 +700,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.mandarin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fdd07135-438b-4cab-9a29-fe09038a1f04";
+				PROVISIONING_PROFILE = "72c97b7f-895e-4058-a676-1e9c177c6f15";
 				PROVISIONING_PROFILE_SPECIFIER = Mandarin_AdHoc_profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "Mandarin-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
