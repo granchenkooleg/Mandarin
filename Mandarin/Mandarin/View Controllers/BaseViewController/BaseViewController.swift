@@ -56,10 +56,6 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     var viewAppeared = false
     
-    var _products: [Feeds] = []
-    
-    var internalProducts: [Feeds] = []
-    
     fileprivate lazy var keyboardAdjustments: [KeyboardAdjustment] = []
     
     @IBOutlet var keyboardAdjustmentBottomConstraints: [NSLayoutConstraint] = []

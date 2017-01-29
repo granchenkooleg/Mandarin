@@ -46,6 +46,8 @@ class SignInViewController: BaseLoginViewController {
     }
 }
 
+class TempVC: BaseLoginViewController {}
+
 class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     
@@ -111,10 +113,6 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
                     })
             }
         }
-    }
-    
-    override func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
-        return adjustment.defaultConstant + 60.0
     }
     
     struct MyProfileRequest: GraphRequestProtocol {
@@ -282,6 +280,9 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
         //        return adjustment.defaultConstant + 145.0
         //    }
         
+    }
+    override func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
+        return adjustment.defaultConstant + 120
     }
 }
 
