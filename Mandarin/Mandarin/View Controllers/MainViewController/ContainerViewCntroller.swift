@@ -9,7 +9,6 @@
 import Foundation
 import FacebookLogin
 import FacebookCore
-import SwiftyVK
 
 class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     
@@ -117,7 +116,6 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     @IBAction func logoutClick(_ sender: AnyObject) {
         GIDSignIn.sharedInstance().signOut()
         LoginManager().logOut()
-        VK.logOut()
         User.deleteUser()
         let signInViewController = Storyboard.Login.instantiate()
         UINavigationController.main.pushViewController(signInViewController, animated: false)

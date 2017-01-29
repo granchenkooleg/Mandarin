@@ -9,10 +9,8 @@
 import Foundation
 import UIKit
 import Alamofire
-import CryptoSwift
 import FacebookCore
 import FacebookLogin
-import SwiftyVK
 //import SwiftValidator
 
 class BaseLoginViewController: BaseViewController {
@@ -40,7 +38,7 @@ class SignInViewController: BaseLoginViewController {
     }
 }
 
-class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSignInUIDelegate, VKDelegate, GIDSignInDelegate {
+class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
     
     @IBOutlet weak var emailTextField: TextField!
@@ -57,7 +55,6 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         loginManager = LoginManager()
-        VK.configure(withAppId: "5748027", delegate: self)
         
         setup()
     }
@@ -67,27 +64,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
         facebookButton.circled = true
         googleButton.circled = true
     }
-    
-    //start VK
-    func vkWillAuthorize() -> Set<VK.Scope> {
-        return  [.offline]
-    }
-    
-    func vkDidAuthorizeWith(parameters: Dictionary<String, String>) {
-        let userId = parameters["user_id"]!
-        
-        VK.API.Users.get([VK.Arg.userId: userId]).send(
-            onSuccess: {[weak self] response in
-                Dispatch.mainQueue.async({ _ in
-                    User.setupUser(id: "\(response[0]["id"])", firstName: "\(response[0]["first_name"])", lastName: "\(response[0]["last_name"])")
-                    self?.chooseNextContoller()
-                })
-            },
-            onError: {error in print(error)}
-        )
-    }
-    
-    func vkAutorizationFailedWith(error: AuthError) {}
+
     
     func vkDidUnauthorize() {}
     
@@ -114,7 +91,6 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     }
     
     @IBAction func signInTouchUp(_ sender: AnyObject) {
-        VK.logIn()
     }
     // the end VK
     

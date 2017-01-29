@@ -8,8 +8,6 @@
 //
 
 import UIKit
-import SwiftyVK
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -56,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
      func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        VK.process(url: url, options: options)
         return ( GIDSignIn.sharedInstance().handle(url as URL!,sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                    annotation: options[UIApplicationOpenURLOptionsKey.annotation]) ||
                 FBSDKApplicationDelegate.sharedInstance().application(app, open: url as URL,
