@@ -150,6 +150,15 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
     var _productsArray = [Product]()
     
     override func viewDidLoad() {
+        
+        spiner.hidesWhenStopped = true
+        spiner.activityIndicatorViewStyle = .gray
+        view.add(spiner)
+        spiner.center.x = view.center.x
+        spiner.center.y = view.center.y 
+        spiner.startAnimating()
+        
+        
         listHeaderLabel?.text = nameListsOfProductsHeaderText
         tableView.separatorStyle = .none
         let products = Product().allProducts()
@@ -157,10 +166,12 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
             listOfProduct {[weak self] _ in
                 self?.productsList = Product().allProducts().filter { self?.idPodcategory == $0.category_id && self?.weightOfWeightVC == $0.weight }
                 self?.tableView.reloadData()
+                self?.spiner.stopAnimating()
             }
             
             return
         }
+        
         productsList = products.filter { self.idPodcategory == $0.category_id && self.weightOfWeightVC == $0.weight }
         tableView.reloadData()
     }
