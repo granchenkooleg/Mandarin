@@ -14,7 +14,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBOutlet weak var overPlusAndMinusButton: UIButton!
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionView: UITextView!
     @IBOutlet weak var uglevodyLabel: UILabel!
     @IBOutlet weak var zhiryLabel: UILabel!
     @IBOutlet weak var proteinLabel: UILabel!
@@ -66,7 +66,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         }
         
         nameLabel.text = nameHeaderTextDetailsVC
-        descriptionLabel.text = descriptionDetailsVC
+        descriptionView.text = descriptionDetailsVC
         uglevodyLabel.text = uglevodyDetailsVC
         zhiryLabel.text = zhiryDetailsVC
         proteinLabel.text = proteinsDetailsVC

@@ -29,7 +29,6 @@
 		56CEB7851DE47A1800E84345 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CEB7841DE47A1800E84345 /* UIColor+Ext.swift */; };
 		56CEB7871DE4862B00E84345 /* BezierPath+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CEB7861DE4862B00E84345 /* BezierPath+Ext.swift */; };
 		56D6F1DC1E1AC61C001C1FDC /* mandarin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56D6F1DB1E1AC61C001C1FDC /* mandarin.ttf */; };
-		56FCEA5F1E34D28900E2E594 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 56FCEA5E1E34D28900E2E594 /* iTunesArtwork */; };
 		56FCEA631E34E49E00E2E594 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56FCEA621E34E49E00E2E594 /* Assets.xcassets */; };
 		56FCEA651E34E70700E2E594 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCEA641E34E70700E2E594 /* SegmentControl.swift */; };
 		56FCEA671E34E8D300E2E594 /* ProductsForRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCEA661E34E8D300E2E594 /* ProductsForRealm.swift */; };
@@ -87,13 +86,13 @@
 		56CEB7841DE47A1800E84345 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Ext.swift"; path = "Extension/UIColor+Ext.swift"; sourceTree = "<group>"; };
 		56CEB7861DE4862B00E84345 /* BezierPath+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BezierPath+Ext.swift"; path = "Extension/BezierPath+Ext.swift"; sourceTree = "<group>"; };
 		56D6F1DB1E1AC61C001C1FDC /* mandarin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandarin.ttf; sourceTree = "<group>"; };
-		56FCEA5E1E34D28900E2E594 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Assets.xcassets/Icon/iTunesArtwork.dataset/iTunesArtwork; sourceTree = "<group>"; };
 		56FCEA621E34E49E00E2E594 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56FCEA641E34E70700E2E594 /* SegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentControl.swift; path = View/SegmentControl.swift; sourceTree = "<group>"; };
 		56FCEA661E34E8D300E2E594 /* ProductsForRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsForRealm.swift; sourceTree = "<group>"; };
 		59C633C6F7C974462971A9F1 /* Pods-Mandarin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mandarin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mandarin/Pods-Mandarin.debug.xcconfig"; sourceTree = "<group>"; };
 		6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mandarin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C54CC98AB82A309CE8319DC /* Pods-Mandarin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mandarin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mandarin/Pods-Mandarin.release.xcconfig"; sourceTree = "<group>"; };
+		7C0052921E3E41D000CE604E /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		7C0126E41E34ED0700BF5046 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = View/Button.swift; sourceTree = "<group>"; };
 		7C0126E61E34ED4400BF5046 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = "View Controllers/BaseViewController/BaseViewController.swift"; sourceTree = "<group>"; };
 		7C0126E81E34ED5200BF5046 /* BaseLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseLoginViewController.swift; path = "View Controllers/BaseViewController/BaseLoginViewController.swift"; sourceTree = "<group>"; };
@@ -273,7 +272,7 @@
 		7C0949611DE222250038018F /* Mandarin */ = {
 			isa = PBXGroup;
 			children = (
-				56FCEA5E1E34D28900E2E594 /* iTunesArtwork */,
+				7C0052921E3E41D000CE604E /* iTunesArtwork */,
 				56C682FA1DEB78520001790B /* Mandarin.entitlements */,
 				7C0949621DE222250038018F /* AppDelegate.swift */,
 				5621B58E1DE2E07600C3B612 /* Constants.swift */,
@@ -442,7 +441,6 @@
 				56D6F1DC1E1AC61C001C1FDC /* mandarin.ttf in Resources */,
 				56FCEA631E34E49E00E2E594 /* Assets.xcassets in Resources */,
 				7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */,
-				56FCEA5F1E34D28900E2E594 /* iTunesArtwork in Resources */,
 				56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */,
 				7C2D16C31DF45A4200A3CF92 /* SignUp.storyboard in Resources */,
 			);
