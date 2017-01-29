@@ -12,6 +12,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     
     @IBOutlet weak var headerLabel: UILabel?
     @IBOutlet weak var tableView: UITableView?
+    var spiner = UIActivityIndicatorView()
     //from segue
     var nameHeaderText: String?
     
@@ -22,18 +23,26 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView?.separatorStyle = .none
+        spiner.hidesWhenStopped = true
+        spiner.activityIndicatorViewStyle = .gray
+        view.add(spiner)
+        spiner.center.x = view.center.x
+        spiner.center.y = view.center.y - 150
+        spiner.startAnimating()
         
         headerLabel?.text = nameHeaderText
         let favoriteProducts = Category().allCategories()
         guard favoriteProducts.count != 0 else {
             getAllCategory { [weak self] _ in
                 self?.categoryContainer = Category().allCategories()
+                self?.spiner.stopAnimating()
                 self?.tableView?.reloadData()
             }
             
             return
         }
         categoryContainer = favoriteProducts
+        spiner.stopAnimating()
         tableView?.reloadData()
     }
     

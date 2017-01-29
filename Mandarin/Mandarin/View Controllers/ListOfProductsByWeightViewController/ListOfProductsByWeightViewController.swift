@@ -12,6 +12,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     
     @IBOutlet weak var listHeaderLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    var spiner = UIActivityIndicatorView()
     
     //segue
     var nameListsOfProductsHeaderText: String?
@@ -26,6 +27,13 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        spiner.hidesWhenStopped = true
+        spiner.activityIndicatorViewStyle = .gray
+        view.add(spiner)
+        spiner.center.x = view.center.x
+        spiner.center.y = view.center.y - 150
+        spiner.startAnimating()
+        
         listHeaderLabel?.text = nameListsOfProductsHeaderText
         tableView.separatorStyle = .none
         // Do any additional setup after loading the view.
@@ -34,11 +42,13 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
             listOfProduct {[weak self] _ in
                 self?.productsList = Product().allProducts().filter { Double($0.price_sale)! > Double(0.00) }
                 self?.tableView.reloadData()
+                self?.spiner.stopAnimating()
             }
             
             return
         }
         productsList = products.filter { Double($0.price_sale)! > Double(0.00) }
+        spiner.stopAnimating()
         tableView.reloadData()
     }
     

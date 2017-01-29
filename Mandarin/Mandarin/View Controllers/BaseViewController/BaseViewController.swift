@@ -50,8 +50,6 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     @IBOutlet weak var keyboardBottomGuideView: UIView?
     
-    @IBOutlet var searchTextField: TextField?
-    
     @IBOutlet weak var quantityCartLabel: UILabel?
     
     @IBOutlet weak var totalPriceLabel: UILabel?
@@ -97,7 +95,6 @@ class BaseViewController: UIViewController, KeyboardNotifying {
             whenLoadedBlocks.forEach({ $0() })
             whenLoadedBlocks.removeAll()
         }
-        searchTextField?.addTarget(self, action: #selector(self.searchTextChanged(sender:)), for: .editingChanged)
         
         //get our objects from table ProductsForRealm
 //        let realm = try! Realm()
@@ -214,16 +211,6 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     //MARK: Search
     @IBAction func searchClick(_ sender: Any) {
         present(UIStoryboard.main["search"]!, animated: true, completion: nil)
-    }
-    
-    func searchTextChanged(sender: UITextField) {
-        if let text = sender.text {
-            if text.isEmpty {
-                _products = internalProducts;
-            } else {
-                _products =  self.internalProducts.filter { $0.name.lowercased().range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil }
-            }
-        }
     }
     
     //MARK: MenuClick

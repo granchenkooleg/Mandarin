@@ -13,7 +13,11 @@ import FacebookCore
 import FacebookLogin
 //import SwiftValidator
 
-class BaseLoginViewController: BaseViewController {
+class BaseLoginViewController: BaseViewController, UITextFieldDelegate {
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
     
     fileprivate func chooseNextContoller() {
         guard User.isAuthorized() == true else { return }
@@ -22,6 +26,10 @@ class BaseLoginViewController: BaseViewController {
    
     @IBAction func backToMain(sender: AnyObject) {
         UINavigationController.main.popViewController(animated: false)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      return  textField.resignFirstResponder()
     }
 }
 
@@ -38,7 +46,7 @@ class SignInViewController: BaseLoginViewController {
     }
 }
 
-class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
+class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     
     @IBOutlet weak var emailTextField: TextField!
@@ -52,6 +60,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         loginManager = LoginManager()
@@ -74,20 +83,6 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     
     func vkWillPresentView() -> UIViewController {
         return self
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField.tag + 1 {
-        case passwordTextField.tag:
-            passwordTextField.becomeFirstResponder()
-        default: break
-        }
-        
-        if textField.returnKeyType == .done {
-            textField.resignFirstResponder()
-        }
-        
-        return true
     }
     
     @IBAction func signInTouchUp(_ sender: AnyObject) {
@@ -174,7 +169,7 @@ class LoginViewController: BaseLoginViewController, UITextFieldDelegate, GIDSign
     }
 }
 
-class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate /*, InputValidator*/ {
+class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ {
     
     //    let REGEX_PATTERN_FIRST_NAME = "/^[a-z0-9_-]{3,16}$/"
     //    let REGEX_PATTERN_PHONE =  "^\\d{3}-\\d{3}-\\d{4}$"
@@ -216,7 +211,9 @@ class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate 
     //
     //    }
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     @IBAction func createAccount(_ sender: Button) {
         
@@ -288,7 +285,7 @@ class CreateAccountViewController: BaseLoginViewController, UITextFieldDelegate 
     }
 }
 
-class RecoveryPasswordViewController: BaseLoginViewController, UITextFieldDelegate {
+class RecoveryPasswordViewController: BaseLoginViewController {
     
     
     @IBOutlet weak var emailOrPhoneTextField: UITextField!
