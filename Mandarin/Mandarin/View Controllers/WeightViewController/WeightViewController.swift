@@ -29,6 +29,7 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         UserRequest.getWeightCategory(param as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
                 let weight = json["weight"].string ?? ""
+                // Sort weight
                 self?.contentWeightProduct.insert(weight)
                 self?.contentWeightProductWithoutDuplicates = (self?.contentWeightProduct.sorted {$0 < $1} ?? [])
             }

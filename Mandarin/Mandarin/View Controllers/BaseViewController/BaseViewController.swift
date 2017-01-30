@@ -229,12 +229,19 @@ class BaseViewController: UIViewController, KeyboardNotifying {
 //        }
 //    }
     
-    // MARK: Basket Update and totalPrice
+    // MARK: Basket Update and totalPrice in header
     func updateProductInfo() {
         let realm = try! Realm()
         productsInBasket = realm.objects(ProductsForRealm.self)
-        totalPriceLabel?.text = (totalPriceInCart() + " грн.")
+        // We do check to display the data in the header 
+        let x = productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 })
+        if x > 0 {
         self.quantityCartLabel?.text = "\(productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 }))"
+        totalPriceLabel?.text = (totalPriceInCart() + " грн.")
+        } else {
+            self.quantityCartLabel?.text = ""
+            totalPriceLabel?.text = ""
+        }
     }
     
     //  Total price

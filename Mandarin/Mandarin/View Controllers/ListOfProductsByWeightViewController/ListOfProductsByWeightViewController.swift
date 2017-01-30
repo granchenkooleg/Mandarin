@@ -171,7 +171,7 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
             
             return
         }
-        
+        self.spiner.stopAnimating()
         productsList = products.filter { self.idPodcategory == $0.category_id && self.weightOfWeightVC == $0.weight }
         tableView.reloadData()
     }

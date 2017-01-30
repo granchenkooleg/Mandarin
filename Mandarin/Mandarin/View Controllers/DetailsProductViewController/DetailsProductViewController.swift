@@ -173,9 +173,9 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         //        let products = ProductsForRealm(value: list)
         //        User.currentUser?.products.append(products)
         
-        updateProduct()
+        
         UIAlertController.alert("Товар добавлен в корзину.".ls).show()
-        //updateProductInBasket()
+        updateProduct()
         updateProductInfo()
         
         //        navigationController!.popViewController(animated: true)

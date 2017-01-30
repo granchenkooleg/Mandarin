@@ -148,7 +148,7 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
         sender.loading = true
         guard let email = emailTextField.text, let password = passwordTextField.text,
             email.isValidEmail == true && password.isEmpty == false else {
-                UIAlertController.alert("Неправильный email или пароль!.".ls).show()
+                UIAlertController.alert("Неверно введенный email или пароль!".ls).show()
                 sender.loading = false
                 return
         }
