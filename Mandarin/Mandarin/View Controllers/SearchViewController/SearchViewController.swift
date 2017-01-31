@@ -12,12 +12,21 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var searchTextField: TextField?
+    var spiner = UIActivityIndicatorView()
     
     var products = [Product]()
     var searchProduct = [Product]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        spiner.hidesWhenStopped = true
+        spiner.activityIndicatorViewStyle = .gray
+        view.add(spiner)
+        spiner.center.x = view.center.x
+        spiner.center.y = view.center.y 
+        spiner.startAnimating()
+        
         searchTextField?.addTarget(self, action: #selector(self.searchTextChanged(sender:)), for: .editingChanged)
         
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
@@ -52,10 +61,11 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
             }
             weakSelf.products = weakSelf.searchProduct
             weakSelf.tableView.reloadData()
+            self?.spiner.stopAnimating()
         })
     }
     
-    //for search
+    
     func searchTextChanged(sender: UITextField) {
         if let text = sender.text {
             if text.isEmpty {
@@ -109,3 +119,5 @@ class SearchTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 }
+
+

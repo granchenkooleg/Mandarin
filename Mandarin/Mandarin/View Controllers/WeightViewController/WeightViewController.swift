@@ -22,6 +22,13 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     
+        if unitOfWeight == "kg" {
+            unitOfWeight = "кг."
+        }
+        if unitOfWeight == "liter" {
+            self.unitOfWeight = "л."
+        }
         
         weightHeaderLabel.text = nameWeightHeaderText
         

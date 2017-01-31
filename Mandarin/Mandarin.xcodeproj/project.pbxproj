@@ -28,7 +28,6 @@
 		56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56899DCF1DE9879B00EF02FE /* GoogleService-Info.plist */; };
 		56CEB7851DE47A1800E84345 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CEB7841DE47A1800E84345 /* UIColor+Ext.swift */; };
 		56CEB7871DE4862B00E84345 /* BezierPath+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CEB7861DE4862B00E84345 /* BezierPath+Ext.swift */; };
-		56D6F1DC1E1AC61C001C1FDC /* mandarin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56D6F1DB1E1AC61C001C1FDC /* mandarin.ttf */; };
 		56FCEA631E34E49E00E2E594 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56FCEA621E34E49E00E2E594 /* Assets.xcassets */; };
 		56FCEA651E34E70700E2E594 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCEA641E34E70700E2E594 /* SegmentControl.swift */; };
 		56FCEA671E34E8D300E2E594 /* ProductsForRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCEA661E34E8D300E2E594 /* ProductsForRealm.swift */; };
@@ -56,6 +55,7 @@
 		7C0949631DE222250038018F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0949621DE222250038018F /* AppDelegate.swift */; };
 		7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C09496B1DE222250038018F /* LaunchScreen.storyboard */; };
 		7C2D16C31DF45A4200A3CF92 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D16C11DF45A4200A3CF92 /* SignUp.storyboard */; };
+		7C46E96D1E4137CD0053CFFF /* mandarin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C46E96C1E4137CD0053CFFF /* mandarin.ttf */; };
 		7C4A8D631E3CA58A0094E097 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C4A8D621E3CA58A0094E097 /* Main.storyboard */; };
 		7C7157841E21856900C1DCAC /* InfoAboutUserForOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */; };
 		ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */; };
@@ -85,7 +85,6 @@
 		56C682FA1DEB78520001790B /* Mandarin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mandarin.entitlements; sourceTree = "<group>"; };
 		56CEB7841DE47A1800E84345 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Ext.swift"; path = "Extension/UIColor+Ext.swift"; sourceTree = "<group>"; };
 		56CEB7861DE4862B00E84345 /* BezierPath+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BezierPath+Ext.swift"; path = "Extension/BezierPath+Ext.swift"; sourceTree = "<group>"; };
-		56D6F1DB1E1AC61C001C1FDC /* mandarin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandarin.ttf; sourceTree = "<group>"; };
 		56FCEA621E34E49E00E2E594 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56FCEA641E34E70700E2E594 /* SegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentControl.swift; path = View/SegmentControl.swift; sourceTree = "<group>"; };
 		56FCEA661E34E8D300E2E594 /* ProductsForRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsForRealm.swift; sourceTree = "<group>"; };
@@ -119,6 +118,7 @@
 		7C09496C1DE222250038018F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C09496E1DE222250038018F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C2D16C11DF45A4200A3CF92 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		7C46E96C1E4137CD0053CFFF /* mandarin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandarin.ttf; sourceTree = "<group>"; };
 		7C4A8D621E3CA58A0094E097 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoAboutUserForOrder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -288,7 +288,7 @@
 				7C09496E1DE222250038018F /* Info.plist */,
 				56899DCF1DE9879B00EF02FE /* GoogleService-Info.plist */,
 				567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */,
-				56D6F1DB1E1AC61C001C1FDC /* mandarin.ttf */,
+				7C46E96C1E4137CD0053CFFF /* mandarin.ttf */,
 			);
 			path = Mandarin;
 			sourceTree = "<group>";
@@ -437,8 +437,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C46E96D1E4137CD0053CFFF /* mandarin.ttf in Resources */,
 				7C4A8D631E3CA58A0094E097 /* Main.storyboard in Resources */,
-				56D6F1DC1E1AC61C001C1FDC /* mandarin.ttf in Resources */,
 				56FCEA631E34E49E00E2E594 /* Assets.xcassets in Resources */,
 				7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */,
 				56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */,
