@@ -14,7 +14,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBOutlet weak var overPlusAndMinusButton: UIButton!
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var uglevodyLabel: UILabel!
     @IBOutlet weak var zhiryLabel: UILabel!
     @IBOutlet weak var proteinLabel: UILabel!
@@ -46,9 +46,12 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        heartButton.isHidden = true
+        
         //display iconHeart for Autorized user
         if User.isAuthorized()  {
             buttonHeart()
+            heartButton.isHidden = false
         }
         
         //call overPlusAndMinusButton function for display
@@ -63,7 +66,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         }
         
         nameLabel.text = nameHeaderTextDetailsVC
-        descriptionTextField.text = descriptionDetailsVC
+        descriptionLabel.text = descriptionDetailsVC
         uglevodyLabel.text = uglevodyDetailsVC
         zhiryLabel.text = zhiryDetailsVC
         proteinLabel.text = proteinsDetailsVC
@@ -141,6 +144,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             sender.isSelected = !sender.isSelected
             // end]
         }
+       
     }
     
     //hidden overButton

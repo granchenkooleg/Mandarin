@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 import RealmSwift
-import MessageUI
+/*import MessageUI*/
 
 
-class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
+class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate /*, MFMailComposeViewControllerDelegate*/ {
     
     @IBOutlet weak var nameUserTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -170,38 +170,48 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         guard let paymentVC = UIStoryboard.main["payment"] as? PaymentViewController, let last = adressUserFromRealm.last else { return }
-        paymentVC.idOrder = last.idOrder
+        paymentVC.idOrderPayment = last.idOrder
+        paymentVC.phoneUserPayment = last.phone
+        paymentVC.nameUserPayment = last.name
+        paymentVC.cityPayment = last.city
+        paymentVC.regionPayment = last.region
+        paymentVC.streetPayment = last.street
+        paymentVC.numberHousePayment = last.house
+        paymentVC.porchPayment = last.porch
+        paymentVC.apartmentPayment = last.apartment
+        paymentVC.floorPayment = last.floor
+        paymentVC.commitPayment = last.commit
         containerViewController.addController(paymentVC)
         
-        let _name = "NameUser: " + nameUser + "\n"
-        let _phone = "Phone: " + phone + "\n"
-        let _city = "City: " + city + "\n"
-        let _region = "Region: " + (region ?? "") + "\n"
-        let _street = "Street" + street + "\n"
-        let _numberHouse = "NumberHouse :" + numberHouse + "\n"
-        let _porch = "Porch: " + porch  + "\n"
-        let _appartment = "Apartment: " + apartment + "\n"
-        let _floor = "Floor: " + (floor ?? "") + "\n"
-        let _commit = "Commit: " + (commit ?? "")
-        sendMessage(body: _name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit, recipients: ["oleg_granchenko@mail.ru"])
+//        let _name = "NameUser: " + nameUser + "\n"
+//        let _phone = "Phone: " + phone + "\n"
+//        let _city = "City: " + city + "\n"
+//        let _region = "Region: " + (region ?? "") + "\n"
+//        let _street = "Street" + street + "\n"
+//        let _numberHouse = "NumberHouse :" + numberHouse + "\n"
+//        let _porch = "Porch: " + porch  + "\n"
+//        let _appartment = "Apartment: " + apartment + "\n"
+//        let _floor = "Floor: " + (floor ?? "") + "\n"
+//        let _commit = "Commit: " + (commit ?? "")
+//        sendMessage(body: _name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit, recipients: ["oleg_granchenko@mail.ru"])
         
     }
     
-    func sendMessage(body: String, recipients: [String]) {
-        if MFMailComposeViewController.canSendMail() {
-            let mailComposeVC = MFMailComposeViewController()
-            mailComposeVC.mailComposeDelegate = self
-            mailComposeVC.setToRecipients(recipients)
-            mailComposeVC.setMessageBody(body, isHTML: false)
-            UINavigationController.main.present(mailComposeVC, animated: true, completion: nil)
-        }
-    }
-    
-    //MARK: MFMailComposeViewControllerDelegate
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
-    }
+//    func sendMessage(body: String, recipients: [String]) {
+//        if MFMailComposeViewController.canSendMail() {
+//            let mailComposeVC = MFMailComposeViewController()
+//            mailComposeVC.mailComposeDelegate = self
+//            mailComposeVC.setToRecipients(recipients)
+//            mailComposeVC.setMessageBody(body, isHTML: false)
+//            UINavigationController.main.present(mailComposeVC, animated: true, completion: nil)
+//        }
+//    }
+//    
+//    //MARK: MFMailComposeViewControllerDelegate
+//    
+//    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+//        controller.dismiss(animated: true, completion: nil)
+//    }
 
 }
 
