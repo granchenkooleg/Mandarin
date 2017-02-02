@@ -27,6 +27,11 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Resize cell
+        tableView.estimatedRowHeight = 100.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        //Spiner
         spiner.hidesWhenStopped = true
         spiner.activityIndicatorViewStyle = .gray
         view.add(spiner)
@@ -51,6 +56,13 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         spiner.stopAnimating()
         tableView.reloadData()
     }
+    
+    // For dynamic height cell 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
+   
     
     func listOfProduct(_ completion: @escaping Block)  {
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
@@ -88,7 +100,6 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     // MARK: - Table view data source
     
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productsList.count
     }
@@ -121,7 +132,6 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         return cell
     }
     
-    
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()
@@ -151,16 +161,22 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
     
     override func viewDidLoad() {
         
+        // Resize dynamic cell
+        tableView.estimatedRowHeight = 100.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+
+        
         spiner.hidesWhenStopped = true
         spiner.activityIndicatorViewStyle = .gray
         view.add(spiner)
         spiner.center.x = view.center.x
-        spiner.center.y = view.center.y 
+        spiner.center.y = view.center.y
         spiner.startAnimating()
         
         
         listHeaderLabel?.text = nameListsOfProductsHeaderText
         tableView.separatorStyle = .none
+        
         let products = Product().allProducts()
         guard products.count != 0 else {
             listOfProduct {[weak self] _ in
@@ -171,10 +187,19 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
             
             return
         }
+        
         self.spiner.stopAnimating()
+        
         productsList = products.filter { self.idPodcategory == $0.category_id && self.weightOfWeightVC == $0.weight }
         tableView.reloadData()
     }
+    
+    // For dynamic height cell
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
+
     
     override func listOfProduct(_ completion: @escaping Block) {
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]

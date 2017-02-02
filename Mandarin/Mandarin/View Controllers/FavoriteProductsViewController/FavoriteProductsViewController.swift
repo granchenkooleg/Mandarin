@@ -18,11 +18,16 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Resize cell
+        tableView.estimatedRowHeight = 100.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         tableView.separatorStyle = .none
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         // Only isAuthorized user can see it VC
         guard  User.isAuthorized() else {
             UIAlertController.alert("Только зарегистрированный пользователь может добавлять в избранные".ls).show()
@@ -68,6 +73,12 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
             self?._productsList = (self?.internalProductsForListOfWeightVC)!
             self?.tableView.reloadData()
             })
+    }
+    
+    // For dynamic height cell
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
