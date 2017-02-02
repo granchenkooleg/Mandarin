@@ -60,7 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
      func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        VK.process(url: url, options: options)
+        let _app = options[.sourceApplication] as? String
+        VK.process(url: url, sourceApplication: _app)
         return ( GIDSignIn.sharedInstance().handle(url as URL!,sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                    annotation: options[UIApplicationOpenURLOptionsKey.annotation]) ||
                 FBSDKApplicationDelegate.sharedInstance().application(app, open: url as URL,

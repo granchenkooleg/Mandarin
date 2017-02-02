@@ -75,9 +75,8 @@ PODS:
   - RealmSwift (2.1.0):
     - Realm (= 2.1.0)
   - SnapKit (3.0.2)
-  - SwiftValidator (4.0.0)
   - SwiftyJSON (3.1.3)
-  - SwiftyVK (2.0.0)
+  - SwiftyVK (2.0.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0.0)
@@ -89,19 +88,18 @@ DEPENDENCIES:
   - Kingfisher
   - RealmSwift
   - SnapKit
-  - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
   - SwiftyJSON
-  - SwiftyVK
+  - SwiftyVK (from `https://github.com/WE-St0r/SwiftyVK.git`, commit `768d5bb192e03a13dc45fbe0cc78b6cedc687e41`)
 
 EXTERNAL SOURCES:
-  SwiftValidator:
-    :branch: master
-    :git: https://github.com/jpotts18/SwiftValidator.git
+  SwiftyVK:
+    :commit: 768d5bb192e03a13dc45fbe0cc78b6cedc687e41
+    :git: https://github.com/WE-St0r/SwiftyVK.git
 
 CHECKOUT OPTIONS:
-  SwiftValidator:
-    :commit: 2a6c23ad9efd76127f6109445515cb9780e5ad92
-    :git: https://github.com/jpotts18/SwiftValidator.git
+  SwiftyVK:
+    :commit: 768d5bb192e03a13dc45fbe0cc78b6cedc687e41
+    :git: https://github.com/WE-St0r/SwiftyVK.git
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
@@ -128,10 +126,9 @@ SPEC CHECKSUMS:
   Realm: bc829ad0ef3d4eea70c34cfcc3b1704d18d50df1
   RealmSwift: a4d4abbf0088c337cab5b738054395842e4b3052
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
-  SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
-  SwiftyVK: a6da2aec8b65e131e1fb80b1658a209c62a2f44a
+  SwiftyVK: e841fff2efaf716a408d51e592bfd2e702ffe9de
 
-PODFILE CHECKSUM: f6badc45b7127a0a62a88f97eae3f038b9615cc3
+PODFILE CHECKSUM: 48dc5371c926674f0dd8bb0667a5ca8fc51d1750
 
 COCOAPODS: 1.2.0.beta.1

@@ -17,8 +17,7 @@ target 'Mandarin' do
   pod 'FacebookLogin'
   pod 'FacebookShare'
   pod 'Google/SignIn'
-  pod 'SwiftyVK'
-  pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
+  pod 'SwiftyVK', :git => 'https://github.com/WE-St0r/SwiftyVK.git', :commit => '768d5bb192e03a13dc45fbe0cc78b6cedc687e41'
 
   post_install do |installer|
   installer.pods_project.targets.each do |target|
