@@ -139,6 +139,13 @@ class CategoryViewController: CategoryViewControllerSegment {
         tableView?.separatorStyle = .none
         headerLabel?.text = nameHeaderText
         getAllCategory({})
+        
+        spiner.hidesWhenStopped = true
+        spiner.activityIndicatorViewStyle = .gray
+        view.add(spiner)
+        spiner.center.x = view.center.x
+        spiner.center.y = view.center.y - 170
+        spiner.startAnimating()
     }
     
     override func getAllCategory(_ completion: @escaping Block) {
@@ -165,6 +172,7 @@ class CategoryViewController: CategoryViewControllerSegment {
             }
             weakSelf.categoryContainer = weakSelf.categories
             weakSelf.tableView?.reloadData()
+            self?.spiner.stopAnimating()
             })
     }
     

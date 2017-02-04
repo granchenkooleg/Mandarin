@@ -41,6 +41,7 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
                 self?.contentWeightProductWithoutDuplicates = (self?.contentWeightProduct.sorted {$0 < $1} ?? [])
             }
             self?.collectionView.reloadData()
+            self?.spiner.stopAnimating()
         })
     }
     

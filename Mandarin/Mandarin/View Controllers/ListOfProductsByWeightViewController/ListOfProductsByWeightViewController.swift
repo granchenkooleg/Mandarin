@@ -57,11 +57,17 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         tableView.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     // For dynamic height cell
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.reloadData()
     }
+    
     
     
     func listOfProduct(_ completion: @escaping Block)  {

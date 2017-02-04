@@ -166,7 +166,12 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     //button cart
     @IBAction func createCart(_ sender: AnyObject) {
         
-        overPlusAndMinusButton.isHidden = false
+        if overPlusAndMinusButton.isHidden == false {
+         overPlusAndMinusButton.isHidden = true
+            return
+        } else {
+            overPlusAndMinusButton.isHidden = false
+        }
         
         //        let list = ProductsForRealm.setupProduct(id: id, descriptiqonForProduct: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_salquglevody, units: "")
         //        self?.internalProducts.append(list)
@@ -178,6 +183,10 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         updateProduct()
         updateProductInfo()
         
+        if quantity > 1 {
+            quantity = 1
+        }
+        quantityLabel.text = "\(quantity) шт."
         //        navigationController!.popViewController(animated: true)
         
         // quantityProducts  = "2"
