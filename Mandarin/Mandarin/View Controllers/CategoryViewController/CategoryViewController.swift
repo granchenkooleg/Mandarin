@@ -13,7 +13,8 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     @IBOutlet weak var headerLabel: UILabel?
     @IBOutlet weak var tableView: UITableView?
     var spiner = UIActivityIndicatorView()
-    //from segue
+    
+    //From segue
     var nameHeaderText: String?
     
     // @IBOutlet weak var tableView: UITableView!
@@ -22,6 +23,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView?.separatorStyle = .none
         spiner.hidesWhenStopped = true
         spiner.activityIndicatorViewStyle = .gray
@@ -42,6 +44,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
             return
         }
         categoryContainer = favoriteProducts
+        
         spiner.stopAnimating()
         tableView?.reloadData()
     }
@@ -55,6 +58,10 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
                 let icon = json["icon"].string ?? ""
                 let name = json["name"].string ?? ""
                 let units = json["units"].string ?? ""
+//                /////////
+//                let searchVC = SearchViewController()
+//                searchVC.unitOfWeightSearchVC = units
+//                ////////
                 let category_id = json["category_id"].string ?? ""
                 var image: Data? = nil
                 if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
@@ -95,6 +102,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     //MARK: Segue
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         getWeigth(indexPath: indexPath)
+        //        toSearchVC(indexPath: indexPath)
     }
     
     func getWeigth(indexPath: IndexPath) {
@@ -104,12 +112,28 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         containerViewController.addController(categoryViewController)
     }
+    
+//    @IBAction func moveToSearch(sender: UIButton) {
+//        
+//        // Transfer units
+//        let searchVC = SearchViewController()
+//        
+//        for i in categoryContainer {
+//            searchVC.unitOfWeightSearchVC = ("\(i.units)<")
+//            
+//            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+//            guard let searchVC = UIStoryboard.main["search"] as? SearchViewController else { return }
+//            searchVC.unitOfWeightSearchVC = ("\(i.units)<")
+//            containerViewController.addController(searchVC)
+//        }
+//    }
+    
 }
 
 class CategoryViewController: CategoryViewControllerSegment {
     
     var categoryId: String?
-     internal var categories = [Category]()
+    internal var categories = [Category]()
     
     override func viewDidLoad() {
         tableView?.separatorStyle = .none
@@ -141,7 +165,7 @@ class CategoryViewController: CategoryViewControllerSegment {
             }
             weakSelf.categoryContainer = weakSelf.categories
             weakSelf.tableView?.reloadData()
-        })
+            })
     }
     
     //segue

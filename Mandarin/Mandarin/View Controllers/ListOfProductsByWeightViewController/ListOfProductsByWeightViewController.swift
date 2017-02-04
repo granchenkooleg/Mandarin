@@ -57,12 +57,12 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         tableView.reloadData()
     }
     
-    // For dynamic height cell 
+    // For dynamic height cell
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.reloadData()
     }
-   
+    
     
     func listOfProduct(_ completion: @escaping Block)  {
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
@@ -127,7 +127,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 
                 // set attributed text on a UILabel
                 cell.priceOldLabel?.attributedText = myAttrString
-            }
+            } 
         }
         return cell
     }
@@ -164,7 +164,7 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
         // Resize dynamic cell
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
-
+        
         
         spiner.hidesWhenStopped = true
         spiner.activityIndicatorViewStyle = .gray
@@ -199,7 +199,7 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
         super.viewDidAppear(animated)
         tableView.reloadData()
     }
-
+    
     
     override func listOfProduct(_ completion: @escaping Block) {
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]

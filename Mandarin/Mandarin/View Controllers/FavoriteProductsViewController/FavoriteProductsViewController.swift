@@ -111,6 +111,8 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
                 
                 // set attributed text on a UILabel
                 cell.priceOldLabel?.attributedText = myAttrString
+            } else {
+                cell.priceSaleLabel?.text = ""
             }
         }
         

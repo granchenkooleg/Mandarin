@@ -62,7 +62,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         if Double(priceSaleDetailsVC ?? "") ?? 0 > Double(0.00) {
             priceLabel?.text = String(priceSaleDetailsVC ?? "") + " грн."
         } else {
-            priceLabel.text = priceDetailsVC! + " грн."
+            priceLabel?.text = ((priceDetailsVC ?? "") + " грн.")
         }
         
         nameLabel.text = nameHeaderTextDetailsVC
