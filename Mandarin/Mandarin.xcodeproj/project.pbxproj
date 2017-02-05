@@ -32,6 +32,7 @@
 		56FCEA631E34E49E00E2E594 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56FCEA621E34E49E00E2E594 /* Assets.xcassets */; };
 		56FCEA651E34E70700E2E594 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCEA641E34E70700E2E594 /* SegmentControl.swift */; };
 		56FCEA671E34E8D300E2E594 /* ProductsForRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCEA661E34E8D300E2E594 /* ProductsForRealm.swift */; };
+		7C0046D51E47B246005CCDE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C0046D41E47B246005CCDE0 /* Main.storyboard */; };
 		7C0126E51E34ED0700BF5046 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0126E41E34ED0700BF5046 /* Button.swift */; };
 		7C0126E71E34ED4400BF5046 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0126E61E34ED4400BF5046 /* BaseViewController.swift */; };
 		7C0126E91E34ED5200BF5046 /* BaseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0126E81E34ED5200BF5046 /* BaseLoginViewController.swift */; };
@@ -57,7 +58,6 @@
 		7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C09496B1DE222250038018F /* LaunchScreen.storyboard */; };
 		7C2D16C31DF45A4200A3CF92 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D16C11DF45A4200A3CF92 /* SignUp.storyboard */; };
 		7C46E96D1E4137CD0053CFFF /* mandarin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C46E96C1E4137CD0053CFFF /* mandarin.ttf */; };
-		7C4A8D631E3CA58A0094E097 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C4A8D621E3CA58A0094E097 /* Main.storyboard */; };
 		7C7157841E21856900C1DCAC /* InfoAboutUserForOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */; };
 		ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */; };
 /* End PBXBuildFile section */
@@ -93,6 +93,7 @@
 		59C633C6F7C974462971A9F1 /* Pods-Mandarin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mandarin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mandarin/Pods-Mandarin.debug.xcconfig"; sourceTree = "<group>"; };
 		6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mandarin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C54CC98AB82A309CE8319DC /* Pods-Mandarin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mandarin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mandarin/Pods-Mandarin.release.xcconfig"; sourceTree = "<group>"; };
+		7C0046D41E47B246005CCDE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7C0052921E3E41D000CE604E /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		7C0126E41E34ED0700BF5046 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = View/Button.swift; sourceTree = "<group>"; };
 		7C0126E61E34ED4400BF5046 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = "View Controllers/BaseViewController/BaseViewController.swift"; sourceTree = "<group>"; };
@@ -121,7 +122,6 @@
 		7C09496E1DE222250038018F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C2D16C11DF45A4200A3CF92 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		7C46E96C1E4137CD0053CFFF /* mandarin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandarin.ttf; sourceTree = "<group>"; };
-		7C4A8D621E3CA58A0094E097 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoAboutUserForOrder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -286,7 +286,7 @@
 				5621B57E1DE2DEE400C3B612 /* Extension */,
 				7C2C700F1DE44CDC005DEDCA /* Resources */,
 				7C2D16C11DF45A4200A3CF92 /* SignUp.storyboard */,
-				7C4A8D621E3CA58A0094E097 /* Main.storyboard */,
+				7C0046D41E47B246005CCDE0 /* Main.storyboard */,
 				7C09496B1DE222250038018F /* LaunchScreen.storyboard */,
 				56FCEA621E34E49E00E2E594 /* Assets.xcassets */,
 				7C09496E1DE222250038018F /* Info.plist */,
@@ -442,7 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C46E96D1E4137CD0053CFFF /* mandarin.ttf in Resources */,
-				7C4A8D631E3CA58A0094E097 /* Main.storyboard in Resources */,
+				7C0046D51E47B246005CCDE0 /* Main.storyboard in Resources */,
 				56FCEA631E34E49E00E2E594 /* Assets.xcassets in Resources */,
 				7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */,
 				56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */,
