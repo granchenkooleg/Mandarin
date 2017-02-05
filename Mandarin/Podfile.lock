@@ -14,16 +14,9 @@ PODS:
     - FacebookCore (~> 0.2)
     - FBSDKCoreKit (~> 4.15)
     - FBSDKLoginKit (~> 4.15)
-  - FacebookShare (0.2.0):
-    - Bolts (~> 1.8)
-    - FacebookCore (~> 0.2)
-    - FBSDKCoreKit (~> 4.15)
-    - FBSDKShareKit (~> 4.15)
   - FBSDKCoreKit (4.17.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.17.0):
-    - FBSDKCoreKit
-  - FBSDKShareKit (4.17.0):
     - FBSDKCoreKit
   - FirebaseAnalytics (3.6.0):
     - FirebaseCore (~> 3.4)
@@ -79,7 +72,6 @@ DEPENDENCIES:
   - Alamofire (~> 4.0.0)
   - FacebookCore
   - FacebookLogin
-  - FacebookShare
   - Google/SignIn
   - RealmSwift
   - SnapKit
@@ -90,10 +82,8 @@ SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
-  FacebookShare: 8e9ee8ea06505e6a1d3d719b0cc63e840fb8aaeb
   FBSDKCoreKit: 30a21d2d7b92984b3d80497113433c00824c35e9
   FBSDKLoginKit: 42b7129ac0373ca99eaf4cbebf4d07bd42371f59
-  FBSDKShareKit: 9b573d03fbee36cbaf42d5bb1f2bc019e0d72347
   FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
   FirebaseCore: 1e383fdfe37b6b5d6ff88e84204bdee30276af0f
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
@@ -110,6 +100,6 @@ SPEC CHECKSUMS:
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
 
-PODFILE CHECKSUM: c2fc61df540b79aab12712becfae245efea22d78
+PODFILE CHECKSUM: b09b5098b402aa3f271ad9a648d745bb17e55ce9
 
 COCOAPODS: 1.2.0.beta.1

@@ -13,7 +13,6 @@ target 'Mandarin' do
   pod 'SwiftyJSON'
   pod 'FacebookCore'
   pod 'FacebookLogin'
-  pod 'FacebookShare'
   pod 'Google/SignIn'
 
   post_install do |installer|
