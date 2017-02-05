@@ -122,12 +122,12 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         //if price_sale != 0.00 грн, set it
         if productDetails.price_sale != "0.00" {
             cell.priceSaleLabel?.text = productDetails.price_sale +  "  грн."
-            // create attributed string for strikethroughStyleAttributeName
+            // Create attributed string for strikethroughStyleAttributeName
             let myString = productDetails.price + " грн."
             let myAttribute = [ NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue ]
             let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
             
-            // set attributed text on a UILabel
+            // Set attributed text on a UILabel
             cell.priceOldLabel?.attributedText = myAttrString
         } else {
             cell.priceSaleLabel?.text = ""

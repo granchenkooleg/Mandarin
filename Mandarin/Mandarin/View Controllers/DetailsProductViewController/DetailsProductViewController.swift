@@ -25,6 +25,10 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBOutlet weak var productsImageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
+    
+    // For favoriteProductOfUser
+//    var taskId: String?
+    
     var priceSaleDetailsVC: String?
     var idProductDetailsVC: String!
     var productsImage: String! // name our image
@@ -94,12 +98,17 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     }
     
     //setting heartButton
-    func buttonHeart() -> Void {
-        //then @IBAction func heartButton establish .selected
-        heartButton.setImage(UIImage(named: "HeartCleanBillWhite" ), for: .selected)
-        //at first establish .normal
-        heartButton.setImage(UIImage(named: "HeartWhiteNew" ), for: .normal)
+    func buttonHeart() {
         
+        let realm = try! Realm()
+        if let product = realm.objects(Product.self).filter("id  == [c] %@", idProductDetailsVC).first {
+            
+            heartButton.isSelected = product.favoriteProductOfUser
+            //then @IBAction func heartButton establish .selected
+            heartButton.setImage(UIImage(named: "HeartCleanBillWhite" ), for: .selected)
+            //at first establish .normal
+            heartButton.setImage(UIImage(named: "HeartWhiteNew" ), for: .normal)
+        }
     }
     
     // button for addition to section "💛Я люблю"
@@ -122,7 +131,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             })
             
             //it for fill heart white color. Look func buttonHeart(). [start
-            sender.isSelected = !sender.isSelected
+//            sender.isSelected = !sender.isSelected
             // end
             ///////////////////////////////////////////////////////////////////////////
         } else {
@@ -141,10 +150,26 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             })
             
             //it for fill heart white color. Look func buttonHeart(). [start
-            sender.isSelected = !sender.isSelected
+//            sender.isSelected = !sender.isSelected
             // end]
         }
        
+        updateTask(!heartButton.isSelected)
+        
+    }
+    
+    // For favoriteProductOfUser
+    fileprivate func updateTask(_ checked: Bool) {
+        if let realm = try? Realm() {
+            //let id = self.taskId,
+            
+            if let product = realm.objects(Product.self).filter("id  == [c] %@", idProductDetailsVC).first {
+                try! realm.write {
+                    product.favoriteProductOfUser = checked
+                }
+                heartButton.isSelected = product.favoriteProductOfUser
+            }
+        }
     }
     
     //hidden overButton

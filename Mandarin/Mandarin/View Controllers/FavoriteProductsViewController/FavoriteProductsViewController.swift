@@ -94,26 +94,26 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         let productDetails = _productsList[indexPath.row]
         Dispatch.mainQueue.async { _ in
             cell.thubnailImageView?.image = UIImage(data: productDetails.image)
+        }
+        
+        cell.nameLabel?.text = productDetails.name
+        cell.descriptionLabel?.text = productDetails.description
+        cell.weightLabel?.text = productDetails.weight  + " " + productDetails.units
+        cell.priceOldLabel?.text = productDetails.price + " грн."
+        
+        //if price_sale != 0.00 грн, set it
+        if productDetails.price_sale != "0.00" {
+            cell.priceSaleLabel?.text = productDetails.price_sale +  "  грн."
             
-            cell.nameLabel?.text = productDetails.name
-            cell.descriptionLabel?.text = productDetails.description
-            cell.weightLabel?.text = productDetails.weight  + " " + productDetails.units
-            cell.priceOldLabel?.text = productDetails.price + " грн."
+            // create attributed string for strikethroughStyleAttributeName
+            let myString = productDetails.price + " грн."
+            let myAttribute = [ NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue ]
+            let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
             
-            //if price_sale != 0.00 грн, set it
-            if productDetails.price_sale != "0.00" {
-                cell.priceSaleLabel?.text = productDetails.price_sale +  "  грн."
-                
-                // create attributed string for strikethroughStyleAttributeName
-                let myString = productDetails.price + " грн."
-                let myAttribute = [ NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue ]
-                let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
-                
-                // set attributed text on a UILabel
-                cell.priceOldLabel?.attributedText = myAttrString
-            } else {
-                cell.priceSaleLabel?.text = ""
-            }
+            // set attributed text on a UILabel
+            cell.priceOldLabel?.attributedText = myAttrString
+        } else {
+            cell.priceSaleLabel?.text = ""
         }
         
         return cell

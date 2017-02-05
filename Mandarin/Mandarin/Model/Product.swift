@@ -34,6 +34,8 @@ struct Products {
 }
 
 class Product : Object {
+    
+    dynamic var favoriteProductOfUser = false
     dynamic var id = ""
     dynamic var description_ = ""
     dynamic var proteins = ""
