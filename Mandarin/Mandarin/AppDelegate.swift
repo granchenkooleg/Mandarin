@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         googleSignIn()
+        VKSdk.initialize(withAppId: "5859484")
         
         UIWindow.mainWindow.makeKeyAndVisible()
         
@@ -54,6 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
      func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let _app = options[.sourceApplication] as? String
+        VKSdk.processOpen(url, fromApplication: _app)
         return ( GIDSignIn.sharedInstance().handle(url as URL!,sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                    annotation: options[UIApplicationOpenURLOptionsKey.annotation]) ||
                 FBSDKApplicationDelegate.sharedInstance().application(app, open: url as URL,

@@ -9,6 +9,7 @@
 #ifndef Mandarin_Bridging_Header_h
 #define Mandarin_Bridging_Header_h
 
+@import VK_ios_sdk;
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Google/SignIn.h>

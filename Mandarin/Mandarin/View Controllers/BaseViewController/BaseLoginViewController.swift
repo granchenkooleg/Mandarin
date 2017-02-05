@@ -48,7 +48,7 @@ class SignInViewController: BaseLoginViewController {
 
 class TempVC: BaseLoginViewController {}
 
-class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSignInDelegate {
+class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSignInDelegate, VKSdkDelegate, VKSdkUIDelegate {
     
     
     @IBOutlet weak var emailTextField: TextField!
@@ -66,6 +66,8 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         loginManager = LoginManager()
+        VKSdk.instance().register(self)
+        VKSdk.instance().uiDelegate = self
         
         setup()
     }
@@ -76,19 +78,38 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
         googleButton.circled = true
     }
 
+    //MARK: VKSdkDelegate
     
-    func vkDidUnauthorize() {}
-    
-    func vkShouldUseTokenPath() -> String? {
-        return nil
+    func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
+         let scope = ["friends", "email"];
+        VKSdk.wakeUpSession(scope, complete: { state, error in
+            guard state == .authorized else { return }
+            let request = VKApi.users().get()
+            request?.execute(resultBlock: { [weak self] user in
+                print (">>self - \(user)<<")
+                let userData = (user?.parsedModel as! VKUsersArray).firstObject()
+                guard let id = userData?.id, let firstName = userData?.first_name, let lastName = userData?.last_name else { return }
+                User.setupUser(id: "\(id)", firstName: "\(firstName)", lastName: "\(lastName)")
+                self?.chooseNextContoller()
+            }, errorBlock: { error in
+                print (">>self - \(error)<<")
+            })
+        })
     }
     
-    func vkWillPresentView() -> UIViewController {
-        return self
-    }
+    public func vkSdkUserAuthorizationFailed() {  }
     
     @IBAction func signInTouchUp(_ sender: AnyObject) {
+        let scope = ["friends", "email"];
+        VKSdk.authorize(scope)
     }
+    
+    public func vkSdkShouldPresent(_ controller: UIViewController!) {
+        if !VKSdk.vkAppMayExists() {
+            present(controller, animated: true, completion: nil)
+        }
+    }
+    public func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {}
     // the end VK
     
     @IBAction func googleLogin(_ sender: Button) {
