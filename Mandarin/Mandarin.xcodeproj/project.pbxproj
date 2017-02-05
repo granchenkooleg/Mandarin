@@ -22,6 +22,7 @@
 		5621B59B1DE2E1F400C3B612 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B59A1DE2E1F400C3B612 /* TextField.swift */; };
 		563474331DEDBC1B004ECDC4 /* GenericCollections+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563474321DEDBC1B004ECDC4 /* GenericCollections+Ext.swift */; };
 		563474371DEDC3E9004ECDC4 /* Feeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563474361DEDC3E9004ECDC4 /* Feeds.swift */; };
+		56350D0C1E4760C600D487C0 /* VK_ios_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56350D0B1E4760C600D487C0 /* VK_ios_sdk.framework */; };
 		563F94FF1DF4C4A90053EFF0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F94FE1DF4C4A90053EFF0 /* Product.swift */; };
 		56574A931DF33241009C2466 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56574A921DF33241009C2466 /* User.swift */; };
 		56737B9B1DF616950007518C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56737B9A1DF616950007518C /* Category.swift */; };
@@ -77,6 +78,7 @@
 		5621B59A1DE2E1F400C3B612 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = View/TextField.swift; sourceTree = "<group>"; };
 		563474321DEDBC1B004ECDC4 /* GenericCollections+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GenericCollections+Ext.swift"; path = "Extension/GenericCollections+Ext.swift"; sourceTree = "<group>"; };
 		563474361DEDC3E9004ECDC4 /* Feeds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feeds.swift; sourceTree = "<group>"; };
+		56350D0B1E4760C600D487C0 /* VK_ios_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VK_ios_sdk.framework; path = "../../../../../Users/Macostik/Library/Developer/Xcode/DerivedData/Mandarin-gmlximvisbumkmbyttcnctqgjbtl/Build/Products/Debug-iphonesimulator/VK-ios-sdk/VK_ios_sdk.framework"; sourceTree = "<group>"; };
 		563F94FE1DF4C4A90053EFF0 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		56574A921DF33241009C2466 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		56737B9A1DF616950007518C /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56350D0C1E4760C600D487C0 /* VK_ios_sdk.framework in Frameworks */,
 				ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +150,7 @@
 		21949D324E7A39284F117969 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56350D0B1E4760C600D487C0 /* VK_ios_sdk.framework */,
 				6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */,
 			);
 			name = Frameworks;

@@ -17,7 +17,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     // From CategoryVC
 //    var unitOfWeightSearchVC : String?
     
-    //var products = [Product]()
+    var products = [Product]()
     var searchProduct = [Product]()
     
     override func viewDidLoad() {
@@ -34,10 +34,11 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         spiner.center.y = view.center.y
         spiner.startAnimating()
         
-        let products = Product().allProducts()
+        products = Product().allProducts()
         guard products.count != 0 else {
             searchRequest {[weak self] _ in
-                self?.searchProduct = Product().allProducts()
+                self?.products = Product().allProducts()
+                self?.searchProduct = self?.products ?? []
                 self?.tableView.reloadData()
                 self?.spiner.stopAnimating()
             }
@@ -95,7 +96,11 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     
     func searchTextChanged(sender: UITextField) {
         if let text = sender.text {
-            searchProduct =  self.searchProduct.filter { $0.name.lowercased().range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil }
+            if text.isEmpty {
+                searchProduct = products;
+            } else {
+                searchProduct =  products.filter { $0.name.lowercased().range(of: text, options: .caseInsensitive, range: nil, locale: nil) != nil }
+            }
         }
         tableView.reloadData()
     }
@@ -158,9 +163,10 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         detailsProductVC.created_atDetailsVC = searchProduct[indexPath.row].created_at
         detailsProductVC.nameHeaderTextDetailsVC = searchProduct[indexPath.row].name
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-        containerViewController.addController(detailsProductVC)
+        dismiss(animated: true, completion: {
+             containerViewController.addController(detailsProductVC)
+        })
     }
-    
 }
 
 class SearchTableViewCell: UITableViewCell {

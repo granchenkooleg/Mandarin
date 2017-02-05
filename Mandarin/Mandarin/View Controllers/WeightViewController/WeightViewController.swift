@@ -50,16 +50,18 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weigthCell", for: indexPath) as? WeightCollectionViewCell
-        cell?.weightUnitsLabelOne.text = "\(contentWeightProductWithoutDuplicates[indexPath.row]) " + self.unitOfWeight
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weigthCell", for: indexPath)
+            as? WeightCollectionViewCell else { return UICollectionViewCell() }
+        cell.weightUnitsLabelOne.text = "\(contentWeightProductWithoutDuplicates[indexPath.row]) " + self.unitOfWeight
         
         //output icon: liter or kg
         if (self.unitOfWeight == "liter") {
-            cell?.iconWeightImageViev.image =  UIImage(named: "but")
+            cell.iconWeightImageViev.image =  UIImage(named: "but")
         } else {
-            cell?.iconWeightImageViev.image =  UIImage(named: "weight")
+            cell.iconWeightImageViev.image =  UIImage(named: "weight")
         }
-        return cell ?? UICollectionViewCell()
+        cell.frame = CGRect.init(x: cell.x, y: cell.y, width: view.width/2 - 20, height: cell.height)
+        return cell
     }
     
     
