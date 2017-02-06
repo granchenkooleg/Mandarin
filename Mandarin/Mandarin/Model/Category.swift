@@ -23,6 +23,16 @@ extension Results {
     }
 }
 
+struct CategoryStruct {
+    var id = ""
+    var icon = ""
+    var name = ""
+    var created_at = ""
+    var units = ""
+    var category_id = ""
+    var image = Data()
+}
+
 class Category: Object {
     
     dynamic var id = ""
@@ -38,12 +48,12 @@ class Category: Object {
     }
     
     @discardableResult class func setupCategory(id: String = "",
-                             icon: String = "",
-                             name: String = "",
-                             created_at: String = "",
-                             units: String = "",
-                             category_id: String = "",
-                             image: Data? = nil) -> Category {
+                                                icon: String = "",
+                                                name: String = "",
+                                                created_at: String = "",
+                                                units: String = "",
+                                                category_id: String = "",
+                                                image: Data? = nil) -> Category {
         
         let categoryData: Dictionary<String, Any> = [
             "id" :          id,

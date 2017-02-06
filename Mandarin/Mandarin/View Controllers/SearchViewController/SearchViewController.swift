@@ -15,7 +15,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     var spiner = UIActivityIndicatorView()
     
     // From CategoryVC
-//    var unitOfWeightSearchVC : String?
+    //    var unitOfWeightSearchVC : String?
     
     var products = [Product]()
     var searchProduct = [Product]()
@@ -122,7 +122,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         
         cell.nameLabel?.text = productDetails.name
         cell.descriptionLabel?.text = productDetails.description_
-        cell.weightLabel?.text = productDetails.weight + " " + productDetails.units 
+        cell.weightLabel?.text = productDetails.weight + " " + productDetails.units
         cell.priceOldLabel?.text = productDetails.price + " грн."
         //if price_sale != 0.00 грн, set it
         if productDetails.price_sale != "0.00" {
@@ -162,10 +162,8 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         //detailsProductVC.DetailsVC = _products[indexPath.row].
         detailsProductVC.created_atDetailsVC = searchProduct[indexPath.row].created_at
         detailsProductVC.nameHeaderTextDetailsVC = searchProduct[indexPath.row].name
-        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-        dismiss(animated: true, completion: {
-             containerViewController.addController(detailsProductVC)
-        })
+        
+        self.present(detailsProductVC, animated: true)
     }
 }
 
