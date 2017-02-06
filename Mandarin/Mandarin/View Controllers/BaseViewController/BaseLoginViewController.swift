@@ -23,13 +23,13 @@ class BaseLoginViewController: BaseViewController, UITextFieldDelegate {
         guard User.isAuthorized() == true else { return }
         UINavigationController.main.viewControllers = [UIStoryboard.main["container"]!]
     }
-   
+    
     @IBAction func backToMain(sender: AnyObject) {
         UINavigationController.main.popViewController(animated: false)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-      return  textField.resignFirstResponder()
+        return  textField.resignFirstResponder()
     }
 }
 
@@ -77,11 +77,11 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
         facebookButton.circled = true
         googleButton.circled = true
     }
-
+    
     //MARK: VKSdkDelegate
     
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
-         let scope = ["friends", "email"];
+        let scope = ["friends", "email"];
         VKSdk.wakeUpSession(scope, complete: { state, error in
             guard state == .authorized else { return }
             let request = VKApi.users().get()
@@ -91,8 +91,8 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
                 guard let id = userData?.id, let firstName = userData?.first_name, let lastName = userData?.last_name else { return }
                 User.setupUser(id: "\(id)", firstName: "\(firstName)", lastName: "\(lastName)")
                 self?.chooseNextContoller()
-            }, errorBlock: { error in
-                print (">>self - \(error)<<")
+                }, errorBlock: { error in
+                    print (">>self - \(error)<<")
             })
         })
     }
@@ -264,7 +264,7 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
                 return
         }
         
-         let birthday = birthdayTextField.text
+        let birthday = birthdayTextField.text
         
         
         // Usage for InputValidator
@@ -333,7 +333,7 @@ class RecoveryPasswordViewController: BaseLoginViewController {
                 
             }
             sender.loading = false
-            })
+        })
         
     }
     
