@@ -326,7 +326,7 @@ enum UserRequest: URLRequestConvertible {
     static func makeRegistration(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
         requestHandler(#function, URLRequest: registration(entryParams)) { json in
             guard let json = json, json[0]["error"] == false else {
-                UIAlertController.alert("Пользователь с такими данными уже зарегистрирован!".ls).show()
+                //UIAlertController.alert("Пользователь с такими данными уже зарегистрирован!".ls).show()
                 completion(false)
                 return
             }

@@ -89,7 +89,33 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
                 print (">>self - \(user)<<")
                 let userData = (user?.parsedModel as! VKUsersArray).firstObject()
                 guard let id = userData?.id, let firstName = userData?.first_name, let lastName = userData?.last_name else { return }
-                User.setupUser(id: "\(id)", firstName: "\(firstName)", lastName: "\(lastName)")
+                //User.setupUser(id: "\(id)", firstName: "\(firstName)", lastName: "\(lastName)")
+                
+                // For favorite products, because us need id [start
+                let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                         "email" : "\(id)" + "@gmail.com",
+                                         "username" : firstName,
+                                         "password" : "\(id)"] as [String: Any]
+                
+                UserRequest.makeRegistration(param as [String : AnyObject], completion: {[weak self] success in
+                    if success == true {
+                        self?.chooseNextContoller()
+                        
+                    } else {
+                        let param_2: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                                   "email" : "\(93)" + "@gmail.com",
+                                                   "password" : "\(93)"] as [String: Any]
+                        
+                        UserRequest.makelogin(param_2 as [String : AnyObject], completion: {[weak self] success in
+                            if success == true {
+                                self?.chooseNextContoller()
+                                
+                            }
+                            })
+                    }
+                    })
+                //end]
+                
                 self?.chooseNextContoller()
                 }, errorBlock: { error in
                     print (">>self - \(error)<<")
@@ -129,7 +155,35 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
                 let _  =  graphRequest?.start(completionHandler: {[weak self] _, result, error  in
                     guard let result = result as? NSDictionary else { return }
                     guard error == nil, let id = result["id"] else { return }
-                    User.setupUser(id: "\(id)", firstName: "\(result["first_name"])", lastName: "\(result["last_name"])", email: "\(result["email"])")
+                    //User.setupUser(id: "\(id)", firstName: "\(result["first_name"])", lastName: "\(result["last_name"])", email: "\(result["email"])")
+                    
+                    // For favorite products, because us need id [start
+                    let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                             "email" : "\(id)" + "@gmail.com",
+                                             "username" : "\(result["first_name"])",
+                                             "password" : "\(id)"] as [String: Any]
+                    
+                    
+                    UserRequest.makeRegistration(param as [String : AnyObject], completion: {[weak self] success in
+                        if success == true {
+                            self?.chooseNextContoller()
+                            
+                        } else {
+                            let param_2: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                                       "email" : "\(id)" + "@gmail.com",
+                                                       "password" : "\(id)"] as [String: Any]
+                            
+                            UserRequest.makelogin(param_2 as [String : AnyObject], completion: {[weak self] success in
+                                if success == true {
+                                    self?.chooseNextContoller()
+                                    
+                                }
+                                })
+                        }
+                        })
+                    //end]
+
+                    
                     self?.chooseNextContoller()
                     })
             }
@@ -152,7 +206,35 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
-            User.setupUser(id: user.userID, firstName: user.profile.givenName, lastName: user.profile.familyName, email: user.profile.email)
+            //User.setupUser(id: user.userID, firstName: user.profile.givenName, lastName: user.profile.familyName, email: user.profile.email)
+            
+            // For favorite products, because us need id [start
+            let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                     "email" : user.userID + "@gmail.com",
+                                     "username" : user.profile.givenName,
+                                     "password" : user.userID] as [String: Any]
+            
+             print (">>self - \(param)<<")
+            
+            UserRequest.makeRegistration(param as [String : AnyObject], completion: {[weak self] success in
+                if success == true {
+                    self?.chooseNextContoller()
+                    
+                } else {
+                    let param_2: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                               "email" : user.userID + "@gmail.com",
+                                               "password" : user.userID] as [String: Any]
+                    
+                    UserRequest.makelogin(param_2 as [String : AnyObject], completion: {[weak self] success in
+                        if success == true {
+                            self?.chooseNextContoller()
+                            
+                        }
+                        })
+                }
+                })
+            //end]
+            
             chooseNextContoller()
         } else {
             print("\(error.localizedDescription)")
