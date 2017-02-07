@@ -27,7 +27,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         tableView?.separatorStyle = .none
         spiner.hidesWhenStopped = true
         spiner.activityIndicatorViewStyle = .gray
-        view.add(spiner)
+        _ = view.add(spiner)
         spiner.center.x = view.center.x
         spiner.center.y = view.center.y - 150
         spiner.startAnimating()
@@ -130,25 +130,31 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     
 }
 
-class CategoryViewController: CategoryViewControllerSegment {
+class CategoryViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var nameHeaderText: String?
     var categoryId: String?
-    internal var categories = [Category]()
+    @IBOutlet weak var headerLabel: UILabel?
+    @IBOutlet weak var tableView: UITableView?
+    var spiner = UIActivityIndicatorView()
+    internal var categories = [CategoryStruct]()
+    internal var categoriesList = [CategoryStruct]()
     
     override func viewDidLoad() {
         tableView?.separatorStyle = .none
         headerLabel?.text = nameHeaderText
-        getAllCategory({})
-        
         spiner.hidesWhenStopped = true
         spiner.activityIndicatorViewStyle = .gray
-        view.add(spiner)
+        _ = view.add(spiner)
         spiner.center.x = view.center.x
         spiner.center.y = view.center.y - 170
         spiner.startAnimating()
+        Dispatch.backgroundQueue.after(1.0, block: { [weak self] in
+            self?.getAllCategory({})
+        })
     }
     
-    override func getAllCategory(_ completion: @escaping Block) {
+    func getAllCategory(_ completion: @escaping Block) {
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         guard let categoryId = categoryId else { return }
         UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in
@@ -163,27 +169,55 @@ class CategoryViewController: CategoryViewControllerSegment {
                 
                 let units = json["units"].string ?? ""
                 
-                var image: Data? = nil
+                var image = Data()
                 if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
                     image = imageData
                 }
-                let category = Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
+                let category = CategoryStruct(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
                 self?.categories.append(category)
             }
-            weakSelf.categoryContainer = weakSelf.categories
+            weakSelf.categoriesList = weakSelf.categories
             weakSelf.tableView?.reloadData()
             self?.spiner.stopAnimating()
             })
     }
     
     //segue
-    override func getWeigth(indexPath: IndexPath) {
+    func getWeigth(indexPath: IndexPath) {
         let weightViewController = Storyboard.Weight.instantiate()
-        weightViewController.unitOfWeight = categoryContainer[indexPath.row].units
-        weightViewController.nameWeightHeaderText = categoryContainer[indexPath.row].name
-        weightViewController.podCategory_id = categoryContainer[indexPath.row].id
+        weightViewController.unitOfWeight = categoriesList[indexPath.row].units
+        weightViewController.nameWeightHeaderText = categoriesList[indexPath.row].name
+        weightViewController.podCategory_id = categoriesList[indexPath.row].id
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         containerViewController.addController(weightViewController)
+    }
+    
+    // MARK: - Table view data source
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categoriesList.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "CategoryTableViewCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CategoryTableViewCell
+        
+        let category = categoriesList[indexPath.row]
+        Dispatch.mainQueue.async { _ in
+            cell.thubnailImageView?.image = UIImage(data: category.image)
+            cell.nameLabel?.text = category.name
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        getWeigth(indexPath: indexPath)
     }
 }
 

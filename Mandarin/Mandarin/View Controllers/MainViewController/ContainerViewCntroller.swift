@@ -40,7 +40,9 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        menuContainerView.layer.anchorPoint = CGPoint(x: 1.0, y: 0.5)
+        if menuContainerView.is3DShowing {
+            menuContainerView.layer.anchorPoint = CGPoint(x: 1.0, y: 0.5)
+        }
     }
     
     func showMenu(_ show: Bool, animated: Bool) {
@@ -55,7 +57,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         let offset = scrollView.contentOffset.x * multiplier
         let fraction = 1.0 - offset
         menuContainerView.layer.transform = transformForFraction(fraction)
-        menuContainerView.alpha = fraction
+        
         
         scrollView.isPagingEnabled = scrollView.contentOffset.x < (scrollView.contentSize.width - scrollView.frame.width)
         
@@ -64,13 +66,18 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     }
     
     func transformForFraction(_ fraction:CGFloat) -> CATransform3D {
-        var identity = CATransform3DIdentity
-        identity.m34 = -1.0 / 1000.0;
-        let angle = Double(1.0 - fraction) * -M_PI_2
-        let xOffset = menuContainerView.bounds.width * 0.5
-        let rotateTransform = CATransform3DRotate(identity, CGFloat(angle), 0.0, 1.0, 0.0)
-        let translateTransform = CATransform3DMakeTranslation(xOffset, 0.0, 0.0)
-        return CATransform3DConcat(rotateTransform, translateTransform)
+        if menuContainerView.is3DShowing {
+            var identity = CATransform3DIdentity
+            identity.m34 = -1.0 / 1000.0;
+            let angle = Double(1.0 - fraction) * -M_PI_2
+            let xOffset = menuContainerView.bounds.width * 0.5
+            let rotateTransform = CATransform3DRotate(identity, CGFloat(angle), 0.0, 1.0, 0.0)
+            let translateTransform = CATransform3DMakeTranslation(xOffset, 0.0, 0.0)
+            menuContainerView.alpha = fraction
+            return CATransform3DConcat(rotateTransform, translateTransform)
+        } else {
+            return CATransform3DMakeTranslation(fraction, 0, 0)
+        }
     }
     
 //    func addController(_ controller: UIViewController) {
@@ -98,6 +105,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
 
 class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     
+    @IBInspectable var is3DShowing: Bool = false
     @IBOutlet weak var tableView: UITableView?
     @IBOutlet weak var loginButton: Button!
     var completion: Block? = nil
@@ -168,6 +176,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
             
             return
         }
+        
         let categoryViewController = Storyboard.Category.instantiate()
         categoryViewController.categoryId = categoryContainer[indexPath.row].id
         categoryViewController.nameHeaderText = categoryContainer[indexPath.row].name
