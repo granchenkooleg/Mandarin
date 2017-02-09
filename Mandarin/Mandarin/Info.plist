@@ -68,6 +68,11 @@
 		<string>vk</string>
 		<string>vk-share</string>
 		<string>vkauthorize</string>
+        <string>fb</string>
+        <string>fbapi</string>
+        <string>fb-messenger-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -78,7 +83,7 @@
 		<key>NSExceptionDomains</key>
 		<dict>
             <key>vk.com</key>
-            <dict>
+            <dict   >
                 <key>NSExceptionRequiresForwardSecrecy</key>
                 <false/>
                 <key>NSIncludesSubdomains</key>

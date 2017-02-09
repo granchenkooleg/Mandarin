@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FavoriteProductsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -14,6 +15,8 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
     
     var internalProductsForListOfWeightVC = [Products]()
     var _productsList = [Products]()
+    
+   // var productInstant: Results<Product>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +82,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
     // For dynamic height cell
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         tableView.reloadData()
     }
     
@@ -127,6 +131,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
     
     func detailsVC (indexPath: IndexPath) {
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()
+        detailsProductVC.categoryIdProductDetailsVC = _productsList[indexPath.row].category_id
         detailsProductVC.idProductDetailsVC = _productsList[indexPath.row].id
         detailsProductVC.priceDetailsVC = _productsList[indexPath.row].price
         detailsProductVC.descriptionDetailsVC = _productsList[indexPath.row].description

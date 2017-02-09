@@ -11,6 +11,9 @@ import RealmSwift
 
 class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     
+    var internalProductsForListOfWeightVC = [Products]()
+    var _productsList = [Products]()
+    
     @IBOutlet weak var overPlusAndMinusButton: UIButton!
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
@@ -27,8 +30,8 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBOutlet weak var quantityLabel: UILabel!
     
     // For favoriteProductOfUser
-//    var taskId: String?
-    
+    //    var taskId: String?
+    var categoryIdProductDetailsVC: String?
     var priceSaleDetailsVC: String?
     var idProductDetailsVC: String!
     var productsImage: String! // name our image
@@ -51,6 +54,57 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         heartButton.isHidden = true
+        
+        internalProductsForListOfWeightVC = []
+        _productsList = []
+        guard let id = User.currentUser?.id else {return}
+        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                 "user_id" : Int(id)] as [String : Any]
+        
+        UserRequest.favorite(param as [String : AnyObject], completion: {[weak self] json in
+            json.forEach { _, json in
+                print (">>self - \(json["name"])<<")
+                guard (json.isEmpty) == false else {return}
+                let id = json["id"].string ?? ""
+                let created_at = json["created_at"].string ?? ""
+                let icon = json["icon"].string ?? ""
+                let name = json["name"].string ?? ""
+                let category_id = json["category_id"].string ?? ""
+                let weight = json["weight"].string ?? ""
+                let description = json["description"].string ?? ""
+                let brand = json["brand"].string ?? ""
+                let calories = json["calories"].string ?? ""
+                let proteins = json["proteins"].string ?? ""
+                let zhiry = json["zhiry"].string ?? ""
+                let uglevody = json["uglevody"].string ?? ""
+                let price = json["price"].string ?? ""
+                let favorite = json["favorite"].string ?? ""
+                let status = json["status"].string ?? ""
+                let expire_date = json["expire_date"].string ?? ""
+                let category_name = json["category_name"].string ?? ""
+                let price_sale = json["price_sale"].string ?? ""
+                let units = json["units"].string ?? ""
+                var image = Data()
+                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+                    image = imageData
+                }
+                
+                let list = Products(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
+                self?.internalProductsForListOfWeightVC.append(list)
+            }
+            
+            self?._productsList = (self?.internalProductsForListOfWeightVC)!
+            
+            for i in (self?._productsList ?? []) {
+                if i.category_id == self?.categoryIdProductDetailsVC && i.id == self?.idProductDetailsVC  {
+                    self?.heartButton.isSelected = true
+                    
+                }
+                
+            }
+            
+            })
+        
         
         //display iconHeart for Autorized user
         if User.isAuthorized()  {
@@ -87,6 +141,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         super.viewWillAppear(animated)
         quantity = 1
         quantityLabel.text = "\(quantity) шт."
+        
     }
     
     //setting overPlusAndMinusButton
@@ -131,7 +186,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             })
             
             //it for fill heart white color. Look func buttonHeart(). [start
-//            sender.isSelected = !sender.isSelected
+            //            sender.isSelected = !sender.isSelected
             // end
             ///////////////////////////////////////////////////////////////////////////
         } else {
@@ -150,10 +205,10 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             })
             
             //it for fill heart white color. Look func buttonHeart(). [start
-//            sender.isSelected = !sender.isSelected
+            //            sender.isSelected = !sender.isSelected
             // end]
         }
-       
+        
         updateTask(!heartButton.isSelected)
         
     }
@@ -192,7 +247,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBAction func createCart(_ sender: AnyObject) {
         
         if overPlusAndMinusButton.isHidden == false {
-         overPlusAndMinusButton.isHidden = true
+            overPlusAndMinusButton.isHidden = true
             return
         } else {
             overPlusAndMinusButton.isHidden = false

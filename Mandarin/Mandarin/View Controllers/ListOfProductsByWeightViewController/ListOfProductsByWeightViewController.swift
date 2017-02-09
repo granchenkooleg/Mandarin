@@ -91,7 +91,13 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 let favorite = json["favorite"].string ?? ""
                 let status = json["status"].string ?? ""
                 let expire_date = json["expire_date"].string ?? ""
-                let units = json["units"].string ?? ""
+                var units = json["units"].string ?? ""
+                if units == "kg" {
+                    units = "кг."
+                }
+                if units == "liter" {
+                    units = "л."
+                }
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
                 var image: Data? = nil
@@ -142,6 +148,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()
+        detailsProductVC.categoryIdProductDetailsVC = productsList[indexPath.row].category_id
         detailsProductVC.priceSaleDetailsVC = productsList[indexPath.row].price_sale
         detailsProductVC.idProductDetailsVC = productsList[indexPath.row].id
         detailsProductVC.priceDetailsVC = productsList[indexPath.row].price
@@ -229,7 +236,13 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
                 let favorite = json["favorite"].string ?? ""
                 let status = json["status"].string ?? ""
                 let expire_date = json["expire_date"].string ?? ""
-                let units = json["units"].string ?? ""
+                var units = json["units"].string ?? ""
+                if units == "kg" {
+                    units = "кг."
+                }
+                if units == "liter" {
+                    units = "л."
+                }
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
                 var image: Data? = nil

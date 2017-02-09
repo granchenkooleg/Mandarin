@@ -62,6 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 FBSDKApplicationDelegate.sharedInstance().application(app, open: url as URL,
                                                                   sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String!,
                                                                   annotation: options[UIApplicationOpenURLOptionsKey.annotation]) )
+        
     }
+    
 }
 

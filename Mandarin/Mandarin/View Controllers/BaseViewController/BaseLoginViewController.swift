@@ -103,8 +103,8 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
                         
                     } else {
                         let param_2: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                                   "email" : "\(93)" + "@gmail.com",
-                                                   "password" : "\(93)"] as [String: Any]
+                                                   "email" : "\(id)" + "@gmail.com",
+                                                   "password" : "\(id)"] as [String: Any]
                         
                         UserRequest.makelogin(param_2 as [String : AnyObject], completion: {[weak self] success in
                             if success == true {

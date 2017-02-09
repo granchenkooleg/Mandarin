@@ -81,7 +81,13 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
                 let favorite = json["favorite"].string ?? ""
                 let status = json["status"].string ?? ""
                 let expire_date = json["expire_date"].string ?? ""
-                let units = json["units"].string ?? ""
+                var units = json["units"].string ?? ""
+                if units == "kg" {
+                    units = "кг."
+                }
+                if units == "liter" {
+                    units = "л."
+                }
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
                 var image: Data? = nil
@@ -148,6 +154,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()
+        detailsProductVC.categoryIdProductDetailsVC = searchProduct[indexPath.row].category_id
         detailsProductVC.priceSaleDetailsVC = searchProduct[indexPath.row].price_sale
         detailsProductVC.idProductDetailsVC = searchProduct[indexPath.row].id
         detailsProductVC.priceDetailsVC = searchProduct[indexPath.row].price
