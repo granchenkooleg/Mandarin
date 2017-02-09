@@ -14,7 +14,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     @IBOutlet var searchTextField: TextField?
     var spiner = UIActivityIndicatorView()
     
-    // From CategoryVC
+    // From CategbasoryVC
     //    var unitOfWeightSearchVC : String?
     
     var products = [Product]()

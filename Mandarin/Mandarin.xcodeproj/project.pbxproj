@@ -676,8 +676,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.mandarin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "85880b06-f957-45b9-adf9-7d27ff38ba00";
-				PROVISIONING_PROFILE_SPECIFIER = Mandarin_developer_profile;
+				PROVISIONING_PROFILE = "71c0a0d7-2211-4e2a-a927-fcdad4ada27d";
+				PROVISIONING_PROFILE_SPECIFIER = Mandarin_Developer_Profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "Mandarin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -702,8 +702,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.project.mandarin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "72c97b7f-895e-4058-a676-1e9c177c6f15";
-				PROVISIONING_PROFILE_SPECIFIER = Mandarin_AdHoc_profile;
+				PROVISIONING_PROFILE = "7b41f70c-f14f-4002-9385-5cc972bee72c";
+				PROVISIONING_PROFILE_SPECIFIER = Mandarin_AdHoc_Profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "Mandarin-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
