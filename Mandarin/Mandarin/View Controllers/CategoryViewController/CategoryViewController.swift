@@ -66,9 +66,8 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
                 var image: Data? = nil
                 if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
                     image = imageData
+                    Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
                 }
-                
-                Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
             }
             completion()
         })

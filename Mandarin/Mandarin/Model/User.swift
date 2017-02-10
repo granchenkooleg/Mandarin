@@ -14,7 +14,8 @@ var token: NotificationToken?
 
 class User: Object {
     
-    dynamic var id: String? = "" // or dynamic var id = UUID().uuidString
+    dynamic var id: String? = "1" // or dynamic var id = UUID().uuidString
+    dynamic var idUser = ""
     dynamic var firstName: String? = ""
     dynamic var lastName: String? = ""
     dynamic var email: String? = ""
@@ -41,7 +42,7 @@ class User: Object {
     class func setupUser(id: String = "", firstName: String = "", lastName: String = "", email: String = "", phone: String = "") {
         self.setConfig()
         let userData: Dictionary = [
-            "id" :          id,
+            "idUser" :          id,
             "firstName" :   firstName,
             "lastName" :    lastName,
             "email" :       email,
@@ -66,7 +67,13 @@ class User: Object {
         let realm = try! Realm()
         guard let user = realm.objects(User.self).first else { return }
         try! realm.write {
-            realm.delete(user)
+            user.idUser = ""
+            user.firstName = ""
+            user.lastName = ""
+            user.email = ""
+            user.password = ""
+            user.phone = ""
+            realm.add(user, update: true)
         }
     }
     
@@ -85,7 +92,7 @@ class User: Object {
     class func isAuthorized() -> Bool {
         let realm = try! Realm()
         
-        guard let user = realm.objects(User.self).first, user.id?.isEmpty == false else { return false }
+        guard let user = realm.objects(User.self).first, user.idUser.isEmpty == false else { return false }
         return true
     }
 }

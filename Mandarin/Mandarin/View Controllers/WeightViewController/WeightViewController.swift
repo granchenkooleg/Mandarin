@@ -60,10 +60,12 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         } else {
             cell.iconWeightImageViev.image =  UIImage(named: "weight")
         }
-        cell.frame = CGRect.init(x: cell.x, y: cell.y, width: view.width/2 - 20, height: cell.height)
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width:  view.width/2 - 30, height: 71)
+    }
     
     //MARK: Segue
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

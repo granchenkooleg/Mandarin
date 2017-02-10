@@ -385,6 +385,10 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
         
     }
     override func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
+        if (firstNameTextField.isFirstResponder) { return 0 }
+        if (repeatPasswordTextField.isFirstResponder || birthdayTextField.isFirstResponder) {
+            return adjustment.defaultConstant + 400
+        }
         return adjustment.defaultConstant + 120
     }
 }

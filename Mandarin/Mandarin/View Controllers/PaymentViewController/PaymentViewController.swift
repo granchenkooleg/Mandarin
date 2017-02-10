@@ -107,7 +107,7 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
     @IBAction func CheckClick(_ sender: Button) {
         
         //sender.loading = true
-        /*guard*/ let idOrPhone  = User.currentUser?.id ?? phoneUserPayment /*, let idOrder = idOrder*/ /*else { return }*/
+        /*guard*/ let idOrPhone  = User.currentUser?.idUser ?? phoneUserPayment /*, let idOrder = idOrder*/ /*else { return }*/
         
         // Doing it for product_id in Alamofire request(param)
         var list: [JSON] = []

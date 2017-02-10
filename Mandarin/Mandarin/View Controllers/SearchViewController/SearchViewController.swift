@@ -128,7 +128,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         
         cell.nameLabel?.text = productDetails.name
         cell.descriptionLabel?.text = productDetails.description_
-        cell.weightLabel?.text = productDetails.weight + " " + productDetails.units
+        cell.weightLabel?.text = productDetails.weight + " \(productDetails.units)"
         cell.priceOldLabel?.text = productDetails.price + " грн."
         //if price_sale != 0.00 грн, set it
         if productDetails.price_sale != "0.00" {
@@ -154,6 +154,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()
+        detailsProductVC.weightDetailsVC = searchProduct[indexPath.row].weight + " " + searchProduct[indexPath.row].units
         detailsProductVC.categoryIdProductDetailsVC = searchProduct[indexPath.row].category_id
         detailsProductVC.priceSaleDetailsVC = searchProduct[indexPath.row].price_sale
         detailsProductVC.idProductDetailsVC = searchProduct[indexPath.row].id

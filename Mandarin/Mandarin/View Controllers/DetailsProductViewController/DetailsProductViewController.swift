@@ -17,6 +17,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBOutlet weak var overPlusAndMinusButton: UIButton!
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var name_2Label: UILabel!
     @IBOutlet weak var descriptionView: UITextView!
     @IBOutlet weak var uglevodyLabel: UILabel!
     @IBOutlet weak var zhiryLabel: UILabel!
@@ -28,9 +29,11 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBOutlet weak var productsImageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
     
     // For favoriteProductOfUser
     //    var taskId: String?
+    var weightDetailsVC: String?
     var categoryIdProductDetailsVC: String?
     var priceSaleDetailsVC: String?
     var idProductDetailsVC: String!
@@ -57,7 +60,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         
         internalProductsForListOfWeightVC = []
         _productsList = []
-        guard let id = User.currentUser?.id else {return}
+        if let id = User.currentUser?.idUser  {
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                  "user_id" : Int(id)] as [String : Any]
         
@@ -104,8 +107,8 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             }
             
             })
-        
-        
+    }
+    
         //display iconHeart for Autorized user
         if User.isAuthorized()  {
             buttonHeart()
@@ -123,8 +126,11 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             priceLabel?.text = ((priceDetailsVC ?? "") + " грн.")
         }
         
+        
+        weightLabel.text = weightDetailsVC
         nameLabel.text = nameHeaderTextDetailsVC
-        descriptionView.text = descriptionDetailsVC
+        name_2Label.text = nameLabel.text
+        descriptionView.text = descriptionDetailsVC ?? ""
         uglevodyLabel.text = uglevodyDetailsVC
         zhiryLabel.text = zhiryDetailsVC
         proteinLabel.text = proteinsDetailsVC
@@ -141,7 +147,6 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         super.viewWillAppear(animated)
         quantity = 1
         quantityLabel.text = "\(quantity) шт."
-        
     }
     
     //setting overPlusAndMinusButton
@@ -176,7 +181,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             //adding to Favorite
             let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                      "product_id" : idProductDetailsVC,
-                                     "user_id" : Int((User.currentUser?.id)!)] as [String : Any]
+                                     "user_id" : Int((User.currentUser?.idUser)!)] as [String : Any]
             
             UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
                 if success == true {
@@ -194,7 +199,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             //remove from Favorite
             let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                      "product_id" : idProductDetailsVC,
-                                     "user_id" : Int((User.currentUser?.id)!),
+                                     "user_id" : Int((User.currentUser?.idUser)!),
                                      "remove" : "1"] as [String : Any]
             
             UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
@@ -247,7 +252,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBAction func createCart(_ sender: AnyObject) {
         
         if overPlusAndMinusButton.isHidden == false {
-            overPlusAndMinusButton.isHidden = true
+         overPlusAndMinusButton.isHidden = true
             return
         } else {
             overPlusAndMinusButton.isHidden = false
@@ -259,7 +264,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         //        User.currentUser?.products.append(products)
         
         
-        UIAlertController.alert("Товар добавлен в корзину.".ls).show()
+        UIAlertController.alert("Товар добавлен в пакет.".ls).show()
         updateProduct()
         updateProductInfo()
         

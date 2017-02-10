@@ -127,6 +127,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qZ5-xf-d26">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="qNa-7K-4yf"/>
+                                                </constraints>
                                                 <state key="normal">
                                                     <attributedString key="attributedTitle">
                                                         <fragment content="Зарегистрироваться">
@@ -375,6 +378,7 @@
                                     <constraint firstItem="m8u-dA-eTA" firstAttribute="top" secondItem="WMf-mP-uq0" secondAttribute="bottom" constant="20" id="Zb0-pY-OoY"/>
                                     <constraint firstItem="ls9-F6-SCg" firstAttribute="leading" secondItem="tjv-kc-xg2" secondAttribute="leading" id="ayf-LB-hPf"/>
                                     <constraint firstItem="nQx-gc-fEZ" firstAttribute="top" secondItem="BlS-kb-s2c" secondAttribute="bottom" constant="10" id="dOJ-1z-ifV"/>
+                                    <constraint firstItem="acM-Ah-Ps7" firstAttribute="centerY" secondItem="6dc-o8-PWH" secondAttribute="centerY" constant="220" id="eLY-ls-tcG"/>
                                     <constraint firstItem="m8u-dA-eTA" firstAttribute="leading" secondItem="6dc-o8-PWH" secondAttribute="leading" constant="31" id="ixx-V8-sZm"/>
                                     <constraint firstItem="ls9-F6-SCg" firstAttribute="trailing" secondItem="tjv-kc-xg2" secondAttribute="trailing" id="lUP-3I-Ofh"/>
                                     <constraint firstItem="tjv-kc-xg2" firstAttribute="trailing" secondItem="m8u-dA-eTA" secondAttribute="trailing" id="lcW-DE-iPJ"/>
@@ -383,7 +387,6 @@
                                     <constraint firstAttribute="trailing" secondItem="m8u-dA-eTA" secondAttribute="trailing" constant="31" id="v7b-xm-gSO"/>
                                     <constraint firstItem="WMf-mP-uq0" firstAttribute="centerX" secondItem="6dc-o8-PWH" secondAttribute="centerX" id="xHb-td-PFq"/>
                                     <constraint firstItem="KwE-AI-1yK" firstAttribute="top" secondItem="ls9-F6-SCg" secondAttribute="bottom" constant="10" id="yOe-X3-twM"/>
-                                    <constraint firstAttribute="bottom" secondItem="acM-Ah-Ps7" secondAttribute="bottom" constant="99" id="zMI-kd-HWI"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiR-vU-P4w">
@@ -423,10 +426,10 @@
                             <constraint firstAttribute="trailing" secondItem="BiR-vU-P4w" secondAttribute="trailing" id="Akw-Ws-MYI"/>
                             <constraint firstItem="6dc-o8-PWH" firstAttribute="top" secondItem="BiR-vU-P4w" secondAttribute="bottom" id="Bh3-I9-JOJ"/>
                             <constraint firstAttribute="trailing" secondItem="6dc-o8-PWH" secondAttribute="trailing" id="BiD-Ts-U5x"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="6dc-o8-PWH" secondAttribute="bottom" id="Dd1-Yo-HBH"/>
+                            <constraint firstAttribute="bottom" secondItem="6dc-o8-PWH" secondAttribute="bottom" id="Dd1-Yo-HBH"/>
                             <constraint firstItem="6dc-o8-PWH" firstAttribute="leading" secondItem="KSJ-UJ-Do1" secondAttribute="leading" id="LDZ-WU-Hb0"/>
                             <constraint firstItem="BiR-vU-P4w" firstAttribute="leading" secondItem="KSJ-UJ-Do1" secondAttribute="leading" id="TLg-IW-uW8"/>
-                            <constraint firstItem="BiR-vU-P4w" firstAttribute="top" secondItem="KSJ-UJ-Do1" secondAttribute="top" id="sAY-Ba-pPc"/>
+                            <constraint firstItem="BiR-vU-P4w" firstAttribute="top" secondItem="KSJ-UJ-Do1" secondAttribute="top" id="WPd-YT-YDj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vJq-4N-hRh"/>
