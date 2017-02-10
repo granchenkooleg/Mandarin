@@ -124,6 +124,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     @IBAction func logoutClick(_ sender: AnyObject) {
         GIDSignIn.sharedInstance().signOut()
         LoginManager().logOut()
+        VKSdk.forceLogout()
         User.deleteUser()
         let signInViewController = Storyboard.Login.instantiate()
         UINavigationController.main.pushViewController(signInViewController, animated: false)
