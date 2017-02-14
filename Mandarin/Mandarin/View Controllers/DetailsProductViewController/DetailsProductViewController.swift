@@ -62,7 +62,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         _productsList = []
         if let id = User.currentUser?.idUser  {
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" : Int(id)] as [String : Any]
+                                 "user_id" : Int(id) as Any] as [String : Any]
         
         UserRequest.favorite(param as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
@@ -159,16 +159,16 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     
     //setting heartButton
     func buttonHeart() {
+        //!! This can be useful 1..
+//        let realm = try! Realm()
+//        if let product = realm.objects(Product.self).filter("id  == [c] %@", idProductDetailsVC).first {
         
-        let realm = try! Realm()
-        if let product = realm.objects(Product.self).filter("id  == [c] %@", idProductDetailsVC).first {
-            
-            heartButton.isSelected = product.favoriteProductOfUser
+//            heartButton.isSelected = product.favoriteProductOfUser
             //then @IBAction func heartButton establish .selected
             heartButton.setImage(UIImage(named: "HeartCleanBillWhite" ), for: .selected)
             //at first establish .normal
             heartButton.setImage(UIImage(named: "HeartWhiteNew" ), for: .normal)
-        }
+//        }
     }
     
     // button for addition to section "💛Я люблю"
@@ -181,7 +181,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             //adding to Favorite
             let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                      "product_id" : idProductDetailsVC,
-                                     "user_id" : Int((User.currentUser?.idUser)!)] as [String : Any]
+                                     "user_id" : Int((User.currentUser?.idUser)!) as! AnyHashable] as [String : Any]
             
             UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
                 if success == true {
@@ -199,7 +199,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             //remove from Favorite
             let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                      "product_id" : idProductDetailsVC,
-                                     "user_id" : Int((User.currentUser?.idUser)!),
+                                     "user_id" : Int((User.currentUser?.idUser)!) as! AnyHashable,
                                      "remove" : "1"] as [String : Any]
             
             UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
@@ -214,23 +214,25 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             // end]
         }
         
-        updateTask(!heartButton.isSelected)
+        //!! This can be useful 2..
+//        updateTask(!heartButton.isSelected)
         
     }
     
-    // For favoriteProductOfUser
-    fileprivate func updateTask(_ checked: Bool) {
-        if let realm = try? Realm() {
-            //let id = self.taskId,
-            
-            if let product = realm.objects(Product.self).filter("id  == [c] %@", idProductDetailsVC).first {
-                try! realm.write {
-                    product.favoriteProductOfUser = checked
-                }
-                heartButton.isSelected = product.favoriteProductOfUser
-            }
-        }
-    }
+    //!! This can be useful 3..
+//    // For favoriteProductOfUser
+//    fileprivate func updateTask(_ checked: Bool) {
+//        if let realm = try? Realm() {
+//            //let id = self.taskId,
+//            
+//            if let product = realm.objects(Product.self).filter("id  == [c] %@", idProductDetailsVC).first {
+//                try! realm.write {
+//                    product.favoriteProductOfUser = checked
+//                }
+//                heartButton.isSelected = product.favoriteProductOfUser
+//            }
+//        }
+//    }
     
     //hidden overButton
     @IBAction func overButtonHidden(_ sender: UIButton) {

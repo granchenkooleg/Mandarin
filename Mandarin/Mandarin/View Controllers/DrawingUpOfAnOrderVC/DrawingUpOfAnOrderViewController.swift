@@ -143,7 +143,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
         
         guard let apartment = numberApartmentTextField.text, apartment.isEmpty == false else {
             
-            let alertController = UIAlertController.alert("Введите номер вышей квартиры!".ls)
+            let alertController = UIAlertController.alert("Введите номер вашей квартиры!".ls)
             
             let OKAction = UIAlertAction(title: "OK", style: .default)
             
@@ -169,7 +169,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
 //        payment
 //        containerViewController.addController(UIStoryboard.main["payment"]!)
         
-        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        //guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         guard let paymentVC = UIStoryboard.main["payment"] as? PaymentViewController, let last = adressUserFromRealm.last else { return }
         paymentVC.idOrderPayment = last.idOrder
         paymentVC.phoneUserPayment = last.phone
@@ -182,37 +182,12 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
         paymentVC.apartmentPayment = last.apartment
         paymentVC.floorPayment = last.floor
         paymentVC.commitPayment = last.commit
-        containerViewController.addController(paymentVC)
-        
-//        let _name = "NameUser: " + nameUser + "\n"
-//        let _phone = "Phone: " + phone + "\n"
-//        let _city = "City: " + city + "\n"
-//        let _region = "Region: " + (region ?? "") + "\n"
-//        let _street = "Street" + street + "\n"
-//        let _numberHouse = "NumberHouse :" + numberHouse + "\n"
-//        let _porch = "Porch: " + porch  + "\n"
-//        let _appartment = "Apartment: " + apartment + "\n"
-//        let _floor = "Floor: " + (floor ?? "") + "\n"
-//        let _commit = "Commit: " + (commit ?? "")
-//        sendMessage(body: _name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit, recipients: ["oleg_granchenko@mail.ru"])
+        //containerViewController.addController(paymentVC)
+        self.present(paymentVC, animated: true)
+    
         
     }
     
-//    func sendMessage(body: String, recipients: [String]) {
-//        if MFMailComposeViewController.canSendMail() {
-//            let mailComposeVC = MFMailComposeViewController()
-//            mailComposeVC.mailComposeDelegate = self
-//            mailComposeVC.setToRecipients(recipients)
-//            mailComposeVC.setMessageBody(body, isHTML: false)
-//            UINavigationController.main.present(mailComposeVC, animated: true, completion: nil)
-//        }
-//    }
-//    
-//    //MARK: MFMailComposeViewControllerDelegate
-//    
-//    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-//        controller.dismiss(animated: true, completion: nil)
-//    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return  textField.resignFirstResponder()
     }

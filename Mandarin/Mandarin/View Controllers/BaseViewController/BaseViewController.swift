@@ -199,8 +199,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         if (self.presentingViewController != nil) {
             self.dismiss(animated: true, completion: nil)
         } else {
-            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-            containerViewController.addController(containerViewController.mainViewController ?? UIViewController())
+             UINavigationController.main.popViewController(animated: true)
         }
     }
     
@@ -217,9 +216,8 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     //MARK: Basket
     @IBAction func basketClick(_ sender: UIButton) {
-        UINavigationController.main.dismiss(animated: true, completion: nil)
-        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-        containerViewController.addController(UIStoryboard.main["basket"]!)
+        self.dismiss(animated: true, completion: nil)
+        present(UIStoryboard.main["basket"]!, animated: true, completion: nil)
     }
     
 //    func updateProductInBasket () {

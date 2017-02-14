@@ -40,7 +40,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         _productsList = []
         guard let id = User.currentUser?.idUser else {return}
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" : Int(id)] as [String : Any]
+                                 "user_id" : Int(id) as! AnyHashable] as [String : Any]
         
         UserRequest.favorite(param as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
@@ -132,6 +132,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()
         detailsProductVC.weightDetailsVC = _productsList[indexPath.row].weight + " \(_productsList[indexPath.row].units)"
         detailsProductVC.categoryIdProductDetailsVC = _productsList[indexPath.row].category_id
+        detailsProductVC.priceSaleDetailsVC = _productsList[indexPath.row].price_sale
         detailsProductVC.idProductDetailsVC = _productsList[indexPath.row].id
         detailsProductVC.priceDetailsVC = _productsList[indexPath.row].price
         detailsProductVC.descriptionDetailsVC = _productsList[indexPath.row].description
@@ -146,8 +147,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         //detailsProductVC.DetailsVC = _products[indexPath.row].
         detailsProductVC.created_atDetailsVC = _productsList[indexPath.row].created_at
         detailsProductVC.nameHeaderTextDetailsVC = _productsList[indexPath.row].name
-        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-        containerViewController.addController(detailsProductVC)
+        UINavigationController.main.pushViewController(detailsProductVC, animated: true)
     }
     
     //    func numberOfSections(in tableView: UITableView) -> Int {

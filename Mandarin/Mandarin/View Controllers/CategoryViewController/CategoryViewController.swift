@@ -108,8 +108,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         let categoryViewController = Storyboard.Category.instantiate()
         categoryViewController.categoryId = categoryContainer[indexPath.row].id
         categoryViewController.nameHeaderText = categoryContainer[indexPath.row].name
-        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-        containerViewController.addController(categoryViewController)
+        UINavigationController.main.pushViewController(categoryViewController, animated: true)
     }
     
 //    @IBAction func moveToSearch(sender: UIButton) {
@@ -187,8 +186,7 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
         weightViewController.unitOfWeight = categoriesList[indexPath.row].units
         weightViewController.nameWeightHeaderText = categoriesList[indexPath.row].name
         weightViewController.podCategory_id = categoriesList[indexPath.row].id
-        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-        containerViewController.addController(weightViewController)
+        UINavigationController.main.pushViewController(weightViewController, animated: true)
     }
     
     // MARK: - Table view data source

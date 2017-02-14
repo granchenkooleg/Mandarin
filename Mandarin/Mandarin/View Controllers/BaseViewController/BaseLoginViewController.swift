@@ -111,9 +111,9 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
                                 self?.chooseNextContoller()
                                 
                             }
-                            })
+                        })
                     }
-                    })
+                })
                 //end]
                 
                 self?.chooseNextContoller()
@@ -160,8 +160,8 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
                     // For favorite products, because us need id [start
                     let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                              "email" : "\(id)" + "@gmail.com",
-                                             "username" : "\(result["first_name"])",
-                                             "password" : "\(id)"] as [String: Any]
+                                             "username" : "\(result["first_name"] ?? "")",
+                        "password" : "\(id)"] as [String: Any]
                     
                     
                     UserRequest.makeRegistration(param as [String : AnyObject], completion: {[weak self] success in
@@ -178,14 +178,14 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
                                     self?.chooseNextContoller()
                                     
                                 }
-                                })
+                            })
                         }
-                        })
+                    })
                     //end]
-
+                    
                     
                     self?.chooseNextContoller()
-                    })
+                })
             }
         }
     }
@@ -214,7 +214,7 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
                                      "username" : user.profile.givenName,
                                      "password" : user.userID] as [String: Any]
             
-             print (">>self - \(param)<<")
+            print (">>self - \(param)<<")
             
             UserRequest.makeRegistration(param as [String : AnyObject], completion: {[weak self] success in
                 if success == true {
@@ -230,9 +230,9 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
                             self?.chooseNextContoller()
                             
                         }
-                        })
+                    })
                 }
-                })
+            })
             //end]
             
             chooseNextContoller()
@@ -266,7 +266,7 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
             }
             
             sender.loading = false
-            })
+        })
     }
 }
 
@@ -321,19 +321,19 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
         sender.loading = true
         
         guard let firstName = firstNameTextField.text, firstName.isEmpty == false else {
-            UIAlertController.alert("Введите ваше имя.".ls).show()
+            UIAlertController.alert("Введите ваше имя!".ls).show()
             sender.loading = false
             return
         }
         
         guard let phone = phoneTextField.text?.clearPhoneNumber(), phone.isEmpty == false else {
-            UIAlertController.alert("Введите ваш номер телефона.".ls).show()
+            UIAlertController.alert("Введите ваш номер телефона!".ls).show()
             sender.loading = false
             return
         }
         
         guard let email = emailTextField.text, email.isValidEmail == true  else {
-            UIAlertController.alert("Неправильно введен адрес электронной почты .".ls).show()
+            UIAlertController.alert("Неправильно введен адрес электронной почты!".ls).show()
             sender.loading = false
             return
         }
@@ -341,7 +341,7 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
         guard let password = passwordTextField.text,
             let repeatPassword = repeatPasswordTextField.text,
             password.isEmpty == false && repeatPassword.isEmpty == false && password == repeatPassword else {
-                UIAlertController.alert("Не введен пароль.".ls).show()
+                UIAlertController.alert("Пароли не совпадают!".ls).show()
                 sender.loading = false
                 return
         }
@@ -374,10 +374,11 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
         UserRequest.makeRegistration(param as [String : AnyObject], completion: {[weak self] success in
             if success == true {
                 self?.chooseNextContoller()
+            } else {
+                UIAlertController.alert("Пользователь с такими данными уже зарегистрирован!".ls).show()
             }
-            
             sender.loading = false
-            })
+        })
         
         //    func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
         //        return adjustment.defaultConstant + 145.0

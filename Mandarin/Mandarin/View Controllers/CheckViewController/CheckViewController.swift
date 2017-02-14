@@ -53,7 +53,7 @@ class CheckViewController: BasketViewController {
         nameCustomerLabel.text = infoOfUser.last?.name
         phoneCustomerLabel.text = infoOfUser.last?.phone
         
-        adressCustomerLabel.text = "\(infoOfUser.last?.city ?? "")," as String + "\(infoOfUser.last?.street ?? "")," as String + "\(infoOfUser.last?.house ?? "")," as String + "\(infoOfUser.last?.apartment ?? "")," as String
+        adressCustomerLabel.text = "г. \(infoOfUser.last?.city ?? ""), " as String + "ул. \(infoOfUser.last?.street ?? ""), " as String + "дом. \(infoOfUser.last?.house ?? ""), " as String + "кв. \(infoOfUser.last?.apartment ?? "")" as String
        
         amountMoneyOfOrderLabel.text = (totalPriceInCart() + " грн.")
         dateOrderLabel.text = dateFormatter()
@@ -62,8 +62,8 @@ class CheckViewController: BasketViewController {
     
     // MARK: Sender to BasketVC
     @IBAction func showGoodsButton(_ sender: UIButton) {
-        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-        containerViewController.addController(UIStoryboard.main["basketAfterpayment"]!)
+        //guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        present(UIStoryboard.main["basketAfterpayment"]!, animated: true)
     }
 }
 

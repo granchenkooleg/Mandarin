@@ -45,6 +45,7 @@ struct Storyboard {
     static let Search = StoryboardObject<SearchViewController>("search")
     static let ListOfWeightProductsSegment = StoryboardObject<ListOfProductsByWeightViewControllerSegment>("listOfWeightProductsSegment")
     static let CategorySegment = StoryboardObject<CategoryViewControllerSegment>("categorySegment")
+    static let DrawingUpOrder = StoryboardObject<DrawingUpOfAnOrderViewController>("drawingUpOrder")
 }
 
 extension UIStoryboard {
