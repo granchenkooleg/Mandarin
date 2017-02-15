@@ -116,35 +116,6 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
     // MARK: Sender to CheckVC
     @IBAction func CheckClick(_ sender: Button) {
         
-        //sender.loading = true
-        /*guard*/ let idOrPhone  = User.currentUser?.idUser ?? phoneUserPayment /*, let idOrder = idOrder*/ /*else { return }*/
-        
-        // Doing it for product_id in Alamofire request(param)
-        var list: [JSON] = []
-        for i in productsInBasket {
-            // Convert type String to Int
-            let q: Int = Int(i.quantity)!
-            for _ in 1...q {
-                list.append(JSON(i.id))
-            }
-        }
-        
-        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" :  idOrPhone as Any,
-                                 "product_id": list,
-                                 "order_id" : idOrderPayment as Any] as [String : Any]
-        
-        UserRequest.addOrderToServer(param as [String : AnyObject], completion: {[weak self] success in
-            if success == true {
-                guard let checkVC = UIStoryboard.main["checkVC"] as? CheckViewController else { return }
-                checkVC.valueDeliveryTime = self?.deliveryTime ?? ""
-                self?.present(checkVC, animated: true)
-                
-                //                containerViewController.addController(UIStoryboard.main["checkVC"]!)
-            }
-            //sender.loading = false
-        })
-        
         // For send mail to magazin
         let _name = "Имя заказчика: " + (nameUserPayment ?? "") + "\n"
         let _phone = "Телефон: " + (phoneUserPayment ?? "") + "\n"
@@ -167,7 +138,7 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
             mailComposeVC.mailComposeDelegate = self
             mailComposeVC.setToRecipients(recipients)
             mailComposeVC.setMessageBody(body, isHTML: false)
-            UINavigationController.main.present(mailComposeVC, animated: true, completion: nil)
+            present(mailComposeVC, animated: true, completion: nil)
         } else {
             self.showSendMailErrorAlert()
         }
@@ -181,7 +152,34 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
     // MARK: MFMailComposeViewControllerDelegate
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
+        //sender.loading = true
+        /*guard*/ let idOrPhone  = User.currentUser?.idUser ?? phoneUserPayment /*, let idOrder = idOrder*/ /*else { return }*/
+        // Doing it for product_id in Alamofire request(param)
+        var list: [JSON] = []
+        for i in productsInBasket {
+            // Convert type String to Int
+            let q: Int = Int(i.quantity)!
+            for _ in 1...q {
+                list.append(JSON(i.id))
+            }
+        }
+        
+        controller.dismiss(animated: true, completion: { [weak self] in
+            let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                     "user_id" :  idOrPhone as Any,
+                                     "product_id": list,
+                                     "order_id" : self?.idOrderPayment as Any] as [String : Any]
+            
+            UserRequest.addOrderToServer(param as [String : AnyObject], completion: { success in
+                if success == true {
+                    guard let checkVC = UIStoryboard.main["checkVC"] as? CheckViewController else { return }
+                    checkVC.valueDeliveryTime = self?.deliveryTime ?? ""
+                    self?.present(checkVC, animated: true)
+                    
+                    //                containerViewController.addController(UIStoryboard.main["checkVC"]!)
+                }
+                //sender.loading = false
+            })
+        })
     }
-    
 }

@@ -59,6 +59,10 @@ class CheckViewController: BasketViewController {
         dateOrderLabel.text = dateFormatter()
     }
     
+    @IBAction override func backClick(_ sender: AnyObject) {
+        UINavigationController.main.popToRootViewController(animated: false)
+        UINavigationController.main.dismiss(animated: true, completion: nil)
+    }
     
     // MARK: Sender to BasketVC
     @IBAction func showGoodsButton(_ sender: UIButton) {

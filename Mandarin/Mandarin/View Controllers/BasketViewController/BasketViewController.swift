@@ -230,7 +230,7 @@ class BasketTableViewCell: UITableViewCell {
         let realm = try! Realm()
         let product = realm.objects(ProductsForRealm.self).filter("id  == [c] %@", productID).first
         try! realm.write {
-            product!.quantity = "\(quantity)"
+            product?.quantity = "\(quantity)"
         }
     }
     
