@@ -181,7 +181,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             //adding to Favorite
             let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                      "product_id" : idProductDetailsVC,
-                                     "user_id" : Int((User.currentUser?.idUser)!) as! AnyHashable] as [String : Any]
+                                     "user_id" : Int((User.currentUser?.idUser)!) ?? ""] as [String : Any]
             
             UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
                 if success == true {
@@ -191,7 +191,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             })
             
             //it for fill heart white color. Look func buttonHeart(). [start
-            //            sender.isSelected = !sender.isSelected
+                        sender.isSelected = !sender.isSelected
             // end
             ///////////////////////////////////////////////////////////////////////////
         } else {
@@ -199,7 +199,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             //remove from Favorite
             let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                      "product_id" : idProductDetailsVC,
-                                     "user_id" : Int((User.currentUser?.idUser)!) as! AnyHashable,
+                                     "user_id" : Int((User.currentUser?.idUser)!) ?? "",
                                      "remove" : "1"] as [String : Any]
             
             UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
@@ -210,7 +210,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             })
             
             //it for fill heart white color. Look func buttonHeart(). [start
-            //            sender.isSelected = !sender.isSelected
+                       sender.isSelected = !sender.isSelected
             // end]
         }
         

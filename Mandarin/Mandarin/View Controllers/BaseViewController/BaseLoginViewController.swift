@@ -25,6 +25,7 @@ class BaseLoginViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func backToMain(sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
         UINavigationController.main.popViewController(animated: false)
     }
     

@@ -144,6 +144,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
             
             UIAlertController.alert("Товар добавлен в пакет.".ls).show()
             self.updateProductInfo()
+            
         }
         
         Dispatch.mainQueue.async { _ in
