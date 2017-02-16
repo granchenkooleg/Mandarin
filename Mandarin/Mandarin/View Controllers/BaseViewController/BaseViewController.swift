@@ -233,9 +233,9 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         let realm = try! Realm()
         productsInBasket = realm.objects(ProductsForRealm.self)
         // We do check to display the data in the header 
-        let x = productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 })
+        let x = productsInBasket.map { Int($0.quantity) ?? 0 }.reduce(0, { $0 + $1 })
         if x > 0 {
-        self.quantityCartLabel?.text = "\(productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 }))"
+        self.quantityCartLabel?.text = "\(productsInBasket.map { Int($0.quantity) ?? 0 }.reduce(0, { $0 + $1 }))"
         totalPriceLabel?.text = (totalPriceInCart() + " грн.")
         } else {
             self.quantityCartLabel?.text = ""
@@ -249,9 +249,9 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         for product in  productsInBasket {
             // Make a choice prices for to display prices
             if Double(product.price_sale ?? "") ?? 0 > Double(0.00) {
-            totalPrice += Float(product.price_sale!)! * Float(product.quantity)!
+            totalPrice += (Float(product.price_sale ?? "") ?? 0.0) * (Float(product.quantity) ?? 0.0)
             } else {
-            totalPrice += Float(product.price!)! * Float(product.quantity)!
+            totalPrice += (Float(product.price_sale ?? "") ?? 0.0) * (Float(product.quantity) ?? 0.0)
             }
         }
         
