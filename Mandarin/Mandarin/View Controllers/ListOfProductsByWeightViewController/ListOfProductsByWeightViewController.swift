@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -23,6 +24,8 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     
     var list: Any?
     var productsList = [Product]()
+    
+    var quantity: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,7 +124,28 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         let cellIdentifier = "ListOfProductsByWeightViewController"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ListOfProductsByWeightTableViewCell
         
-        let productDetails = productsList[indexPath.row]
+        
+        let productDetails = self.productsList[indexPath.row]
+        
+        cell.buttonAction = { (sender) in
+            // Do whatever you want from your button here.
+            let realm = try! Realm()
+            if let product = realm.objects(ProductsForRealm.self).filter("id  == [c] %@", productDetails.id ).first {
+                try! realm.write {
+                    product.quantity = "\((Int((product.quantity)) ?? 0) + 1)"
+                }
+            } else {
+                var image: Data? = nil
+                if productDetails.icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: productDetails.icon) ?? URL(fileURLWithPath: "")){
+                    image = imageData
+                }
+                let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description_ , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "\(self.quantity)", image: image)
+            }
+            
+            UIAlertController.alert("Товар добавлен в пакет.".ls).show()
+            self.updateProductInfo()
+        }
+        
         Dispatch.mainQueue.async { _ in
             cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
         }
@@ -166,6 +190,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         detailsProductVC.nameHeaderTextDetailsVC = productsList[indexPath.row].name
         UINavigationController.main.pushViewController(detailsProductVC, animated: true)
     }
+    
 }
 
 class ListOfProductsByWeightViewController: ListOfProductsByWeightViewControllerSegment {

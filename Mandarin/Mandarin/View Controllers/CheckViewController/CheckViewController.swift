@@ -60,6 +60,7 @@ class CheckViewController: BasketViewController {
     }
     
     @IBAction override func backClick(_ sender: AnyObject) {
+        ProductsForRealm.deleteAllProducts()
         UINavigationController.main.popToRootViewController(animated: false)
         UINavigationController.main.dismiss(animated: true, completion: nil)
     }

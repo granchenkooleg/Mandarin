@@ -167,20 +167,20 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
 //        containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
 //    }
     
-    @IBAction func backClickAndClearDatabase (sender: AnyObject) {
-        
-        ProductsForRealm.deleteAllProducts()
-        updateProductInfo()
-        
-        if (self.presentingViewController != nil) {
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-            containerViewController.addController(containerViewController.mainViewController ?? UIViewController())
-        }
-        
-        
-    }
+//    @IBAction func backClickAndClearDatabase (sender: AnyObject) {
+//        
+//        ProductsForRealm.deleteAllProducts()
+//        updateProductInfo()
+//        
+//        if (self.presentingViewController != nil) {
+//            self.dismiss(animated: true, completion: nil)
+//        } else {
+//            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+//            containerViewController.addController(containerViewController.mainViewController ?? UIViewController())
+//        }
+//        
+//        
+//    }
     // end]
     
     
