@@ -14,6 +14,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     @IBOutlet weak var listHeaderLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var spiner = UIActivityIndicatorView()
+    var basketHandler: Block? = nil
     
     //segue
     var nameListsOfProductsHeaderText: String?
@@ -127,7 +128,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         
         let productDetails = self.productsList[indexPath.row]
         
-        cell.buttonAction = { (sender) in
+        cell.buttonAction = { [weak self]  (sender) in
             // Do whatever you want from your button here.
           
             let realm = try! Realm()
@@ -140,13 +141,11 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 if productDetails.icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: productDetails.icon) ?? URL(fileURLWithPath: "")){
                     image = imageData
                 }
-                let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description_ , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "\(self.quantity)", image: image)
+                let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description_ , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "\(self?.quantity)", image: image)
             }
-            Dispatch.mainQueue.after(1.0, block: {
-                self.updateProductInfo()
-            })
             
             UIAlertController.alert("Товар добавлен в пакет.".ls).show()
+            self?.basketHandler?()
         }
         
         Dispatch.mainQueue.async { _ in

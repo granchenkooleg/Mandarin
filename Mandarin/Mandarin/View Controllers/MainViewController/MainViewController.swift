@@ -65,6 +65,18 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let category = Storyboard.CategorySegment.instantiate()
+        let favorit = Storyboard.FavoriteProducts.instantiate()
+        let list = Storyboard.ListOfWeightProductsSegment.instantiate()
+        
+        let basketHadler: Block = { [weak self] in
+            Dispatch.mainQueue.async({
+                self?.updateProductInfo()
+            })
+        }
+        
+        list.basketHandler = basketHadler
+        favorit.basketHandler = basketHadler
         
         segmentControlWrapper.segmentedCotrol.layer.cornerRadius = 5.0
         segmentControlWrapper.segmentedCotrol?.layer.borderColor = Color.mandarin.cgColor
@@ -72,10 +84,7 @@ class MainViewController: BaseViewController {
         segmentControlWrapper.segmentedCotrol?.layer.masksToBounds = true
         segmentControlWrapper.segmentedCotrol?.selectedSegment = 0
         
-        segmentControlWrapper.setup([
-            Storyboard.CategorySegment.instantiate(),
-            Storyboard.FavoriteProducts.instantiate(),
-            Storyboard.ListOfWeightProductsSegment.instantiate()],
+        segmentControlWrapper.setup([category, favorit, list],
                                      selectedControl: { [weak self] viewControllerr in
                                         self?.addController(viewControllerr)
         })
