@@ -129,6 +129,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         
         cell.buttonAction = { (sender) in
             // Do whatever you want from your button here.
+          
             let realm = try! Realm()
             if let product = realm.objects(ProductsForRealm.self).filter("id  == [c] %@", productDetails.id ).first {
                 try! realm.write {
@@ -141,10 +142,12 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 }
                 let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description_ , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "\(self.quantity)", image: image)
             }
+            Dispatch.mainQueue.async ({
+                self.updateProductInfo()
+            })
             
             UIAlertController.alert("Товар добавлен в пакет.".ls).show()
-            self.updateProductInfo()
-            
+
         }
         
         Dispatch.mainQueue.async { _ in

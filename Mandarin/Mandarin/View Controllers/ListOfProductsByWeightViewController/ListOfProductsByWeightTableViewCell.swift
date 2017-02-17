@@ -17,6 +17,7 @@ class ListOfProductsByWeightTableViewCell: UITableViewCell {
     
     @IBAction func buttonPressedCart(_ sender: Any) {
          self.buttonAction?(sender as AnyObject)
+        
     }
 
     
