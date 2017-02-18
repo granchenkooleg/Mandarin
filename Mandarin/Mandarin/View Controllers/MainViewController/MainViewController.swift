@@ -70,25 +70,24 @@ class MainViewController: BaseViewController {
         let list = Storyboard.ListOfWeightProductsSegment.instantiate()
         
         let basketHadler: Block = { [weak self] in
-            Dispatch.mainQueue.async({
-                self?.updateProductInfo()
-            })
+            self?.updateProductInfo()
         }
         
         list.basketHandler = basketHadler
         favorit.basketHandler = basketHadler
-        
+        // Configure Segmented Control
         segmentControlWrapper.segmentedCotrol.layer.cornerRadius = 5.0
         segmentControlWrapper.segmentedCotrol?.layer.borderColor = Color.mandarin.cgColor
         segmentControlWrapper.segmentedCotrol?.layer.borderWidth = 1.0
         segmentControlWrapper.segmentedCotrol?.layer.masksToBounds = true
-        segmentControlWrapper.segmentedCotrol?.selectedSegment = 0
+        //segmentControlWrapper.segmentedCotrol?.selectedSegment = 0
         
         segmentControlWrapper.setup([category, favorit, list],
-                                     selectedControl: { [weak self] viewControllerr in
+                                    selectedControl: { [weak self] viewControllerr in
                                         self?.addController(viewControllerr)
         })
         selectTab(.category)
+        
     }
     
     func selectTab(_ segmentTab: SegmentTab) {
@@ -106,4 +105,6 @@ class MainViewController: BaseViewController {
         controller.didMove(toParentViewController: self)
         view.layoutIfNeeded()
     }
+    
 }
+

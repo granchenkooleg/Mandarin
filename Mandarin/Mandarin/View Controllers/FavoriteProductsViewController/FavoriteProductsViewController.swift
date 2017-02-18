@@ -17,6 +17,8 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
     var _productsList = [Products]()
     var basketHandler: Block? = nil
     
+    var label: UILabel? = nil
+    
     var quantity: Int = 1
     
    // var productInstant: Results<Product>!
@@ -33,10 +35,18 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        _productsList = []
+        tableView.reloadData()
         
         // Only isAuthorized user can see it VC
         guard  User.isAuthorized() else {
-            UIAlertController.alert("Только зарегистрированный пользователь может добавлять в избранные".ls).show()
+            label = UILabel(frame: CGRect(x: 0, y: 0, width: 240, height: 100))
+            label?.text = "Только зарегистрированный пользователь может добавлять в избранные."
+            label?.lineBreakMode = .byWordWrapping
+            label?.numberOfLines = 0
+            label?.center = CGPoint(x: CGFloat(view.frame.size.width / 2), y: CGFloat(150))
+            label?.textAlignment = .center
+            self.view.addSubview(label!)
             return
         }
         internalProductsForListOfWeightVC = []
@@ -86,6 +96,11 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         super.viewDidAppear(animated)
         
         tableView.reloadData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        label?.removeFromSuperview()
     }
     
     // MARK: - Table view data source

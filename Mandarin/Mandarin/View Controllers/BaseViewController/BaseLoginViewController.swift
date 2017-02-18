@@ -134,6 +134,7 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
     public func vkSdkShouldPresent(_ controller: UIViewController!) {
         if !VKSdk.vkAppMayExists() {
             present(controller, animated: true, completion: nil)
+            
         }
     }
     public func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {}

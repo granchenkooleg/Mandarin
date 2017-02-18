@@ -19,10 +19,10 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     var mainViewController: MainViewController? = nil
     var showingMenu = false
     
-//    func mainViewController () -> MainViewController? {
-//        guard let mainViewController = self.childViewControllers.first as? MainViewController else { return nil }
-//        return mainViewController
-//    }
+    //    func mainViewController () -> MainViewController? {
+    //        guard let mainViewController = self.childViewControllers.first as? MainViewController else { return nil }
+    //        return mainViewController
+    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,15 +80,15 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         }
     }
     
-//    func addController(_ controller: UIViewController) {
-//        containerView.subviews.all({ $0.removeFromSuperview() })
-//        childViewControllers.all { $0.removeFromParentViewController() }
-//        addChildViewController(controller)
-//        containerView.addSubview(controller.view)
-//        containerView.add(controller.view) { $0.edges.equalTo(containerView) }
-//        controller.didMove(toParentViewController: self)
-//        view.layoutIfNeeded()
-//    }
+    //    func addController(_ controller: UIViewController) {
+    //        containerView.subviews.all({ $0.removeFromSuperview() })
+    //        childViewControllers.all { $0.removeFromParentViewController() }
+    //        addChildViewController(controller)
+    //        containerView.addSubview(controller.view)
+    //        containerView.add(controller.view) { $0.edges.equalTo(containerView) }
+    //        controller.didMove(toParentViewController: self)
+    //        view.layoutIfNeeded()
+    //    }
     
     func addController(_ controller: UIViewController) {
         scrollView.isScrollEnabled = !(controller is BasketViewController)
@@ -100,7 +100,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         controller.didMove(toParentViewController: self)
         view.layoutIfNeeded()
     }
-
+    
 }
 
 class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -120,13 +120,14 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         loginButton.setTitle(User.isAuthorized() ? "Выйти" : "Войти", for: .normal)
         getAllCategory()
     }
-
+    
     @IBAction func logoutClick(_ sender: AnyObject) {
         GIDSignIn.sharedInstance().signOut()
         LoginManager().logOut()
         VKSdk.forceLogout()
         User.deleteUser()
         let signInViewController = Storyboard.Login.instantiate()
+        UINavigationController.main.dismiss(animated: true, completion: nil)
         UINavigationController.main.pushViewController(signInViewController, animated: false)
     }
     
