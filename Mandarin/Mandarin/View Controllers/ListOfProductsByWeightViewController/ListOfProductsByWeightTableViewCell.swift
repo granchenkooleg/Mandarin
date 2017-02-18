@@ -20,6 +20,10 @@ class ListOfProductsByWeightTableViewCell: UITableViewCell {
         
     }
 
+    @IBAction func buttonPressedCartForListVCOfWeight(_ sender: Any) {
+        self.buttonAction?(sender as AnyObject)
+    }
+
     
     @IBOutlet weak var thubnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
