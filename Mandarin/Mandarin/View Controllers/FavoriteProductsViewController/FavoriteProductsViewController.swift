@@ -128,7 +128,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
                 if productDetails.icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: productDetails.icon) ?? URL(fileURLWithPath: "")){
                     image = imageData
                 }
-                let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "\(self?.quantity)", image: image)
+                let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "1", image: image)
             }
             
             UIAlertController.alert("Товар добавлен в пакет.".ls).show()
