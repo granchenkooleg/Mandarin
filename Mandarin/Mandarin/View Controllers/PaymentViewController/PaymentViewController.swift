@@ -53,11 +53,15 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
         // Do any additional setup after loading the view.
         self.totalPriceForPaymentVCLabel?.text = (totalPriceInCart() + " грн.")
         
-        // Checking for next step
-        checking()
         
         // Set continueButton hidden at start
         continueButton.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Checking for next step
+        checking()
     }
     
     func checking () {
@@ -67,10 +71,17 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
             noButton.isHidden = true
             needChangeButton.isHidden = true
             customTextLabel.isHidden = true
+            let alertController = UIAlertController(title: "Ваш пакет пуст", message: "", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+                // ...
+            }
+            alertController.addAction(OKAction)
+            self.present(alertController, animated: true)
+            self.dismiss(animated: true, completion: nil)
+            
             return
         }
     }
-    
     
     @IBAction func needChangeButton(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Сдача!", message: "Пожалуйста, впишите вашу купюру", preferredStyle: .alert)
@@ -116,70 +127,80 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
     // MARK: Sender to CheckVC
     @IBAction func CheckClick(_ sender: Button) {
         
-        // For send mail to magazin
-        let _name = "Имя заказчика: " + (nameUserPayment ?? "") + "\n"
-        let _phone = "Телефон: " + (phoneUserPayment ?? "") + "\n"
-        let _city = "Город: " + (cityPayment ?? "") + "\n"
-        let _region = "Регион: " + (regionPayment ?? "") + "\n"
-        let _street = "Улица: " + streetPayment! + "\n"
-        let _numberHouse = "Номер дома :" + (numberHousePayment ?? "") + "\n"
-        let _porch = "Подъезд: " + (porchPayment ?? "")  + "\n"
-        let _appartment = "Квартира: " + (apartmentPayment ?? "") + "\n"
-        let _floor = "Этаж: " + (floorPayment ?? "") + "\n"
-        let _commit = "Комментарий: " + (commitPayment ?? "") + "\n"
-        let _bond = "Сумма на руках: " + (textUserInFildAlert ?? "")
-        sendMessage(body: _name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit + _bond, recipients: ["oleg_granchenko@mail.ru"])
+                // For send mail to magazin
+                let _name = "Имя заказчика: " + (nameUserPayment ?? "") + "\n"
+                let _phone = "Телефон: " + (phoneUserPayment ?? "") + "\n"
+                let _city = "Город: " + (cityPayment ?? "") + "\n"
+                let _region = "Регион: " + (regionPayment ?? "") + "\n"
+                let _street = "Улица: " + streetPayment! + "\n"
+                let _numberHouse = "Номер дома :" + (numberHousePayment ?? "") + "\n"
+                let _porch = "Подъезд: " + (porchPayment ?? "")  + "\n"
+                let _appartment = "Квартира: " + (apartmentPayment ?? "") + "\n"
+                let _floor = "Этаж: " + (floorPayment ?? "") + "\n"
+                let _commit = "Комментарий: " + (commitPayment ?? "") + "\n"
+                let _bond = "Сумма на руках: " + (textUserInFildAlert ?? "")
+                sendMessage(body: _name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit + _bond, recipients: ["oleg_granchenko@mail.ru"])
     }
     
-    // For mail
-    func sendMessage(body: String, recipients: [String]) {
-        if MFMailComposeViewController.canSendMail() {
-            let mailComposeVC = MFMailComposeViewController()
-            mailComposeVC.mailComposeDelegate = self
-            mailComposeVC.setToRecipients(recipients)
-            mailComposeVC.setMessageBody(body, isHTML: false)
-            present(mailComposeVC, animated: true, completion: nil)
-        } else {
-            self.showSendMailErrorAlert()
-        }
-    }
-    
-    func showSendMailErrorAlert() {
-        let sendMailErrorAlert = UIAlertController(title: "Не возможно отправить Email", message: "Ваш девайс не может отправить e-mail. Пожалуйста проверьте ваши настройки конфигурации и пробуйте снова.", preferredStyle: .alert)
-        sendMailErrorAlert.show()
-    }
-    
-    // MARK: MFMailComposeViewControllerDelegate
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        //sender.loading = true
-        /*guard*/ let idOrPhone  = User.currentUser?.idUser ?? phoneUserPayment /*, let idOrder = idOrder*/ /*else { return }*/
-        // Doing it for product_id in Alamofire request(param)
-        var list: [JSON] = []
-        for i in productsInBasket {
-            // Convert type String to Int
-            let q: Int = Int(i.quantity)!
-            for _ in 1...q {
-                list.append(JSON(i.id))
+        // For mail
+        func sendMessage(body: String, recipients: [String]) {
+            if MFMailComposeViewController.canSendMail() {
+                let mailComposeVC = MFMailComposeViewController()
+                mailComposeVC.mailComposeDelegate = self
+                mailComposeVC.setToRecipients(recipients)
+                mailComposeVC.setMessageBody(body, isHTML: false)
+                present(mailComposeVC, animated: true, completion: nil)
+            } else {
+                self.showSendMailErrorAlert()
             }
         }
-        
-        controller.dismiss(animated: true, completion: { [weak self] in
-            let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                     "user_id" :  idOrPhone as Any,
-                                     "product_id": list,
-                                     "order_id" : self?.idOrderPayment as Any] as [String : Any]
-            
-            UserRequest.addOrderToServer(param as [String : AnyObject], completion: { success in
-                if success == true {
-                    guard let checkVC = UIStoryboard.main["checkVC"] as? CheckViewController else { return }
-                    checkVC.valueDeliveryTime = self?.deliveryTime ?? ""
-                    self?.present(checkVC, animated: true)
-                    
-                    //                containerViewController.addController(UIStoryboard.main["checkVC"]!)
+    
+        func showSendMailErrorAlert() {
+            let sendMailErrorAlert = UIAlertController(title: "Не возможно отправить Email", message: "Ваш девайс не может отправить e-mail. Пожалуйста проверьте ваши настройки и пробуйте снова.", preferredStyle: .alert)
+            sendMailErrorAlert.show()
+        }
+    
+        // MARK: MFMailComposeViewControllerDelegate
+    
+        func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+            //sender.loading = true
+            /*guard*/ let idUserInDB  = User.currentUser?.idUser   /*, let idOrder = idOrder*/ /*else { return }*/
+            // Doing it for product_id in Alamofire request(param)
+            var list: [JSON] = []
+            for i in productsInBasket {
+                // Convert type String to Int
+                let q: Int = Int(i.quantity)!
+                for _ in 1...q {
+                    list.append(JSON(i.id))
                 }
-                //sender.loading = false
+            }
+    
+            controller.dismiss(animated: true, completion: { [weak self] in
+                let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                         "user_id" :  idUserInDB as Any,
+                                         "user_phone": self!.phoneUserPayment as Any,
+                                         "product_id": list,
+                                         "order_id" : self!.idOrderPayment as Any] as [String : Any]
+                
+                UserRequest.addOrderToServer(param as [String : AnyObject], completion: { success in
+                    if success == true {
+                        guard let checkVC = UIStoryboard.main["checkVC"] as? CheckViewController else { return }
+                        checkVC.valueDeliveryTime = self?.deliveryTime ?? ""
+                        self?.present(checkVC, animated: true)
+                        
+                        //                containerViewController.addController(UIStoryboard.main["checkVC"]!)
+                    } else {
+                        let alertController = UIAlertController(title: "Введите коректные данные", message: "", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+                            // ...
+                        }
+                        alertController.addAction(OKAction)
+                        self?.present(alertController, animated: true)
+                        //self.dismiss(animated: true, completion: nil)
+                        
+                    }
+                    //sender.loading = false
+                })
             })
-        })
-    }
+        }
 }

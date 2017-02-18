@@ -219,7 +219,7 @@ enum UserRequest: URLRequestConvertible {
     
     static func addOrderToServer(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
         requestHandler(#function, URLRequest: addOrderToSite(entryParams)) { json in
-            guard let json = json else {
+            guard let json = json, json[0]["error"] == false else {
                 completion(false)
                 return
             }
@@ -273,7 +273,8 @@ enum UserRequest: URLRequestConvertible {
     
     static func recoveryPassword(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
         requestHandler(#function, URLRequest: getPassword(entryParams)) { json in
-            guard let json = json else {
+            guard let json = json, json[0]["error"] == false else {
+                UIAlertController.alert("Введите корректные данные!".ls).show()
                 completion(false)
                 return
             }

@@ -252,7 +252,7 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
     @IBAction func loginClick(sender: Button) {
         sender.loading = true
         guard let email = emailTextField.text, let password = passwordTextField.text,
-            email.isValidEmail == true && password.isEmpty == false else {
+            email.isValidEmail == true || email.isEmpty == false && password.isEmpty == false else {
                 UIAlertController.alert("Неверно введенный email или пароль!".ls).show()
                 sender.loading = false
                 return
