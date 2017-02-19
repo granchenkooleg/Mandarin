@@ -183,7 +183,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         categoryViewController.categoryId = categoryContainer[indexPath.row].id
         categoryViewController.nameHeaderText = categoryContainer[indexPath.row].name
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-        containerViewController.addController(categoryViewController)
+        UINavigationController.main.pushViewController(categoryViewController, animated: true)  
         containerViewController.showMenu(false, animated: true)
     }
 }
