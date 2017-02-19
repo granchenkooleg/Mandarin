@@ -132,9 +132,20 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
     
     //MARK: Sender to DrawingUpOfAnOrderVC
     @IBAction func DrawingUpOrderClick(_ sender: UIButton) {
-//        dismiss(animated: false) {
-//            UINavigationController.main.pushViewController(UIStoryboard.main["drawingUpOrder"]!, animated: true)
-//        }
+        
+        // Checking empty basket for next step
+        guard (Double(totalPriceInCart())) ?? 0.0 > 0.0 else {
+            let alertController = UIAlertController(title: "Ваш пакет пуст", message: "", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+                // ...
+            }
+            alertController.addAction(OKAction)
+            self.present(alertController, animated: true)
+            //self.dismiss(animated: true, completion: nil)
+            
+            return
+        }
+        
         present(UIStoryboard.main["drawingUpOrder"]!, animated: true, completion:nil)
         
     }
@@ -146,7 +157,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         updateProductInfo()
         
         //guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-       present(UIStoryboard.main["basket"]!, animated: true, completion: nil)
+        present(UIStoryboard.main["basket"]!, animated: true, completion: nil)
     }
     
     @IBAction func searchClickAndClearDatabase(_ sender: AnyObject) {
@@ -158,29 +169,29 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         
     }
     
-//    @IBAction func menuClickAndClearDatabase(_ sender: AnyObject) {
-//        
-//        ProductsForRealm.deleteAllProducts()
-//        updateProductInfo()
-//        
-//        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-//        containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
-//    }
+    //    @IBAction func menuClickAndClearDatabase(_ sender: AnyObject) {
+    //
+    //        ProductsForRealm.deleteAllProducts()
+    //        updateProductInfo()
+    //
+    //        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+    //        containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
+    //    }
     
-//    @IBAction func backClickAndClearDatabase (sender: AnyObject) {
-//        
-//        ProductsForRealm.deleteAllProducts()
-//        updateProductInfo()
-//        
-//        if (self.presentingViewController != nil) {
-//            self.dismiss(animated: true, completion: nil)
-//        } else {
-//            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-//            containerViewController.addController(containerViewController.mainViewController ?? UIViewController())
-//        }
-//        
-//        
-//    }
+    //    @IBAction func backClickAndClearDatabase (sender: AnyObject) {
+    //
+    //        ProductsForRealm.deleteAllProducts()
+    //        updateProductInfo()
+    //
+    //        if (self.presentingViewController != nil) {
+    //            self.dismiss(animated: true, completion: nil)
+    //        } else {
+    //            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+    //            containerViewController.addController(containerViewController.mainViewController ?? UIViewController())
+    //        }
+    //
+    //
+    //    }
     // end]
     
     

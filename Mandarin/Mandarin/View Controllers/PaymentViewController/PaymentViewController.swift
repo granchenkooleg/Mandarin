@@ -58,30 +58,6 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
         continueButton.isHidden = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // Checking for next step
-        checking()
-    }
-    
-    func checking () {
-        guard (Double(totalPriceInCart())) ?? 0.0 > 0.0 else {
-            // Do any additional setup after loading the view.
-            //self.totalPriceForPaymentVCLabel?.text = (totalPriceInCart() + " грн.")
-            noButton.isHidden = true
-            needChangeButton.isHidden = true
-            customTextLabel.isHidden = true
-            let alertController = UIAlertController(title: "Ваш пакет пуст", message: "", preferredStyle: .alert)
-            let OKAction = UIAlertAction(title: "OK", style: .default) { action in
-                // ...
-            }
-            alertController.addAction(OKAction)
-            self.present(alertController, animated: true)
-            self.dismiss(animated: true, completion: nil)
-            
-            return
-        }
-    }
     
     @IBAction func needChangeButton(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Сдача!", message: "Пожалуйста, впишите вашу купюру", preferredStyle: .alert)

@@ -21,6 +21,8 @@ class BaseLoginViewController: BaseViewController, UITextFieldDelegate {
     
     fileprivate func chooseNextContoller() {
         guard User.isAuthorized() == true else { return }
+        ProductsForRealm.deleteAllProducts()
+        updateProductInfo()
         UINavigationController.main.viewControllers = [UIStoryboard.main["container"]!]
     }
     
@@ -387,6 +389,7 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
         //    }
         
     }
+    
     override func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
         if (firstNameTextField.isFirstResponder) { return 0 }
         if (repeatPasswordTextField.isFirstResponder || birthdayTextField.isFirstResponder) {
