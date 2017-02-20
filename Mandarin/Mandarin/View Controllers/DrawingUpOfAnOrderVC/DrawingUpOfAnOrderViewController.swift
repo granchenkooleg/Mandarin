@@ -11,7 +11,7 @@ import RealmSwift
 /*import MessageUI*/
 
 
-class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate /*, MFMailComposeViewControllerDelegate*/ {
+class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate, UITextViewDelegate /*, MFMailComposeViewControllerDelegate*/ {
     
     @IBOutlet weak var nameUserTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -22,7 +22,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
     @IBOutlet weak var porchTextField: UITextField!
     @IBOutlet weak var numberApartmentTextField: UITextField!
     @IBOutlet weak var floorTextField: UITextField!
-    @IBOutlet weak var commitOfUserTextField: UITextField!
+    @IBOutlet weak var commitOfUserTextView: UITextView!
     
     
     // It spetial for Realm (data extraction) [start
@@ -30,7 +30,12 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // TextViewCommit for order
+        commitOfUserTextView.text = "Комментарий к заказу"
+        commitOfUserTextView.textColor = UIColor.lightGray
+        
         updateAdressInfo()
+        
         // If table InfoAboutUserForOrder isEmpty, we will not come in here
         if (adressUserFromRealm.isEmpty == false)  {
             // Get last data because user can change last self data
@@ -43,9 +48,25 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
             porchTextField?.text = adressUserFromRealm.last?.porch
             numberApartmentTextField?.text = adressUserFromRealm.last?.apartment
             floorTextField?.text = adressUserFromRealm.last?.floor
-            commitOfUserTextField?.text = adressUserFromRealm.last?.commit
+            commitOfUserTextView?.text = adressUserFromRealm.last?.commit
         }
     }
+    
+    // TextViewCommit for order
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    // TextViewCommit for order
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Комментарий к заказу"
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
     
     func updateAdressInfo() {
         let realm = try! Realm()
@@ -156,8 +177,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
         
         
         let floor = floorTextField.text
-        let commit = commitOfUserTextField.text
-        
+        let commit = commitOfUserTextView.text
         
         let _ = InfoAboutUserForOrder.setupAllUserInfo(/*idOrder: idOrder ,*/ name: nameUser, phone: phone, city: city, region: region ?? "", street: street, house: numberHouse, porch: porch , apartment: apartment , floor: floor ?? "", commit: commit ?? "")
         
@@ -194,7 +214,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
     
     override func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
         if regionTextField.isFirstResponder ||
-            commitOfUserTextField.isFirstResponder ||
+            commitOfUserTextView.isFirstResponder ||
             numberApartmentTextField.isFirstResponder ||
             floorTextField.isFirstResponder ||
             numberHouseTextField.isFirstResponder ||
