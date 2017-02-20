@@ -22,8 +22,6 @@ class BaseLoginViewController: BaseViewController, UITextFieldDelegate {
     fileprivate func chooseNextContoller() {
         guard User.isAuthorized() == true else { return }
         ProductsForRealm.deleteAllProducts()
-        
-
         UINavigationController.main.viewControllers = [UIStoryboard.main["container"]!]
     }
     
@@ -328,18 +326,21 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
         
         guard let firstName = firstNameTextField.text, firstName.isEmpty == false else {
             UIAlertController.alert("Введите ваше имя!".ls).show()
+            self.firstNameTextField.text = ""
             sender.loading = false
             return
         }
         
         guard let phone = phoneTextField.text?.clearPhoneNumber(), phone.isEmpty == false else {
             UIAlertController.alert("Введите ваш номер телефона!".ls).show()
+            self.phoneTextField.text = ""
             sender.loading = false
             return
         }
         
         guard let email = emailTextField.text, email.isValidEmail == true  else {
             UIAlertController.alert("Неправильно введен адрес электронной почты!".ls).show()
+            self.emailTextField.text = ""
             sender.loading = false
             return
         }
@@ -348,6 +349,8 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
             let repeatPassword = repeatPasswordTextField.text,
             password.isEmpty == false && repeatPassword.isEmpty == false && password == repeatPassword else {
                 UIAlertController.alert("Пароли не совпадают!".ls).show()
+                self.passwordTextField.text = ""
+                self.repeatPasswordTextField.text = ""
                 sender.loading = false
                 return
         }
@@ -381,7 +384,13 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
             if success == true {
                 self?.chooseNextContoller()
             } else {
-                UIAlertController.alert("Пользователь с такими данными уже зарегистрирован!".ls).show()
+                UIAlertController.alert("Неверные данные!".ls).show()
+                 self?.firstNameTextField.text = ""
+                 self?.phoneTextField.text = ""
+                 self?.emailTextField.text = ""
+                 self?.passwordTextField.text = ""
+                 self?.repeatPasswordTextField.text = ""
+                 self?.birthdayTextField.text = ""
             }
             sender.loading = false
         })
