@@ -27,6 +27,8 @@ class BaseLoginViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func backToMain(sender: AnyObject) {
+        ProductsForRealm.deleteAllProducts()
+        updateProductInfo()
         dismiss(animated: true, completion: nil)
         UINavigationController.main.popViewController(animated: false)
     }
