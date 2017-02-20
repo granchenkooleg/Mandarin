@@ -104,19 +104,18 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
     @IBAction func CheckClick(_ sender: Button) {
         
         // For send mail to magazin
-        let _name = "Имя заказчика: " + (nameUserPayment ?? "") + "\n"
-        let _phone = "Телефон: " + (phoneUserPayment ?? "") + "\n"
-        let _city = "Город: " + (cityPayment ?? "") + "\n"
-        let _region = "Регион: " + (regionPayment ?? "") + "\n"
-        let _street = "Улица: " + streetPayment! + "\n"
-        let _numberHouse = "Номер дома :" + (numberHousePayment ?? "") + "\n"
-        let _porch = "Подъезд: " + (porchPayment ?? "")  + "\n"
-        let _appartment = "Квартира: " + (apartmentPayment ?? "") + "\n"
-        let _floor = "Этаж: " + (floorPayment ?? "") + "\n"
-        let _commit = "Комментарий: " + (commitPayment ?? "") + "\n"
+        let _name = "Имя заказчика: " + (nameUserPayment ?? "") 
+        let _phone = "Телефон: " + (phoneUserPayment ?? "")
+        let _city = "Город: " + (cityPayment ?? "")
+        let _region = "Регион: " + (regionPayment ?? "")
+        let _street = "Улица: " + streetPayment!
+        let _numberHouse = "Номер дома :" + (numberHousePayment ?? "")
+        let _porch = "Подъезд: " + (porchPayment ?? "")
+        let _appartment = "Квартира: " + (apartmentPayment ?? "")
+        let _floor = "Этаж: " + (floorPayment ?? "")
+        let _commit = "Комментарий: " + (commitPayment ?? "")
         let _bond = "Сумма на руках: " + (textUserInFildAlert ?? "")
-        var body =  (_name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit + _bond)
-        
+        let body =  (_name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit + _bond)
         
         
         let idUserInDB  = User.currentUser?.idUser
@@ -131,10 +130,9 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
             }
         }
         
-        
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" :  idUserInDB as Any,
-                                 "user_phone": self.phoneUserPayment as Any,
+                                 "user_id" :  idUserInDB! + body,
+                                 "user_phone": self.phoneUserPayment! + body,
                                  "product_id": list,
                                  "order_id" : self.idOrderPayment as Any] as [String : Any]
         

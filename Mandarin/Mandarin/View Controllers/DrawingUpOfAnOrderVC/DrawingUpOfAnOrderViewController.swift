@@ -48,7 +48,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
             porchTextField?.text = adressUserFromRealm.last?.porch
             numberApartmentTextField?.text = adressUserFromRealm.last?.apartment
             floorTextField?.text = adressUserFromRealm.last?.floor
-            commitOfUserTextView?.text = adressUserFromRealm.last?.commit
+            //commitOfUserTextView?.text = adressUserFromRealm.last?.commit
         }
     }
     
