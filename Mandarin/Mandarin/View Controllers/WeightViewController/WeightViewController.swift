@@ -77,7 +77,7 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         listOfProductsByWeightViewController.idPodcategory = podCategory_id
         listOfProductsByWeightViewController.unitOfWeightForListOfProductsByWeightVC = self.unitOfWeight
         
-        UINavigationController.main.pushViewController(listOfProductsByWeightViewController, animated: true)
+        listOfProductsByWeightViewController.addToContainer()
     }
     
 }

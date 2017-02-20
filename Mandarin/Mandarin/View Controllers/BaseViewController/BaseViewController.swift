@@ -196,11 +196,17 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     //MARK: Back Button in headerq
     @IBAction func backClick(_ sender: AnyObject) {
-        if (self.presentingViewController != nil) {
-            self.dismiss(animated: true, completion: nil)
-        } else {
-             UINavigationController.main.popViewController(animated: true)
+        if let containerVC = UINavigationController.main.topViewController as? ContainerViewController {
+            if containerVC.presentedViewController != nil {
+                self.dismiss(animated: true, completion: nil)
+            } else if containerVC.navigation.viewControllers.count != 0 {
+                
+                containerVC.navigation.popViewController(animated: true)
+            }
         }
+        
+        UINavigationController.main.popViewController(animated: true)
+    
     }
     
     //MARK: Search
@@ -256,5 +262,15 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         }
         
         return String(totalPrice)
+    }
+    
+    func addToContainer() {
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else {
+            #if debug
+                UIAlertController(title: "Warrning!", message: "controller didn't add to container - \(viewController)", preferredStyle: .alert).show()
+            #endif
+            return }
+
+        containerViewController.pushViewController(self, animated: true)
     }
 }

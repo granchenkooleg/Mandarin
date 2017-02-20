@@ -197,7 +197,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         //detailsProductVC.DetailsVC = _products[indexPath.row].
         detailsProductVC.created_atDetailsVC = productsList[indexPath.row].created_at
         detailsProductVC.nameHeaderTextDetailsVC = productsList[indexPath.row].name
-        UINavigationController.main.pushViewController(detailsProductVC, animated: true)
+        detailsProductVC.addToContainer()
     }
     
 }

@@ -15,8 +15,9 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var menuContainerView: Menu!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var containerView: UIView!
+    var navigation = UINavigationController()
     
-    var mainViewController: MainViewController? = nil
+    var mainViewController: MainViewController = Storyboard.Main.instantiate()
     var showingMenu = false
     
     //    func mainViewController () -> MainViewController? {
@@ -26,11 +27,11 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigation.isNavigationBarHidden = true
+        pushViewController(mainViewController, animated: false)
         menuContainerView.completion = { [weak self] in
             self?.showMenu(false, animated: false)
         }
-        guard let viewController = self.childViewControllers.first as? MainViewController? else { return }
-        mainViewController = viewController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +102,12 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         view.layoutIfNeeded()
     }
     
+    func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        if !self.childViewControllers.contains(navigation) {
+            addController(navigation)
+        }
+        navigation.pushViewController(viewController, animated: animated)
+    }
 }
 
 class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -173,7 +180,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row != 0 else {
             guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-            containerViewController.addController(containerViewController.mainViewController ?? UIViewController())
+//            containerViewController.pushViewController(containerViewController.mainViewController, animated: true)
             containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
             
             return
@@ -183,7 +190,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         categoryViewController.categoryId = categoryContainer[indexPath.row].id
         categoryViewController.nameHeaderText = categoryContainer[indexPath.row].name
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-        UINavigationController.main.pushViewController(categoryViewController, animated: true)  
+        categoryViewController.addToContainer()
         containerViewController.showMenu(false, animated: true)
     }
 }

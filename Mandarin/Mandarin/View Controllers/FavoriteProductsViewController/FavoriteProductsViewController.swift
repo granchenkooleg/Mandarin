@@ -186,7 +186,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         //detailsProductVC.DetailsVC = _products[indexPath.row].
         detailsProductVC.created_atDetailsVC = _productsList[indexPath.row].created_at
         detailsProductVC.nameHeaderTextDetailsVC = _productsList[indexPath.row].name
-        UINavigationController.main.pushViewController(detailsProductVC, animated: true)
+        detailsProductVC.addToContainer()
     }
     
     //    func numberOfSections(in tableView: UITableView) -> Int {
