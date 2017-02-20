@@ -117,6 +117,14 @@ class Product : Object {
         let realm = try! Realm()
         return realm.objects(Product.self).array(ofType: Product.self)
     }
+    
+    static func delAllProducts() {
+        let realm = try! Realm()
+        let allProducts = realm.objects(Product.self)
+        try! realm.write {
+            realm.delete(allProducts)
+        }
+    }
 }
 
 class FavoriteProduct: Object{

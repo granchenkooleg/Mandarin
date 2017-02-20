@@ -251,7 +251,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
             if Double(product.price_sale ?? "") ?? 0 > Double(0.00) {
             totalPrice += (Float(product.price_sale ?? "") ?? 0.0) * (Float(product.quantity) ?? 0.0)
             } else {
-            totalPrice += (Float(product.price_sale ?? "") ?? 0.0) * (Float(product.quantity) ?? 0.0)
+            totalPrice += (Float(product.price ?? "") ?? 0.0) * (Float(product.quantity) ?? 0.0)
             }
         }
         

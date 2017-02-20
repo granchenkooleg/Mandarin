@@ -22,13 +22,13 @@ class BaseLoginViewController: BaseViewController, UITextFieldDelegate {
     fileprivate func chooseNextContoller() {
         guard User.isAuthorized() == true else { return }
         ProductsForRealm.deleteAllProducts()
-        updateProductInfo()
+        
+
         UINavigationController.main.viewControllers = [UIStoryboard.main["container"]!]
     }
     
     @IBAction func backToMain(sender: AnyObject) {
         ProductsForRealm.deleteAllProducts()
-        updateProductInfo()
         dismiss(animated: true, completion: nil)
         UINavigationController.main.popViewController(animated: false)
     }
