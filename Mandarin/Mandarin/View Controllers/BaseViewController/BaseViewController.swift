@@ -223,7 +223,9 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     //MARK: Basket
     @IBAction func basketClick(_ sender: UIButton) {
         //self.dismiss(animated: true, completion: nil)
-        present(UIStoryboard.main["basket"]!, animated: true, completion: nil)
+//        present(!, animated: true, completion: nil)
+        let basketVC = UIStoryboard.main["basket"] as? BasketViewController
+        basketVC?.addToContainer()
     }
     
 //    func updateProductInBasket () {
