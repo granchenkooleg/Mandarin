@@ -13,7 +13,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     
     @IBOutlet weak var listHeaderLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    var spiner = UIActivityIndicatorView()
+    //var spiner = UIActivityIndicatorView()
     var basketHandler: Block? = nil
     
     //segue

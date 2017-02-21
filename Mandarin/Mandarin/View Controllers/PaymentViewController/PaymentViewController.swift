@@ -104,21 +104,24 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
     @IBAction func CheckClick(_ sender: Button) {
         
         // For send mail to magazin
-        let _name = "Имя заказчика: " + (nameUserPayment ?? "") 
-        let _phone = "Телефон: " + (phoneUserPayment ?? "")
-        let _city = "Город: " + (cityPayment ?? "")
-        let _region = "Регион: " + (regionPayment ?? "")
-        let _street = "Улица: " + streetPayment!
-        let _numberHouse = "Номер дома :" + (numberHousePayment ?? "")
-        let _porch = "Подъезд: " + (porchPayment ?? "")
-        let _appartment = "Квартира: " + (apartmentPayment ?? "")
-        let _floor = "Этаж: " + (floorPayment ?? "")
-        let _commit = "Комментарий: " + (commitPayment ?? "")
-        let _bond = "Сумма на руках: " + (textUserInFildAlert ?? "")
+        let _name = " Имя заказчика: " + (nameUserPayment ?? "")
+        let _phone = " | Телефон: " + (phoneUserPayment ?? "")
+        let _city = " | Город: " + (cityPayment ?? "")
+        let _region = " | Регион: " + (regionPayment ?? "")
+        let _street = " | Улица: " + streetPayment!
+        let _numberHouse = " | Номер дома :" + (numberHousePayment ?? "")
+        let _porch = " | Подъезд: " + (porchPayment ?? "")
+        let _appartment = " | Квартира: " + (apartmentPayment ?? "")
+        let _floor = " | Этаж: " + (floorPayment ?? "")
+        let _commit = " | Комментарий: " + (commitPayment ?? "")
+        let _bond = " | Сумма на руках: " + (textUserInFildAlert ?? "")
         let body =  (_name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit + _bond)
         
         
-        let idUserInDB  = User.currentUser?.idUser
+//        let idOfUser = (((User.currentUser?.idUser)?.isEmpty)! == false)  ? ((User.currentUser?.idUser)! + body) : (User.currentUser?.idUser)
+//        let phoneOfUser = (((User.currentUser?.idUser)?.isEmpty)! != false) ? (phoneUserPayment! + body) : phoneUserPayment
+        
+    //let idUserInDB  = User.currentUser?.idUser
         
         // Doing it for product_id in Alamofire request(param)
         var list: [JSON] = []
@@ -131,10 +134,11 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
         }
         
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" :  idUserInDB! + body,
-                                 "user_phone": self.phoneUserPayment! + body,
+                                 "user_id" :  User.currentUser?.idUser as Any,
+                                 "user_phone": phoneUserPayment as Any,
                                  "product_id": list,
-                                 "order_id" : self.idOrderPayment as Any] as [String : Any]
+                                 "order_id" : self.idOrderPayment as Any,
+                                 "fields": body ] as [String : Any]
         
         UserRequest.addOrderToServer(param as [String : AnyObject], completion: { success in
             if success == true {

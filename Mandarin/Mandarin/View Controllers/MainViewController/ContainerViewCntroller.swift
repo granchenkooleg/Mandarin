@@ -16,6 +16,11 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var containerView: UIView!
     var navigation = UINavigationController()
+   
+    
+    // Create and add the view to the screen.
+    let progressHUD = ProgressHUD(text: "Идет обновление контента...")
+    
     
     var mainViewController: MainViewController = Storyboard.Main.instantiate()
     var showingMenu = false
@@ -27,11 +32,25 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestForUpdateDB({})
         navigation.isNavigationBarHidden = true
         pushViewController(mainViewController, animated: false)
         menuContainerView.completion = { [weak self] in
             self?.showMenu(false, animated: false)
         }
+        
+         
+       progressHUD.show()
+        self.view.addSubview(progressHUD)        // All done!
+        
+        self.view.backgroundColor = UIColor.black
+        
+//        spiner.hidesWhenStopped = true
+//        spiner.activityIndicatorViewStyle = .gray
+//        view.add(spiner)
+//        spiner.center.x = view.center.x
+//        spiner.center.y = view.center.y
+//        spiner.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,6 +127,78 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         }
         navigation.pushViewController(viewController, animated: animated)
     }
+    
+    // MARK: Request for update DB
+    func requestForUpdateDB(_ completion: @escaping Block)  {
+        
+        DispatchQueue.global(qos: .userInteractive).async(execute: { [weak self] in
+            let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+            UserRequest.listAllProducts(param as [String : AnyObject], completion: { [weak self] json in
+                guard let weakSelf = self else {return}
+                json.forEach { _, json in
+                    print (">>self - \(json)<<")
+                    let id = json["id"].string ?? ""
+                    let created_at = json["created_at"].string ?? ""
+                    let icon = json["icon"].string ?? ""
+                    let name = json["name"].string ?? ""
+                    let category_id = json["category_id"].string ?? ""
+                    let weight = json["weight"].string ?? ""
+                    let description = json["description"].string ?? ""
+                    let brand = json["brand"].string ?? ""
+                    let calories = json["calories"].string ?? ""
+                    let proteins = json["proteins"].string ?? ""
+                    let zhiry = json["zhiry"].string ?? ""
+                    let uglevody = json["uglevody"].string ?? ""
+                    let price = json["price"].string ?? ""
+                    let favorite = json["favorite"].string ?? ""
+                    let status = json["status"].string ?? ""
+                    let expire_date = json["expire_date"].string ?? ""
+                    var units = json["units"].string ?? ""
+                    if units == "kg" {
+                        units = "кг."
+                    }
+                    if units == "liter" {
+                        units = "л."
+                    }
+                    let category_name = json["category_name"].string ?? ""
+                    let price_sale = json["price_sale"].string ?? ""
+                    var image: Data? = nil
+                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+                        image = imageData
+                    }
+                    Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
+                }
+                completion()
+                self?.spiner.stopAnimating()
+            })
+        })
+        
+        // Second request for update infoDB
+        DispatchQueue.global(qos: .userInteractive).async(execute: { [weak self] in
+            let param2: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+            UserRequest.getAllCategories(param2 as [String : AnyObject], completion: { json in
+                json.forEach { _, json in
+                    let id = json["id"].string ?? ""
+                    let created_at = json["created_at"].string ?? ""
+                    let icon = json["icon"].string ?? ""
+                    let name = json["name"].string ?? ""
+                    let units = json["units"].string ?? ""
+                    //                /////////
+                    //                let searchVC = SearchViewController()
+                    //                searchVC.unitOfWeightSearchVC = units
+                    //                ////////
+                    let category_id = json["category_id"].string ?? ""
+                    var image: Data? = nil
+                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+                        image = imageData
+                        Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
+                    }
+                }
+                completion()
+                self?.progressHUD.hide()
+            })
+        })
+    }
 }
 
 class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -180,7 +271,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row != 0 else {
             guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-//            containerViewController.pushViewController(containerViewController.mainViewController, animated: true)
+            //            containerViewController.pushViewController(containerViewController.mainViewController, animated: true)
             containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
             
             return
@@ -193,5 +284,6 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         categoryViewController.addToContainer()
         containerViewController.showMenu(false, animated: true)
     }
+    
 }
 
