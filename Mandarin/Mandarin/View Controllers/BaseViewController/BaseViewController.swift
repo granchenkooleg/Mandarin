@@ -187,7 +187,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     func keyboardDidHide(_ keyboard: Keyboard) {}
     
     //MARK: Back Button in headerq
-    @IBAction func backClick(_ sender: AnyObject) {
+    @IBAction func backClick(_ sender: AnyObject?) {
         if let containerVC = UINavigationController.main.topViewController as? ContainerViewController {
             if containerVC.presentedViewController != nil {
                 self.dismiss(animated: true, completion: nil)

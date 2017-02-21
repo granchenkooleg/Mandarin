@@ -160,7 +160,7 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
                 //It's null
                 let alertController = UIAlertController(title: "У этой категории нет товара ", message: "", preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { action in
-                    UINavigationController.main.popViewController(animated: true)
+                    self?.backClick(nil)
                 }
                 alertController.addAction(OKAction)
                 self?.present(alertController, animated: true)

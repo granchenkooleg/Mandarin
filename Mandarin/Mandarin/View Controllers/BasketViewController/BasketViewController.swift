@@ -146,7 +146,8 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
             return
         }
         
-        present(UIStoryboard.main["drawingUpOrder"]!, animated: true, completion:nil)
+        let d = UIStoryboard.main["drawingUpOrder"] as? DrawingUpOfAnOrderViewController
+        d?.addToContainer()
         
     }
     

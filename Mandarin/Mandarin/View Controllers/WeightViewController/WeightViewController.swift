@@ -31,14 +31,15 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         }
         
         weightHeaderLabel.text = nameWeightHeaderText
+       
         
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : "\(podCategory_id)"]
         UserRequest.getWeightCategory(param as [String : AnyObject], completion: {[weak self] json in
             if  json.isEmpty {
                 //It's null
-                let alertController = UIAlertController(title: "У этой подкатегории нет товара ", message: "", preferredStyle: .alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default) { action in
-                    UINavigationController.main.popViewController(animated: true)
+                 let alertController = UIAlertController(title: "У этой подкатегории нет товара ", message: "", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "O", style: .default) { action in
+                    self?.backClick(nil)
                 }
                 alertController.addAction(OKAction)
                 self?.present(alertController, animated: true)

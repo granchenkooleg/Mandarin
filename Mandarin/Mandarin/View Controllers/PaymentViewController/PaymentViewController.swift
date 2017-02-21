@@ -144,7 +144,7 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
             if success == true {
                 guard let checkVC = UIStoryboard.main["checkVC"] as? CheckViewController else { return }
                 checkVC.valueDeliveryTime = self.deliveryTime ?? ""
-                self.present(checkVC, animated: true)
+                checkVC.addToContainer()
                 
                 //                containerViewController.addController(UIStoryboard.main["checkVC"]!)
             } else {

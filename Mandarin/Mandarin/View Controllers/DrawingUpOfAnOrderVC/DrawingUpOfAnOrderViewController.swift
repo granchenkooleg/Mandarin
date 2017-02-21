@@ -203,7 +203,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         paymentVC.floorPayment = last.floor
         paymentVC.commitPayment = last.commit
         //containerViewController.addController(paymentVC)
-        self.present(paymentVC, animated: true)
+        paymentVC.addToContainer()
     
         
     }

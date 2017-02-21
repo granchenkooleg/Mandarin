@@ -32,7 +32,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestForUpdateDB({})
+//        requestForUpdateDB({})
         navigation.isNavigationBarHidden = true
         pushViewController(mainViewController, animated: false)
         menuContainerView.completion = { [weak self] in
@@ -40,8 +40,8 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         }
         
          
-       progressHUD.show()
-        self.view.addSubview(progressHUD)        // All done!
+//       progressHUD.show()
+//        self.view.addSubview(progressHUD)        // All done!
         
         self.view.backgroundColor = UIColor.black
         
