@@ -12,7 +12,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     
     @IBOutlet weak var headerLabel: UILabel?
     @IBOutlet weak var tableView: UITableView?
-    var spiner = UIActivityIndicatorView()
+    //var spiner = UIActivityIndicatorView()
     
     //From segue
     var nameHeaderText: String?
@@ -134,7 +134,7 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
     var categoryId: String?
     @IBOutlet weak var headerLabel: UILabel?
     @IBOutlet weak var tableView: UITableView?
-    var spiner = UIActivityIndicatorView()
+    //var spiner = UIActivityIndicatorView()
     internal var categories = [CategoryStruct]()
     internal var categoriesList = [CategoryStruct]()
     
@@ -147,7 +147,7 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
         spiner.center.x = view.center.x
         spiner.center.y = view.center.y - 170
         spiner.startAnimating()
-        Dispatch.backgroundQueue.after(1.0, block: { [weak self] in
+        Dispatch.backgroundQueue.after(0.03, block: { [weak self] in
             self?.getAllCategory({})
         })
     }
@@ -156,8 +156,25 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         guard let categoryId = categoryId else { return }
         UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in
-            guard let weakSelf = self else { return }
+            if  json.isEmpty {
+                //It's null
+                let alertController = UIAlertController(title: "У этой категории нет товара ", message: "", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+                    UINavigationController.main.popViewController(animated: true)
+                }
+                alertController.addAction(OKAction)
+                self?.present(alertController, animated: true)
+                //self.dismiss(animated: true, completion: nil)
+                self?.spiner.stopAnimating()
+                return
+            }
+            
+            guard let weakSelf = self else {
+                return
+            }
+            
             json.forEach { _, json in
+                print (">>self - \(json)<<")
                 let id = json["id"].string ?? ""
                 let category_id = json["category_id"].string ?? ""
                 let created_at = json["created_at"].string ?? ""

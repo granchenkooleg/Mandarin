@@ -35,8 +35,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
    // var it contains Realm data my table ProductsForRealm
     var productsInBasket: Results<ProductsForRealm>!
     
-    //var for cart
-//    var quantityProductsInCart: Any?
+    var spiner = UIActivityIndicatorView()
     
     @IBInspectable var statusBarDefault = false
     
@@ -91,13 +90,6 @@ class BaseViewController: UIViewController, KeyboardNotifying {
             whenLoadedBlocks.forEach({ $0() })
             whenLoadedBlocks.removeAll()
         }
-        
-        //get our objects from table ProductsForRealm
-//        let realm = try! Realm()
-//        productsInBasket = realm.objects(ProductsForRealm.self)
-        
-        //for display quantity products in cart
-//        quantityProductsInCart = self.productsInBasket.count
     }
     
     fileprivate var whenLoadedBlocks = [Block]()
@@ -266,6 +258,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         return String(totalPrice)
     }
     
+
     func addToContainer() {
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else {
             #if debug
@@ -275,4 +268,5 @@ class BaseViewController: UIViewController, KeyboardNotifying {
 
         containerViewController.pushViewController(self, animated: true)
     }
+   
 }

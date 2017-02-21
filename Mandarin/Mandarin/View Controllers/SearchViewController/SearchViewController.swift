@@ -13,7 +13,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var searchTextField: TextField?
-    var spiner = UIActivityIndicatorView()
+    //var spiner = UIActivityIndicatorView()
     
     // From CategbasoryVC
     //    var unitOfWeightSearchVC : String?
