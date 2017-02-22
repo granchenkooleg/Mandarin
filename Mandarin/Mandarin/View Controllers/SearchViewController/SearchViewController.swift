@@ -174,6 +174,13 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         cell.backgroundColor = UIColor(white: 1, alpha: 0.1)
     }
     
+//    @IBAction func basketClickForSearch (_ sender: UIButton) {
+//        //self.dismiss(animated: true, completion: nil)
+//        //        present(!, animated: true, completion: nil)
+//        let basketVC = UIStoryboard.main["basket"] as? BasketViewController
+//        basketVC?.addToContainer()
+//    }
+    
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()

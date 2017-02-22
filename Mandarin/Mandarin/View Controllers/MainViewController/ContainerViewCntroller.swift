@@ -16,11 +16,9 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var containerView: UIView!
     var navigation = UINavigationController()
-   
     
     // Create and add the view to the screen.
     let progressHUD = ProgressHUD(text: "Идет обновление контента...")
-    
     
     var mainViewController: MainViewController = Storyboard.Main.instantiate()
     var showingMenu = false
@@ -39,18 +37,13 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
             self?.showMenu(false, animated: false)
         }
         
+
          
        progressHUD.show()
-        self.view.addSubview(progressHUD)        // All done!
+        self.view.addSubview(progressHUD)
         
+
         self.view.backgroundColor = UIColor.black
-        
-//        spiner.hidesWhenStopped = true
-//        spiner.activityIndicatorViewStyle = .gray
-//        view.add(spiner)
-//        spiner.center.x = view.center.x
-//        spiner.center.y = view.center.y
-//        spiner.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {

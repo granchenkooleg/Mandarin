@@ -37,8 +37,8 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         UserRequest.getWeightCategory(param as [String : AnyObject], completion: {[weak self] json in
             if  json.isEmpty {
                 //It's null
-                 let alertController = UIAlertController(title: "У этой подкатегории нет товара ", message: "", preferredStyle: .alert)
-                let OKAction = UIAlertAction(title: "O", style: .default) { action in
+                 let alertController = UIAlertController(title: "У этого раздела нет данных", message: "", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "Ok", style: .default) { action in
                     self?.backClick(nil)
                 }
                 alertController.addAction(OKAction)

@@ -37,7 +37,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         guard favoriteProducts.count != 0 else {
             getAllCategory { [weak self] _ in
                 self?.categoryContainer = Category().allCategories()
-                self?.spiner.stopAnimating()
+//                self?.spiner.stopAnimating()
                 self?.tableView?.reloadData()
             }
             
@@ -160,7 +160,12 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
                 //It's null
                 let alertController = UIAlertController(title: "У этой категории нет товара ", message: "", preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+
                     self?.backClick(nil)
+
+//                    self?.dismiss(animated: true, completion: nil)
+//                    UINavigationController.main.popViewController(animated: true)
+
                 }
                 alertController.addAction(OKAction)
                 self?.present(alertController, animated: true)

@@ -30,6 +30,13 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        spiner.hidesWhenStopped = true
+        spiner.activityIndicatorViewStyle = .gray
+        _ = view.add(spiner)
+        spiner.center.x = view.center.x
+        spiner.center.y = view.center.y - 150
+        spiner.startAnimating()
+        
         tableView.separatorStyle = .none
     }
     
@@ -37,9 +44,11 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         super.viewWillAppear(animated)
         _productsList = []
         tableView.reloadData()
+        spiner.startAnimating()
         
         // Only isAuthorized user can see it VC
         guard  User.isAuthorized() else {
+            self.spiner.stopAnimating()
             label = UILabel(frame: CGRect(x: 0, y: 0, width: 240, height: 100))
             label?.text = "Только зарегистрированный пользователь может добавлять в избранные."
             label?.lineBreakMode = .byWordWrapping
@@ -87,6 +96,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
             }
             
             self?._productsList = (self?.internalProductsForListOfWeightVC)!
+            self?.spiner.stopAnimating()
             self?.tableView.reloadData()
             })
     }

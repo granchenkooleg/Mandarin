@@ -148,7 +148,7 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
                 
                 //                containerViewController.addController(UIStoryboard.main["checkVC"]!)
             } else {
-                let alertController = UIAlertController(title: "Введите коректные данные", message: "", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Введите правильно номер телефона или ваш пакет пуст!", message: "", preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { action in
                     // ...
                 }

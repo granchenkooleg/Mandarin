@@ -130,7 +130,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         
         cell.buttonAction = { [weak self]  (sender) in
             // Do whatever you want from your button here.
-          
+            
             let realm = try! Realm()
             if let product = realm.objects(ProductsForRealm.self).filter("id  == [c] %@", productDetails.id ).first {
                 try! realm.write {
@@ -143,14 +143,14 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 }
                 let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description_ , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "1", image: image)
             }
-
+            
             Dispatch.mainQueue.async ({
                 self?.updateProductInfo()
             })
             
             UIAlertController.alert("Товар добавлен в пакет.".ls).show()
             self?.basketHandler?()
-
+            
         }
         
         Dispatch.mainQueue.async { _ in
@@ -172,7 +172,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
             // set attributed text on a UILabel
             cell.priceOldLabel?.attributedText = myAttrString
         } else {
-           cell.priceSaleLabel?.text = ""
+            cell.priceSaleLabel?.text = ""
         }
         
         return cell
@@ -236,9 +236,21 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
             return
         }
         
-        self.spiner.stopAnimating()
+        
         
         productsList = products.filter { self.idPodcategory == $0.category_id && self.weightOfWeightVC == $0.weight }
+        if productsList.isEmpty == true {
+            self.spiner.stopAnimating()
+            let alertController = UIAlertController(title: "У этого раздела нет товара", message: "", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "Ок", style: .default) { action in
+                self.backClick(nil)
+            }
+            alertController.addAction(OKAction)
+            self.present(alertController, animated: true)
+            
+            return
+        }
+        self.spiner.stopAnimating()
         tableView.reloadData()
     }
     
