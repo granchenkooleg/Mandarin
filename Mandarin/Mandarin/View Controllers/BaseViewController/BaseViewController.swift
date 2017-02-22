@@ -203,7 +203,8 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     //MARK: Search
     @IBAction func searchClick(_ sender: Any) {
-        present(UIStoryboard.main["search"]!, animated: true, completion: nil)
+        let searchVC = UIStoryboard.main["search"] as? SearchViewController
+        searchVC?.addToContainer()
     }
     
     //MARK: MenuClick

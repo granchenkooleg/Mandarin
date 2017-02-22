@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mandarin/View Controllers/BaseViewController/BaseViewController.swift"
-            timestampString = "509405217.861946"
+            timestampString = "509439935.858459"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "BaseViewController"
             landmarkType = "3">
             <Locations>
@@ -131,11 +131,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mandarin/View Controllers/BaseViewController/BaseViewController.swift"
-            timestampString = "509321448.177262"
+            timestampString = "509439935.858459"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "BaseViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -153,6 +153,38 @@
             startingLineNumber = "169"
             endingLineNumber = "169"
             landmarkName = "searchClickAndClearDatabase(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mandarin/View Controllers/MainViewController/ContainerViewCntroller.swift"
+            timestampString = "509441384.921223"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "requestForUpdateDB(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mandarin/View Controllers/MainViewController/ContainerViewCntroller.swift"
+            timestampString = "509441388.959745"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "requestForUpdateDB(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

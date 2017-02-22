@@ -32,7 +32,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        requestForUpdateDB({})
+        requestForUpdateDB({})
         navigation.isNavigationBarHidden = true
         pushViewController(mainViewController, animated: false)
         menuContainerView.completion = { [weak self] in
@@ -40,8 +40,8 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         }
         
          
-//       progressHUD.show()
-//        self.view.addSubview(progressHUD)        // All done!
+       progressHUD.show()
+        self.view.addSubview(progressHUD)        // All done!
         
         self.view.backgroundColor = UIColor.black
         
@@ -169,7 +169,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
                     Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
                 }
                 completion()
-                self?.spiner.stopAnimating()
+//                self?.spiner.stopAnimating()
             })
         })
         
@@ -184,7 +184,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
                     let name = json["name"].string ?? ""
                     let units = json["units"].string ?? ""
                     //                /////////
-                    //                let searchVC = SearchViewController()
+                    //                let searchVC = qcg()
                     //                searchVC.unitOfWeightSearchVC = units
                     //                ////////
                     let category_id = json["category_id"].string ?? ""
