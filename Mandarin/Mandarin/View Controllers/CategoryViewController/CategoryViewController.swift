@@ -25,12 +25,12 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         super.viewDidLoad()
         
         tableView?.separatorStyle = .none
-        spiner.hidesWhenStopped = true
-        spiner.activityIndicatorViewStyle = .gray
-        _ = view.add(spiner)
-        spiner.center.x = view.center.x
-        spiner.center.y = view.center.y - 150
-        spiner.startAnimating()
+//        spiner.hidesWhenStopped = true
+//        spiner.activityIndicatorViewStyle = .gray
+//        _ = view.add(spiner)
+//        spiner.center.x = view.center.x
+//        spiner.center.y = view.center.y - 150
+//        spiner.startAnimating()
         
         headerLabel?.text = nameHeaderText
         let favoriteProducts = Category().allCategories()
@@ -45,7 +45,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         }
         categoryContainer = favoriteProducts
         
-        spiner.stopAnimating()
+//        spiner.stopAnimating()
         tableView?.reloadData()
     }
     
