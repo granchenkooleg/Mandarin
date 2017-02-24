@@ -18,7 +18,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     var navigation = UINavigationController()
     
     // Create and add the view to the screen.
-    let progressHUD = ProgressHUD(text: "Идет обновление контента...")
+    let progressHUD = ProgressHUD(text: "Обновляем список товара...")
     
     var mainViewController: MainViewController = Storyboard.Main.instantiate()
     var showingMenu = false
@@ -129,7 +129,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
             UserRequest.listAllProducts(param as [String : AnyObject], completion: { [weak self] json in
                 guard let weakSelf = self else {return}
                 json.forEach { _, json in
-                    print (">>self - \(json)<<")
+                    print (">>self🔴 - \(json)<<")
                     let id = json["id"].string ?? ""
                     let created_at = json["created_at"].string ?? ""
                     let icon = json["icon"].string ?? ""
@@ -171,6 +171,8 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
             let param2: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
             UserRequest.getAllCategories(param2 as [String : AnyObject], completion: { json in
                 json.forEach { _, json in
+                    print (">>self🔵 - \(json)<<")
+
                     let id = json["id"].string ?? ""
                     let created_at = json["created_at"].string ?? ""
                     let icon = json["icon"].string ?? ""
@@ -265,7 +267,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         guard indexPath.row != 0 else {
             guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
             //            containerViewController.pushViewController(containerViewController.mainViewController, animated: true)
-            containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
+            containerViewController.showMenu(!containerViewController.showingMenu, animated: false)
             
             return
         }

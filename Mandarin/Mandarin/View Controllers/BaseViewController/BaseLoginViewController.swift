@@ -384,7 +384,7 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
             if success == true {
                 self?.chooseNextContoller()
             } else {
-                UIAlertController.alert("Неверные данные!".ls).show()
+                UIAlertController.alert("Такие данные уже используются!".ls).show()
                  self?.firstNameTextField.text = ""
                  self?.phoneTextField.text = ""
                  self?.emailTextField.text = ""
