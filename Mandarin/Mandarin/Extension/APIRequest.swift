@@ -63,7 +63,7 @@ func requestHandler(_ function: Any, URLRequest: URLRequestConvertible, completi
             
             if case let .success(value) = response.result {
                 let json = JSON(value)
-                Logger.log("RESPONSE - \(json)", color: .Green)
+                print("RESPONSE - \(json)\t\nTIMELINE - \(response.timeline)")
                 completionHandler(json)
             }
     }
