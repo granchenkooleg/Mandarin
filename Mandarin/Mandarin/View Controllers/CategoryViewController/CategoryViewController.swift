@@ -33,26 +33,36 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
 //        spiner.startAnimating()
         
         headerLabel?.text = nameHeaderText
-        let favoriteProducts = Category().allCategories()
-        guard favoriteProducts.count != 0 else {
-            getAllCategory { [weak self] _ in
+//        let favoriteProducts = Category().allCategories()
+//        guard favoriteProducts.count != 0 else {
+            _getAllCategory { [weak self] _ in
                 self?.categoryContainer = Category().allCategories()
 //                self?.spiner.stopAnimating()
                 self?.tableView?.reloadData()
             }
-            
-            return
+        if let queue = inactiveQueue {
+            queue.activate()
         }
-        categoryContainer = favoriteProducts
+            
+//            return
+//        }
+//        categoryContainer = favoriteProducts
         
-//        spiner.stopAnimating()
+//!!        spiner.stopAnimating()
         tableView?.reloadData()
     }
     
-    func getAllCategory (_ completion: @escaping Block) {
+    // MARK: Request for update DB
+    var inactiveQueue: DispatchQueue!
+    func _getAllCategory (_ completion: @escaping Block) {
+        let anotherQueue = DispatchQueue(label: "com.appcoda.anotherQueue", qos: .userInteractive, attributes: [.concurrent, .initiallyInactive])
+        inactiveQueue = anotherQueue
+        
+        anotherQueue.async(execute: { [weak self] in
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.getAllCategories(param as [String : AnyObject], completion: { json in
             json.forEach { _, json in
+                print ("CatVC🔴")
                 let id = json["id"].string ?? ""
                 let created_at = json["created_at"].string ?? ""
                 let icon = json["icon"].string ?? ""
@@ -71,6 +81,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
             }
             completion()
         })
+     })   
     }
     
     
@@ -148,11 +159,11 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
         spiner.center.y = view.center.y - 170
         spiner.startAnimating()
         Dispatch.backgroundQueue.after(0.03, block: { [weak self] in
-            self?.getAllCategory({})
+            self?.getAllCategory2({})
         })
     }
     
-    func getAllCategory(_ completion: @escaping Block) {
+    func getAllCategory2(_ completion: @escaping Block) {
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         guard let categoryId = categoryId else { return }
         UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in

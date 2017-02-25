@@ -34,13 +34,16 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestForUpdateDB({})
+        if let queue = inactiveQueue {
+            queue.activate()
+        }
         navigation.isNavigationBarHidden = true
         pushViewController(mainViewController, animated: false)
         menuContainerView.completion = { [weak self] in
             self?.showMenu(false, animated: false)
         }
         
-        addHolderView()
+         addHolderView()
         
         self.view.backgroundColor = UIColor.black
     }
@@ -150,31 +153,35 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     }
     
     // MARK: Request for update DB
+    var inactiveQueue: DispatchQueue!
     func requestForUpdateDB(_ completion: @escaping Block)  {
         
-        DispatchQueue.global(qos: .userInteractive).async(execute: { [weak self] in
+        let anotherQueue = DispatchQueue(label: "com.appcoda.anotherQueue", qos: .userInitiated, attributes: [.concurrent, .initiallyInactive])
+        inactiveQueue = anotherQueue
+        
+        anotherQueue.async(execute: { [weak self] in
             let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
             UserRequest.listAllProducts(param as [String : AnyObject], completion: { [weak self] json in
                 guard let weakSelf = self else {return}
                 json.forEach { _, json in
-                    print (">>self - listAllProducts )<<")
-                    let id = json["id"].stringValue
-                    let created_at = json["created_at"].stringValue
-                    let icon = json["icon"].stringValue
-                    let name = json["name"].stringValue
-                    let category_id = json["category_id"].stringValue
-                    let weight = json["weight"].stringValue
-                    let description = json["description"].stringValue
-                    let brand = json["brand"].stringValue
-                    let calories = json["calories"].stringValue
-                    let proteins = json["proteins"].stringValue
-                    let zhiry = json["zhiry"].stringValue
-                    let uglevody = json["uglevody"].stringValue
-                    let price = json["price"].stringValue
-                    let favorite = json["favorite"].stringValue
-                    let status = json["status"].stringValue
-                    let expire_date = json["expire_date"].stringValue
-                    var units = json["units"].stringValue
+                     print ("ContainVC🔵")
+                    let id = json["id"].string ?? ""
+                    let created_at = json["created_at"].string ?? ""
+                    let icon = json["icon"].string ?? ""
+                    let name = json["name"].string ?? ""
+                    let category_id = json["category_id"].string ?? ""
+                    let weight = json["weight"].string ?? ""
+                    let description = json["description"].string ?? ""
+                    let brand = json["brand"].string ?? ""
+                    let calories = json["calories"].string ?? ""
+                    let proteins = json["proteins"].string ?? ""
+                    let zhiry = json["zhiry"].string ?? ""
+                    let uglevody = json["uglevody"].string ?? ""
+                    let price = json["price"].string ?? ""
+                    let favorite = json["favorite"].string ?? ""
+                    let status = json["status"].string ?? ""
+                    let expire_date = json["expire_date"].string ?? ""
+                    var units = json["units"].string ?? ""
                     if units == "kg" {
                         units = "кг."
                     }
@@ -191,38 +198,37 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
                 }
                 completion()
 //                self?.spiner.stopAnimating()
-            })
-        })
-        
-        // Second request for update infoDB
-        DispatchQueue.global(qos: .userInteractive).async(execute: { [weak self] in
-            let param2: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-            UserRequest.getAllCategories(param2 as [String : AnyObject], completion: { json in
-                json.forEach { _, json in
-                    print (">>self - getAllCategories )<<")
-                    let id = json["id"].stringValue
-                    let created_at = json["created_at"].stringValue
-                    let icon = json["icon"].stringValue
-                    let name = json["name"].stringValue
-                    let units = json["units"].stringValue
-                    //                /////////
-                    //                let searchVC = qcg()
-                    //                searchVC.unitOfWeightSearchVC = units
-                    //                ////////
-                    let category_id = json["category_id"].stringValue
-                    var image: Data? = nil
-                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-                        image = imageData
-                        Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
-                    }
-                }
-                completion()
                 self?.progressHUD.hide()
                 self?.backgroundImage.removeFromSuperview()
-                
             })
+            
+//            let param2: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+//            UserRequest.getAllCategories(param2 as [String : AnyObject], completion: { json in
+//                json.forEach { _, json in
+//                    print ("🔴")
+//                    let id = json["id"].string ?? ""
+//                    let created_at = json["created_at"].string ?? ""
+//                    let icon = json["icon"].string ?? ""
+//                    let name = json["name"].string ?? ""
+//                    let units = json["units"].string ?? ""
+//                    //                /////////
+//                    //                let searchVC = qcg()
+//                    //                searchVC.unitOfWeightSearchVC = units
+//                    //                ////////
+//                    let category_id = json["category_id"].string ?? ""
+//                    var image: Data? = nil
+//                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+//                        image = imageData
+//                        Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
+//                    }
+//                }
+//                completion()
+//                self?.progressHUD.hide()
+//                self?.backgroundImage.removeFromSuperview()
+//                
+//            })
         })
-    }
+  }
 }
 
 class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -240,7 +246,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     
     func setup()  {
         loginButton.setTitle(User.isAuthorized() ? "Выйти" : "Войти", for: .normal)
-        getAllCategory()
+        getAllcat()
     }
     
     @IBAction func logoutClick(_ sender: AnyObject) {
@@ -257,7 +263,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         UINavigationController.main.present(viewcontroller, animated: true, completion: completion)
     }
     
-    func getAllCategory() {
+    func getAllcat() {
         categoryContainer = Category().allCategories()
         categoryContainer.insert(Category(), at: 0)
         tableView?.reloadData()
