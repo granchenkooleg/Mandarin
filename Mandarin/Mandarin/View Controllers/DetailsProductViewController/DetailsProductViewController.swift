@@ -66,7 +66,6 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         
         UserRequest.favorite(param as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
-                print (">>self - \(json["name"])<<")
                 guard (json.isEmpty) == false else {return}
                 let id = json["id"].string ?? ""
                 let created_at = json["created_at"].string ?? ""

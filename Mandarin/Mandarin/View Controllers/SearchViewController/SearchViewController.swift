@@ -67,7 +67,6 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         UserRequest.listAllProducts(param as [String : AnyObject], completion: { [weak self] json in
             guard let weakSelf = self else {return}
             json.forEach { _, json in
-                print (">>self - \(json)<<")
                 let id = json["id"].string ?? ""
                 let created_at = json["created_at"].string ?? ""
                 let icon = json["icon"].string ?? ""

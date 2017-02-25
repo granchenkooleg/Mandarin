@@ -26,6 +26,10 @@
 		563F94FF1DF4C4A90053EFF0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F94FE1DF4C4A90053EFF0 /* Product.swift */; };
 		56574A931DF33241009C2466 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56574A921DF33241009C2466 /* User.swift */; };
 		56737B9B1DF616950007518C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56737B9A1DF616950007518C /* Category.swift */; };
+		56797DCF1E619AD100801FA5 /* SlimLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56797DCB1E619AD100801FA5 /* SlimLogger.swift */; };
+		56797DD01E619AD100801FA5 /* SlimLoggerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56797DCC1E619AD100801FA5 /* SlimLoggerConfig.swift */; };
+		56797DD11E619AD100801FA5 /* SlimLogglyDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56797DCD1E619AD100801FA5 /* SlimLogglyDestination.swift */; };
+		56797DD21E619AD100801FA5 /* SlimLogglyDestinationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56797DCE1E619AD100801FA5 /* SlimLogglyDestinationConfig.swift */; };
 		56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56899DCF1DE9879B00EF02FE /* GoogleService-Info.plist */; };
 		56CEB7851DE47A1800E84345 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CEB7841DE47A1800E84345 /* UIColor+Ext.swift */; };
 		56CEB7871DE4862B00E84345 /* BezierPath+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CEB7861DE4862B00E84345 /* BezierPath+Ext.swift */; };
@@ -85,6 +89,10 @@
 		563F94FE1DF4C4A90053EFF0 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		56574A921DF33241009C2466 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		56737B9A1DF616950007518C /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		56797DCB1E619AD100801FA5 /* SlimLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlimLogger.swift; sourceTree = "<group>"; };
+		56797DCC1E619AD100801FA5 /* SlimLoggerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlimLoggerConfig.swift; sourceTree = "<group>"; };
+		56797DCD1E619AD100801FA5 /* SlimLogglyDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlimLogglyDestination.swift; sourceTree = "<group>"; };
+		56797DCE1E619AD100801FA5 /* SlimLogglyDestinationConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlimLogglyDestinationConfig.swift; sourceTree = "<group>"; };
 		567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mandarin-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		56899DCF1DE9879B00EF02FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		56C682FA1DEB78520001790B /* Mandarin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mandarin.entitlements; sourceTree = "<group>"; };
@@ -156,6 +164,7 @@
 		21949D324E7A39284F117969 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56797DCA1E619ABC00801FA5 /* SlimLogger */,
 				56350D0B1E4760C600D487C0 /* VK_ios_sdk.framework */,
 				6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */,
 			);
@@ -252,6 +261,17 @@
 				7C0127131E34FA7400BF5046 /* FavoriteProductsViewController.swift */,
 			);
 			name = FavoriteProductsViewController;
+			sourceTree = "<group>";
+		};
+		56797DCA1E619ABC00801FA5 /* SlimLogger */ = {
+			isa = PBXGroup;
+			children = (
+				56797DCB1E619AD100801FA5 /* SlimLogger.swift */,
+				56797DCC1E619AD100801FA5 /* SlimLoggerConfig.swift */,
+				56797DCD1E619AD100801FA5 /* SlimLogglyDestination.swift */,
+				56797DCE1E619AD100801FA5 /* SlimLogglyDestinationConfig.swift */,
+			);
+			name = SlimLogger;
 			sourceTree = "<group>";
 		};
 		7C0126FC1E34F34400BF5046 /* WeightViewController */ = {
@@ -548,21 +568,25 @@
 				7C0126E51E34ED0700BF5046 /* Button.swift in Sources */,
 				7C0949631DE222250038018F /* AppDelegate.swift in Sources */,
 				563F94FF1DF4C4A90053EFF0 /* Product.swift in Sources */,
+				56797DD01E619AD100801FA5 /* SlimLoggerConfig.swift in Sources */,
 				5621B5971DE2E0F000C3B612 /* Label.swift in Sources */,
 				7C0127091E34F7FE00BF5046 /* BasketAfterPaymentViewController.swift in Sources */,
 				7CF13C9D1E60F6350098DB9B /* HolderView.swift in Sources */,
 				7C0127101E34F8D600BF5046 /* CheckViewController.swift in Sources */,
 				7C01270E1E34F89A00BF5046 /* PaymentViewController.swift in Sources */,
 				5621B5811DE2DF1700C3B612 /* Keyboard.swift in Sources */,
+				56797DD11E619AD100801FA5 /* SlimLogglyDestination.swift in Sources */,
 				5621B5951DE2E0E300C3B612 /* ConfirmView.swift in Sources */,
 				7C0127041E34F73700BF5046 /* WeightViewController.swift in Sources */,
 				7C0126F61E34EFF800BF5046 /* CategoryTableViewCell.swift in Sources */,
+				56797DD21E619AD100801FA5 /* SlimLogglyDestinationConfig.swift in Sources */,
 				7C0126FA1E34F02A00BF5046 /* ListOfProductsByWeightTableViewCell.swift in Sources */,
 				7C0126FB1E34F02A00BF5046 /* ListOfProductsByWeightViewController.swift in Sources */,
 				7C0127031E34F73700BF5046 /* WeightCollectionViewCell.swift in Sources */,
 				5621B5931DE2E0D200C3B612 /* UIAlertController+Ext.swift in Sources */,
 				7C6A7D7A1E5CD24D00C562C0 /* ProgressHUD.swift in Sources */,
 				5621B5871DE2DF8E00C3B612 /* String+Ext.swift in Sources */,
+				56797DCF1E619AD100801FA5 /* SlimLogger.swift in Sources */,
 				5621B58B1DE2DFB500C3B612 /* APIRequest.swift in Sources */,
 				7C0127141E34FA7400BF5046 /* FavoriteProductsViewController.swift in Sources */,
 				7C0126F01E34EEF300BF5046 /* MainTableViewCell.swift in Sources */,

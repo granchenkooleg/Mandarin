@@ -78,7 +78,6 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.listAllProducts(param as [String : AnyObject], completion: {json in
             json.forEach { _, json in
-                print (">>self - \(json)<<")
                 let id = json["id"].string ?? ""
                 let created_at = json["created_at"].string ?? ""
                 let icon = json["icon"].string ?? ""
@@ -265,7 +264,6 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.listAllProducts(param as [String : AnyObject], completion: {json in
             json.forEach { _, json in
-                print (">>self - \(json)<<")
                 let id = json["id"].string ?? ""
                 let created_at = json["created_at"].string ?? ""
                 let icon = json["icon"].string ?? ""

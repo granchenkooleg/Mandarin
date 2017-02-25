@@ -89,7 +89,6 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
             guard state == .authorized else { return }
             let request = VKApi.users().get()
             request?.execute(resultBlock: { [weak self] user in
-                print (">>self - \(user)<<")
                 let userData = (user?.parsedModel as! VKUsersArray).firstObject()
                 guard let id = userData?.id, let firstName = userData?.first_name, let lastName = userData?.last_name else { return }
                 //User.setupUser(id: "\(id)", firstName: "\(firstName)", lastName: "\(lastName)")
@@ -121,7 +120,6 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
                 
                 self?.chooseNextContoller()
                 }, errorBlock: { error in
-                    print (">>self - \(error)<<")
             })
         })
     }
@@ -218,7 +216,6 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
                                      "username" : user.profile.givenName,
                                      "password" : user.userID] as [String: Any]
             
-            print (">>self - \(param)<<")
             
             UserRequest.makeRegistration(param as [String : AnyObject], completion: {[weak self] success in
                 if success == true {

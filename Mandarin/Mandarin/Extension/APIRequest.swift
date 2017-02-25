@@ -10,12 +10,18 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-func requestHandler(_ function: Any, URLRequest: URLRequestConvertible, completionHandler: @escaping (JSON?) -> Void) {
+func requestHandler(_ function: Any, urlRequest: URLRequestConvertible, completionHandler: @escaping (JSON?) -> Void) {
     
-    let params = try? JSONSerialization.jsonObject(with: URLRequest.urlRequest?.httpBody ?? Data())
-    Logger.log("API call \(function) \(URLRequest.urlRequest?.httpMethod) \(URLRequest.urlRequest?.url): \(params ?? NSNull())", color: .Yellow)
+    let body = (try? JSONSerialization.jsonObject(with: urlRequest.urlRequest?.httpBody ?? Data())) ?? NSNull()
+    var url = ""
+    if let _url = urlRequest.urlRequest?.url?.absoluteString {
+        url = _url
+    }
+    let method = urlRequest.urlRequest?.httpMethod ?? ""
+    let headers = urlRequest.urlRequest?.allHTTPHeaderFields ?? ["":""]
+    Logger.log("API call\n\t function - \(function)\n\t url - \(url)\n\t method - \(method)\n\t headerParams - \(headers)\n\t bodyParam - \(body)", color: .Yellow)
     
-    Alamofire.request(URLRequest)
+    Alamofire.request(urlRequest)
         .validate()
         .responseJSON { response in
             var errorDescription = ""
@@ -56,14 +62,14 @@ func requestHandler(_ function: Any, URLRequest: URLRequestConvertible, completi
                 } else {
                     errorDescription = "Unknown error: " + "\(error)"
                 }
-                Logger.log(errorDescription + errorReason, color: .Red)
+                Logger.log("\tAPI called function - \(function)\n\t" + errorDescription + errorReason, color: .Red)
                 UIAlertController.alert(String(format: errorDescription), message: errorReason).show()
                 completionHandler(nil)
             }
             
             if case let .success(value) = response.result {
                 let json = JSON(value)
-                print("RESPONSE - \(json)\t\nTIMELINE - \(response.timeline)")
+                Logger.log("\tAPI called function - \(function)\n\tRESPONSE - \(json)\n\tTIMELINE - \(response.timeline)", color: .Green)
                 completionHandler(json)
             }
     }
@@ -207,54 +213,54 @@ enum UserRequest: URLRequestConvertible {
     //
     
     static func deliveryTime(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
-        requestHandler(#function, URLRequest: getDeliveryTime(entryParams), completionHandler: { json in
+        requestHandler(#function, urlRequest: getDeliveryTime(entryParams), completionHandler: { json in
             guard let json = json else {
                 return
             }
-            print (">>self - \(json)<<")
+
             completion(json)
         })
     }
     
     
     static func addOrderToServer(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
-        requestHandler(#function, URLRequest: addOrderToSite(entryParams)) { json in
+        requestHandler(#function, urlRequest: addOrderToSite(entryParams)) { json in
             guard let json = json, json[0]["error"] == false else {
                 completion(false)
                 return
             }
-            print (">>addOrderToServer - \(json)<<")
+        
             completion(true)
         }
     }
     
     
     static func favorite(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
-        requestHandler(#function, URLRequest: favoriteProduct(entryParams), completionHandler: { json in
+        requestHandler(#function, urlRequest: favoriteProduct(entryParams), completionHandler: { json in
             guard let json = json else {
                 return
             }
-            print (">>favorite - \(json)<<")
+            
             completion(json)
         })
     }
     
     static func addToFavorite(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
-        requestHandler(#function, URLRequest: addFavoriteProduct(entryParams)) { json in
+        requestHandler(#function, urlRequest: addFavoriteProduct(entryParams)) { json in
             
             ///! omission in "successful " here spetial! So it is in the server!
             if json?[0]["message"] == "successful "  {
-                print (">>addToFavorite - \(json?[0]["message"])<<")
+                
                 //            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
                 completion(true)
                 ///! omission in "Product remove from favorite list " here spetial! So it is in the server!
             } else if json?[0]["message"] == "Product remove from favorite list " {
-                print (">>addToFavorite - \(json?[0]["message"])<<")
+                
                 //            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
                 completion(true)
                 
             } else {
-                print (">>addToFavorite - \(json?[0]["message"])<<")
+                
                 UIAlertController.alert("Этот продукт был уже добавлен в избранное, вами ранее!".ls).show()
                 completion(false)
                 return
@@ -263,7 +269,7 @@ enum UserRequest: URLRequestConvertible {
     }
     
     static func getWeightCategory(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
-        requestHandler(#function, URLRequest: getWeight(entryParams), completionHandler: { json in
+        requestHandler(#function, urlRequest: getWeight(entryParams), completionHandler: { json in
             guard let json = json else {
                 return
             }
@@ -272,20 +278,20 @@ enum UserRequest: URLRequestConvertible {
     }
     
     static func recoveryPassword(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
-        requestHandler(#function, URLRequest: getPassword(entryParams)) { json in
+        requestHandler(#function, urlRequest: getPassword(entryParams)) { json in
             guard let json = json, json[0]["error"] == false else {
                 UIAlertController.alert("Введите корректные данные!".ls).show()
                 completion(false)
                 return
             }
-            print (">>recoveryPassword - \(json)<<")
+            
             User.deleteUser()
             completion(true)
         }
     }
     
     static func listAllProducts(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
-        requestHandler(#function, URLRequest: getAllProducts(entryParams), completionHandler: { json in
+        requestHandler(#function, urlRequest: getAllProducts(entryParams), completionHandler: { json in
             guard let json = json else {
                 return
             }
@@ -294,7 +300,7 @@ enum UserRequest: URLRequestConvertible {
     }
     
     static func getAllCategories(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
-        requestHandler(#function, URLRequest: getCategories(entryParams), completionHandler: { json in
+        requestHandler(#function, urlRequest: getCategories(entryParams), completionHandler: { json in
             guard let json = json else {
                 return
             }
@@ -303,7 +309,7 @@ enum UserRequest: URLRequestConvertible {
     }
     
     static func getAllProductsCategory(categoryID: String, entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
-        requestHandler(#function, URLRequest: getProductsCategory(categoryID, entryParams), completionHandler: { json in
+        requestHandler(#function, urlRequest: getProductsCategory(categoryID, entryParams), completionHandler: { json in
             guard let json = json else {
                 return
             }
@@ -312,26 +318,26 @@ enum UserRequest: URLRequestConvertible {
     }
     
     static func makelogin(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
-        requestHandler(#function, URLRequest: login(entryParams)) { json in
+        requestHandler(#function, urlRequest: login(entryParams)) { json in
             guard let json = json, json[0]["error"] == false else {
                 UIAlertController.alert("Введите корректные данные!".ls).show()
                 completion(false)
                 return
             }
-            print (">>makelogin - \(json)<<")
+            
             User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
             completion(true)
         }
     }
     
     static func makeRegistration(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
-        requestHandler(#function, URLRequest: registration(entryParams)) { json in
+        requestHandler(#function, urlRequest: registration(entryParams)) { json in
             guard let json = json, json[0]["error"] == false else {
                 //UIAlertController.alert("Пользователь с такими данными уже зарегистрирован!".ls).show()
                 completion(false)
                 return
             }
-            print (">>registration - \(json)<<")
+            
             User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
             completion(true)
         }

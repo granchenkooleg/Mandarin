@@ -179,7 +179,6 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
             }
             
             json.forEach { _, json in
-                print (">>self - \(json)<<")
                 let id = json["id"].string ?? ""
                 let category_id = json["category_id"].string ?? ""
                 let created_at = json["created_at"].string ?? ""
