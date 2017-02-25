@@ -60,6 +60,8 @@
 		7C46E96D1E4137CD0053CFFF /* mandarin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C46E96C1E4137CD0053CFFF /* mandarin.ttf */; };
 		7C6A7D7A1E5CD24D00C562C0 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A7D791E5CD24D00C562C0 /* ProgressHUD.swift */; };
 		7C7157841E21856900C1DCAC /* InfoAboutUserForOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */; };
+		7CF13C9D1E60F6350098DB9B /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF13C9C1E60F6350098DB9B /* HolderView.swift */; };
+		7CF13CA01E60F73A0098DB9B /* OvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF13C9F1E60F73A0098DB9B /* OvalLayer.swift */; };
 		ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +127,8 @@
 		7C46E96C1E4137CD0053CFFF /* mandarin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandarin.ttf; sourceTree = "<group>"; };
 		7C6A7D791E5CD24D00C562C0 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoAboutUserForOrder.swift; sourceTree = "<group>"; };
+		7CF13C9C1E60F6350098DB9B /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
+		7CF13C9F1E60F73A0098DB9B /* OvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvalLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,8 @@
 				5621B5941DE2E0E300C3B612 /* ConfirmView.swift */,
 				5621B5961DE2E0F000C3B612 /* Label.swift */,
 				5621B59A1DE2E1F400C3B612 /* TextField.swift */,
+				7C6A7D791E5CD24D00C562C0 /* ProgressHUD.swift */,
+				7CF13C9B1E60F5DB0098DB9B /* Loader View */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -208,7 +214,6 @@
 				7C0126EC1E34EEF300BF5046 /* ContainerViewCntroller.swift */,
 				7C0126ED1E34EEF300BF5046 /* MainTableViewCell.swift */,
 				7C0126EE1E34EEF300BF5046 /* MainViewController.swift */,
-				7C6A7D791E5CD24D00C562C0 /* ProgressHUD.swift */,
 			);
 			name = MainViewController;
 			sourceTree = "<group>";
@@ -365,6 +370,23 @@
 				7C0127111E34F90200BF5046 /* SearchViewController.swift */,
 			);
 			name = SearchViewController;
+			sourceTree = "<group>";
+		};
+		7CF13C9B1E60F5DB0098DB9B /* Loader View */ = {
+			isa = PBXGroup;
+			children = (
+				7CF13C9E1E60F6660098DB9B /* Layers */,
+				7CF13C9C1E60F6350098DB9B /* HolderView.swift */,
+			);
+			name = "Loader View";
+			sourceTree = "<group>";
+		};
+		7CF13C9E1E60F6660098DB9B /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				7CF13C9F1E60F73A0098DB9B /* OvalLayer.swift */,
+			);
+			name = Layers;
 			sourceTree = "<group>";
 		};
 		7CF26A871DF82EFD004C627E /* DetailsProductViewController */ = {
@@ -528,6 +550,7 @@
 				563F94FF1DF4C4A90053EFF0 /* Product.swift in Sources */,
 				5621B5971DE2E0F000C3B612 /* Label.swift in Sources */,
 				7C0127091E34F7FE00BF5046 /* BasketAfterPaymentViewController.swift in Sources */,
+				7CF13C9D1E60F6350098DB9B /* HolderView.swift in Sources */,
 				7C0127101E34F8D600BF5046 /* CheckViewController.swift in Sources */,
 				7C01270E1E34F89A00BF5046 /* PaymentViewController.swift in Sources */,
 				5621B5811DE2DF1700C3B612 /* Keyboard.swift in Sources */,
@@ -548,6 +571,7 @@
 				7C7157841E21856900C1DCAC /* InfoAboutUserForOrder.swift in Sources */,
 				7C01270A1E34F7FE00BF5046 /* BasketViewController.swift in Sources */,
 				5621B59B1DE2E1F400C3B612 /* TextField.swift in Sources */,
+				7CF13CA01E60F73A0098DB9B /* OvalLayer.swift in Sources */,
 				56FCEA671E34E8D300E2E594 /* ProductsForRealm.swift in Sources */,
 				5621B58F1DE2E07600C3B612 /* Constants.swift in Sources */,
 				563474331DEDBC1B004ECDC4 /* GenericCollections+Ext.swift in Sources */,

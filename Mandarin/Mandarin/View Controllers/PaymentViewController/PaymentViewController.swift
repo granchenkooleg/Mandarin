@@ -159,8 +159,8 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
             }
             //sender.loading = false
         })
-        ProductsForRealm.deleteAllProducts()
-        updateProductInfo()
+//        ProductsForRealm.deleteAllProducts()
+//        updateProductInfo()
     }
     
     // For mail

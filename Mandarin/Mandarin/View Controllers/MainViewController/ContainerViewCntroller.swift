@@ -17,8 +17,11 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var containerView: UIView!
     var navigation = UINavigationController()
     
+    //var holderView = HolderView(frame: CGRect.zero)
+    
     // Create and add the view to the screen.
     let progressHUD = ProgressHUD(text: "Обновляем список товара...")
+    let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     
     var mainViewController: MainViewController = Storyboard.Main.instantiate()
     var showingMenu = false
@@ -37,12 +40,8 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
             self?.showMenu(false, animated: false)
         }
         
-
-         
-       progressHUD.show()
-        self.view.addSubview(progressHUD)
+        addHolderView()
         
-
         self.view.backgroundColor = UIColor.black
     }
     
@@ -50,6 +49,35 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         super.viewWillAppear(animated)
         showMenu(showingMenu, animated: false)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    
+    func addHolderView()  {
+        backgroundImage.image = UIImage(named: "Hello_2.png")
+        self.view.addSubview(backgroundImage)
+        
+        progressHUD.show()
+        self.view.addSubview(progressHUD)
+    }
+    
+//    func addHolderView() {
+//        
+//        
+//        let boxSize: CGFloat = 100.0
+//        holderView.frame = CGRect(x: view.bounds.width / 2 - boxSize / 4,
+//                                  y: view.bounds.height / 2 + view.bounds.height / 50,
+//                                  width: boxSize,
+//                                  height: boxSize)
+//        holderView.parentFrame = view.frame
+//        //holderView.delegate = self
+//        view.addSubview(holderView)
+//        holderView.addOval()
+//    }
+
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -191,6 +219,8 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
                 }
                 completion()
                 self?.progressHUD.hide()
+                self?.backgroundImage.removeFromSuperview()
+                
             })
         })
     }
@@ -266,9 +296,16 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row != 0 else {
             guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-            //            containerViewController.pushViewController(containerViewController.mainViewController, animated: true)
-            containerViewController.showMenu(!containerViewController.showingMenu, animated: false)
+//            //            containerViewController.pushViewController(containerViewController.mainViewController, animated: true)
+//            containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
+            if let containerVC = UINavigationController.main.topViewController as? ContainerViewController {
+                 if containerVC.navigation.viewControllers.count != 0 {
+                    
+                    containerVC.navigation.popToRootViewController(animated: true)
+                }
+            }
             
+           containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
             return
         }
         

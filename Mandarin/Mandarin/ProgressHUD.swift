@@ -25,6 +25,7 @@ class ProgressHUD: UIVisualEffectView {
     init(text: String) {
         self.text = text
         self.vibrancyView = UIVisualEffectView(effect: UIVibrancyEffect(blurEffect: blurEffect))
+        self.vibrancyView.backgroundColor = UIColor.clear
         super.init(effect: blurEffect)
         self.setup()
     }
@@ -51,7 +52,7 @@ class ProgressHUD: UIVisualEffectView {
             let width = superview.frame.size.width / 1.1
             let height: CGFloat = 100.0
             self.frame = CGRect(x: superview.frame.size.width / 2 - width / 2,
-                                y: superview.frame.height / 2 - height / 2,
+                                y: superview.frame.height - 220,
                                 width: width,
                                 height: height)
             vibrancyView.frame = self.bounds
