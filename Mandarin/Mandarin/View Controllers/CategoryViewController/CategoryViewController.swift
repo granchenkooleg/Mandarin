@@ -63,16 +63,16 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         UserRequest.getAllCategories(param as [String : AnyObject], completion: { json in
             json.forEach { _, json in
                 print ("CatVC🔴")
-                let id = json["id"].string ?? ""
-                let created_at = json["created_at"].string ?? ""
-                let icon = json["icon"].string ?? ""
-                let name = json["name"].string ?? ""
-                let units = json["units"].string ?? ""
+                let id = String(describing:json["id"])
+                let created_at = String(describing:json["created_at"])
+                let icon = String(describing:json["icon"])
+                let name = String(describing:json["name"])
+                let units = String(describing:json["units"])
 //                /////////
 //                let searchVC = SearchViewController()
 //                searchVC.unitOfWeightSearchVC = units
 //                ////////
-                let category_id = json["category_id"].string ?? ""
+                let category_id = String(describing:json["category_id"])
                 var image: Data? = nil
                 if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
                     image = imageData

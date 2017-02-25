@@ -165,31 +165,31 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
                 guard let weakSelf = self else {return}
                 json.forEach { _, json in
                      print ("ContainVC🔵")
-                    let id = json["id"].string ?? ""
-                    let created_at = json["created_at"].string ?? ""
-                    let icon = json["icon"].string ?? ""
-                    let name = json["name"].string ?? ""
-                    let category_id = json["category_id"].string ?? ""
-                    let weight = json["weight"].string ?? ""
-                    let description = json["description"].string ?? ""
-                    let brand = json["brand"].string ?? ""
-                    let calories = json["calories"].string ?? ""
-                    let proteins = json["proteins"].string ?? ""
-                    let zhiry = json["zhiry"].string ?? ""
-                    let uglevody = json["uglevody"].string ?? ""
-                    let price = json["price"].string ?? ""
-                    let favorite = json["favorite"].string ?? ""
-                    let status = json["status"].string ?? ""
-                    let expire_date = json["expire_date"].string ?? ""
-                    var units = json["units"].string ?? ""
+                    let id = String(describing: json["id"])
+                    let created_at = String(describing:json["created_at"])
+                    let icon = String(describing:json["icon"])
+                    let name = String(describing:json["name"])
+                    let category_id = String(describing:json["category_id"])
+                    let weight = String(describing:json["weight"])
+                    let description = String(describing:json["description"])
+                    let brand = String(describing:json["brand"])
+                    let calories = String(describing:json["calories"])
+                    let proteins = String(describing:json["proteins"])
+                    let zhiry = String(describing:json["zhiry"])
+                    let uglevody = String(describing:json["uglevody"])
+                    let price = String(describing:json["price"])
+                    let favorite = String(describing:json["favorite"])
+                    let status = String(describing:json["status"])
+                    let expire_date = String(describing:json["expire_date"])
+                    var units = String(describing:json["units"])
                     if units == "kg" {
                         units = "кг."
                     }
                     if units == "liter" {
                         units = "л."
                     }
-                    let category_name = json["category_name"].stringValue
-                    let price_sale = json["price_sale"].stringValue
+                    let category_name = String(describing:json["category_name"])
+                    let price_sale = String(describing:json["price_sale"])
                     var image: Data? = nil
                     if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
                         image = imageData
@@ -206,16 +206,16 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
 //            UserRequest.getAllCategories(param2 as [String : AnyObject], completion: { json in
 //                json.forEach { _, json in
 //                    print ("🔴")
-//                    let id = json["id"].string ?? ""
-//                    let created_at = json["created_at"].string ?? ""
-//                    let icon = json["icon"].string ?? ""
-//                    let name = json["name"].string ?? ""
-//                    let units = json["units"].string ?? ""
+//                    let id = json["id"].stringValue
+//                    let created_at = json["created_at"].stringValue
+//                    let icon = json["icon"].stringValue
+//                    let name = json["name"].stringValue
+//                    let units = json["units"].stringValue
 //                    //                /////////
 //                    //                let searchVC = qcg()
 //                    //                searchVC.unitOfWeightSearchVC = units
 //                    //                ////////
-//                    let category_id = json["category_id"].string ?? ""
+//                    let category_id = json["category_id"].stringValue
 //                    var image: Data? = nil
 //                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
 //                        image = imageData
