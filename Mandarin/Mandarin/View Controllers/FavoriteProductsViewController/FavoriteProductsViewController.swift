@@ -50,7 +50,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         guard  User.isAuthorized() else {
             self.spiner.stopAnimating()
             label = UILabel(frame: CGRect(x: 0, y: 0, width: 240, height: 100))
-            label?.text = "Только зарегистрированный пользователь может добавлять в избранные."
+            label?.text = "Только зарегистрированный пользователь может добавлять в избранные"
             label?.lineBreakMode = .byWordWrapping
             label?.numberOfLines = 0
             label?.center = CGPoint(x: CGFloat(view.frame.size.width / 2), y: CGFloat(150))
@@ -140,7 +140,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
                 let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "1", image: image)
             }
             
-            UIAlertController.alert("Товар добавлен в пакет.".ls).show()
+            UIAlertController.alert("Товар добавлен в пакет".ls).show()
             self?.basketHandler?()
         }
         

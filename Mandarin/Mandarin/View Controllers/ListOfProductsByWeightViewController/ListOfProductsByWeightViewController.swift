@@ -147,7 +147,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 self?.updateProductInfo()
             })
             
-            UIAlertController.alert("Товар добавлен в пакет.".ls).show()
+            UIAlertController.alert("Товар добавлен в пакет".ls).show()
             self?.basketHandler?()
             
         }
@@ -240,7 +240,7 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
         productsList = products.filter { self.idPodcategory == $0.category_id && self.weightOfWeightVC == $0.weight }
         if productsList.isEmpty == true {
             self.spiner.stopAnimating()
-            let alertController = UIAlertController(title: "У этого раздела нет товара", message: "", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "В этом разделе нет товара", message: "", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "Ок", style: .default) { action in
                 self.backClick(nil)
             }

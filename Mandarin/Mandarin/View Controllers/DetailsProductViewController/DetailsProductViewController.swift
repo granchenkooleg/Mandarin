@@ -184,7 +184,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             
             UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
                 if success == true {
-                    UIAlertController.alert("Товар добавлен в \"Любимые\"!".ls).show()
+                    UIAlertController.alert("Товар добавлен в \"Любимые\"".ls).show()
                 }
                 //sender.loading = false
             })
@@ -203,7 +203,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             
             UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
                 if success == true {
-                    UIAlertController.alert("Товар удален из любимых!".ls).show()
+                    UIAlertController.alert("Товар удален из любимых".ls).show()
                 }
                 //sender.loading = false
             })
@@ -265,7 +265,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         //        User.currentUser?.products.append(products)
         
         
-        UIAlertController.alert("Товар добавлен в пакет.".ls).show()
+        UIAlertController.alert("Товар добавлен в пакет".ls).show()
         updateProduct()
         updateProductInfo()
         
