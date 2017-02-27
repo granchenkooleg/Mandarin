@@ -191,9 +191,9 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
                     let category_name = String(describing:json["category_name"])
                     let price_sale = String(describing:json["price_sale"])
                     var image: Data? = nil
-                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-                        image = imageData
-                    }
+//                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+//                        image = imageData
+//                    }
                     Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
                 }
                 completion()
