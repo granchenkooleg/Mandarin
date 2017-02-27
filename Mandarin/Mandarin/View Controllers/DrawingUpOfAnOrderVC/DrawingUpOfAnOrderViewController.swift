@@ -84,7 +84,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         
         guard let nameUser = nameUserTextField.text, nameUser.isEmpty == false else {
             
-            let alertController = UIAlertController.alert("Введите вашe имя!".ls)
+            let alertController = UIAlertController.alert("Введите Вашe имя".ls)
             
             let OKAction = UIAlertAction(title: "OK", style: .default)
             
@@ -97,7 +97,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         
         guard let phone = phoneTextField.text, phone.isEmpty == false else {
             
-            let alertController = UIAlertController.alert("Введите ваш номер телефона!".ls)
+            let alertController = UIAlertController.alert("Введите Ваш номер телефона".ls)
             
             let OKAction = UIAlertAction(title: "OK", style: .default)
             
@@ -110,7 +110,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         
         guard let city = cityTextField.text, city.isEmpty == false else {
             
-            let alertController = UIAlertController.alert("Введите название вашего города!".ls)
+            let alertController = UIAlertController.alert("Введите название Вашего города".ls)
             
             let OKAction = UIAlertAction(title: "OK", style: .default)
             
@@ -125,7 +125,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         
         guard let street = streetTextField.text, street.isEmpty == false else {
             
-            let alertController = UIAlertController.alert("Введите название вашей улицы!".ls)
+            let alertController = UIAlertController.alert("Введите название Вашей улицы".ls)
             
             let OKAction = UIAlertAction(title: "OK", style: .default)
             
@@ -138,7 +138,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         
         guard let numberHouse = numberHouseTextField.text, numberHouse.isEmpty == false else {
             
-            let alertController = UIAlertController.alert("Введите  номер вашего дома!".ls)
+            let alertController = UIAlertController.alert("Введите  номер Вашего дома".ls)
             
             let OKAction = UIAlertAction(title: "OK", style: .default)
             
@@ -149,37 +149,12 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
             return
         }
         
-        guard let porch = porchTextField.text, porch.isEmpty == false else {
-            
-            let alertController = UIAlertController.alert("Введите номер вашего подъезда!".ls)
-            
-            let OKAction = UIAlertAction(title: "OK", style: .default)
-            
-            alertController.addAction(OKAction)
-            self.present(alertController, animated: true, completion:nil)
-            
-            //sender.loading = false
-            return
-        }
-        
-        guard let apartment = numberApartmentTextField.text, apartment.isEmpty == false else {
-            
-            let alertController = UIAlertController.alert("Введите номер вашей квартиры!".ls)
-            
-            let OKAction = UIAlertAction(title: "OK", style: .default)
-            
-            alertController.addAction(OKAction)
-            self.present(alertController, animated: true, completion:nil)
-            
-            //sender.loading = false
-            return
-        }
-        
-        
+        let porch = porchTextField.text
+        let apartment = numberApartmentTextField.text
         let floor = floorTextField.text
         let commit = commitOfUserTextView.text
         
-        let _ = InfoAboutUserForOrder.setupAllUserInfo(/*idOrder: idOrder ,*/ name: nameUser, phone: phone, city: city, region: region ?? "", street: street, house: numberHouse, porch: porch , apartment: apartment , floor: floor ?? "", commit: commit ?? "")
+        let _ = InfoAboutUserForOrder.setupAllUserInfo(/*idOrder: idOrder ,*/ name: nameUser, phone: phone, city: city, region: region ?? "", street: street, house: numberHouse, porch: porch ?? "", apartment: apartment ?? "" , floor: floor ?? "", commit: commit ?? "")
         
         //MARK: Sender to PaymentVC
 

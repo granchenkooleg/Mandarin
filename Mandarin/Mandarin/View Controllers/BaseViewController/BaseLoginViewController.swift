@@ -252,7 +252,7 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
         sender.loading = true
         guard let email = emailTextField.text, let password = passwordTextField.text,
             email.isValidEmail == true || email.isEmpty == false && password.isEmpty == false else {
-                UIAlertController.alert("Неверно введенный email или пароль!".ls).show()
+                UIAlertController.alert("Неверно введенный email или пароль".ls).show()
                 sender.loading = false
                 return
         }
@@ -322,21 +322,21 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
         sender.loading = true
         
         guard let firstName = firstNameTextField.text, firstName.isEmpty == false else {
-            UIAlertController.alert("Введите ваше имя!".ls).show()
+            UIAlertController.alert("Введите ваше имя".ls).show()
             self.firstNameTextField.text = ""
             sender.loading = false
             return
         }
         
         guard let phone = phoneTextField.text?.clearPhoneNumber(), phone.isEmpty == false else {
-            UIAlertController.alert("Введите ваш номер телефона!".ls).show()
+            UIAlertController.alert("Введите ваш номер телефона".ls).show()
             self.phoneTextField.text = ""
             sender.loading = false
             return
         }
         
         guard let email = emailTextField.text, email.isValidEmail == true  else {
-            UIAlertController.alert("Неправильно введен адрес электронной почты!".ls).show()
+            UIAlertController.alert("Неправильно введен адрес электронной почты".ls).show()
             self.emailTextField.text = ""
             sender.loading = false
             return
@@ -345,7 +345,7 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
         guard let password = passwordTextField.text,
             let repeatPassword = repeatPasswordTextField.text,
             password.isEmpty == false && repeatPassword.isEmpty == false && password == repeatPassword else {
-                UIAlertController.alert("Пароли не совпадают!".ls).show()
+                UIAlertController.alert("Пароли не совпадают".ls).show()
                 self.passwordTextField.text = ""
                 self.repeatPasswordTextField.text = ""
                 sender.loading = false
@@ -381,7 +381,7 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
             if success == true {
                 self?.chooseNextContoller()
             } else {
-                UIAlertController.alert("Такие данные уже используются!".ls).show()
+                UIAlertController.alert("Такие данные уже используются".ls).show()
                  self?.firstNameTextField.text = ""
                  self?.phoneTextField.text = ""
                  self?.emailTextField.text = ""
@@ -416,7 +416,7 @@ class RecoveryPasswordViewController: BaseLoginViewController {
         
         sender.loading = true
         guard let emailOrPhone = emailOrPhoneTextField.text, emailOrPhone.isEmpty == false else {
-            UIAlertController.alert("Введите ваш email или номер телефона!".ls).show()
+            UIAlertController.alert("Введите ваш email или номер телефона".ls).show()
             sender.loading = false
             return
         }
@@ -429,7 +429,16 @@ class RecoveryPasswordViewController: BaseLoginViewController {
             if success == true {
                 //self?.chooseNextContoller()
                 UINavigationController.main.pushViewController(Storyboard.Login.instantiate(), animated: false)
-                UIAlertController.alert("Новый пароль выслан на ваш email.".ls).show()
+                if let _ = Int(emailOrPhone)
+                {
+                    UIAlertController.alert("Новый пароль выслан на Ваш номер телефона".ls).show()
+
+                }
+                else
+                {
+                    UIAlertController.alert("Новый пароль выслан на Ваш email".ls).show()
+
+                }
                 
             }
             sender.loading = false
