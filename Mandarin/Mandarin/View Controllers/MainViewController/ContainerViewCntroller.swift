@@ -156,6 +156,8 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     var inactiveQueue: DispatchQueue!
     func requestForUpdateDB(_ completion: @escaping Block)  {
         
+        Product.setConfig()
+        
         let anotherQueue = DispatchQueue(label: "com.appcoda.anotherQueue", qos: .userInitiated, attributes: [.concurrent, .initiallyInactive])
         inactiveQueue = anotherQueue
         

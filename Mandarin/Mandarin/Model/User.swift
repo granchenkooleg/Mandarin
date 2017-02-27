@@ -31,16 +31,10 @@ class User: Object {
     
     deinit {
     }
-    
-    static func setConfig() {
-        let realm = try! Realm()
-        if let url = realm.configuration.fileURL {
-            print("FileURL of DataBase - \(url)")
-        }
-    }
+
     
     class func setupUser(id: String = "", firstName: String = "", lastName: String = "", email: String = "", phone: String = "") {
-        self.setConfig()
+        
         let userData: Dictionary = [
             "idUser" :          id,
             "firstName" :   firstName,

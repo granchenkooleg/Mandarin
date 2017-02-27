@@ -61,6 +61,13 @@ class Product : Object {
         return "id"
     }
     
+    static func setConfig() {
+        let realm = try! Realm()
+        if let url = realm.configuration.fileURL {
+            Logger.log("FileURL of DataBase - \(url)", color: .Orange)
+        }
+    }
+    
     @discardableResult class func setupProduct( id: String = "",
                                                 description_: String = "",
                                                 proteins: String = "",
