@@ -256,6 +256,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         LoginManager().logOut()
         VKSdk.forceLogout()
         User.deleteUser()
+        InfoAboutUserForOrder.deleteUserInfo()
         let signInViewController = Storyboard.Login.instantiate()
         UINavigationController.main.dismiss(animated: true, completion: nil)
         UINavigationController.main.pushViewController(signInViewController, animated: false)
@@ -292,7 +293,8 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
                 cell.thubnailImageView?.image = UIImage(named: "ic_main")
                 cell.nameLabel?.text = "Главная"
             } else {
-                cell.thubnailImageView?.image = UIImage(data: category.image ?? Data())
+//                cell.thubnailImageView?.image = UIImage(data: category.image ?? Data())
+                cell.thubnailImageView?.sd_setImage(with: URL(string: (category.icon)))
                 cell.nameLabel?.text = category.name
             }
         }

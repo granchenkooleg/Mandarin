@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, UITableViewDelegate {
     
@@ -102,7 +103,8 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         
         let category = categoryContainer[indexPath.row]
         Dispatch.mainQueue.async { _ in
-            cell.thubnailImageView?.image = UIImage(data: category.image ?? Data())
+            //cell.thubnailImageView?.image = UIImage(data: category.image ?? Data())
+            cell.thubnailImageView?.sd_setImage(with: URL(string: (category.icon)))
             cell.nameLabel?.text = category.name
         }
         

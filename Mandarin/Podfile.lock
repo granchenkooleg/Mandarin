@@ -65,6 +65,9 @@ PODS:
   - Realm/Headers (2.1.0)
   - RealmSwift (2.1.0):
     - Realm (= 2.1.0)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SnapKit (3.0.2)
   - SwiftyJSON (3.1.3)
   - VK-ios-sdk (1.4.4)
@@ -75,6 +78,7 @@ DEPENDENCIES:
   - FacebookLogin
   - Google/SignIn
   - RealmSwift
+  - SDWebImage
   - SnapKit
   - SwiftyJSON
   - VK-ios-sdk
@@ -99,10 +103,11 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
   Realm: bc829ad0ef3d4eea70c34cfcc3b1704d18d50df1
   RealmSwift: a4d4abbf0088c337cab5b738054395842e4b3052
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   VK-ios-sdk: 296c3be1bb45faf4d9f9a2ca69dcf6ec71d9d4df
 
-PODFILE CHECKSUM: b3a96842e35c4358cf28fc7a038ce061e1f22a4f
+PODFILE CHECKSUM: ad7d7ac93cacb85ca77638d8ce3f89d91eb8f370
 
 COCOAPODS: 1.2.0.beta.1

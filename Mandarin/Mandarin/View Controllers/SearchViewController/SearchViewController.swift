@@ -93,9 +93,9 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
                 var image: Data? = nil
-                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-                    image = imageData
-                }
+//                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+//                    image = imageData
+//                }
                 Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
             }
             completion()
@@ -140,12 +140,13 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
                 let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description_ , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "\(self.quantity)", image: image)
             }
             
-            UIAlertController.alert("Товар добавлен в пакет.".ls).show()
+            UIAlertController.alert("Товар добавлен в пакет".ls).show()
             self.updateProductInfo()
         }
         
         Dispatch.mainQueue.async { _ in
-            cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
+            //cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
+            cell.thubnailImageView?.sd_setImage(with: URL(string: (productDetails.icon)))
         }
         
         cell.nameLabel?.text = productDetails.name

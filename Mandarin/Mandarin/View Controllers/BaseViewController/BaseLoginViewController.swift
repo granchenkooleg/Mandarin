@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 import FacebookCore
 import FacebookLogin
-//import SwiftValidator
+import RealmSwift
 
 class BaseLoginViewController: BaseViewController, UITextFieldDelegate {
     
@@ -389,8 +389,13 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
                  self?.repeatPasswordTextField.text = ""
                  self?.birthdayTextField.text = ""
             }
+            
+            InfoAboutUserForOrder.setupAllUserInfo(name: "\(firstName)", phone: "\(phone)", city: "Одесса")
+            
             sender.loading = false
         })
+        
+        
         
         //    func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
         //        return adjustment.defaultConstant + 145.0

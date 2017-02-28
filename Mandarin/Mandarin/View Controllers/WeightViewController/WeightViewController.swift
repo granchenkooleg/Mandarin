@@ -17,8 +17,9 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
     var unitOfWeight: String = ""
     var nameWeightHeaderText: String = ""
     var podCategory_id: String = ""
-    var contentWeightProduct = Set<String>()
-    var contentWeightProductWithoutDuplicates = [String]()//Set<String>()
+//    var contentWeightProduct = Set<String>()
+    var contentWeightProduct = [String]()
+//    var contentWeightProductWithoutDuplicates = [String]()//Set<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +50,9 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
             json.forEach { _, json in
                 let weight = json["weight"].string ?? ""
                 // Sort weight
-                self?.contentWeightProduct.insert(weight)
-                self?.contentWeightProductWithoutDuplicates = (self?.contentWeightProduct.sorted {$0 < $1} ?? [])
+//                self?.contentWeightProduct.insert(weight)
+                self?.contentWeightProduct.append(weight)
+                //self?.contentWeightProductWithoutDuplicates = (self?.contentWeightProduct.sorted {$0 < $1} ?? [])
             }
             self?.collectionView.reloadData()
             self?.spiner.stopAnimating()
@@ -58,13 +60,13 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return contentWeightProductWithoutDuplicates.count
+        return /*contentWeightProductWithoutDuplicates*/contentWeightProduct.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weigthCell", for: indexPath)
             as? WeightCollectionViewCell else { return UICollectionViewCell() }
-        cell.weightUnitsLabelOne.text = "\(contentWeightProductWithoutDuplicates[indexPath.row]) " + self.unitOfWeight
+        cell.weightUnitsLabelOne.text = "\(/*contentWeightProductWithoutDuplicates*/contentWeightProduct[indexPath.row]) " + self.unitOfWeight
         
         //output icon: liter or kg
         if (self.unitOfWeight == "liter") {
@@ -85,7 +87,7 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         let listOfProductsByWeightViewController = Storyboard.ListOfWeightProducts.instantiate()
         listOfProductsByWeightViewController.nameListsOfProductsHeaderText = nameWeightHeaderText
         //for compare in ListsOfProductVC
-        listOfProductsByWeightViewController.weightOfWeightVC = contentWeightProductWithoutDuplicates[indexPath.row]
+        listOfProductsByWeightViewController.weightOfWeightVC = /*contentWeightProductWithoutDuplicates*/contentWeightProduct[indexPath.row]
         listOfProductsByWeightViewController.idPodcategory = podCategory_id
         listOfProductsByWeightViewController.unitOfWeightForListOfProductsByWeightVC = self.unitOfWeight
         

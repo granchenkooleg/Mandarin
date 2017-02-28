@@ -15,6 +15,7 @@ target 'Mandarin' do
   pod 'FacebookLogin'
   pod 'Google/SignIn'
   pod 'VK-ios-sdk'
+  pod 'SDWebImage'
 
   post_install do |installer|
   installer.pods_project.targets.each do |target|

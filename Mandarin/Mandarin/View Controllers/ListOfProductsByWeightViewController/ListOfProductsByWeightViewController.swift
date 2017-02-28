@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SDWebImage
 
 class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -153,7 +154,8 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         }
         
         Dispatch.mainQueue.async { _ in
-            cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
+//            cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
+            cell.thubnailImageView?.sd_setImage(with: URL(string: (productDetails.icon)))
         }
         
         cell.nameLabel?.text = productDetails.name

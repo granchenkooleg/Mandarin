@@ -60,6 +60,15 @@ class CheckViewController: BasketViewController {
     }
     
     
+        @IBAction func menuClickAndClearDatabase(_ sender: AnyObject) {
+    
+            ProductsForRealm.deleteAllProducts()
+            //updateProductInfo()
+    
+            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+            containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
+        }
+    
     // MARK: Sender to BasketVC
     @IBAction func showGoodsButton(_ sender: UIButton) {
         //guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
