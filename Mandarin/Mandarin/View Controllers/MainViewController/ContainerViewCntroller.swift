@@ -43,6 +43,15 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
             self?.showMenu(false, animated: false)
         }
         
+        // Check Internet connection
+        if connectedToNetwork() == true {
+            print("Internet connection OK")
+        } else {
+            print("Internet connection FAILED")
+            let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+            alert.show()
+        }
+        
          addHolderView()
         
         self.view.backgroundColor = UIColor.black

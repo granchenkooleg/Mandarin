@@ -64,6 +64,7 @@
 		7C46E96D1E4137CD0053CFFF /* mandarin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C46E96C1E4137CD0053CFFF /* mandarin.ttf */; };
 		7C6A7D7A1E5CD24D00C562C0 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A7D791E5CD24D00C562C0 /* ProgressHUD.swift */; };
 		7C7157841E21856900C1DCAC /* InfoAboutUserForOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */; };
+		7C887A821E66429500D0F008 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C887A811E66429500D0F008 /* Reachability.swift */; };
 		7CF13C9D1E60F6350098DB9B /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF13C9C1E60F6350098DB9B /* HolderView.swift */; };
 		7CF13CA01E60F73A0098DB9B /* OvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF13C9F1E60F73A0098DB9B /* OvalLayer.swift */; };
 		ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */; };
@@ -135,6 +136,7 @@
 		7C46E96C1E4137CD0053CFFF /* mandarin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandarin.ttf; sourceTree = "<group>"; };
 		7C6A7D791E5CD24D00C562C0 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoAboutUserForOrder.swift; sourceTree = "<group>"; };
+		7C887A811E66429500D0F008 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		7CF13C9C1E60F6350098DB9B /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
 		7CF13C9F1E60F73A0098DB9B /* OvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvalLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -308,6 +310,7 @@
 				56C682FA1DEB78520001790B /* Mandarin.entitlements */,
 				7C0949621DE222250038018F /* AppDelegate.swift */,
 				5621B58E1DE2E07600C3B612 /* Constants.swift */,
+				7C887A811E66429500D0F008 /* Reachability.swift */,
 				5621B57F1DE2DEF500C3B612 /* View */,
 				5621B57D1DE2DEDB00C3B612 /* Model */,
 				7C0949751DE2368E0038018F /* View Controllers */,
@@ -555,6 +558,7 @@
 				563474371DEDC3E9004ECDC4 /* Feeds.swift in Sources */,
 				7C0127061E34F7A300BF5046 /* DetailsProductViewController.swift in Sources */,
 				7C01270C1E34F83F00BF5046 /* DrawingUpOfAnOrderViewController.swift in Sources */,
+				7C887A821E66429500D0F008 /* Reachability.swift in Sources */,
 				5621B58D1DE2DFF700C3B612 /* Notifier.swift in Sources */,
 				5621B5851DE2DF8700C3B612 /* Storyboard+Ext.swift in Sources */,
 				7C0127121E34F90200BF5046 /* SearchViewController.swift in Sources */,
