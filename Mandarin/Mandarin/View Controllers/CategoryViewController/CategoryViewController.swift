@@ -25,32 +25,55 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        NotificationCenter.default.addObserver(self, selector: #selector(CategoryViewControllerSegment.methodOfReceivedNotification(notification:)), name: Notification.Name("NotificationIdentifier"), object: nil)
+        
         tableView?.separatorStyle = .none
-//        spiner.hidesWhenStopped = true
-//        spiner.activityIndicatorViewStyle = .gray
-//        _ = view.add(spiner)
-//        spiner.center.x = view.center.x
-//        spiner.center.y = view.center.y - 150
-//        spiner.startAnimating()
+        //        spiner.hidesWhenStopped = true
+        //        spiner.activityIndicatorViewStyle = .gray
+        //        _ = view.add(spiner)
+        //        spiner.center.x = view.center.x
+        //        spiner.center.y = view.center.y - 150
+        //        spiner.startAnimating()
         
         headerLabel?.text = nameHeaderText
-//        let favoriteProducts = Category().allCategories()
-//        guard favoriteProducts.count != 0 else {
+        //        let favoriteProducts = Category().allCategories()
+        //        guard favoriteProducts.count != 0 else {
+        
+        // Check Internet connection
+//        if connectedToNetwork() == true {
+//            print("Internet connection OK")
+        
             _getAllCategory { [weak self] _ in
                 self?.categoryContainer = Category().allCategories()
-//                self?.spiner.stopAnimating()
+                //                self?.spiner.stopAnimating()
                 self?.tableView?.reloadData()
             }
+            if let queue = inactiveQueue {
+                queue.activate()
+            }
+            
+//        } else {
+//            print("Internet connection FAILED")
+//            return }
+        
+        
+        //            return
+        //        }
+        //        categoryContainer = favoriteProducts
+        
+        //!!        spiner.stopAnimating()
+        tableView?.reloadData()
+    }
+    
+    func methodOfReceivedNotification(notification: Notification){
+        _getAllCategory { [weak self] _ in
+            self?.categoryContainer = Category().allCategories()
+            //                self?.spiner.stopAnimating()
+            self?.tableView?.reloadData()
+        }
         if let queue = inactiveQueue {
             queue.activate()
         }
-            
-//            return
-//        }
-//        categoryContainer = favoriteProducts
-        
-//!!        spiner.stopAnimating()
-        tableView?.reloadData()
     }
     
     // MARK: Request for update DB
@@ -60,29 +83,29 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         inactiveQueue = anotherQueue
         
         anotherQueue.async(execute: { [weak self] in
-        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-        UserRequest.getAllCategories(param as [String : AnyObject], completion: { json in
-            json.forEach { _, json in
-                print ("CatVC🔴")
-                let id = String(describing:json["id"])
-                let created_at = String(describing:json["created_at"])
-                let icon = String(describing:json["icon"])
-                let name = String(describing:json["name"])
-                let units = String(describing:json["units"])
-//                /////////
-//                let searchVC = SearchViewController()
-//                searchVC.unitOfWeightSearchVC = units
-//                ////////
-                let category_id = String(describing:json["category_id"])
-                var image: Data? = nil
-//                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-//                    image = imageData
+            let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+            UserRequest.getAllCategories(param as [String : AnyObject], completion: { json in
+                json.forEach { _, json in
+                    print ("CatVC🔴")
+                    let id = String(describing:json["id"])
+                    let created_at = String(describing:json["created_at"])
+                    let icon = String(describing:json["icon"])
+                    let name = String(describing:json["name"])
+                    let units = String(describing:json["units"])
+                    //                /////////
+                    //                let searchVC = SearchViewController()
+                    //                searchVC.unitOfWeightSearchVC = units
+                    //                ////////
+                    let category_id = String(describing:json["category_id"])
+                    let image: Data? = nil
+                    //                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+                    //                    image = imageData
                     Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
-//                }
-            }
-            completion()
+                    //                }
+                }
+                completion()
+            })
         })
-     })   
     }
     
     
@@ -113,36 +136,53 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     
     //MARK: Segue
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        getWeigth(indexPath: indexPath)
-        //        toSearchVC(indexPath: indexPath)
+        
+        // Check if category is null follow WeightVC
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+        UserRequest.getAllProductsCategory(categoryID: categoryContainer[indexPath.row].id , entryParams: param as [String : AnyObject], completion: {[weak self] json in
+            if  json.isEmpty {
+                
+                guard let weightViewController = UIStoryboard.main["weight"] as? WeightViewController else { return }
+                weightViewController.unitOfWeight = (self?.categoryContainer[indexPath.row].units) ?? ""
+                weightViewController.nameWeightHeaderText = (self?.categoryContainer[indexPath.row].name) ?? ""
+                weightViewController.podCategory_id = (self?.categoryContainer[indexPath.row].id) ?? ""
+                weightViewController.addToContainer()
+                
+            } else {
+                // follow PodCategoryVC
+                self?.getWeigth(indexPath: indexPath)
+            }
+        })
     }
     
     func getWeigth(indexPath: IndexPath) {
         let categoryViewController = Storyboard.Category.instantiate()
+        categoryViewController.unitsForWeightVC = categoryContainer[indexPath.row].units
         categoryViewController.categoryId = categoryContainer[indexPath.row].id
         categoryViewController.nameHeaderText = categoryContainer[indexPath.row].name
         categoryViewController.addToContainer()
     }
     
-//    @IBAction func moveToSearch(sender: UIButton) {
-//        
-//        // Transfer units
-//        let searchVC = SearchViewController()
-//        
-//        for i in categoryContainer {
-//            searchVC.unitOfWeightSearchVC = ("\(i.units)<")
-//            
-//            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-//            guard let searchVC = UIStoryboard.main["search"] as? SearchViewController else { return }
-//            searchVC.unitOfWeightSearchVC = ("\(i.units)<")
-//            containerViewController.addController(searchVC)
-//        }
-//    }
+    //    @IBAction func moveToSearch(sender: UIButton) {
+    //
+    //        // Transfer units
+    //        let searchVC = SearchViewController()
+    //
+    //        for i in categoryContainer {
+    //            searchVC.unitOfWeightSearchVC = ("\(i.units)<")
+    //
+    //            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+    //            guard let searchVC = UIStoryboard.main["search"] as? SearchViewController else { return }
+    //            searchVC.unitOfWeightSearchVC = ("\(i.units)<")
+    //            containerViewController.addController(searchVC)
+    //        }
+    //    }
     
 }
 
 class CategoryViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var unitsForWeightVC: String?
     var nameHeaderText: String?
     var categoryId: String?
     @IBOutlet weak var headerLabel: UILabel?
@@ -150,8 +190,11 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
     //var spiner = UIActivityIndicatorView()
     internal var categories = [CategoryStruct]()
     internal var categoriesList = [CategoryStruct]()
+    // If podcategoty is nul
+    internal var categoryContainer2 = [Category]()
     
     override func viewDidLoad() {
+        self.categoryContainer2 = Category().allCategories()
         tableView?.separatorStyle = .none
         headerLabel?.text = nameHeaderText
         spiner.hidesWhenStopped = true
@@ -160,7 +203,7 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
         spiner.center.x = view.center.x
         spiner.center.y = view.center.y - 170
         spiner.startAnimating()
-        Dispatch.backgroundQueue.after(0.03, block: { [weak self] in
+        Dispatch.backgroundQueue.after(0.0, block: { [weak self] in
             self?.getAllCategory2({})
         })
     }
@@ -170,21 +213,22 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
         guard let categoryId = categoryId else { return }
         UserRequest.getAllProductsCategory(categoryID: categoryId, entryParams: param as [String : AnyObject], completion: {[weak self] json in
             if  json.isEmpty {
-                //It's null
-                let alertController = UIAlertController(title: "В этом разделе нет товара", message: "", preferredStyle: .alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default) { action in
-
-                    self?.backClick(nil)
-
-//                    self?.dismiss(animated: true, completion: nil)
-//                    UINavigationController.main.popViewController(animated: true)
-
-                }
-                alertController.addAction(OKAction)
-                self?.present(alertController, animated: true)
-                //self.dismiss(animated: true, completion: nil)
-                self?.spiner.stopAnimating()
-                return
+                
+                
+                //                //It's null
+                //                let alertController = UIAlertController(title: "В этом разделе нет товара", message: "", preferredStyle: .alert)
+                //                let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+                //
+                //                    self?.backClick(nil)
+                //
+                //
+                //
+                //                }
+                //                alertController.addAction(OKAction)
+                //                self?.present(alertController, animated: true)
+                //
+                //                self?.spiner.stopAnimating()
+                //                return
             }
             
             guard let weakSelf = self else {
@@ -211,7 +255,7 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
             weakSelf.categoriesList = weakSelf.categories
             weakSelf.tableView?.reloadData()
             self?.spiner.stopAnimating()
-            })
+        })
     }
     
     //segue

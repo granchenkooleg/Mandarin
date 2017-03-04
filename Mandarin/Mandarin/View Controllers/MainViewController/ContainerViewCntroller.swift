@@ -33,10 +33,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestForUpdateDB({})
-        if let queue = inactiveQueue {
-            queue.activate()
-        }
+        
         navigation.isNavigationBarHidden = true
         pushViewController(mainViewController, animated: false)
         menuContainerView.completion = { [weak self] in
@@ -44,18 +41,39 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         }
         
         // Check Internet connection
-        if connectedToNetwork() == true {
-            print("Internet connection OK")
-        } else {
-            print("Internet connection FAILED")
-            let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
-            alert.show()
-        }
+//        if connectedToNetwork() == true {
+//            print("Internet connection OK")
+//            
+            requestForUpdateDB({})
+            if let queue = inactiveQueue {
+                queue.activate()
+            }
+//
+//        } else {
+//            print("Internet connection FAILED")
+//            let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+//            let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+//                guard connectedToNetwork() == true else {
+//                     self.present(alert, animated: true)
+//                    return}
+//                self.requestForUpdateDB({})
+//                if let queue = self.inactiveQueue {
+//                    queue.activate()
+//                }
+//                
+//               
+//               // NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
+//
+//            }
+//            alert.addAction(OkAction)
+//            alert.show()
+//        }
         
          addHolderView()
         
         self.view.backgroundColor = UIColor.black
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -327,13 +345,35 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
             return
         }
         
+        // Check if category is null follow WeightVC
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+        UserRequest.getAllProductsCategory(categoryID: categoryContainer[indexPath.row].id , entryParams: param as [String : AnyObject], completion: {[weak self] json in
+            if  json.isEmpty {
+                
+                let weightViewController = Storyboard.Weight.instantiate()
+                weightViewController.unitOfWeight = (self?.categoryContainer[indexPath.row].units) ?? ""
+                weightViewController.nameWeightHeaderText = (self?.categoryContainer[indexPath.row].name) ?? ""
+                weightViewController.podCategory_id = (self?.categoryContainer[indexPath.row].id) ?? ""
+                guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+                weightViewController.addToContainer()
+                containerViewController.showMenu(false, animated: false)
+                
+            } else {
+                // Follow PodCategoryVC
+                self?.getPodCategoty(indexPath: indexPath)
+            }
+        })
+    }
+    
+        func getPodCategoty(indexPath: IndexPath) {
         let categoryViewController = Storyboard.Category.instantiate()
         categoryViewController.categoryId = categoryContainer[indexPath.row].id
         categoryViewController.nameHeaderText = categoryContainer[indexPath.row].name
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         categoryViewController.addToContainer()
-        containerViewController.showMenu(false, animated: true)
+        containerViewController.showMenu(false, animated: false)
     }
+ 
     
 }
 

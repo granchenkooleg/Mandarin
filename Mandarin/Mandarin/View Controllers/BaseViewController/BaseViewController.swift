@@ -10,6 +10,7 @@
 import UIKit
 import Foundation
 import RealmSwift
+import Alamofire
 
 struct KeyboardAdjustment {
     let isBottom: Bool
@@ -32,7 +33,7 @@ func performWhenLoaded<T: BaseViewController>(_ controller: T, block: @escaping 
 
 class BaseViewController: UIViewController, KeyboardNotifying {
     
-   // var it contains Realm data my table ProductsForRealm
+    // var it contains Realm data my table ProductsForRealm
     var productsInBasket: Results<ProductsForRealm>!
     
     var spiner = UIActivityIndicatorView()
@@ -70,6 +71,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     override func loadView() {
         super.loadView()
+        
         if shouldUsePreferredViewFrame() {
             view.frame = preferredViewFrame
         }
@@ -77,6 +79,25 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        listenForReachability()
+        
+//        // Check Internet connection
+//        guard isNetworkReachable() == true else {
+//            print("Internet connection FAILED")
+//            let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+//            let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+//                guard isNetworkReachable() == true else {
+//                    self.present(alert, animated: true)
+//                    return}
+//                
+//                // NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
+//            }
+//            alert.addAction(OkAction)
+//            alert.show()
+//            return
+//        }
+//        print("Internet connection OK")
+        
         if shouldUsePreferredViewFrame() {
             view.forceLayout()
         }
@@ -110,6 +131,23 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+//        // Check Internet connection
+//        guard isNetworkReachable() == true else {
+//            print("Internet connection FAILED")
+//            let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+//            let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+//                guard isNetworkReachable() == true else {
+//                    self.present(alert, animated: true)
+//                    return}
+//                
+//                // NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
+//            }
+//            alert.addAction(OkAction)
+//            alert.show()
+//            return
+//        }
+//        print("Internet connection OK")
         updateProductInfo()
     }
     
@@ -198,7 +236,7 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         }
         
         UINavigationController.main.popViewController(animated: true)
-    
+        
     }
     
     //MARK: Search
@@ -216,29 +254,29 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     //MARK: Basket
     @IBAction func basketClick(_ sender: UIButton) {
         self.dismiss(animated: false, completion: nil)
-//        present(!, animated: true, completion: nil)
+        //        present(!, animated: true, completion: nil)
         let basketVC = UIStoryboard.main["basket"] as? BasketViewController
         basketVC?.addToContainer()
         
     }
     
-//    func updateProductInBasket () {
-//        let realm = try! Realm()
-//        let productsInBasket = realm.objects(ProductsForRealm.self)
-//        Dispatch.mainQueue.async {
-//             self.quantityCartLabel?.text = "\(productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 }))"
-//        }
-//    }
+    //    func updateProductInBasket () {
+    //        let realm = try! Realm()
+    //        let productsInBasket = realm.objects(ProductsForRealm.self)
+    //        Dispatch.mainQueue.async {
+    //             self.quantityCartLabel?.text = "\(productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 }))"
+    //        }
+    //    }
     
     // MARK: Basket Update and totalPrice in header
     func updateProductInfo() {
         let realm = try! Realm()
         productsInBasket = realm.objects(ProductsForRealm.self)
-        // We do check to display the data in the header 
+        // We do check to display the data in the header
         let x = productsInBasket.map { Int($0.quantity) ?? 0 }.reduce(0, { $0 + $1 })
         if x > 0 {
-        self.quantityCartLabel?.text = "\(productsInBasket.map { Int($0.quantity) ?? 0 }.reduce(0, { $0 + $1 }))"
-        totalPriceLabel?.text = (totalPriceInCart() + " грн.")
+            self.quantityCartLabel?.text = "\(productsInBasket.map { Int($0.quantity) ?? 0 }.reduce(0, { $0 + $1 }))"
+            totalPriceLabel?.text = (totalPriceInCart() + " грн.")
         } else {
             self.quantityCartLabel?.text = ""
             totalPriceLabel?.text = ""
@@ -251,24 +289,24 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         for product in  productsInBasket {
             // Make a choice prices for to display prices
             if Double(product.price_sale ?? "") ?? 0 > Double(0.00) {
-            totalPrice += (Float(product.price_sale ?? "") ?? 0.0) * (Float(product.quantity) ?? 0.0)
+                totalPrice += (Float(product.price_sale ?? "") ?? 0.0) * (Float(product.quantity) ?? 0.0)
             } else {
-            totalPrice += (Float(product.price ?? "") ?? 0.0) * (Float(product.quantity) ?? 0.0)
+                totalPrice += (Float(product.price ?? "") ?? 0.0) * (Float(product.quantity) ?? 0.0)
             }
         }
         
         return String(totalPrice)
     }
     
-
+    
     func addToContainer() {
         guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else {
             #if debug
                 UIAlertController(title: "Warrning!", message: "controller didn't add to container - \(viewController)", preferredStyle: .alert).show()
             #endif
             return }
-
+        
         containerViewController.pushViewController(self, animated: true)
     }
-   
+    
 }
