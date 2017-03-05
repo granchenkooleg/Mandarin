@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.0.1)
+  - AlamofireNetworkActivityIndicator (2.0.1):
+    - Alamofire (~> 4.0)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -74,6 +76,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.0.0)
+  - AlamofireNetworkActivityIndicator
   - FacebookCore
   - FacebookLogin
   - Google/SignIn
@@ -85,6 +88,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlamofireNetworkActivityIndicator: 3e55069ada3e1ff7703665156429eedcdfea0bc1
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
@@ -108,6 +112,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
   VK-ios-sdk: 296c3be1bb45faf4d9f9a2ca69dcf6ec71d9d4df
 
-PODFILE CHECKSUM: ad7d7ac93cacb85ca77638d8ce3f89d91eb8f370
+PODFILE CHECKSUM: ed8272ee95c21e2d62cedcff0447a7637bb158e8
 
 COCOAPODS: 1.2.0.beta.1

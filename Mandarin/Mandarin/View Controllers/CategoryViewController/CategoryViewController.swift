@@ -25,7 +25,8 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(CategoryViewControllerSegment.methodOfReceivedNotification(notification:)), name: Notification.Name("NotificationIdentifier"), object: nil)
+                // From ContainerVC if Internet connection
+                NotificationCenter.default.addObserver(self, selector: #selector(CategoryViewControllerSegment.methodOfReceivedNotification(notification:)), name: Notification.Name("NotificationIdentifier"), object: nil)
         
         tableView?.separatorStyle = .none
         //        spiner.hidesWhenStopped = true
@@ -40,31 +41,36 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         //        guard favoriteProducts.count != 0 else {
         
         // Check Internet connection
-//        if connectedToNetwork() == true {
-//            print("Internet connection OK")
-        
-            _getAllCategory { [weak self] _ in
-                self?.categoryContainer = Category().allCategories()
-                //                self?.spiner.stopAnimating()
-                self?.tableView?.reloadData()
+        guard isNetworkReachable() == true  else {
+//            let _categories = Category().allCategories()
+//            categoryContainer = _categories
+//            
+//            Dispatch.mainQueue.async {
+//                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+//                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+//                    
+//                }
+//                alert.addAction(OkAction)
+//                alert.show()
+//            }
+            return
             }
-            if let queue = inactiveQueue {
-                queue.activate()
-            }
-            
-//        } else {
-//            print("Internet connection FAILED")
-//            return }
         
         
-        //            return
-        //        }
-        //        categoryContainer = favoriteProducts
+        _getAllCategory { [weak self] _ in
+            self?.categoryContainer = Category().allCategories()
+            //                self?.spiner.stopAnimating()
+            self?.tableView?.reloadData()
+        }
+        if let queue = inactiveQueue {
+            queue.activate()
+        }
         
         //!!        spiner.stopAnimating()
         tableView?.reloadData()
     }
     
+   // NotificationCenter
     func methodOfReceivedNotification(notification: Notification){
         _getAllCategory { [weak self] _ in
             self?.categoryContainer = Category().allCategories()
@@ -136,6 +142,19 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     
     //MARK: Segue
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Check Internet connection
+        guard isNetworkReachable() == true  else {
+            Dispatch.mainQueue.async {
+                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+                    
+                }
+                alert.addAction(OkAction)
+                alert.show()
+            }
+            return
+        }
         
         // Check if category is null follow WeightVC
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
@@ -245,10 +264,10 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
                 
                 let units = json["units"].string ?? ""
                 
-                var image = Data()
-                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-                    image = imageData
-                }
+                let image = Data()
+//                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+//                    image = imageData
+//                }
                 let category = CategoryStruct(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
                 self?.categories.append(category)
             }
@@ -284,7 +303,7 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
         
         let category = categoriesList[indexPath.row]
         Dispatch.mainQueue.async { _ in
-            cell.thubnailImageView?.image = UIImage(data: category.image)
+            cell.thubnailImageView?.sd_setImage(with: URL(string: (category.icon)))
             cell.nameLabel?.text = category.name
         }
         

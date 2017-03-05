@@ -41,35 +41,38 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         }
         
         // Check Internet connection
-//        if connectedToNetwork() == true {
-//            print("Internet connection OK")
-//            
-            requestForUpdateDB({})
-            if let queue = inactiveQueue {
-                queue.activate()
+        guard isNetworkReachable() == true  else {
+            
+            Dispatch.mainQueue.async {
+                print("Internet connection FAILED")
+                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+                    guard isNetworkReachable() == true else {
+                        self.present(alert, animated: true)
+                        return }
+                    self.requestForUpdateDB({})
+                    if let queue = self.inactiveQueue {
+                        queue.activate()
+                    }
+                    // NotificationCenter to CategoryVC
+                    NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
+                    
+                }
+                alert.addAction(OkAction)
+                alert.show()
             }
-//
-//        } else {
-//            print("Internet connection FAILED")
-//            let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
-//            let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
-//                guard connectedToNetwork() == true else {
-//                     self.present(alert, animated: true)
-//                    return}
-//                self.requestForUpdateDB({})
-//                if let queue = self.inactiveQueue {
-//                    queue.activate()
-//                }
-//                
-//               
-//               // NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
-//
-//            }
-//            alert.addAction(OkAction)
-//            alert.show()
-//        }
+            return
+        }
         
-         addHolderView()
+        // Call function if Internet connection
+        requestForUpdateDB({})
+        if let queue = inactiveQueue {
+            queue.activate()
+        }
+        
+        
+        
+        addHolderView()
         
         self.view.backgroundColor = UIColor.black
     }
@@ -94,20 +97,20 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         self.view.addSubview(progressHUD)
     }
     
-//    func addHolderView() {
-//        
-//        
-//        let boxSize: CGFloat = 100.0
-//        holderView.frame = CGRect(x: view.bounds.width / 2 - boxSize / 4,
-//                                  y: view.bounds.height / 2 + view.bounds.height / 50,
-//                                  width: boxSize,
-//                                  height: boxSize)
-//        holderView.parentFrame = view.frame
-//        //holderView.delegate = self
-//        view.addSubview(holderView)
-//        holderView.addOval()
-//    }
-
+    //    func addHolderView() {
+    //
+    //
+    //        let boxSize: CGFloat = 100.0
+    //        holderView.frame = CGRect(x: view.bounds.width / 2 - boxSize / 4,
+    //                                  y: view.bounds.height / 2 + view.bounds.height / 50,
+    //                                  width: boxSize,
+    //                                  height: boxSize)
+    //        holderView.parentFrame = view.frame
+    //        //holderView.delegate = self
+    //        view.addSubview(holderView)
+    //        holderView.addOval()
+    //    }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -193,7 +196,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
             UserRequest.listAllProducts(param as [String : AnyObject], completion: { [weak self] json in
                 guard let weakSelf = self else {return}
                 json.forEach { _, json in
-                     print ("ContainVC🔵")
+                    print ("ContainVC🔵")
                     let id = String(describing: json["id"])
                     let created_at = String(describing:json["created_at"])
                     let icon = String(describing:json["icon"])
@@ -220,44 +223,44 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
                     let category_name = String(describing:json["category_name"])
                     let price_sale = String(describing:json["price_sale"])
                     var image: Data? = nil
-//                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-//                        image = imageData
-//                    }
+                    //                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+                    //                        image = imageData
+                    //                    }
                     Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
                 }
                 completion()
-//                self?.spiner.stopAnimating()
+                //                self?.spiner.stopAnimating()
                 self?.progressHUD.hide()
                 self?.backgroundImage.removeFromSuperview()
             })
             
-//            let param2: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-//            UserRequest.getAllCategories(param2 as [String : AnyObject], completion: { json in
-//                json.forEach { _, json in
-//                    print ("🔴")
-//                    let id = json["id"].stringValue
-//                    let created_at = json["created_at"].stringValue
-//                    let icon = json["icon"].stringValue
-//                    let name = json["name"].stringValue
-//                    let units = json["units"].stringValue
-//                    //                /////////
-//                    //                let searchVC = qcg()
-//                    //                searchVC.unitOfWeightSearchVC = units
-//                    //                ////////
-//                    let category_id = json["category_id"].stringValue
-//                    var image: Data? = nil
-//                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-//                        image = imageData
-//                        Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
-//                    }
-//                }
-//                completion()
-//                self?.progressHUD.hide()
-//                self?.backgroundImage.removeFromSuperview()
-//                
-//            })
+            //            let param2: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
+            //            UserRequest.getAllCategories(param2 as [String : AnyObject], completion: { json in
+            //                json.forEach { _, json in
+            //                    print ("🔴")
+            //                    let id = json["id"].stringValue
+            //                    let created_at = json["created_at"].stringValue
+            //                    let icon = json["icon"].stringValue
+            //                    let name = json["name"].stringValue
+            //                    let units = json["units"].stringValue
+            //                    //                /////////
+            //                    //                let searchVC = qcg()
+            //                    //                searchVC.unitOfWeightSearchVC = units
+            //                    //                ////////
+            //                    let category_id = json["category_id"].stringValue
+            //                    var image: Data? = nil
+            //                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+            //                        image = imageData
+            //                        Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
+            //                    }
+            //                }
+            //                completion()
+            //                self?.progressHUD.hide()
+            //                self?.backgroundImage.removeFromSuperview()
+            //
+            //            })
         })
-  }
+    }
 }
 
 class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -320,7 +323,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
                 cell.thubnailImageView?.image = UIImage(named: "ic_main")
                 cell.nameLabel?.text = "Главная"
             } else {
-//                cell.thubnailImageView?.image = UIImage(data: category.image ?? Data())
+                //                cell.thubnailImageView?.image = UIImage(data: category.image ?? Data())
                 cell.thubnailImageView?.sd_setImage(with: URL(string: (category.icon)))
                 cell.nameLabel?.text = category.name
             }
@@ -332,16 +335,16 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row != 0 else {
             guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-//            //            containerViewController.pushViewController(containerViewController.mainViewController, animated: true)
-//            containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
+            //            //            containerViewController.pushViewController(containerViewController.mainViewController, animated: true)
+            //            containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
             if let containerVC = UINavigationController.main.topViewController as? ContainerViewController {
-                 if containerVC.navigation.viewControllers.count != 0 {
+                if containerVC.navigation.viewControllers.count != 0 {
                     
                     containerVC.navigation.popToRootViewController(animated: true)
                 }
             }
             
-           containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
+            containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
             return
         }
         
@@ -365,7 +368,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         })
     }
     
-        func getPodCategoty(indexPath: IndexPath) {
+    func getPodCategoty(indexPath: IndexPath) {
         let categoryViewController = Storyboard.Category.instantiate()
         categoryViewController.categoryId = categoryContainer[indexPath.row].id
         categoryViewController.nameHeaderText = categoryContainer[indexPath.row].name
@@ -373,7 +376,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         categoryViewController.addToContainer()
         containerViewController.showMenu(false, animated: false)
     }
- 
+    
     
 }
 

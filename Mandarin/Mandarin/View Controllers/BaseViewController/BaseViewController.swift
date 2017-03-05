@@ -79,7 +79,6 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        listenForReachability()
         
 //        // Check Internet connection
 //        guard isNetworkReachable() == true else {

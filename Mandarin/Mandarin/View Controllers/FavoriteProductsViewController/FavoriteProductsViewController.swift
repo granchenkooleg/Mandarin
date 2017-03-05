@@ -58,9 +58,13 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
             self.view.addSubview(label!)
             return
         }
+        
         internalProductsForListOfWeightVC = []
         _productsList = []
+        
         guard let id = User.currentUser?.idUser else {return}
+        
+        func favoritOfProducts(_ completion: @escaping Block)  {
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                  "user_id" : Int(id) as! AnyHashable] as [String : Any]
         
@@ -86,9 +90,9 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
                 let units = json["units"].string ?? ""
-                var image = Data()
-                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-                    image = imageData
+                let image = Data()
+                if icon.isEmpty == false/*, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: ""))*/{
+                    /*image = imageData*/
                     let list = Products(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
                     self?.internalProductsForListOfWeightVC.append(list)
                 }
@@ -99,11 +103,33 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
             self?.tableView.reloadData()
             })
     }
+        
+        // Check Internet connection
+        guard isNetworkReachable() == true  else {
+            
+            Dispatch.mainQueue.async {
+                print("Internet connection FAILED")
+                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+                    guard isNetworkReachable() == true else {
+                        self.present(alert, animated: true)
+                        return }
+                    // Call function
+                    favoritOfProducts({})
+                }
+                alert.addAction(OkAction)
+                alert.show()
+            }
+            return
+        }
+        
+        // Call function
+        favoritOfProducts({})
+}
     
     // For dynamic height cell
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         tableView.reloadData()
     }
     
@@ -125,18 +151,18 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         let productDetails = _productsList[indexPath.row]
         
         cell.buttonAction = {[weak self] (sender) in
-            // Do whatever you want from your button here.
             
+            // Do whatever you want from your button here.
             let realm = try! Realm()
             if let product = realm.objects(ProductsForRealm.self).filter("id  == [c] %@", productDetails.id ).first {
                 try! realm.write {
                     product.quantity = "\((Int((product.quantity)) ?? 0) + 1)"
                 }
             } else {
-                var image: Data? = nil
-                if productDetails.icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: productDetails.icon) ?? URL(fileURLWithPath: "")){
-                    image = imageData
-                }
+                let image: Data? = nil
+//                if productDetails.icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: productDetails.icon) ?? URL(fileURLWithPath: "")){
+//                    image = imageData
+//                }
                 let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "1", image: image)
             }
             
@@ -145,7 +171,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         }
         
         Dispatch.mainQueue.async { _ in
-            cell.thubnailImageView?.image = UIImage(data: productDetails.image)
+            cell.thubnailImageView?.sd_setImage(with: URL(string: (productDetails.icon)))
         }
         
         cell.nameLabel?.text = productDetails.name

@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireNetworkActivityIndicator.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,27 +97,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>02BAF4BA8B3ADE36DEED4A45633E0184</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>18002AC017BCE4B39C06E293E19AD530</key>
+		<key>115FA0D867E07C04838493890DBD8D29</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1A182C0AB97382DE053B11F08196AFFA</key>
+		<key>1204D67E3F776FC2E40E4DC7B5BC33D0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1E21B684067A9D0E4BB468EA209364AF</key>
+		<key>2F8725CD6352AD138B20234BC7EA2DDC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>41575BA74C4DBFA17CBB630F96DB0DA6</key>
+		<key>40693793DB19917E4023F9B11925B70F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,12 +142,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>66287196CACDB7B40AF7B907E838DF75</key>
+		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
+		<key>6E5981A24071673FBF95FF80FA9A89D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,7 +167,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B6B25C941931DB30EA0341C609405DBB</key>
+		<key>B51013186E5A44D2F3917A7C52E2B6B4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C95A08B6E65B028DD1C9FA6C6CD923EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -167,12 +182,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F4C7D1031B171D59EB891F2B8675511A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FE6514960B40EC1D35700C9F803EDEAB</key>
+		<key>FACF5314636D786C0CE90B040C24A6AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

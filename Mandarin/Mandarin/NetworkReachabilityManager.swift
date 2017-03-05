@@ -48,10 +48,14 @@ func listenForReachability() {
     reachabilityManager?.listener = { status in
         print("Network Status Changed: \(status)")
         switch status {
-        case .notReachable:
-            //Show error state
-            UIAlertController.alert("Нет Интернет Соединения. Убедитесь, что Ваш девайс подключен к сети интернет".ls).show()
-            print("Internet connection FAILED")
+//        case .notReachable:
+//            //Show error state
+//            let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+//            let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+//                
+//            }
+//            alert.addAction(OkAction)
+//            alert.show()
         case .reachable:
             //Hide error state
             print("Internet connection")

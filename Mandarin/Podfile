@@ -16,6 +16,7 @@ target 'Mandarin' do
   pod 'Google/SignIn'
   pod 'VK-ios-sdk'
   pod 'SDWebImage'
+  pod 'AlamofireNetworkActivityIndicator'
 
   post_install do |installer|
   installer.pods_project.targets.each do |target|
