@@ -274,6 +274,9 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
+        
+        // NotificationCenter from CategoryVC when download all category
+        NotificationCenter.default.addObserver(self, selector: #selector(Menu.methodOfReceivedNotification2(notification:)), name: Notification.Name("NotificationIdentifier2"), object: nil)
     }
     
     func setup()  {
@@ -328,8 +331,13 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
                 cell.nameLabel?.text = category.name
             }
         }
-        
         return cell
+    }
+    
+    // NotificationCenter
+    func methodOfReceivedNotification2(notification: Notification) {
+        getAllcat()
+        self.tableView?.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

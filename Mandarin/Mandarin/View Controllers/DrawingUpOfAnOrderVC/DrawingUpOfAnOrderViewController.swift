@@ -157,6 +157,19 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         let _ = InfoAboutUserForOrder.setupAllUserInfo(/*idOrder: idOrder ,*/ name: nameUser, phone: phone, city: city, region: region ?? "", street: street, house: numberHouse, porch: porch ?? "", apartment: apartment ?? "" , floor: floor ?? "", commit: commit ?? "")
         
         //MARK: Sender to PaymentVC
+        
+        // Check Internet connection
+        guard isNetworkReachable() == true  else {
+            Dispatch.mainQueue.async {
+                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+                    
+                }
+                alert.addAction(OkAction)
+                alert.show()
+            }
+            return
+        }
 
 //        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
 //        let next = adressUserFromRealm.last?.idOrder

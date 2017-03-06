@@ -103,6 +103,19 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
     // MARK: Sender to CheckVC
     @IBAction func CheckClick(_ sender: Button) {
         
+        // Check Internet connection
+        guard isNetworkReachable() == true  else {
+            Dispatch.mainQueue.async {
+                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+                    
+                }
+                alert.addAction(OkAction)
+                alert.show()
+            }
+            return
+        }
+        
         // For send mail to magazin
         let _name = " Имя заказчика: " + (nameUserPayment ?? "")
         let _phone = " | Телефон: " + (phoneUserPayment ?? "")

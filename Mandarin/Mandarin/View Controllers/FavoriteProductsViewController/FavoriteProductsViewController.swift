@@ -199,6 +199,20 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
     
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Check Internet connection
+        guard isNetworkReachable() == true  else {
+            Dispatch.mainQueue.async {
+                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+                    
+                }
+                alert.addAction(OkAction)
+                alert.show()
+            }
+            return
+        }
+        
         detailsVC (indexPath: indexPath)
     }
     

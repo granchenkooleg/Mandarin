@@ -133,10 +133,10 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
                     product.quantity = "\((Int((product.quantity)) ?? 0) + 1)"
                 }
             } else {
-                var image: Data? = nil
-                if productDetails.icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: productDetails.icon) ?? URL(fileURLWithPath: "")){
-                    image = imageData
-                }
+                let image: Data? = nil
+//                if productDetails.icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: productDetails.icon) ?? URL(fileURLWithPath: "")){
+//                    image = imageData
+//                }
                 let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description_ , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "\(self.quantity)", image: image)
             }
             
@@ -183,6 +183,20 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Check Internet connection
+        guard isNetworkReachable() == true  else {
+            Dispatch.mainQueue.async {
+                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+                    
+                }
+                alert.addAction(OkAction)
+                alert.show()
+            }
+            return
+        }
+        
         let detailsProductVC = Storyboard.DetailsProduct.instantiate()
         detailsProductVC.weightDetailsVC = searchProduct[indexPath.row].weight + " " + searchProduct[indexPath.row].units
         detailsProductVC.categoryIdProductDetailsVC = searchProduct[indexPath.row].category_id

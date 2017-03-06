@@ -60,7 +60,10 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         
         internalProductsForListOfWeightVC = []
         _productsList = []
+        
+        // Check if User is
         if let id = User.currentUser?.idUser  {
+            
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                  "user_id" : Int(id) as Any] as [String : Any]
         
@@ -86,10 +89,10 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
                 let units = json["units"].string ?? ""
-                var image = Data()
-                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-                    image = imageData
-                }
+                let image = Data()
+//                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+//                    image = imageData
+//                }
                 
                 let list = Products(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
                 self?.internalProductsForListOfWeightVC.append(list)
@@ -285,10 +288,10 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
                 product.quantity = "\((Int(product.quantity) ?? 0) + quantity)"
             }
         } else {
-            var image: Data? = nil
-            if iconDetailsVC.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: iconDetailsVC) ?? URL(fileURLWithPath: "")){
-                image = imageData
-            }
+            let image: Data? = nil
+//            if iconDetailsVC.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: iconDetailsVC) ?? URL(fileURLWithPath: "")){
+//                image = imageData
+//            }
             let _ = ProductsForRealm.setupProduct(id: idProductDetailsVC ?? "", descriptionForProduct: descriptionDetailsVC ?? "", proteins: proteinsDetailsVC ?? "", calories: caloriesDetailsVC ?? "", zhiry: zhiryDetailsVC ?? "", favorite: "", category_id: "", brand: brandDetailsVC ?? "", price_sale: priceSaleDetailsVC ?? "", weight: "", status: "", expire_date: expire_dateDetailsVC ?? "", price: priceDetailsVC ?? "", created_at: created_atDetailsVC ?? "", icon: iconDetailsVC ?? "", category_name: "", name: nameHeaderTextDetailsVC ?? "" , uglevody: uglevodyDetailsVC ?? "" , units: "", quantity: "\(quantity)", image: image)
         }
     }

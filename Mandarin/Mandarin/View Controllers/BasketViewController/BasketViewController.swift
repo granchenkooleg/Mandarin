@@ -57,7 +57,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         
         let productDetails = productsInBasket[indexPath.row]
         Dispatch.mainQueue.async { _ in
-            cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
+            cell.thubnailImageView?.sd_setImage(with: URL(string: (productDetails.icon) ?? ""))
         }
         cell.productDetail = productDetails
         cell.descriptionLabel?.text = productDetails.descriptionForProduct

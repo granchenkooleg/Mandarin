@@ -36,12 +36,13 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : "\(podCategory_id)"]
         UserRequest.getWeightCategory(param as [String : AnyObject], completion: {[weak self] json in
-            if  json.isEmpty {
+            if  json[0].isEmpty {
                 //It's null
                  let alertController = UIAlertController(title: "В этом разделе нет товара", message: "", preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "Ok", style: .default) { action in
                     self?.backClick(nil)
                 }
+                self?.spiner.stopAnimating()
                 alertController.addAction(OKAction)
                 self?.present(alertController, animated: true)
                 
@@ -69,7 +70,7 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         cell.weightUnitsLabelOne.text = "\(/*contentWeightProductWithoutDuplicates*/contentWeightProduct[indexPath.row]) " + self.unitOfWeight
         
         //output icon: liter or kg
-        if (self.unitOfWeight == "liter") {
+        if (self.unitOfWeight == "л.") {
             cell.iconWeightImageViev.image =  UIImage(named: "but")
         } else {
             cell.iconWeightImageViev.image =  UIImage(named: "weight")
@@ -83,6 +84,19 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
     
     //MARK: Segue
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        // Check Internet connection
+        guard isNetworkReachable() == true  else {
+            Dispatch.mainQueue.async {
+                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+                    
+                }
+                alert.addAction(OkAction)
+                alert.show()
+            }
+            return
+        }
         
         let listOfProductsByWeightViewController = Storyboard.ListOfWeightProducts.instantiate()
         listOfProductsByWeightViewController.nameListsOfProductsHeaderText = nameWeightHeaderText

@@ -108,8 +108,12 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
                     //                    image = imageData
                     Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
                     //                }
+                    
                 }
                 completion()
+                
+                // NotificationCenter to Menu for update rows
+                NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier2"), object: nil)
             })
         })
     }
@@ -222,9 +226,9 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
         spiner.center.x = view.center.x
         spiner.center.y = view.center.y - 170
         spiner.startAnimating()
-        Dispatch.backgroundQueue.after(0.0, block: { [weak self] in
-            self?.getAllCategory2({})
-        })
+        
+        self.getAllCategory2({})
+        
     }
     
     func getAllCategory2(_ completion: @escaping Block) {
@@ -277,15 +281,7 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
         })
     }
     
-    //segue
-    func getWeigth(indexPath: IndexPath) {
-        let weightViewController = Storyboard.Weight.instantiate()
-        weightViewController.unitOfWeight = categoriesList[indexPath.row].units
-        weightViewController.nameWeightHeaderText = categoriesList[indexPath.row].name
-        weightViewController.podCategory_id = categoriesList[indexPath.row].id
-        weightViewController.addToContainer()
-    }
-    
+   
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -311,7 +307,30 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Check Internet connection
+        guard isNetworkReachable() == true  else {
+            Dispatch.mainQueue.async {
+                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+                    
+                }
+                alert.addAction(OkAction)
+                alert.show()
+            }
+            return
+        }
+        
         getWeigth(indexPath: indexPath)
+    }
+    
+    //segue
+    func getWeigth(indexPath: IndexPath) {
+        let weightViewController = Storyboard.Weight.instantiate()
+        weightViewController.unitOfWeight = categoriesList[indexPath.row].units
+        weightViewController.nameWeightHeaderText = categoriesList[indexPath.row].name
+        weightViewController.podCategory_id = categoriesList[indexPath.row].id
+        weightViewController.addToContainer()
     }
 }
 

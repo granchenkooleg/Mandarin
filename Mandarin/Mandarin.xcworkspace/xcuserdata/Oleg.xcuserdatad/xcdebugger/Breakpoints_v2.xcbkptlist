@@ -105,54 +105,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mandarin/View Controllers/ListOfProductsByWeightViewController/ListOfProductsByWeightViewController.swift"
-            timestampString = "510416975.946904"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mandarin.ListOfProductsByWeightViewControllerSegment.viewDidLoad () -&gt; ()"
-                  moduleName = "Mandarin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Oleg/Projects/Mandarin/Mandarin/Mandarin/View%20Controllers/ListOfProductsByWeightViewController/ListOfProductsByWeightViewController.swift"
-                  timestampString = "510423034.757379"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
-                  offsetFromSymbolStart = "3025">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mandarin.ListOfProductsByWeightViewControllerSegment.(viewDidLoad () -&gt; ()).(closure #2)"
-                  moduleName = "Mandarin"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Oleg/Projects/Mandarin/Mandarin/Mandarin/View%20Controllers/ListOfProductsByWeightViewController/ListOfProductsByWeightViewController.swift"
-                  timestampString = "510423034.759403"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
-                  offsetFromSymbolStart = "19">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Mandarin/NetworkReachabilityManager.swift"
             timestampString = "510415157.423582"
             startingColumnNumber = "9223372036854775807"
