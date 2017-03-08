@@ -25,8 +25,8 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-                // From ContainerVC if Internet connection
-                NotificationCenter.default.addObserver(self, selector: #selector(CategoryViewControllerSegment.methodOfReceivedNotification(notification:)), name: Notification.Name("NotificationIdentifier"), object: nil)
+        // From ContainerVC if Internet connection
+        NotificationCenter.default.addObserver(self, selector: #selector(CategoryViewControllerSegment.methodOfReceivedNotification(notification:)), name: Notification.Name("NotificationIdentifier"), object: nil)
         
         tableView?.separatorStyle = .none
         //        spiner.hidesWhenStopped = true
@@ -42,19 +42,19 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         
         // Check Internet connection
         guard isNetworkReachable() == true  else {
-//            let _categories = Category().allCategories()
-//            categoryContainer = _categories
-//            
-//            Dispatch.mainQueue.async {
-//                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
-//                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
-//                    
-//                }
-//                alert.addAction(OkAction)
-//                alert.show()
-//            }
+            //            let _categories = Category().allCategories()
+            //            categoryContainer = _categories
+            //
+            //            Dispatch.mainQueue.async {
+            //                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+            //                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+            //
+            //                }
+            //                alert.addAction(OkAction)
+            //                alert.show()
+            //            }
             return
-            }
+        }
         
         
         _getAllCategory { [weak self] _ in
@@ -70,7 +70,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
         tableView?.reloadData()
     }
     
-   // NotificationCenter
+    // NotificationCenter
     func methodOfReceivedNotification(notification: Notification){
         _getAllCategory { [weak self] _ in
             self?.categoryContainer = Category().allCategories()
@@ -160,16 +160,31 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
             return
         }
         
-        // Check if category is null follow WeightVC
+        // Check if category is null follow to WeightVC
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.getAllProductsCategory(categoryID: categoryContainer[indexPath.row].id , entryParams: param as [String : AnyObject], completion: {[weak self] json in
             if  json.isEmpty {
                 
-                guard let weightViewController = UIStoryboard.main["weight"] as? WeightViewController else { return }
-                weightViewController.unitOfWeight = (self?.categoryContainer[indexPath.row].units) ?? ""
-                weightViewController.nameWeightHeaderText = (self?.categoryContainer[indexPath.row].name) ?? ""
-                weightViewController.podCategory_id = (self?.categoryContainer[indexPath.row].id) ?? ""
-                weightViewController.addToContainer()
+                // Check if WeightVC is null follow to ListVC
+                let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : self?.categoryContainer[indexPath.row].id]
+                UserRequest.getWeightCategory(param as [String : AnyObject], completion: { json in
+                    if  json[0].isEmpty {
+                        
+                        let listOfProductsByWeightViewController = Storyboard.ListOfWeightProducts.instantiate()
+                        listOfProductsByWeightViewController.nameListsOfProductsHeaderText = self?.categoryContainer[indexPath.row].name
+                        listOfProductsByWeightViewController.idPodcategory = self?.categoryContainer[indexPath.row].id
+                        listOfProductsByWeightViewController.unitOfWeightForListOfProductsByWeightVC = self?.categoryContainer[indexPath.row].units
+                        listOfProductsByWeightViewController.addToContainer()
+                        
+                    } else {
+                        
+                        guard let weightViewController = UIStoryboard.main["weight"] as? WeightViewController else { return }
+                        weightViewController.unitOfWeight = (self?.categoryContainer[indexPath.row].units) ?? ""
+                        weightViewController.nameWeightHeaderText = (self?.categoryContainer[indexPath.row].name) ?? ""
+                        weightViewController.podCategory_id = (self?.categoryContainer[indexPath.row].id) ?? ""
+                        weightViewController.addToContainer()
+                    }
+                })
                 
             } else {
                 // follow PodCategoryVC
@@ -269,9 +284,9 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
                 let units = json["units"].string ?? ""
                 
                 let image = Data()
-//                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-//                    image = imageData
-//                }
+                //                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
+                //                    image = imageData
+                //                }
                 let category = CategoryStruct(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
                 self?.categories.append(category)
             }
@@ -281,7 +296,7 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
         })
     }
     
-   
+    
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -321,16 +336,39 @@ class CategoryViewController: BaseViewController, UITableViewDataSource, UITable
             return
         }
         
-        getWeigth(indexPath: indexPath)
+        //getWeigth(indexPath: indexPath)
+        
+        
+        // Check if WeightVC is null follow to ListVC
+        let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : categoriesList[indexPath.row].id]
+        UserRequest.getWeightCategory(param as [String : AnyObject], completion: { json in
+            if  json[0].isEmpty {
+                
+                let listOfProductsByWeightViewController = Storyboard.ListOfWeightProducts.instantiate()
+                listOfProductsByWeightViewController.nameListsOfProductsHeaderText = self.categoriesList[indexPath.row].name
+                listOfProductsByWeightViewController.idPodcategory = self.categoriesList[indexPath.row].id
+                listOfProductsByWeightViewController.unitOfWeightForListOfProductsByWeightVC = self.categoriesList[indexPath.row].units
+                listOfProductsByWeightViewController.addToContainer()
+                
+            } else {
+                
+                guard let weightViewController = UIStoryboard.main["weight"] as? WeightViewController else { return }
+                weightViewController.unitOfWeight = (self.categoriesList[indexPath.row].units)
+                weightViewController.nameWeightHeaderText = (self.categoriesList[indexPath.row].name)
+                weightViewController.podCategory_id = (self.categoriesList[indexPath.row].id)
+                weightViewController.addToContainer()
+            }
+        })
+        
     }
     
-    //segue
-    func getWeigth(indexPath: IndexPath) {
-        let weightViewController = Storyboard.Weight.instantiate()
-        weightViewController.unitOfWeight = categoriesList[indexPath.row].units
-        weightViewController.nameWeightHeaderText = categoriesList[indexPath.row].name
-        weightViewController.podCategory_id = categoriesList[indexPath.row].id
-        weightViewController.addToContainer()
-    }
+    //    //segue
+    //    func getWeigth(indexPath: IndexPath) {
+    //        let weightViewController = Storyboard.Weight.instantiate()
+    //        weightViewController.unitOfWeight = categoriesList[indexPath.row].units
+    //        weightViewController.nameWeightHeaderText = categoriesList[indexPath.row].name
+    //        weightViewController.podCategory_id = categoriesList[indexPath.row].id
+    //        weightViewController.addToContainer()
+    //    }
 }
 

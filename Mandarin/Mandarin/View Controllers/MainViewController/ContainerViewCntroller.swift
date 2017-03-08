@@ -341,6 +341,20 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Check Internet connection
+        guard isNetworkReachable() == true  else {
+            Dispatch.mainQueue.async {
+                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+                    
+                }
+                alert.addAction(OkAction)
+                alert.show()
+            }
+            return
+        }
+        
         guard indexPath.row != 0 else {
             guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
             //            //            containerViewController.pushViewController(containerViewController.mainViewController, animated: true)
@@ -361,16 +375,34 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         UserRequest.getAllProductsCategory(categoryID: categoryContainer[indexPath.row].id , entryParams: param as [String : AnyObject], completion: {[weak self] json in
             if  json.isEmpty {
                 
-                let weightViewController = Storyboard.Weight.instantiate()
-                weightViewController.unitOfWeight = (self?.categoryContainer[indexPath.row].units) ?? ""
-                weightViewController.nameWeightHeaderText = (self?.categoryContainer[indexPath.row].name) ?? ""
-                weightViewController.podCategory_id = (self?.categoryContainer[indexPath.row].id) ?? ""
-                guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-                weightViewController.addToContainer()
-                containerViewController.showMenu(false, animated: false)
+                // Check if WeightVC is null follow to ListVC
+                let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : self?.categoryContainer[indexPath.row].id]
+                UserRequest.getWeightCategory(param as [String : AnyObject], completion: { json in
+                    if  json[0].isEmpty {
+                        
+                        let listOfProductsByWeightViewController = Storyboard.ListOfWeightProducts.instantiate()
+                        listOfProductsByWeightViewController.nameListsOfProductsHeaderText = self?.categoryContainer[indexPath.row].name
+                        listOfProductsByWeightViewController.idPodcategory = self?.categoryContainer[indexPath.row].id
+                        listOfProductsByWeightViewController.unitOfWeightForListOfProductsByWeightVC = self?.categoryContainer[indexPath.row].units
+                        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+                        listOfProductsByWeightViewController.addToContainer()
+                        containerViewController.showMenu(false, animated: false)
+                        
+                    } else {
+                        
+                        let weightViewController = Storyboard.Weight.instantiate()
+                        weightViewController.unitOfWeight = (self?.categoryContainer[indexPath.row].units) ?? ""
+                        weightViewController.nameWeightHeaderText = (self?.categoryContainer[indexPath.row].name) ?? ""
+                        weightViewController.podCategory_id = (self?.categoryContainer[indexPath.row].id) ?? ""
+                        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+                        weightViewController.addToContainer()
+                        containerViewController.showMenu(false, animated: false)
+                    }
+                })
                 
             } else {
-                // Follow PodCategoryVC
+                
+                // Follow to PodCategoryVC
                 self?.getPodCategoty(indexPath: indexPath)
             }
         })

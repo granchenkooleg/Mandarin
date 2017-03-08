@@ -37,15 +37,29 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : "\(podCategory_id)"]
         UserRequest.getWeightCategory(param as [String : AnyObject], completion: {[weak self] json in
             if  json[0].isEmpty {
-                //It's null
-                 let alertController = UIAlertController(title: "В этом разделе нет товара", message: "", preferredStyle: .alert)
-                let OKAction = UIAlertAction(title: "Ok", style: .default) { action in
-                    self?.backClick(nil)
-                }
-                self?.spiner.stopAnimating()
-                alertController.addAction(OKAction)
-                self?.present(alertController, animated: true)
                 
+                
+                let listOfProductsByWeightViewController = Storyboard.ListOfWeightProducts.instantiate()
+                listOfProductsByWeightViewController.nameListsOfProductsHeaderText = self?.nameWeightHeaderText
+                //for compare in ListsOfProductVC
+                //listOfProductsByWeightViewController.weightOfWeightVC = /*contentWeightProductWithoutDuplicates*/contentWeightProduct[indexPath.row]
+                listOfProductsByWeightViewController.idPodcategory = self?.podCategory_id
+                listOfProductsByWeightViewController.unitOfWeightForListOfProductsByWeightVC = self?.unitOfWeight
+                
+                listOfProductsByWeightViewController.addToContainer()
+                
+                
+                
+                
+                //It's null
+//                 let alertController = UIAlertController(title: "В этом разделе нет товара", message: "", preferredStyle: .alert)
+//                let OKAction = UIAlertAction(title: "Ok", style: .default) { action in
+//                    self?.backClick(nil)
+//                }
+//                self?.spiner.stopAnimating()
+//                alertController.addAction(OKAction)
+//                self?.present(alertController, animated: true)
+//                
                 return
             }
             json.forEach { _, json in
@@ -70,7 +84,10 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         cell.weightUnitsLabelOne.text = "\(/*contentWeightProductWithoutDuplicates*/contentWeightProduct[indexPath.row]) " + self.unitOfWeight
         
         //output icon: liter or kg
-        if (self.unitOfWeight == "л.") {
+        if (self.unitOfWeight.isEmpty == true) {
+            cell.iconWeightImageViev.image =  UIImage(named: "but")
+            cell.weightUnitsLabelOne.text = "\(/*contentWeightProductWithoutDuplicates*/contentWeightProduct[indexPath.row]) " + "л."
+        } else if (self.unitOfWeight == "л.") {
             cell.iconWeightImageViev.image =  UIImage(named: "but")
         } else {
             cell.iconWeightImageViev.image =  UIImage(named: "weight")

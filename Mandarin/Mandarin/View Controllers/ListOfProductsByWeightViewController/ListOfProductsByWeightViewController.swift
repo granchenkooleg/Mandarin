@@ -269,7 +269,7 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
         let products = Product().allProducts()
         guard products.count != 0 else {
             listOfProduct {[weak self] _ in
-                self?.productsList = Product().allProducts().filter { self?.idPodcategory == $0.category_id && self?.weightOfWeightVC == $0.weight }
+                self?.productsList = Product().allProducts().filter { (self?.idPodcategory == $0.category_id && self?.weightOfWeightVC == $0.weight) || (self?.idPodcategory == $0.category_id && $0.weight == "0") }
                 self?.tableView.reloadData()
                 self?.spiner.stopAnimating()
             }
@@ -279,7 +279,10 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
         
         
         
-        productsList = products.filter { self.idPodcategory == $0.category_id && self.weightOfWeightVC == $0.weight }
+        productsList = products.filter {(self.idPodcategory == $0.category_id && self.weightOfWeightVC == $0.weight)}
+        if productsList.isEmpty == true {
+            productsList = products.filter {(self.idPodcategory == $0.category_id && $0.weight == "0")}
+        }
         if productsList.isEmpty == true {
             self.spiner.stopAnimating()
             let alertController = UIAlertController(title: "В этом разделе нет товара", message: "", preferredStyle: .alert)
