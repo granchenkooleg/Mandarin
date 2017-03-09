@@ -56,6 +56,10 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
             return
         }
         
+        // Clean all DB
+        Dispatch.backgroundQueue.async(){
+        Category.delAllCategories()
+        }
         
         _getAllCategory { [weak self] _ in
             self?.categoryContainer = Category().allCategories()
@@ -85,6 +89,7 @@ class CategoryViewControllerSegment: BaseViewController,UITableViewDataSource, U
     // MARK: Request for update DB
     var inactiveQueue: DispatchQueue!
     func _getAllCategory (_ completion: @escaping Block) {
+        
         let anotherQueue = DispatchQueue(label: "com.appcoda.anotherQueue", qos: .userInteractive, attributes: [.concurrent, .initiallyInactive])
         inactiveQueue = anotherQueue
         
