@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class WeightViewController: CategoryViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var weightHeaderLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var unitsFromRealmDB = [Product]()
     
     var unitOfWeight: String = ""
     var nameWeightHeaderText: String = ""
@@ -23,7 +25,10 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
+        if unitOfWeight.isEmpty {
+            unitsFromRealmDB = Product().allProducts().filter{( podCategory_id == $0.category_id )}
+           }
         if unitOfWeight == "kg" {
             unitOfWeight = "кг."
         }
@@ -86,7 +91,7 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         //output icon: liter or kg
         if (self.unitOfWeight.isEmpty == true) {
             cell.iconWeightImageViev.image =  UIImage(named: "but")
-            cell.weightUnitsLabelOne.text = "\(/*contentWeightProductWithoutDuplicates*/contentWeightProduct[indexPath.row]) " + "л."
+            cell.weightUnitsLabelOne.text = "\(/*contentWeightProductWithoutDuplicates*/contentWeightProduct[indexPath.row]) " + (self.unitsFromRealmDB.first?.units ?? "")
         } else if (self.unitOfWeight == "л.") {
             cell.iconWeightImageViev.image =  UIImage(named: "but")
         } else {

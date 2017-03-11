@@ -89,7 +89,13 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
                 let expire_date = json["expire_date"].string ?? ""
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
-                let units = json["units"].string ?? ""
+                var units = json["units"].string ?? ""
+                if units == "kg" {
+                    units = "кг."
+                }
+                if units == "liter" {
+                    units = "л."
+                }
                 let image = Data()
                 if icon.isEmpty == false/*, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: ""))*/{
                     /*image = imageData*/
