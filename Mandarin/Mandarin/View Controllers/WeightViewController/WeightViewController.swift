@@ -19,16 +19,16 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
     var unitOfWeight: String = ""
     var nameWeightHeaderText: String = ""
     var podCategory_id: String = ""
-//    var contentWeightProduct = Set<String>()
+    //    var contentWeightProduct = Set<String>()
     var contentWeightProduct = [String]()
-//    var contentWeightProductWithoutDuplicates = [String]()//Set<String>()
+    //    var contentWeightProductWithoutDuplicates = [String]()//Set<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if unitOfWeight.isEmpty {
             unitsFromRealmDB = Product().allProducts().filter{( podCategory_id == $0.category_id )}
-           }
+        }
         if unitOfWeight == "kg" {
             unitOfWeight = "кг."
         }
@@ -37,7 +37,7 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         }
         
         weightHeaderLabel.text = nameWeightHeaderText
-       
+        
         
         let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79", "category_id" : "\(podCategory_id)"]
         UserRequest.getWeightCategory(param as [String : AnyObject], completion: {[weak self] json in
@@ -57,20 +57,20 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
                 
                 
                 //It's null
-//                 let alertController = UIAlertController(title: "В этом разделе нет товара", message: "", preferredStyle: .alert)
-//                let OKAction = UIAlertAction(title: "Ok", style: .default) { action in
-//                    self?.backClick(nil)
-//                }
-//                self?.spiner.stopAnimating()
-//                alertController.addAction(OKAction)
-//                self?.present(alertController, animated: true)
-//                
+                //                 let alertController = UIAlertController(title: "В этом разделе нет товара", message: "", preferredStyle: .alert)
+                //                let OKAction = UIAlertAction(title: "Ok", style: .default) { action in
+                //                    self?.backClick(nil)
+                //                }
+                //                self?.spiner.stopAnimating()
+                //                alertController.addAction(OKAction)
+                //                self?.present(alertController, animated: true)
+                //
                 return
             }
             json.forEach { _, json in
                 let weight = json["weight"].string ?? ""
                 // Sort weight
-//                self?.contentWeightProduct.insert(weight)
+                //                self?.contentWeightProduct.insert(weight)
                 self?.contentWeightProduct.append(weight)
                 //self?.contentWeightProductWithoutDuplicates = (self?.contentWeightProduct.sorted {$0 < $1} ?? [])
             }
@@ -90,11 +90,17 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         
         //output icon: liter or kg
         if (self.unitOfWeight.isEmpty == true) {
-            cell.iconWeightImageViev.image =  UIImage(named: "but")
+            if (self.unitsFromRealmDB.first?.units == "л.") {
+                cell.iconWeightImageViev.image =  UIImage(named: "but")
+            } else {
+                cell.iconWeightImageViev.image =  UIImage(named: "weight")
+            }
             cell.weightUnitsLabelOne.text = "\(/*contentWeightProductWithoutDuplicates*/contentWeightProduct[indexPath.row]) " + (self.unitsFromRealmDB.first?.units ?? "")
-        } else if (self.unitOfWeight == "л.") {
+        }
+        else if (self.unitOfWeight == "л.") {
             cell.iconWeightImageViev.image =  UIImage(named: "but")
-        } else {
+        }
+        else {
             cell.iconWeightImageViev.image =  UIImage(named: "weight")
         }
         return cell
