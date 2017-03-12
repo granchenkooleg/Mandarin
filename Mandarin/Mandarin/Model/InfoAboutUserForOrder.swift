@@ -77,18 +77,9 @@ class InfoAboutUserForOrder : Object {
     
     static func deleteUserInfo() {
         let realm = try! Realm()
-        guard let userInfo = realm.objects(InfoAboutUserForOrder.self).last else { return }
+        let userInfo = realm.objects(InfoAboutUserForOrder.self)
         try! realm.write {
-            userInfo.name = ""
-            userInfo.phone = ""
-            userInfo.region = ""
-            userInfo.street = ""
-            userInfo.house = ""
-            userInfo.porch = ""
-            userInfo.apartment = ""
-            userInfo.floor = ""
-            userInfo.commit = ""
-            realm.add(userInfo, update: true)
+            realm.delete(userInfo)
         }
     }
     

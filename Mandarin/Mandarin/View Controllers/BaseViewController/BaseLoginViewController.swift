@@ -28,7 +28,8 @@ class BaseLoginViewController: BaseViewController, UITextFieldDelegate {
     @IBAction func backToMain(sender: AnyObject) {
         ProductsForRealm.deleteAllProducts()
         dismiss(animated: true, completion: nil)
-        UINavigationController.main.popViewController(animated: false)
+        //UINavigationController.main.popViewController(animated: false)
+        UINavigationController.main.viewControllers = [UIStoryboard.main["container"]!]
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
