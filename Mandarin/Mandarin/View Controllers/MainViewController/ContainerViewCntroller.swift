@@ -205,7 +205,10 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
                     let icon = String(describing:json["icon"])
                     let name = String(describing:json["name"])
                     let category_id = String(describing:json["category_id"])
-                    let weight = String(describing:json["weight"])
+                    var weight = String(describing:json["weight"])
+                    if weight == "0" {
+                        weight = ""
+                    }
                     let description = String(describing:json["description"])
                     let brand = String(describing:json["brand"])
                     let calories = String(describing:json["calories"])
@@ -225,7 +228,7 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
                     }
                     let category_name = String(describing:json["category_name"])
                     let price_sale = String(describing:json["price_sale"])
-                    var image: Data? = nil
+                    let image: Data? = nil
                     //                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
                     //                        image = imageData
                     //                    }

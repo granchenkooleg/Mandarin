@@ -153,6 +153,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         cell.descriptionLabel?.text = productDetails.description_
         cell.weightLabel?.text = productDetails.weight + " \(productDetails.units)"
         cell.priceOldLabel?.text = productDetails.price + " грн."
+        
         //if price_sale != 0.00 грн, set it
         if productDetails.price_sale != "0.00" {
             cell.priceSaleLabel?.text = productDetails.price_sale +  "  грн."

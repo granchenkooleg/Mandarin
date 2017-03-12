@@ -180,7 +180,6 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         }
         
         Dispatch.mainQueue.async { _ in
-//            cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
             cell.thubnailImageView?.sd_setImage(with: URL(string: (productDetails.icon)))
         }
         
@@ -188,6 +187,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         cell.descriptionLabel?.text = productDetails.description_
         cell.weightLabel?.text = productDetails.weight + " \(productDetails.units)"
         cell.priceOldLabel?.text = productDetails.price + " грн."
+        
         //if price_sale != 0.00 грн, set it
         if productDetails.price_sale != "0.00" {
             cell.priceSaleLabel?.text = productDetails.price_sale +  "  грн."
@@ -269,7 +269,10 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
         let products = Product().allProducts()
         guard products.count != 0 else {
             listOfProduct {[weak self] _ in
-                self?.productsList = Product().allProducts().filter { (self?.idPodcategory == $0.category_id && self?.weightOfWeightVC == $0.weight) || (self?.idPodcategory == $0.category_id && $0.weight == "0") }
+                self?.productsList = Product().allProducts().filter { (self?.idPodcategory == $0.category_id && self?.weightOfWeightVC == $0.weight)}
+                if self?.productsList.isEmpty == true {
+                    self?.productsList = products.filter {(self?.idPodcategory == $0.category_id && $0.weight == "")}
+                }
                 self?.tableView.reloadData()
                 self?.spiner.stopAnimating()
             }
@@ -281,7 +284,7 @@ class ListOfProductsByWeightViewController: ListOfProductsByWeightViewController
         
         productsList = products.filter {(self.idPodcategory == $0.category_id && self.weightOfWeightVC == $0.weight)}
         if productsList.isEmpty == true {
-            productsList = products.filter {(self.idPodcategory == $0.category_id && $0.weight == "0")}
+            productsList = products.filter {(self.idPodcategory == $0.category_id && $0.weight == "")}
         }
         if productsList.isEmpty == true {
             self.spiner.stopAnimating()

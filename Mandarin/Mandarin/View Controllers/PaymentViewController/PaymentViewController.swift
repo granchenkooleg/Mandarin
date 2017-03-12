@@ -128,7 +128,8 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
         let _floor = " | Этаж: " + (floorPayment ?? "")
         let _commit = " | Комментарий: " + (commitPayment ?? "")
         let _bond = " | Сумма на руках: " + (textUserInFildAlert ?? "")
-        let body =  (_name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit + _bond)
+        let _totalPriceinCart = " | Общая сума заказа: " + (totalPriceInCart() + " грн.")
+        var body =  (_name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit + _bond + _totalPriceinCart)
         
         
         //        let idOfUser = (((User.currentUser?.idUser)?.isEmpty)! == false)  ? ((User.currentUser?.idUser)! + body) : (User.currentUser?.idUser)
@@ -138,13 +139,24 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
         
         // Doing it for product_id in Alamofire request(param)
         var list: [JSON] = []
+        // For body
+        var listSpeciallyForMail: [String] = []
+        
         for i in productsInBasket {
+            var count = 0
             // Convert type String to Int
             let q: Int = Int(i.quantity)!
             for _ in 1...q {
                 list.append(JSON(i.id))
+                
+                // For listSpeciallyForMail
+                count += 1
             }
+            listSpeciallyForMail.append(i.id + " x \(count)")
         }
+        
+        // Add yet to body listSpeciallyForMail
+        body += " | Продукты: " + "\(listSpeciallyForMail)"
         
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                  "user_id" :  User.currentUser?.idUser as Any,
