@@ -324,8 +324,11 @@ enum UserRequest: URLRequestConvertible {
                 completion(false)
                 return
             }
+            print (">>self - \(json)<<")
+            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])", email: "\(json[0]["data"]["email"])", phone: "\(json[0]["data"]["phone"])")
+            // For InfoAboutUserForOrder Realm table
+            InfoAboutUserForOrder.setupAllUserInfo(name: "\(json[0]["data"]["username"])", phone: "\(json[0]["data"]["phone"])", city: "Одесса")
             
-            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")
             completion(true)
         }
     }
