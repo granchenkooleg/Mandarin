@@ -11,34 +11,11 @@ import RealmSwift
 
 class BasketViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
-    //@IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
-    //    //it spetial for Realm
-    //    var productsInBasket: Results<ProductsForRealm>!
     
     override func viewDidLoad() {
         updateProductInfo()
     }
-    
-    //    func updateProductInfo() {
-    //        let realm = try! Realm()
-    //        productsInBasket = realm.objects(ProductsForRealm.self)
-    //        totalPriceLabel?.text = (totalPriceInCart() + " грн.")
-    //        updateProductInBasket()
-    //    }
-    //
-    //    //for total price
-    //    func totalPriceInCart() -> String {
-    //        var totalPrice: Float = 0
-    //        for product in  productsInBasket {
-    //            totalPrice += Float(product.price!)! * Float(product.quantity)!
-    //        }
-    //
-    //        return String(totalPrice)
-    //    }
-    
-    
     
     // MARK: - Table view data source
     
@@ -103,18 +80,19 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
     }
     //end]
     
-    // button delete red color
+    // Button delete red color
     @IBAction func deleteAllButton(_ sender: AnyObject) {
         
-        //Create the AlertController
+        // Create the AlertController
         let actionSheetController: UIAlertController = UIAlertController(title: "Удалить корзину?", message: "Вы на самом деле собираетесь удалить все продукты из корзины?", preferredStyle: .alert)
         
-        //Create and add the Cancel action
+        // Create and add the Cancel action
         let cancelAction: UIAlertAction = UIAlertAction(title: "Нет", style: .cancel) { action -> Void in
             //Do some stuff
         }
         actionSheetController.addAction(cancelAction)
-        //Create and an option action
+        
+        // Create and an option action
         let nextAction: UIAlertAction = UIAlertAction(title: "Удалить", style: .destructive) {[weak self] action -> Void in
             //Do some other stuff
             ProductsForRealm.deleteAllProducts()
@@ -124,13 +102,13 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         }
         actionSheetController.addAction(nextAction)
         
-        //Present the AlertController
+        // Present the AlertController
         self.present(actionSheetController, animated: true, completion: nil)
         
         
     }
     
-    //MARK: Sender to DrawingUpOfAnOrderVC
+    // MARK: Sender to DrawingUpOfAnOrderVC
     @IBAction func DrawingUpOrderClick(_ sender: UIButton) {
         
         // Checking empty basket for next step
@@ -141,7 +119,6 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
             }
             alertController.addAction(OKAction)
             self.present(alertController, animated: true)
-            //self.dismiss(animated: true, completion: nil)
             
             return
         }
@@ -157,7 +134,6 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         ProductsForRealm.deleteAllProducts()
         updateProductInfo()
         
-        //guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         present(UIStoryboard.main["basket"]!, animated: true, completion: nil)
     }
     
@@ -169,32 +145,8 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         present(UIStoryboard.main["search"]!, animated: true, completion: nil)
         
     }
-    
-    //    @IBAction func menuClickAndClearDatabase(_ sender: AnyObject) {
-    //
-    //        ProductsForRealm.deleteAllProducts()
-    //        updateProductInfo()
-    //
-    //        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-    //        containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
-    //    }
-    
-    //    @IBAction func backClickAndClearDatabase (sender: AnyObject) {
-    //
-    //        ProductsForRealm.deleteAllProducts()
-    //        updateProductInfo()
-    //
-    //        if (self.presentingViewController != nil) {
-    //            self.dismiss(animated: true, completion: nil)
-    //        } else {
-    //            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-    //            containerViewController.addController(containerViewController.mainViewController ?? UIViewController())
-    //        }
-    //
-    //
-    //    }
     // end]
-
+    
     
     
     

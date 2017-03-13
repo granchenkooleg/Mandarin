@@ -24,14 +24,14 @@ class User: Object {
     var products = List<ProductsForRealm>()
     var homeUserData = List<InfoAboutUserForOrder>()
     
-
+    
     override static func primaryKey() -> String? {
         return "id"
     }
     
     deinit {
     }
-
+    
     
     class func setupUser(id: String = "", firstName: String = "", lastName: String = "", email: String = "", phone: String = "") {
         

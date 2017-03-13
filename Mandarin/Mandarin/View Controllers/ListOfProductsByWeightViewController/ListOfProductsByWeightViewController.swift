@@ -14,13 +14,13 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
     
     @IBOutlet weak var listHeaderLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    //var spiner = UIActivityIndicatorView()
+    
     var basketHandler: Block? = nil
     
-    //segue
+    // Segue
     var nameListsOfProductsHeaderText: String?
     var unitOfWeightForListOfProductsByWeightVC: String?
-    //property for comparison with allListProducts and suitable data retrieval
+    // Property for comparison with allListProducts and suitable data retrieval
     var weightOfWeightVC: String?
     var idPodcategory: String?
     
@@ -57,11 +57,11 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                     let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
                     let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
                         guard isNetworkReachable() == true  else {
-                        self.present(alert, animated: true)
+                            self.present(alert, animated: true)
                             return
                         }
                         
-                        // Call function
+                        // Call API method
                         self.listOfProduct {[weak self] _ in
                             self?.productsList = Product().allProducts().filter { Double($0.price_sale)! > Double(0.00) }
                             self?.tableView.reloadData()
@@ -75,7 +75,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 return
             }
             
-            // Call function
+            // Call API method
             listOfProduct {[weak self] _ in
                 self?.productsList = Product().allProducts().filter { Double($0.price_sale)! > Double(0.00) }
                 self?.tableView.reloadData()
@@ -131,17 +131,15 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
                 let image: Data? = nil
-//                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-//                    image = imageData
-//                }
+                
                 Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
             }
             completion()
         })
     }
     
-    // MARK: - Table view data source
     
+    // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productsList.count
@@ -156,7 +154,6 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         
         cell.buttonAction = { [weak self]  (sender) in
             // Do whatever you want from your button here.
-            
             let realm = try! Realm()
             if let product = realm.objects(ProductsForRealm.self).filter("id  == [c] %@", productDetails.id ).first {
                 try! realm.write {
@@ -164,9 +161,7 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
                 }
             } else {
                 let image: Data? = nil
-//                if productDetails.icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: productDetails.icon) ?? URL(fileURLWithPath: "")){
-//                    image = imageData
-//                }
+                
                 let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description_ , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "1", image: image)
             }
             
@@ -188,15 +183,15 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         cell.weightLabel?.text = productDetails.weight + " \(productDetails.units)"
         cell.priceOldLabel?.text = productDetails.price + " грн."
         
-        //if price_sale != 0.00 грн, set it
+        // if price_sale != 0.00 грн, set it
         if productDetails.price_sale != "0.00" {
             cell.priceSaleLabel?.text = productDetails.price_sale +  "  грн."
-            // create attributed string for strikethroughStyleAttributeName
+            // Create attributed string for strikethroughStyleAttributeName
             let myString = productDetails.price + " грн."
             let myAttribute = [ NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue ]
             let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
             
-            // set attributed text on a UILabel
+            // Set attributed text on a UILabel
             cell.priceOldLabel?.attributedText = myAttrString
         } else {
             cell.priceSaleLabel?.text = ""
@@ -235,7 +230,6 @@ class ListOfProductsByWeightViewControllerSegment: BaseViewController, UITableVi
         detailsProductVC.expire_dateDetailsVC = productsList[indexPath.row].expire_date
         detailsProductVC.brandDetailsVC = productsList[indexPath.row].brand
         detailsProductVC.iconDetailsVC = productsList[indexPath.row].icon
-        //detailsProductVC.DetailsVC = _products[indexPath.row].
         detailsProductVC.created_atDetailsVC = productsList[indexPath.row].created_at
         detailsProductVC.nameHeaderTextDetailsVC = productsList[indexPath.row].name
         detailsProductVC.addToContainer()

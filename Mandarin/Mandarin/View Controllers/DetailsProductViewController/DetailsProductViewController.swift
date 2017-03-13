@@ -32,7 +32,6 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     @IBOutlet weak var weightLabel: UILabel!
     
     // For favoriteProductOfUser
-    //    var taskId: String?
     var weightDetailsVC: String?
     var categoryIdProductDetailsVC: String?
     var priceSaleDetailsVC: String?
@@ -50,8 +49,6 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     var descriptionDetailsVC: String?
     var priceDetailsVC: String?
     var quantity: Int = 1
-    //for cart
-    //var quantityProducts: String
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,70 +61,66 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         // Check if User is
         if let id = User.currentUser?.idUser  {
             
-        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" : Int(id) as Any] as [String : Any]
-        
-        UserRequest.favorite(param as [String : AnyObject], completion: {[weak self] json in
-            json.forEach { _, json in
-                guard (json.isEmpty) == false else {return}
-                let id = json["id"].string ?? ""
-                let created_at = json["created_at"].string ?? ""
-                let icon = json["icon"].string ?? ""
-                let name = json["name"].string ?? ""
-                let category_id = json["category_id"].string ?? ""
-                let weight = json["weight"].string ?? ""
-                let description = json["description"].string ?? ""
-                let brand = json["brand"].string ?? ""
-                let calories = json["calories"].string ?? ""
-                let proteins = json["proteins"].string ?? ""
-                let zhiry = json["zhiry"].string ?? ""
-                let uglevody = json["uglevody"].string ?? ""
-                let price = json["price"].string ?? ""
-                let favorite = json["favorite"].string ?? ""
-                let status = json["status"].string ?? ""
-                let expire_date = json["expire_date"].string ?? ""
-                let category_name = json["category_name"].string ?? ""
-                let price_sale = json["price_sale"].string ?? ""
-                let units = json["units"].string ?? ""
-                let image = Data()
-//                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-//                    image = imageData
-//                }
+            let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                     "user_id" : Int(id) as Any] as [String : Any]
+            
+            UserRequest.favorite(param as [String : AnyObject], completion: {[weak self] json in
+                json.forEach { _, json in
+                    guard (json.isEmpty) == false else {return}
+                    let id = json["id"].string ?? ""
+                    let created_at = json["created_at"].string ?? ""
+                    let icon = json["icon"].string ?? ""
+                    let name = json["name"].string ?? ""
+                    let category_id = json["category_id"].string ?? ""
+                    let weight = json["weight"].string ?? ""
+                    let description = json["description"].string ?? ""
+                    let brand = json["brand"].string ?? ""
+                    let calories = json["calories"].string ?? ""
+                    let proteins = json["proteins"].string ?? ""
+                    let zhiry = json["zhiry"].string ?? ""
+                    let uglevody = json["uglevody"].string ?? ""
+                    let price = json["price"].string ?? ""
+                    let favorite = json["favorite"].string ?? ""
+                    let status = json["status"].string ?? ""
+                    let expire_date = json["expire_date"].string ?? ""
+                    let category_name = json["category_name"].string ?? ""
+                    let price_sale = json["price_sale"].string ?? ""
+                    let units = json["units"].string ?? ""
+                    let image = Data()
+                    
+                    let list = Products(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
+                    self?.internalProductsForListOfWeightVC.append(list)
+                }
                 
-                let list = Products(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
-                self?.internalProductsForListOfWeightVC.append(list)
-            }
-            
-            self?._productsList = (self?.internalProductsForListOfWeightVC)!
-            
-            for i in (self?._productsList ?? []) {
-                if i.category_id == self?.categoryIdProductDetailsVC && i.id == self?.idProductDetailsVC  {
-                    self?.heartButton.isSelected = true
+                self?._productsList = (self?.internalProductsForListOfWeightVC)!
+                
+                for i in (self?._productsList ?? []) {
+                    if i.category_id == self?.categoryIdProductDetailsVC && i.id == self?.idProductDetailsVC  {
+                        self?.heartButton.isSelected = true
+                        
+                    }
                     
                 }
                 
-            }
-            
             })
-    }
-    
-        //display iconHeart for Autorized user
+        }
+        
+        // Display iconHeart for Autorized user
         if User.isAuthorized()  {
             buttonHeart()
             heartButton.isHidden = false
         }
         
-        //call overPlusAndMinusButton function for display
+        // Call overPlusAndMinusButton function for display
         determinantForOverPlusAndMinusButton()
         
-        //quantityCartLabel.text = quantityProducts
+        
         // Make a choice prices for to display prices
         if Double(priceSaleDetailsVC ?? "") ?? 0 > Double(0.00) {
             priceLabel?.text = String(priceSaleDetailsVC ?? "") + " грн."
         } else {
             priceLabel?.text = ((priceDetailsVC ?? "") + " грн.")
         }
-        
         
         weightLabel.text = weightDetailsVC
         nameLabel.text = nameHeaderTextDetailsVC
@@ -151,7 +144,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         quantityLabel.text = "\(quantity) шт."
     }
     
-    //setting overPlusAndMinusButton
+    // Setting overPlusAndMinusButton
     func determinantForOverPlusAndMinusButton() -> Void {
         overPlusAndMinusButton.setBackgroundColor(Color.mandarin, animated: true)
         overPlusAndMinusButton.setTitle("В корзину", for: UIControlState.normal)
@@ -159,84 +152,57 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         
     }
     
-    //setting heartButton
+    // Setting heartButton
     func buttonHeart() {
-        //!! This can be useful 1..
-//        let realm = try! Realm()
-//        if let product = realm.objects(Product.self).filter("id  == [c] %@", idProductDetailsVC).first {
         
-//            heartButton.isSelected = product.favoriteProductOfUser
-            //then @IBAction func heartButton establish .selected
-            heartButton.setImage(UIImage(named: "HeartCleanBillWhite" ), for: .selected)
-            //at first establish .normal
-            heartButton.setImage(UIImage(named: "HeartWhiteNew" ), for: .normal)
-//        }
+        // Then @IBAction func heartButton establish .selected
+        heartButton.setImage(UIImage(named: "HeartCleanBillWhite" ), for: .selected)
+        // At first establish .normal
+        heartButton.setImage(UIImage(named: "HeartWhiteNew" ), for: .normal)
+        
     }
     
-    // button for addition to section "💛Я люблю"
+    // Button for addition to section "💛Я люблю"
     @IBAction func heartButton(_ sender: UIButton) {
-        
-        //sender.loading = true
         
         if sender.isSelected == false {
             
-            //adding to Favorite
+            // Adding to Favorite
             let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                      "product_id" : idProductDetailsVC,
                                      "user_id" : Int((User.currentUser?.idUser)!) ?? ""] as [String : Any]
             
-            UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
+            UserRequest.addToFavorite(param as [String : AnyObject], completion: { success in
                 if success == true {
                     UIAlertController.alert("Товар добавлен в \"Любимые\"".ls).show()
                 }
-                //sender.loading = false
             })
             
-            //it for fill heart white color. Look func buttonHeart(). [start
-                        sender.isSelected = !sender.isSelected
+            // It for fill heart white color. Look func buttonHeart(). [start
+            sender.isSelected = !sender.isSelected
             // end
             ///////////////////////////////////////////////////////////////////////////
         } else {
             
-            //remove from Favorite
+            // Remove from Favorite
             let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                      "product_id" : idProductDetailsVC,
                                      "user_id" : Int((User.currentUser?.idUser)!) ?? "",
                                      "remove" : "1"] as [String : Any]
             
-            UserRequest.addToFavorite(param as [String : AnyObject], completion: {/*[weak self]*/ success in
+            UserRequest.addToFavorite(param as [String : AnyObject], completion: { success in
                 if success == true {
                     UIAlertController.alert("Товар удален из любимых".ls).show()
                 }
-                //sender.loading = false
             })
             
-            //it for fill heart white color. Look func buttonHeart(). [start
-                       sender.isSelected = !sender.isSelected
+            // It for fill heart white color. Look func buttonHeart(). [start
+            sender.isSelected = !sender.isSelected
             // end]
         }
-        
-        //!! This can be useful 2..
-//        updateTask(!heartButton.isSelected)
-        
     }
     
-    //!! This can be useful 3..
-//    // For favoriteProductOfUser
-//    fileprivate func updateTask(_ checked: Bool) {
-//        if let realm = try? Realm() {
-//            //let id = self.taskId,
-//            
-//            if let product = realm.objects(Product.self).filter("id  == [c] %@", idProductDetailsVC).first {
-//                try! realm.write {
-//                    product.favoriteProductOfUser = checked
-//                }
-//                heartButton.isSelected = product.favoriteProductOfUser
-//            }
-//        }
-//    }
-    
-    //hidden overButton
+    // Hidden overButton
     @IBAction func overButtonHidden(_ sender: UIButton) {
         overPlusAndMinusButton.isHidden = true
     }
@@ -252,21 +218,15 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
         quantityLabel.text = "\(quantity) шт."
     }
     
-    //button cart
+    // Button cart
     @IBAction func createCart(_ sender: AnyObject) {
         
         if overPlusAndMinusButton.isHidden == false {
-         overPlusAndMinusButton.isHidden = true
+            overPlusAndMinusButton.isHidden = true
             return
         } else {
             overPlusAndMinusButton.isHidden = false
         }
-        
-        //        let list = ProductsForRealm.setupProduct(id: id, descriptiqonForProduct: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_salquglevody, units: "")
-        //        self?.internalProducts.append(list)
-        //        let products = ProductsForRealm(value: list)
-        //        User.currentUser?.products.append(products)
-        
         
         UIAlertController.alert("Товар добавлен в пакет".ls).show()
         updateProduct()
@@ -276,9 +236,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             quantity = 1
         }
         quantityLabel.text = "\(quantity) шт."
-        //        navigationController!.popViewController(animated: true)
         
-        // quantityProducts  = "2"
     }
     
     func updateProduct () {
@@ -289,9 +247,6 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
             }
         } else {
             let image: Data? = nil
-//            if iconDetailsVC.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: iconDetailsVC) ?? URL(fileURLWithPath: "")){
-//                image = imageData
-//            }
             let _ = ProductsForRealm.setupProduct(id: idProductDetailsVC ?? "", descriptionForProduct: descriptionDetailsVC ?? "", proteins: proteinsDetailsVC ?? "", calories: caloriesDetailsVC ?? "", zhiry: zhiryDetailsVC ?? "", favorite: "", category_id: "", brand: brandDetailsVC ?? "", price_sale: priceSaleDetailsVC ?? "", weight: "", status: "", expire_date: expire_dateDetailsVC ?? "", price: priceDetailsVC ?? "", created_at: created_atDetailsVC ?? "", icon: iconDetailsVC ?? "", category_name: "", name: nameHeaderTextDetailsVC ?? "" , uglevody: uglevodyDetailsVC ?? "" , units: "", quantity: "\(quantity)", image: image)
         }
     }

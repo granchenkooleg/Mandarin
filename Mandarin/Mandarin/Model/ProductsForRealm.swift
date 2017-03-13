@@ -48,7 +48,7 @@ class ProductsForRealm : Object {
             print("FileURL of DataBase - \(url)")
         }
     }
-
+    
     class func setupProduct(id: String = "", descriptionForProduct: String = "", proteins: String = "", calories: String = "", zhiry: String = "", favorite: String = "", category_id: String = "", brand: String = "", price_sale: String = "", weight: String = "", status: String = "", expire_date: String = "", price: String = "", created_at: String = "", icon: String = "", category_name: String = "", name: String = "", uglevody: String = "", units: String = "", quantity: String = "", image: Data? = nil) -> ProductsForRealm {
         
         let productData: Dictionary <String, Any> = [
@@ -84,10 +84,10 @@ class ProductsForRealm : Object {
     }
     
     static func deleteAllProducts() {
-                let realm = try! Realm()
-                let allProducts = realm.objects(ProductsForRealm.self)
-                try! realm.write {
-                    realm.delete(allProducts)
-                }
+        let realm = try! Realm()
+        let allProducts = realm.objects(ProductsForRealm.self)
+        try! realm.write {
+            realm.delete(allProducts)
+        }
     }
 }

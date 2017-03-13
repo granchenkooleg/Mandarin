@@ -12,7 +12,7 @@ class MainTableViewCell: UITableViewCell {
     
     @IBOutlet weak var thubnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-   
+    
     
     
     override func awakeFromNib() {

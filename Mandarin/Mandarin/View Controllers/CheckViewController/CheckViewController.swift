@@ -40,7 +40,7 @@ class CheckViewController: BasketViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         deliveryTimeLabel.text = (valueDeliveryTime + " мин.")
         
         // Realm start
@@ -48,30 +48,28 @@ class CheckViewController: BasketViewController {
         infoOfUser = realm.objects(InfoAboutUserForOrder.self)
         
         // Do any additional setup after loading the view.
-        //dateOrderLabel.text
         numberOrderLabel.text = infoOfUser.last?.idOrder
         nameCustomerLabel.text = infoOfUser.last?.name
         phoneCustomerLabel.text = infoOfUser.last?.phone
         
         adressCustomerLabel.text = "г. \(infoOfUser.last?.city ?? ""), " as String + "ул. \(infoOfUser.last?.street ?? ""), " as String + "дом. \(infoOfUser.last?.house ?? ""), " as String + "кв. \(infoOfUser.last?.apartment ?? "")" as String
-       
+        
         amountMoneyOfOrderLabel.text = (totalPriceInCart() + " грн.")
         dateOrderLabel.text = dateFormatter()
     }
     
     
-        @IBAction func menuClickAndClearDatabase(_ sender: AnyObject) {
-    
-            ProductsForRealm.deleteAllProducts()
-            //updateProductInfo()
-    
-            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-            containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
-        }
+    @IBAction func menuClickAndClearDatabase(_ sender: AnyObject) {
+        
+        ProductsForRealm.deleteAllProducts()
+        updateProductInfo()
+        
+        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
+    }
     
     // MARK: Sender to BasketVC
     @IBAction func showGoodsButton(_ sender: UIButton) {
-        //guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         present(UIStoryboard.main["basketAfterpayment"]!, animated: true)
     }
 }

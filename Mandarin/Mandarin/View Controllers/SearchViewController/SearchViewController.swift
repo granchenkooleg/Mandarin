@@ -13,10 +13,6 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var searchTextField: TextField?
-    //var spiner = UIActivityIndicatorView()
-    
-    // From CategbasoryVC
-    //    var unitOfWeightSearchVC : String?
     
     var products = [Product]()
     var searchProduct = [Product]()
@@ -92,14 +88,12 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
                 }
                 let category_name = json["category_name"].string ?? ""
                 let price_sale = json["price_sale"].string ?? ""
-                var image: Data? = nil
-//                if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-//                    image = imageData
-//                }
+                let image: Data? = nil
+                
                 Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
             }
             completion()
-            })
+        })
     }
     
     func searchTextChanged(sender: UITextField) {
@@ -134,9 +128,7 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
                 }
             } else {
                 let image: Data? = nil
-//                if productDetails.icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: productDetails.icon) ?? URL(fileURLWithPath: "")){
-//                    image = imageData
-//                }
+                
                 let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description_ , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "\(self.quantity)", image: image)
             }
             
@@ -145,7 +137,6 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         }
         
         Dispatch.mainQueue.async { _ in
-            //cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
             cell.thubnailImageView?.sd_setImage(with: URL(string: (productDetails.icon)))
         }
         
@@ -174,13 +165,6 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor(white: 1, alpha: 0.1)
     }
-    
-//    @IBAction func basketClickForSearch (_ sender: UIButton) {
-//        //self.dismiss(animated: true, completion: nil)
-//        //        present(!, animated: true, completion: nil)
-//        let basketVC = UIStoryboard.main["basket"] as? BasketViewController
-//        basketVC?.addToContainer()
-//    }
     
     // MARK: - Navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -212,7 +196,6 @@ class SearchViewController: BaseViewController, UITableViewDataSource, UITableVi
         detailsProductVC.expire_dateDetailsVC = searchProduct[indexPath.row].expire_date
         detailsProductVC.brandDetailsVC = searchProduct[indexPath.row].brand
         detailsProductVC.iconDetailsVC = searchProduct[indexPath.row].icon
-        //detailsProductVC.DetailsVC = _products[indexPath.row].
         detailsProductVC.created_atDetailsVC = searchProduct[indexPath.row].created_at
         detailsProductVC.nameHeaderTextDetailsVC = searchProduct[indexPath.row].name
         

@@ -33,7 +33,7 @@ func performWhenLoaded<T: BaseViewController>(_ controller: T, block: @escaping 
 
 class BaseViewController: UIViewController, KeyboardNotifying {
     
-    // var it contains Realm data my table ProductsForRealm
+    // Realm data my table ProductsForRealm
     var productsInBasket: Results<ProductsForRealm>!
     
     var spiner = UIActivityIndicatorView()
@@ -80,23 +80,6 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        // Check Internet connection
-//        guard isNetworkReachable() == true else {
-//            print("Internet connection FAILED")
-//            let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
-//            let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
-//                guard isNetworkReachable() == true else {
-//                    self.present(alert, animated: true)
-//                    return}
-//                
-//                // NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
-//            }
-//            alert.addAction(OkAction)
-//            alert.show()
-//            return
-//        }
-//        print("Internet connection OK")
-        
         if shouldUsePreferredViewFrame() {
             view.forceLayout()
         }
@@ -131,22 +114,6 @@ class BaseViewController: UIViewController, KeyboardNotifying {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        // Check Internet connection
-//        guard isNetworkReachable() == true else {
-//            print("Internet connection FAILED")
-//            let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
-//            let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
-//                guard isNetworkReachable() == true else {
-//                    self.present(alert, animated: true)
-//                    return}
-//                
-//                // NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
-//            }
-//            alert.addAction(OkAction)
-//            alert.show()
-//            return
-//        }
-//        print("Internet connection OK")
         updateProductInfo()
     }
     
@@ -258,14 +225,6 @@ class BaseViewController: UIViewController, KeyboardNotifying {
         basketVC?.addToContainer()
         
     }
-    
-    //    func updateProductInBasket () {
-    //        let realm = try! Realm()
-    //        let productsInBasket = realm.objects(ProductsForRealm.self)
-    //        Dispatch.mainQueue.async {
-    //             self.quantityCartLabel?.text = "\(productsInBasket.map { Int($0.quantity)! }.reduce(0, { $0 + $1 }))"
-    //        }
-    //    }
     
     // MARK: Basket Update and totalPrice in header
     func updateProductInfo() {

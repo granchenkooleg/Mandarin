@@ -19,9 +19,7 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
     var unitOfWeight: String = ""
     var nameWeightHeaderText: String = ""
     var podCategory_id: String = ""
-    //    var contentWeightProduct = Set<String>()
     var contentWeightProduct = [String]()
-    //    var contentWeightProductWithoutDuplicates = [String]()//Set<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,36 +41,19 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         UserRequest.getWeightCategory(param as [String : AnyObject], completion: {[weak self] json in
             if  json[0].isEmpty {
                 
-                
                 let listOfProductsByWeightViewController = Storyboard.ListOfWeightProducts.instantiate()
                 listOfProductsByWeightViewController.nameListsOfProductsHeaderText = self?.nameWeightHeaderText
-                //for compare in ListsOfProductVC
-                //listOfProductsByWeightViewController.weightOfWeightVC = /*contentWeightProductWithoutDuplicates*/contentWeightProduct[indexPath.row]
                 listOfProductsByWeightViewController.idPodcategory = self?.podCategory_id
                 listOfProductsByWeightViewController.unitOfWeightForListOfProductsByWeightVC = self?.unitOfWeight
-                
                 listOfProductsByWeightViewController.addToContainer()
                 
-                
-                
-                
-                //It's null
-                //                 let alertController = UIAlertController(title: "В этом разделе нет товара", message: "", preferredStyle: .alert)
-                //                let OKAction = UIAlertAction(title: "Ok", style: .default) { action in
-                //                    self?.backClick(nil)
-                //                }
-                //                self?.spiner.stopAnimating()
-                //                alertController.addAction(OKAction)
-                //                self?.present(alertController, animated: true)
-                //
                 return
             }
             json.forEach { _, json in
                 let weight = json["weight"].string ?? ""
-                // Sort weight
-                //                self?.contentWeightProduct.insert(weight)
+                
                 self?.contentWeightProduct.append(weight)
-                //self?.contentWeightProductWithoutDuplicates = (self?.contentWeightProduct.sorted {$0 < $1} ?? [])
+                
             }
             self?.collectionView.reloadData()
             self?.spiner.stopAnimating()
@@ -80,22 +61,22 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return /*contentWeightProductWithoutDuplicates*/contentWeightProduct.count
+        return contentWeightProduct.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weigthCell", for: indexPath)
             as? WeightCollectionViewCell else { return UICollectionViewCell() }
-        cell.weightUnitsLabelOne.text = "\(/*contentWeightProductWithoutDuplicates*/contentWeightProduct[indexPath.row]) " + self.unitOfWeight
+        cell.weightUnitsLabelOne.text = "\(contentWeightProduct[indexPath.row]) " + self.unitOfWeight
         
-        //output icon: liter or kg
+        // Output icon: liter or kg
         if (self.unitOfWeight.isEmpty == true) {
             if (self.unitsFromRealmDB.first?.units == "л.") {
                 cell.iconWeightImageViev.image =  UIImage(named: "but")
             } else {
                 cell.iconWeightImageViev.image =  UIImage(named: "weight")
             }
-            cell.weightUnitsLabelOne.text = "\(/*contentWeightProductWithoutDuplicates*/contentWeightProduct[indexPath.row]) " + (self.unitsFromRealmDB.first?.units ?? "")
+            cell.weightUnitsLabelOne.text = "\(contentWeightProduct[indexPath.row]) " + (self.unitsFromRealmDB.first?.units ?? "")
         }
         else if (self.unitOfWeight == "л.") {
             cell.iconWeightImageViev.image =  UIImage(named: "but")
@@ -128,8 +109,8 @@ class WeightViewController: CategoryViewController, UICollectionViewDataSource, 
         
         let listOfProductsByWeightViewController = Storyboard.ListOfWeightProducts.instantiate()
         listOfProductsByWeightViewController.nameListsOfProductsHeaderText = nameWeightHeaderText
-        //for compare in ListsOfProductVC
-        listOfProductsByWeightViewController.weightOfWeightVC = /*contentWeightProductWithoutDuplicates*/contentWeightProduct[indexPath.row]
+        // For compare in ListsOfProductVC
+        listOfProductsByWeightViewController.weightOfWeightVC = contentWeightProduct[indexPath.row]
         listOfProductsByWeightViewController.idPodcategory = podCategory_id
         listOfProductsByWeightViewController.unitOfWeightForListOfProductsByWeightVC = self.unitOfWeight
         

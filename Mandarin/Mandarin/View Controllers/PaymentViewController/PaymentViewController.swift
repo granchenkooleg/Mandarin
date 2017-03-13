@@ -42,11 +42,8 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
         let param_2: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.deliveryTime(param_2 as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
-                //                let id = json["id"].string ?? ""
-                //                let name = json["name"].string ?? ""
-                //                let alias = json["alias"].string ?? ""
-                self?.deliveryTime = json["value"].string ?? ""
                 
+                self?.deliveryTime = json["value"].string ?? ""
             }
         })
         
@@ -132,11 +129,6 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
         var body =  (_name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit + _bond + _totalPriceinCart)
         
         
-        //        let idOfUser = (((User.currentUser?.idUser)?.isEmpty)! == false)  ? ((User.currentUser?.idUser)! + body) : (User.currentUser?.idUser)
-        //        let phoneOfUser = (((User.currentUser?.idUser)?.isEmpty)! != false) ? (phoneUserPayment! + body) : phoneUserPayment
-        
-        //let idUserInDB  = User.currentUser?.idUser
-        
         // Doing it for product_id in Alamofire request(param)
         var list: [JSON] = []
         // For body
@@ -171,7 +163,6 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
                 checkVC.valueDeliveryTime = self.deliveryTime ?? ""
                 checkVC.addToContainer()
                 
-                //                containerViewController.addController(UIStoryboard.main["checkVC"]!)
             } else {
                 let alertController = UIAlertController(title: "Введите правильно номер телефона или ваш пакет пуст", message: "", preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { action in
@@ -179,74 +170,7 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
                 }
                 alertController.addAction(OKAction)
                 self.present(alertController, animated: true)
-                //self.dismiss(animated: true, completion: nil)
-                
             }
-            //sender.loading = false
         })
-//        ProductsForRealm.deleteAllProducts()
-//        updateProductInfo()
     }
-    
-    // For mail
-    //    func sendMessage(body: String, recipients: [String]) {
-    //        if MFMailComposeViewController.canSendMail() {
-    //            let mailComposeVC = MFMailComposeViewController()
-    //            mailComposeVC.mailComposeDelegate = self
-    //            mailComposeVC.setToRecipients(recipients)
-    //            mailComposeVC.setMessageBody(body, isHTML: false)
-    //            present(mailComposeVC, animated: true, completion: nil)
-    //        } else {
-    //            self.showSendMailErrorAlert()
-    //        }
-    //    }
-    //
-    //    func showSendMailErrorAlert() {
-    //        let sendMailErrorAlert = UIAlertController(title: "Не возможно отправить Email", message: "Ваш девайс не может отправить e-mail. Пожалуйста проверьте ваши настройки и пробуйте снова.", preferredStyle: .alert)
-    //        sendMailErrorAlert.show()
-    //    }
-    
-    // MARK: MFMailComposeViewControllerDelegate
-    
-    //    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-    //        //sender.loading = true
-    //        /*guard*/ let idUserInDB  = User.currentUser?.idUser   /*, let idOrder = idOrder*/ /*else { return }*/
-    //        // Doing it for product_id in Alamofire request(param)
-    //        var list: [JSON] = []
-    //        for i in productsInBasket {
-    //            // Convert type String to Int
-    //            let q: Int = Int(i.quantity)!
-    //            for _ in 1...q {
-    //                list.append(JSON(i.id))
-    //            }
-    //        }
-    //
-    //        controller.dismiss(animated: true, completion: { [weak self] in
-    //            let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-    //                                     "user_id" :  idUserInDB as Any,
-    //                                     "user_phone": self!.phoneUserPayment as Any,
-    //                                     "product_id": list,
-    //                                     "order_id" : self!.idOrderPayment as Any] as [String : Any]
-    //
-    //            UserRequest.addOrderToServer(param as [String : AnyObject], completion: { success in
-    //                if success == true {
-    //                    guard let checkVC = UIStoryboard.main["checkVC"] as? CheckViewController else { return }
-    //                    checkVC.valueDeliveryTime = self?.deliveryTime ?? ""
-    //                    self?.present(checkVC, animated: true)
-    //
-    //                    //                containerViewController.addController(UIStoryboard.main["checkVC"]!)
-    //                } else {
-    //                    let alertController = UIAlertController(title: "Введите коректные данные", message: "", preferredStyle: .alert)
-    //                    let OKAction = UIAlertAction(title: "OK", style: .default) { action in
-    //                        // ...
-    //                    }
-    //                    alertController.addAction(OKAction)
-    //                    self?.present(alertController, animated: true)
-    //                    //self.dismiss(animated: true, completion: nil)
-    //                    
-    //                }
-    //                //sender.loading = false
-    //            })
-    //        })
-    //    }
 }

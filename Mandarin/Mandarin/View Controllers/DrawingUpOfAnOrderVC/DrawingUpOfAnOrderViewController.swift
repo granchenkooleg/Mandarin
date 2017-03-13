@@ -11,7 +11,7 @@ import RealmSwift
 /*import MessageUI*/
 
 
-class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate, UITextViewDelegate /*, MFMailComposeViewControllerDelegate*/ {
+class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var nameUserTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -30,6 +30,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // TextViewCommit for order
         commitOfUserTextView.text = "Комментарий к заказу"
         commitOfUserTextView.textColor = UIColor.lightGray
@@ -48,7 +49,6 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
             porchTextField?.text = adressUserFromRealm.last?.porch
             numberApartmentTextField?.text = adressUserFromRealm.last?.apartment
             floorTextField?.text = adressUserFromRealm.last?.floor
-            //commitOfUserTextView?.text = adressUserFromRealm.last?.commit
         }
     }
     
@@ -72,15 +72,10 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         let realm = try! Realm()
         adressUserFromRealm = realm.objects(InfoAboutUserForOrder.self)
     }
-    
     // end]
     
     // Entring data from textField to Realm
     @IBAction func checkout(_ sender: UIButton)   {
-        
-        //sender.loading = true
-        
-        //let idOrder = "1"
         
         guard let nameUser = nameUserTextField.text, nameUser.isEmpty == false else {
             
@@ -91,7 +86,6 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
             alertController.addAction(OKAction)
             self.present(alertController, animated: true, completion:nil)
             
-            //sender.loading = false
             return
         }
         
@@ -104,7 +98,6 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
             alertController.addAction(OKAction)
             self.present(alertController, animated: true, completion:nil)
             
-            //sender.loading = false
             return
         }
         
@@ -117,7 +110,6 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
             alertController.addAction(OKAction)
             self.present(alertController, animated: true, completion:nil)
             
-            //sender.loading = false
             return
         }
         
@@ -132,7 +124,6 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
             alertController.addAction(OKAction)
             self.present(alertController, animated: true, completion:nil)
             
-            //sender.loading = false
             return
         }
         
@@ -145,7 +136,6 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
             alertController.addAction(OKAction)
             self.present(alertController, animated: true, completion:nil)
             
-            //sender.loading = false
             return
         }
         
@@ -170,14 +160,7 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
             }
             return
         }
-
-//        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-//        let next = adressUserFromRealm.last?.idOrder
-//        let payment = (UIStoryboard.main["payment"]!)
-//        payment
-//        containerViewController.addController(UIStoryboard.main["payment"]!)
         
-        //guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
         guard let paymentVC = UIStoryboard.main["payment"] as? PaymentViewController, let last = adressUserFromRealm.last else { return }
         paymentVC.idOrderPayment = last.idOrder
         paymentVC.phoneUserPayment = last.phone
@@ -190,9 +173,8 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate,
         paymentVC.apartmentPayment = last.apartment
         paymentVC.floorPayment = last.floor
         paymentVC.commitPayment = last.commit
-        //containerViewController.addController(paymentVC)
         paymentVC.addToContainer()
-    
+        
         
     }
     

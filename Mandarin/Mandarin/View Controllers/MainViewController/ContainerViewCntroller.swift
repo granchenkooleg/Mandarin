@@ -17,19 +17,12 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var containerView: UIView!
     var navigation = UINavigationController()
     
-    //var holderView = HolderView(frame: CGRect.zero)
-    
     // Create and add the view to the screen.
     let progressHUD = ProgressHUD(text: "Обновляем список товара...")
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
     
     var mainViewController: MainViewController = Storyboard.Main.instantiate()
     var showingMenu = false
-    
-    //    func mainViewController () -> MainViewController? {
-    //        guard let mainViewController = self.childViewControllers.first as? MainViewController else { return nil }
-    //        return mainViewController
-    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +63,6 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
             queue.activate()
         }
         
-        
-        
         addHolderView()
         
         self.view.backgroundColor = UIColor.black
@@ -96,21 +87,6 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         progressHUD.show()
         self.view.addSubview(progressHUD)
     }
-    
-    //    func addHolderView() {
-    //
-    //
-    //        let boxSize: CGFloat = 100.0
-    //        holderView.frame = CGRect(x: view.bounds.width / 2 - boxSize / 4,
-    //                                  y: view.bounds.height / 2 + view.bounds.height / 50,
-    //                                  width: boxSize,
-    //                                  height: boxSize)
-    //        holderView.parentFrame = view.frame
-    //        //holderView.delegate = self
-    //        view.addSubview(holderView)
-    //        holderView.addOval()
-    //    }
-    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -187,8 +163,8 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     func requestForUpdateDB(_ completion: @escaping Block)  {
         
         Dispatch.backgroundQueue.async(){
-        Product.delAllProducts()
-        Product.setConfig()
+            Product.delAllProducts()
+            Product.setConfig()
         }
         
         let anotherQueue = DispatchQueue(label: "com.appcoda.anotherQueue", qos: .userInitiated, attributes: [.concurrent, .initiallyInactive])
@@ -239,32 +215,6 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
                 self?.progressHUD.hide()
                 self?.backgroundImage.removeFromSuperview()
             })
-            
-            //            let param2: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
-            //            UserRequest.getAllCategories(param2 as [String : AnyObject], completion: { json in
-            //                json.forEach { _, json in
-            //                    print ("🔴")
-            //                    let id = json["id"].stringValue
-            //                    let created_at = json["created_at"].stringValue
-            //                    let icon = json["icon"].stringValue
-            //                    let name = json["name"].stringValue
-            //                    let units = json["units"].stringValue
-            //                    //                /////////
-            //                    //                let searchVC = qcg()
-            //                    //                searchVC.unitOfWeightSearchVC = units
-            //                    //                ////////
-            //                    let category_id = json["category_id"].stringValue
-            //                    var image: Data? = nil
-            //                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-            //                        image = imageData
-            //                        Category.setupCategory(id: id, icon: icon, name: name, created_at: created_at, units: units, category_id: category_id, image: image)
-            //                    }
-            //                }
-            //                completion()
-            //                self?.progressHUD.hide()
-            //                self?.backgroundImage.removeFromSuperview()
-            //
-            //            })
         })
     }
 }
@@ -308,7 +258,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
     func getAllcat() {
         categoryContainer = Category().allCategories()
         categoryContainer.insert(Category(), at: 0)
-        tableView?.reloadData()
+        // tableView?.reloadData()
     }
     
     
@@ -332,7 +282,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
                 cell.thubnailImageView?.image = UIImage(named: "ic_main")
                 cell.nameLabel?.text = "Главная"
             } else {
-                //                cell.thubnailImageView?.image = UIImage(data: category.image ?? Data())
+                
                 cell.thubnailImageView?.sd_setImage(with: URL(string: (category.icon)))
                 cell.nameLabel?.text = category.name
             }
@@ -340,7 +290,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    // NotificationCenter
+    // NotificationCenter from CatVC
     func methodOfReceivedNotification2(notification: Notification) {
         getAllcat()
         self.tableView?.reloadData()
@@ -363,8 +313,7 @@ class Menu: UIView, UITableViewDataSource, UITableViewDelegate {
         
         guard indexPath.row != 0 else {
             guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-            //            //            containerViewController.pushViewController(containerViewController.mainViewController, animated: true)
-            //            containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
+            
             if let containerVC = UINavigationController.main.topViewController as? ContainerViewController {
                 if containerVC.navigation.viewControllers.count != 0 {
                     

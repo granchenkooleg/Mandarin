@@ -92,7 +92,6 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
             request?.execute(resultBlock: { [weak self] user in
                 let userData = (user?.parsedModel as! VKUsersArray).firstObject()
                 guard let id = userData?.id, let firstName = userData?.first_name, let lastName = userData?.last_name else { return }
-                //User.setupUser(id: "\(id)", firstName: "\(firstName)", lastName: "\(lastName)")
                 
                 // For favorite products, because us need id [start
                 let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
@@ -158,7 +157,6 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
                 let _  =  graphRequest?.start(completionHandler: {[weak self] _, result, error  in
                     guard let result = result as? NSDictionary else { return }
                     guard error == nil, let id = result["id"] else { return }
-                    //User.setupUser(id: "\(id)", firstName: "\(result["first_name"])", lastName: "\(result["last_name"])", email: "\(result["email"])")
                     
                     // For favorite products, because us need id [start
                     let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
@@ -209,7 +207,6 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
-            //User.setupUser(id: user.userID, firstName: user.profile.givenName, lastName: user.profile.familyName, email: user.profile.email)
             
             // For favorite products, because us need id [start
             let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
@@ -272,13 +269,7 @@ class LoginViewController: BaseLoginViewController, GIDSignInUIDelegate, GIDSign
     }
 }
 
-class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ {
-    
-    //    let REGEX_PATTERN_FIRST_NAME = "/^[a-z0-9_-]{3,16}$/"
-    //    let REGEX_PATTERN_PHONE =  "^\\d{3}-\\d{3}-\\d{4}$"
-    //    let REGEX_PATTERN_PASSWORD = "/^[a-z0-9_-]{6,18}$/"
-    //    let REGEX_PATTERN_EMAIL = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+.[a-zA-Z0-9._%+-]{2,4}"
-    //    let REGEX_PATTERN_BIRTH = "^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$"
+class CreateAccountViewController: BaseLoginViewController {
     
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -286,33 +277,6 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     @IBOutlet weak var birthdayTextField: UITextField!
-    
-    
-    //
-    //    func validateInput(text: String, error: inout NSError?) -> Bool {
-    //
-    //            // use NSRegularExpression to do regex match
-    //            let regexPattern = REGEX_PATTERN_EMAIL
-    //            let regex = NSRegularExpression(pattern: regexPattern, options: [], error: &error)
-    //            let range = NSRange(location: 0, length: text.characters.count)
-    //            let numberOfMatches = regex.matches(in: text, options: [], range: range)
-    //
-    //            // check the matches
-    //            if numberOfMatches == 0 {
-    //
-    //                 //check the error
-    //                if let e = error {
-    //                    print("Input validation failed withe error: (e.localizedDescription).")
-    //                }
-    //                print("Input validation failed: \(text) is NOT a valid email adress!")
-    //                return false
-    //            }
-    //            print("Input validation successful: \(text) is a valid email address!")
-    //            return true
-    //        }
-    //
-    //
-    //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -355,15 +319,6 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
         
         let birthday = birthdayTextField.text
         
-        
-        // Usage for InputValidator
-        //        let textFieldNumeric = ContexForValidation(text: "Vasya", validator: CreateAccountViewController())
-        //        textFieldNumeric.validate()
-        
-        //        let email = ContexForValidation(text: emailTextField.text!, validator: CreateAccountViewController())
-        //        email.validate()
-        
-        
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
                                  "email" : email,
                                  "username" : firstName,
@@ -371,36 +326,23 @@ class CreateAccountViewController: BaseLoginViewController /*, InputValidator*/ 
                                  "phone" : phone,
                                  "birthday": birthday ?? ""] as [String: Any]
         
-        //
-        //        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-        //                                 "email" : "test\(arc4random())@mail.ru",
-        //                                 "username" : "Oleg",
-        //                                 "password" : "123123",
-        //                                 "phone" : "0991231231"] as [String : Any]
-        
         UserRequest.makeRegistration(param as [String : AnyObject], completion: {[weak self] success in
             if success == true {
                 self?.chooseNextContoller()
             } else {
                 UIAlertController.alert("Такие данные уже используются".ls).show()
-                 self?.firstNameTextField.text = ""
-                 self?.phoneTextField.text = ""
-                 self?.emailTextField.text = ""
-                 self?.passwordTextField.text = ""
-                 self?.repeatPasswordTextField.text = ""
-                 self?.birthdayTextField.text = ""
+                self?.firstNameTextField.text = ""
+                self?.phoneTextField.text = ""
+                self?.emailTextField.text = ""
+                self?.passwordTextField.text = ""
+                self?.repeatPasswordTextField.text = ""
+                self?.birthdayTextField.text = ""
             }
             
             InfoAboutUserForOrder.setupAllUserInfo(name: "\(firstName)", phone: "\(phone)", city: "Одесса")
             
             sender.loading = false
         })
-        
-        
-        
-        //    func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
-        //        return adjustment.defaultConstant + 145.0
-        //    }
         
     }
     
@@ -431,19 +373,19 @@ class RecoveryPasswordViewController: BaseLoginViewController {
                                  "email" : /*"test1@mail.ru"*/ emailOrPhone,
                                  "password" : "111222" /*password*/]
         
-        UserRequest.recoveryPassword(param as [String : AnyObject], completion: {/*[weak self]*/ success in
+        UserRequest.recoveryPassword(param as [String : AnyObject], completion: { success in
             if success == true {
                 //self?.chooseNextContoller()
                 UINavigationController.main.pushViewController(Storyboard.Login.instantiate(), animated: false)
                 if let _ = Int(emailOrPhone)
                 {
                     UIAlertController.alert("Новый пароль выслан на Ваш номер телефона".ls).show()
-
+                    
                 }
                 else
                 {
                     UIAlertController.alert("Новый пароль выслан на Ваш email".ls).show()
-
+                    
                 }
                 
             }

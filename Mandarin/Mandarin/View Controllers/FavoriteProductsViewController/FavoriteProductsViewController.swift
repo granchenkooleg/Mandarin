@@ -21,8 +21,6 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
     
     var quantity: Int = 1
     
-   // var productInstant: Results<Product>!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,50 +63,50 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         guard let id = User.currentUser?.idUser else {return}
         
         func favoritOfProducts(_ completion: @escaping Block)  {
-        let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" : Int(id) as! AnyHashable] as [String : Any]
-        
-        UserRequest.favorite(param as [String : AnyObject], completion: {[weak self] json in
-            json.forEach { _, json in
-                guard (json.isEmpty) == false else {return}
-                let id = json["id"].string ?? ""
-                let created_at = json["created_at"].string ?? ""
-                let icon = json["icon"].string ?? ""
-                let name = json["name"].string ?? ""
-                let category_id = json["category_id"].string ?? ""
-                let weight = json["weight"].string ?? ""
-                let description = json["description"].string ?? ""
-                let brand = json["brand"].string ?? ""
-                let calories = json["calories"].string ?? ""
-                let proteins = json["proteins"].string ?? ""
-                let zhiry = json["zhiry"].string ?? ""
-                let uglevody = json["uglevody"].string ?? ""
-                let price = json["price"].string ?? ""
-                let favorite = json["favorite"].string ?? ""
-                let status = json["status"].string ?? ""
-                let expire_date = json["expire_date"].string ?? ""
-                let category_name = json["category_name"].string ?? ""
-                let price_sale = json["price_sale"].string ?? ""
-                var units = json["units"].string ?? ""
-                if units == "kg" {
-                    units = "кг."
-                }
-                if units == "liter" {
-                    units = "л."
-                }
-                let image = Data()
-                if icon.isEmpty == false/*, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: ""))*/{
-                    /*image = imageData*/
-                    let list = Products(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
-                    self?.internalProductsForListOfWeightVC.append(list)
-                }
-            }
+            let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
+                                     "user_id" : Int(id) as! AnyHashable] as [String : Any]
             
-            self?._productsList = (self?.internalProductsForListOfWeightVC)!
-            self?.spiner.stopAnimating()
-            self?.tableView.reloadData()
+            UserRequest.favorite(param as [String : AnyObject], completion: {[weak self] json in
+                json.forEach { _, json in
+                    guard (json.isEmpty) == false else {return}
+                    let id = json["id"].string ?? ""
+                    let created_at = json["created_at"].string ?? ""
+                    let icon = json["icon"].string ?? ""
+                    let name = json["name"].string ?? ""
+                    let category_id = json["category_id"].string ?? ""
+                    let weight = json["weight"].string ?? ""
+                    let description = json["description"].string ?? ""
+                    let brand = json["brand"].string ?? ""
+                    let calories = json["calories"].string ?? ""
+                    let proteins = json["proteins"].string ?? ""
+                    let zhiry = json["zhiry"].string ?? ""
+                    let uglevody = json["uglevody"].string ?? ""
+                    let price = json["price"].string ?? ""
+                    let favorite = json["favorite"].string ?? ""
+                    let status = json["status"].string ?? ""
+                    let expire_date = json["expire_date"].string ?? ""
+                    let category_name = json["category_name"].string ?? ""
+                    let price_sale = json["price_sale"].string ?? ""
+                    var units = json["units"].string ?? ""
+                    if units == "kg" {
+                        units = "кг."
+                    }
+                    if units == "liter" {
+                        units = "л."
+                    }
+                    let image = Data()
+                    if icon.isEmpty == false {
+                        
+                        let list = Products(id: id, description: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
+                        self?.internalProductsForListOfWeightVC.append(list)
+                    }
+                }
+                
+                self?._productsList = (self?.internalProductsForListOfWeightVC)!
+                self?.spiner.stopAnimating()
+                self?.tableView.reloadData()
             })
-    }
+        }
         
         // Check Internet connection
         guard isNetworkReachable() == true  else {
@@ -131,7 +129,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         
         // Call function
         favoritOfProducts({})
-}
+    }
     
     // For dynamic height cell
     override func viewDidAppear(_ animated: Bool) {
@@ -166,9 +164,7 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
                 }
             } else {
                 let image: Data? = nil
-//                if productDetails.icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: productDetails.icon) ?? URL(fileURLWithPath: "")){
-//                    image = imageData
-//                }
+                
                 let _ = ProductsForRealm.setupProduct(id: productDetails.id , descriptionForProduct: productDetails.description , proteins: productDetails.proteins , calories: productDetails.calories , zhiry: productDetails.zhiry , favorite: "", category_id: "", brand: productDetails.brand , price_sale: productDetails.price_sale , weight: "", status: "", expire_date: productDetails.expire_date , price: productDetails.price , created_at: productDetails.created_at , icon: productDetails.icon , category_name: "", name: productDetails.name , uglevody: productDetails.uglevody , units: "", quantity: "1", image: image)
             }
             
@@ -189,12 +185,12 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         if productDetails.price_sale != "0.00" {
             cell.priceSaleLabel?.text = productDetails.price_sale +  "  грн."
             
-            // create attributed string for strikethroughStyleAttributeName
+            // Create attributed string for strikethroughStyleAttributeName
             let myString = productDetails.price + " грн."
             let myAttribute = [ NSStrikethroughStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue ]
             let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
             
-            // set attributed text on a UILabel
+            // Set attributed text on a UILabel
             cell.priceOldLabel?.attributedText = myAttrString
         } else {
             cell.priceSaleLabel?.text = ""
@@ -238,36 +234,10 @@ class FavoriteProductsViewController: BaseViewController, UITableViewDataSource,
         detailsProductVC.expire_dateDetailsVC = _productsList[indexPath.row].expire_date
         detailsProductVC.brandDetailsVC = _productsList[indexPath.row].brand
         detailsProductVC.iconDetailsVC = _productsList[indexPath.row].icon
-        //detailsProductVC.DetailsVC = _products[indexPath.row].
         detailsProductVC.created_atDetailsVC = _productsList[indexPath.row].created_at
         detailsProductVC.nameHeaderTextDetailsVC = _productsList[indexPath.row].name
         detailsProductVC.addToContainer()
     }
-    
-    //    func numberOfSections(in tableView: UITableView) -> Int {
-    //        return 0
-    //    }
-    //
-    //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        return 0
-    //
-    //    }
-    //
-    //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //        //        let cellIdentifier = "CategoryTableViewCell"
-    //        //        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CategoryTableViewCell
-    //        //
-    //        //        let productDetails = _products[indexPath.row]
-    //        //        Dispatch.mainQueue.async { _ in
-    //        //            guard let imageData: Data = try? Data(contentsOf: URL(string: productDetails.icon)!) else { return }
-    //        //            cell.thubnailImageView?.image = UIImage(data: imageData)
-    //        //        }
-    //        //
-    //        //        cell.nameLabel?.text = productDetails.name
-    //        //
-    //        return UITableViewCell()
-    //    }
-    
 }
 
 class FavoriteProductsTableViewCell: UITableViewCell {

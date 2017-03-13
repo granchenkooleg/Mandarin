@@ -40,7 +40,7 @@ class InfoAboutUserForOrder : Object {
     override class func primaryKey() -> String? {
         return "idOrder"
     }
-
+    
     
     //path to Realm
     static func setConfig() {

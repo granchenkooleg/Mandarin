@@ -9,7 +9,7 @@
 import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
-
+    
     
     @IBOutlet weak var thubnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,11 +21,11 @@ class CategoryTableViewCell: UITableViewCell {
         thubnailImageView?.layer.cornerRadius = 30
         thubnailImageView?.layer.masksToBounds = true
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
