@@ -9,7 +9,6 @@
 import Foundation
 import RealmSwift
 
-
 struct Products {
     var id = ""
     var description = ""

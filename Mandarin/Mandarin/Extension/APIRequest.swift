@@ -84,6 +84,7 @@ let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URL
 
 enum UserRequest: URLRequestConvertible {
     
+    case getBannerImage([String: AnyObject])
     case getDeliveryTime([String: AnyObject])
     case addOrderToSite([String: AnyObject])
     case favoriteProduct([String: AnyObject])
@@ -105,7 +106,7 @@ enum UserRequest: URLRequestConvertible {
         
         var method: HTTPMethod {
             switch self {
-            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight, .getAllProducts, .getPassword, .addFavoriteProduct, .favoriteProduct, .addOrderToSite, .getDeliveryTime:
+            case .statistics, .trades, .amount, .login, .getProductsCategory, .getCategories, .registration, .getWeight, .getAllProducts, .getPassword, .addFavoriteProduct, .favoriteProduct, .addOrderToSite, .getDeliveryTime, .getBannerImage:
                 return .get
             case .logOut, .trans:
                 return .post
@@ -114,7 +115,9 @@ enum UserRequest: URLRequestConvertible {
         
         let params: ([String: AnyObject]?) = {
             switch self {
-             
+                
+            case .getBannerImage(let newPost):
+                return newPost
             case .getDeliveryTime(let newPost):
                 return newPost
             case .addOrderToSite(let newPost):
@@ -150,6 +153,8 @@ enum UserRequest: URLRequestConvertible {
             let relativePath:String?
             switch self {
             
+            case .getBannerImage:
+                relativePath = "Bunner"
             case.getDeliveryTime:
                 relativePath = "delivery"
             case.addOrderToSite:
@@ -212,6 +217,16 @@ enum UserRequest: URLRequestConvertible {
     //    }
     //
     
+    static func bannerImageforMainVC(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
+        requestHandler(#function, urlRequest: getBannerImage(entryParams), completionHandler: { json in
+            guard let json = json else {
+                return
+            }
+            print (">>bannerImageforMainVC - \(json)<<")
+            completion(json)
+        })
+    }
+    
     static func deliveryTime(_ entryParams: [String : AnyObject], completion: @escaping (JSON) -> Void) {
         requestHandler(#function, urlRequest: getDeliveryTime(entryParams), completionHandler: { json in
             guard let json = json else {
@@ -248,7 +263,7 @@ enum UserRequest: URLRequestConvertible {
     static func addToFavorite(_ entryParams: [String : AnyObject], completion: @escaping (Bool) -> Void) {
         requestHandler(#function, urlRequest: addFavoriteProduct(entryParams)) { json in
             
-            ///! omission in "successful " here spetial! So it is in the server!
+            ///! omission in "successful " here spetial! So it is on(from) the server!
             if json?[0]["message"] == "successful "  {
                 
                 //            User.setupUser(id: "\(json[0]["data"]["id"])", firstName: "\(json[0]["data"]["username"])")

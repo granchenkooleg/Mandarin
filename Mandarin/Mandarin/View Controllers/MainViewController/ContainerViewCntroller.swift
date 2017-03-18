@@ -17,6 +17,9 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var containerView: UIView!
     var navigation = UINavigationController()
     
+    var pathBanner : String?
+    
+    
     // Create and add the view to the screen.
     let progressHUD = ProgressHUD(text: "Обновляем список товара...")
     let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
@@ -130,16 +133,6 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    //    func addController(_ controller: UIViewController) {
-    //        containerView.subviews.all({ $0.removeFromSuperview() })
-    //        childViewControllers.all { $0.removeFromParentViewController() }
-    //        addChildViewController(controller)
-    //        containerView.addSubview(controller.view)
-    //        containerView.add(controller.view) { $0.edges.equalTo(containerView) }
-    //        controller.didMove(toParentViewController: self)
-    //        view.layoutIfNeeded()
-    //    }
-    
     func addController(_ controller: UIViewController) {
         scrollView.isScrollEnabled = !(controller is BasketViewController)
         containerView.subviews.all({ $0.removeFromSuperview() })
@@ -167,10 +160,10 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
             Product.setConfig()
         }
         
-        let anotherQueue = DispatchQueue(label: "com.appcoda.anotherQueue", qos: .userInitiated, attributes: [.concurrent, .initiallyInactive])
+        let anotherQueue = DispatchQueue(label: "com.appcoda.anotherQueue", qos: .utility)
         inactiveQueue = anotherQueue
         
-        anotherQueue.async(execute: { [weak self] in
+        anotherQueue.asyncAfter(deadline: DispatchTime.now() + .milliseconds(50)) {[weak self] in
             let param: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
             UserRequest.listAllProducts(param as [String : AnyObject], completion: { [weak self] json in
                 guard let weakSelf = self else {return}
@@ -205,17 +198,15 @@ class ContainerViewController: BaseViewController, UIGestureRecognizerDelegate {
                     let category_name = String(describing:json["category_name"])
                     let price_sale = String(describing:json["price_sale"])
                     let image: Data? = nil
-                    //                    if icon.isEmpty == false, let imageData = try? Data(contentsOf: URL(string: icon) ?? URL(fileURLWithPath: "")){
-                    //                        image = imageData
-                    //                    }
+                    
                     Product.setupProduct(id: id, description_: description, proteins: proteins, calories: calories, zhiry: zhiry, favorite: favorite, category_id: category_id, brand: brand, price_sale: price_sale, weight: weight, status: status, expire_date: expire_date, price: price, created_at: created_at, icon: icon, category_name: category_name, name: name, uglevody: uglevody, units: units, image: image)
                 }
                 completion()
-                //                self?.spiner.stopAnimating()
+                
                 self?.progressHUD.hide()
                 self?.backgroundImage.removeFromSuperview()
             })
-        })
+        }
     }
 }
 

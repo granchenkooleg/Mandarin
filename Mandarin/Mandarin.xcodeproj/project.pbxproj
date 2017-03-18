@@ -21,7 +21,6 @@
 		5621B5971DE2E0F000C3B612 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B5961DE2E0F000C3B612 /* Label.swift */; };
 		5621B59B1DE2E1F400C3B612 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B59A1DE2E1F400C3B612 /* TextField.swift */; };
 		563474331DEDBC1B004ECDC4 /* GenericCollections+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563474321DEDBC1B004ECDC4 /* GenericCollections+Ext.swift */; };
-		563474371DEDC3E9004ECDC4 /* Feeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563474361DEDC3E9004ECDC4 /* Feeds.swift */; };
 		56350D0C1E4760C600D487C0 /* VK_ios_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56350D0B1E4760C600D487C0 /* VK_ios_sdk.framework */; };
 		563F94FF1DF4C4A90053EFF0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F94FE1DF4C4A90053EFF0 /* Product.swift */; };
 		56574A931DF33241009C2466 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56574A921DF33241009C2466 /* User.swift */; };
@@ -82,7 +81,6 @@
 		5621B5961DE2E0F000C3B612 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Label.swift; path = View/Label.swift; sourceTree = "<group>"; };
 		5621B59A1DE2E1F400C3B612 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = View/TextField.swift; sourceTree = "<group>"; };
 		563474321DEDBC1B004ECDC4 /* GenericCollections+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GenericCollections+Ext.swift"; path = "Extension/GenericCollections+Ext.swift"; sourceTree = "<group>"; };
-		563474361DEDC3E9004ECDC4 /* Feeds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feeds.swift; sourceTree = "<group>"; };
 		56350D0B1E4760C600D487C0 /* VK_ios_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VK_ios_sdk.framework; path = "../../../../../Users/Macostik/Library/Developer/Xcode/DerivedData/Mandarin-gmlximvisbumkmbyttcnctqgjbtl/Build/Products/Debug-iphonesimulator/VK-ios-sdk/VK_ios_sdk.framework"; sourceTree = "<group>"; };
 		563F94FE1DF4C4A90053EFF0 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		56574A921DF33241009C2466 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 			children = (
 				56FCEA661E34E8D300E2E594 /* ProductsForRealm.swift */,
 				563F94FE1DF4C4A90053EFF0 /* Product.swift */,
-				563474361DEDC3E9004ECDC4 /* Feeds.swift */,
 				56737B9A1DF616950007518C /* Category.swift */,
 				56574A921DF33241009C2466 /* User.swift */,
 				7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */,
@@ -522,7 +519,6 @@
 			files = (
 				7C0126E91E34ED5200BF5046 /* BaseLoginViewController.swift in Sources */,
 				5621B5891DE2DFA300C3B612 /* Dispatch.swift in Sources */,
-				563474371DEDC3E9004ECDC4 /* Feeds.swift in Sources */,
 				7C0127061E34F7A300BF5046 /* DetailsProductViewController.swift in Sources */,
 				7C01270C1E34F83F00BF5046 /* DrawingUpOfAnOrderViewController.swift in Sources */,
 				7C887A821E66429500D0F008 /* NetworkReachabilityManager.swift in Sources */,
