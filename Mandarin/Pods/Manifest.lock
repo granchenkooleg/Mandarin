@@ -1,12 +1,13 @@
 PODS:
   - Alamofire (4.0.1)
+  - AlamofireNetworkActivityIndicator (2.0.1):
+    - Alamofire (~> 4.0)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - CryptoSwift (0.6.6)
   - FacebookCore (0.2.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.15)
@@ -15,16 +16,9 @@ PODS:
     - FacebookCore (~> 0.2)
     - FBSDKCoreKit (~> 4.15)
     - FBSDKLoginKit (~> 4.15)
-  - FacebookShare (0.2.0):
-    - Bolts (~> 1.8)
-    - FacebookCore (~> 0.2)
-    - FBSDKCoreKit (~> 4.15)
-    - FBSDKShareKit (~> 4.15)
-  - FBSDKCoreKit (4.17.0):
+  - FBSDKCoreKit (4.18.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.17.0):
-    - FBSDKCoreKit
-  - FBSDKShareKit (4.17.0):
+  - FBSDKLoginKit (4.18.0):
     - FBSDKCoreKit
   - FirebaseAnalytics (3.6.0):
     - FirebaseCore (~> 3.4)
@@ -32,7 +26,7 @@ PODS:
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleSymbolUtilities (~> 1.1)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseCore (3.4.5):
+  - FirebaseCore (3.4.6):
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseInstanceID (1.0.8)
@@ -68,51 +62,40 @@ PODS:
   - GTMSessionFetcher/Core (1.1.7)
   - GTMSessionFetcher/Full (1.1.7):
     - GTMSessionFetcher/Core (= 1.1.7)
-  - Kingfisher (3.2.1)
-  - Realm (2.1.0):
-    - Realm/Headers (= 2.1.0)
-  - Realm/Headers (2.1.0)
-  - RealmSwift (2.1.0):
-    - Realm (= 2.1.0)
+  - Realm (2.1.1):
+    - Realm/Headers (= 2.1.1)
+  - Realm/Headers (2.1.1)
+  - RealmSwift (2.1.1):
+    - Realm (= 2.1.1)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SnapKit (3.0.2)
   - SwiftyJSON (3.1.3)
-  - SwiftyVK (2.0.4)
+  - VK-ios-sdk (1.4.6)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0.0)
-  - CryptoSwift
+  - AlamofireNetworkActivityIndicator
   - FacebookCore
   - FacebookLogin
-  - FacebookShare
   - Google/SignIn
-  - Kingfisher
   - RealmSwift
+  - SDWebImage
   - SnapKit
   - SwiftyJSON
-  - SwiftyVK (from `https://github.com/WE-St0r/SwiftyVK.git`, commit `768d5bb192e03a13dc45fbe0cc78b6cedc687e41`)
-
-EXTERNAL SOURCES:
-  SwiftyVK:
-    :commit: 768d5bb192e03a13dc45fbe0cc78b6cedc687e41
-    :git: https://github.com/WE-St0r/SwiftyVK.git
-
-CHECKOUT OPTIONS:
-  SwiftyVK:
-    :commit: 768d5bb192e03a13dc45fbe0cc78b6cedc687e41
-    :git: https://github.com/WE-St0r/SwiftyVK.git
+  - VK-ios-sdk
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlamofireNetworkActivityIndicator: 3e55069ada3e1ff7703665156429eedcdfea0bc1
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  CryptoSwift: 88592381b73f36e192124539390a7c9bacda76af
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
-  FacebookShare: 8e9ee8ea06505e6a1d3d719b0cc63e840fb8aaeb
-  FBSDKCoreKit: 30a21d2d7b92984b3d80497113433c00824c35e9
-  FBSDKLoginKit: 42b7129ac0373ca99eaf4cbebf4d07bd42371f59
-  FBSDKShareKit: 9b573d03fbee36cbaf42d5bb1f2bc019e0d72347
+  FBSDKCoreKit: 15fef8804a4629f98c6f4e55e81a76c9d725d85e
+  FBSDKLoginKit: 6773073e970b2b15fb12e451ce7f11da0532b880
   FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
-  FirebaseCore: 1e383fdfe37b6b5d6ff88e84204bdee30276af0f
+  FirebaseCore: 03da1cb32615569bbc2830a22f9ad753d9a02ef5
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
   GoogleAppUtilities: a8a552aa74f6597f805e45b5a3962766c3134973
@@ -122,13 +105,13 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
-  Kingfisher: 64ef28c6d3d6f344e3ae2d7f5c9da80439505d99
-  Realm: bc829ad0ef3d4eea70c34cfcc3b1704d18d50df1
-  RealmSwift: a4d4abbf0088c337cab5b738054395842e4b3052
+  Realm: a55959c0b171a5fe5267406d17f314fec3cefaae
+  RealmSwift: 749fd955bf8d6471c21d218b9389a47aaeccfe3f
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
-  SwiftyVK: e841fff2efaf716a408d51e592bfd2e702ffe9de
+  VK-ios-sdk: 7fd48bc5aaa6b96c3197c1987eb6593f2ea67331
 
-PODFILE CHECKSUM: 48dc5371c926674f0dd8bb0667a5ca8fc51d1750
+PODFILE CHECKSUM: ed8272ee95c21e2d62cedcff0447a7637bb158e8
 
 COCOAPODS: 1.2.0.beta.1

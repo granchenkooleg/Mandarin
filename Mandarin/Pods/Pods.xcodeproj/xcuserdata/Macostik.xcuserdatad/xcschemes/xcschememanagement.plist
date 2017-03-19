@@ -13,11 +13,14 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+<<<<<<< HEAD
 		</dict>
 		<key>CryptoSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+=======
+>>>>>>> withoutVK
 		</dict>
 		<key>FBSDKCoreKit.xcscheme</key>
 		<dict>
@@ -28,11 +31,14 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+<<<<<<< HEAD
 		</dict>
 		<key>FBSDKShareKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+=======
+>>>>>>> withoutVK
 		</dict>
 		<key>FacebookCore.xcscheme</key>
 		<dict>
@@ -43,11 +49,14 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+<<<<<<< HEAD
 		</dict>
 		<key>FacebookShare.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+=======
+>>>>>>> withoutVK
 		</dict>
 		<key>GTMOAuth2.xcscheme</key>
 		<dict>
@@ -63,11 +72,14 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+<<<<<<< HEAD
 		</dict>
 		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+=======
+>>>>>>> withoutVK
 		</dict>
 		<key>Pods-Mandarin.xcscheme</key>
 		<dict>
@@ -88,13 +100,21 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+<<<<<<< HEAD
+=======
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+>>>>>>> withoutVK
 		</dict>
-		<key>SwiftyVK.xcscheme</key>
+		<key>VK-ios-sdk-VKSdkResources.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>VK-ios-sdk.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -107,7 +127,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+<<<<<<< HEAD
 		<key>332F91393FB1DE033D370B4CEDDD5FCF</key>
+=======
+		<key>3316D4283F8174BC0960AEAB72D17BD9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3887EE0B4A8247356AE664854F74463D</key>
+>>>>>>> withoutVK
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,12 +156,20 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+<<<<<<< HEAD
+=======
+		<key>6223E94604122D232AE7E19939996880</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+>>>>>>> withoutVK
 		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6BB1C1403B2419F911818DA8413FDA07</key>
+		<key>6FDAEDE5AC98DEFAAAC80601C686E310</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,6 +184,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+<<<<<<< HEAD
 		<key>92B85844F217DDCB2DAD312BFC72F349</key>
 		<dict>
 			<key>primary</key>
@@ -157,27 +195,28 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+=======
+>>>>>>> withoutVK
 		<key>B1C4AAFAF49036C7007633DAA3C806AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B983877E2D416139C62F8F9CBCE66E28</key>
+		<key>BC531AD7809116806993413B34991816</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C0EAAA6057A58E5BD5ADB822BA2B0A71</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
+<<<<<<< HEAD
 		<key>C1B61FCB5FACD590065DCA285DECEC29</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C4944FEC314D1A66588651D006273ADE</key>
+=======
+		<key>CA65D7D737C92577023E317CBD10F759</key>
+>>>>>>> withoutVK
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -187,12 +226,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+<<<<<<< HEAD
 		<key>DF55F94C2F2764737CB8CC1FD5000F3F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>FB10EB7743E646A6688F2BA1A3432E16</key>
+=======
+		<key>F429936841B948F4E0B03A15BEF6CC4D</key>
+>>>>>>> withoutVK
 		<dict>
 			<key>primary</key>
 			<true/>

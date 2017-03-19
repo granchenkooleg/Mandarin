@@ -16,6 +16,7 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var totalPriceForPaymentVCLabel: UILabel!
+    @IBOutlet weak var customTextLabel: UILabel!
     
     // For request deliveryTime
     var deliveryTime: String?
@@ -41,24 +42,17 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
         let param_2: Dictionary = ["salt" : "d790dk8b82013321ef2ddf1dnu592b79"]
         UserRequest.deliveryTime(param_2 as [String : AnyObject], completion: {[weak self] json in
             json.forEach { _, json in
-                //                let id = json["id"].string ?? ""
-                //                let name = json["name"].string ?? ""
-                //                let alias = json["alias"].string ?? ""
-                self?.deliveryTime = json["value"].string ?? ""
                 
+                self?.deliveryTime = json["value"].string ?? ""
             }
-            })
+        })
         
         // Do any additional setup after loading the view.
-        totalPriceForPaymentVCLabel?.text = (totalPriceInCart() + " грн.,")
+        self.totalPriceForPaymentVCLabel?.text = (totalPriceInCart() + " грн.")
+        
         
         // Set continueButton hidden at start
         continueButton.isHidden = true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -106,66 +100,77 @@ class PaymentViewController: BasketViewController, MFMailComposeViewControllerDe
     // MARK: Sender to CheckVC
     @IBAction func CheckClick(_ sender: Button) {
         
-        //sender.loading = true
-        /*guard*/ let idOrPhone  = User.currentUser?.id ?? phoneUserPayment /*, let idOrder = idOrder*/ /*else { return }*/
+        // Check Internet connection
+        guard isNetworkReachable() == true  else {
+            Dispatch.mainQueue.async {
+                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+                    
+                }
+                alert.addAction(OkAction)
+                alert.show()
+            }
+            return
+        }
+        
+        // For send mail to magazin
+        let _name = " Имя заказчика: " + (nameUserPayment ?? "")
+        let _phone = " | Телефон: " + (phoneUserPayment ?? "")
+        let _city = " | Город: " + (cityPayment ?? "")
+        let _region = " | Регион: " + (regionPayment ?? "")
+        let _street = " | Улица: " + streetPayment!
+        let _numberHouse = " | Номер дома :" + (numberHousePayment ?? "")
+        let _porch = " | Подъезд: " + (porchPayment ?? "")
+        let _appartment = " | Квартира: " + (apartmentPayment ?? "")
+        let _floor = " | Этаж: " + (floorPayment ?? "")
+        let _commit = " | Комментарий: " + (commitPayment ?? "")
+        let _bond = " | Сумма на руках: " + (textUserInFildAlert ?? "")
+        let _totalPriceinCart = " | Общая сума заказа: " + (totalPriceInCart() + " грн.")
+        var body =  (_name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit + _bond + _totalPriceinCart)
+        
         
         // Doing it for product_id in Alamofire request(param)
         var list: [JSON] = []
+        // For body
+        var listSpeciallyForMail: [String] = []
+        
         for i in productsInBasket {
+            var count = 0
             // Convert type String to Int
             let q: Int = Int(i.quantity)!
             for _ in 1...q {
                 list.append(JSON(i.id))
+                
+                // For listSpeciallyForMail
+                count += 1
             }
+            listSpeciallyForMail.append(i.id + " x \(count)")
         }
+        
+        // Add yet to body listSpeciallyForMail
+        body += " | Продукты: " + "\(listSpeciallyForMail)"
         
         let param: Dictionary = ["salt": "d790dk8b82013321ef2ddf1dnu592b79",
-                                 "user_id" :  idOrPhone,
+                                 "user_id" :  User.currentUser?.idUser as Any,
+                                 "user_phone": phoneUserPayment as Any,
                                  "product_id": list,
-                                 "order_id" : idOrderPayment] as [String : Any]
+                                 "order_id" : self.idOrderPayment as Any,
+                                 "fields": body ] as [String : Any]
         
-        UserRequest.addOrderToServer(param as [String : AnyObject], completion: {[weak self] success in
+        UserRequest.addOrderToServer(param as [String : AnyObject], completion: { success in
             if success == true {
-                guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
                 guard let checkVC = UIStoryboard.main["checkVC"] as? CheckViewController else { return }
-                checkVC.valueDeliveryTime = self?.deliveryTime ?? ""
-                containerViewController.addController(checkVC)
-
-//                containerViewController.addController(UIStoryboard.main["checkVC"]!)
+                checkVC.valueDeliveryTime = self.deliveryTime ?? ""
+                checkVC.addToContainer()
+                
+            } else {
+                let alertController = UIAlertController(title: "Введите правильно номер телефона или ваш пакет пуст", message: "", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+                    // ...
+                }
+                alertController.addAction(OKAction)
+                self.present(alertController, animated: true)
             }
-            //sender.loading = false
-            })
-        
-        // For send mail to magazin
-        let _name = "NameUser: " + (nameUserPayment ?? "") + "\n"
-        let _phone = "Phone: " + (phoneUserPayment ?? "") + "\n"
-        let _city = "City: " + (cityPayment ?? "") + "\n"
-        let _region = "Region: " + (regionPayment ?? "") + "\n"
-        let _street = "Street" + streetPayment! + "\n"
-        let _numberHouse = "NumberHouse :" + (numberHousePayment ?? "") + "\n"
-        let _porch = "Porch: " + (porchPayment ?? "")  + "\n"
-        let _appartment = "Apartment: " + (apartmentPayment ?? "") + "\n"
-        let _floor = "Floor: " + (floorPayment ?? "") + "\n"
-        let _commit = "Commit: " + (commitPayment ?? "") + "\n"
-        let _bond = "Bond: " + (textUserInFildAlert ?? "") 
-        sendMessage(body: _name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit + _bond, recipients: ["oleg_granchenko@mail.ru"])
+        })
     }
-    
-       // For mail
-        func sendMessage(body: String, recipients: [String]) {
-            if MFMailComposeViewController.canSendMail() {
-                let mailComposeVC = MFMailComposeViewController()
-                mailComposeVC.mailComposeDelegate = self
-                mailComposeVC.setToRecipients(recipients)
-                mailComposeVC.setMessageBody(body, isHTML: false)
-                UINavigationController.main.present(mailComposeVC, animated: true, completion: nil)
-            }
-        }
-    
-        // MARK: MFMailComposeViewControllerDelegate
-    
-        func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-            controller.dismiss(animated: true, completion: nil)
-        }
-    
 }

@@ -11,13 +11,12 @@ target 'Mandarin' do
   pod 'Alamofire', '~> 4.0.0'
   pod 'SnapKit'
   pod 'SwiftyJSON'
-  pod 'CryptoSwift'
-  pod 'Kingfisher'
   pod 'FacebookCore'
   pod 'FacebookLogin'
-  pod 'FacebookShare'
   pod 'Google/SignIn'
-  pod 'SwiftyVK', :git => 'https://github.com/WE-St0r/SwiftyVK.git', :commit => '768d5bb192e03a13dc45fbe0cc78b6cedc687e41'
+  pod 'VK-ios-sdk'
+  pod 'SDWebImage'
+  pod 'AlamofireNetworkActivityIndicator'
 
   post_install do |installer|
   installer.pods_project.targets.each do |target|

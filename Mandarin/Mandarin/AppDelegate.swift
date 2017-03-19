@@ -8,8 +8,7 @@
 //
 
 import UIKit
-import SwiftyVK
-
+import AlamofireNetworkActivityIndicator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,8 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        NetworkActivityIndicatorManager.shared.isEnabled = true
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         googleSignIn()
+        VKSdk.initialize(withAppId: "5859484")
         
         UIWindow.mainWindow.makeKeyAndVisible()
         
@@ -57,12 +58,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
      func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let _app = options[.sourceApplication] as? String
-        VK.process(url: url, sourceApplication: _app)
+        VKSdk.processOpen(url, fromApplication: _app)
         return ( GIDSignIn.sharedInstance().handle(url as URL!,sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
                                                    annotation: options[UIApplicationOpenURLOptionsKey.annotation]) ||
                 FBSDKApplicationDelegate.sharedInstance().application(app, open: url as URL,
                                                                   sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String!,
                                                                   annotation: options[UIApplicationOpenURLOptionsKey.annotation]) )
+        
     }
+    
 }
 

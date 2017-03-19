@@ -9,7 +9,6 @@
 import Foundation
 import RealmSwift
 
-
 struct Products {
     var id = ""
     var description = ""
@@ -34,6 +33,8 @@ struct Products {
 }
 
 class Product : Object {
+    
+    dynamic var favoriteProductOfUser = false
     dynamic var id = ""
     dynamic var description_ = ""
     dynamic var proteins = ""
@@ -57,6 +58,13 @@ class Product : Object {
     
     override static func primaryKey() -> String? {
         return "id"
+    }
+    
+    static func setConfig() {
+        let realm = try! Realm()
+        if let url = realm.configuration.fileURL {
+            Logger.log("FileURL of DataBase - \(url)", color: .Orange)
+        }
     }
     
     @discardableResult class func setupProduct( id: String = "",
@@ -114,6 +122,14 @@ class Product : Object {
     func allProducts() -> [Product] {
         let realm = try! Realm()
         return realm.objects(Product.self).array(ofType: Product.self)
+    }
+    
+    static func delAllProducts() {
+        let realm = try! Realm()
+        let allProducts = realm.objects(Product.self)
+        try! realm.write {
+            realm.delete(allProducts)
+        }
     }
 }
 

@@ -11,33 +11,11 @@ import RealmSwift
 
 class BasketViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
-    //@IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
-    //    //it spetial for Realm
-    //    var productsInBasket: Results<ProductsForRealm>!
     
     override func viewDidLoad() {
         updateProductInfo()
     }
-    
-    //    func updateProductInfo() {
-    //        let realm = try! Realm()
-    //        productsInBasket = realm.objects(ProductsForRealm.self)
-    //        totalPriceLabel?.text = (totalPriceInCart() + " грн.")
-    //        updateProductInBasket()
-    //    }
-    //
-    //    //for total price
-    //    func totalPriceInCart() -> String {
-    //        var totalPrice: Float = 0
-    //        for product in  productsInBasket {
-    //            totalPrice += Float(product.price!)! * Float(product.quantity)!
-    //        }
-    //
-    //        return String(totalPrice)
-    //    }
-    
     
     // MARK: - Table view data source
     
@@ -56,7 +34,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         
         let productDetails = productsInBasket[indexPath.row]
         Dispatch.mainQueue.async { _ in
-            cell.thubnailImageView?.image = UIImage(data: productDetails.image ?? Data())
+            cell.thubnailImageView?.sd_setImage(with: URL(string: (productDetails.icon) ?? ""))
         }
         cell.productDetail = productDetails
         cell.descriptionLabel?.text = productDetails.descriptionForProduct
@@ -86,6 +64,10 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         return true
     }
     
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Удалить"
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             try! productsInBasket.realm!.write {
@@ -98,18 +80,19 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
     }
     //end]
     
-    // button delete red color
+    // Button delete red color
     @IBAction func deleteAllButton(_ sender: AnyObject) {
         
-        //Create the AlertController
+        // Create the AlertController
         let actionSheetController: UIAlertController = UIAlertController(title: "Удалить корзину?", message: "Вы на самом деле собираетесь удалить все продукты из корзины?", preferredStyle: .alert)
         
-        //Create and add the Cancel action
+        // Create and add the Cancel action
         let cancelAction: UIAlertAction = UIAlertAction(title: "Нет", style: .cancel) { action -> Void in
             //Do some stuff
         }
         actionSheetController.addAction(cancelAction)
-        //Create and an option action
+        
+        // Create and an option action
         let nextAction: UIAlertAction = UIAlertAction(title: "Удалить", style: .destructive) {[weak self] action -> Void in
             //Do some other stuff
             ProductsForRealm.deleteAllProducts()
@@ -119,16 +102,30 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         }
         actionSheetController.addAction(nextAction)
         
-        //Present the AlertController
+        // Present the AlertController
         self.present(actionSheetController, animated: true, completion: nil)
         
         
     }
     
-    //MARK: Sender to DrawingUpOfAnOrderVC
+    // MARK: Sender to DrawingUpOfAnOrderVC
     @IBAction func DrawingUpOrderClick(_ sender: UIButton) {
-        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-        containerViewController.addController(UIStoryboard.main["drawingUpOrder"]!)
+        
+        // Checking empty basket for next step
+        guard (Double(totalPriceInCart())) ?? 0.0 > 0.0 else {
+            let alertController = UIAlertController(title: "Ваш пакет пуст", message: "", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { action in
+                // ...
+            }
+            alertController.addAction(OKAction)
+            self.present(alertController, animated: true)
+            
+            return
+        }
+        
+        let navToDrawUpOrder = UIStoryboard.main["drawingUpOrder"] as? DrawingUpOfAnOrderViewController
+        navToDrawUpOrder?.addToContainer()
+        
     }
     
     // MARK: Navigation and ClearDatabase for buttons in header BasketAfterPaymentVC and CheckVC [start
@@ -137,8 +134,7 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         ProductsForRealm.deleteAllProducts()
         updateProductInfo()
         
-        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-        containerViewController.addController(UIStoryboard.main["basket"]!)
+        present(UIStoryboard.main["basket"]!, animated: true, completion: nil)
     }
     
     @IBAction func searchClickAndClearDatabase(_ sender: AnyObject) {
@@ -149,31 +145,9 @@ class BasketViewController: BaseViewController, UITableViewDataSource, UITableVi
         present(UIStoryboard.main["search"]!, animated: true, completion: nil)
         
     }
-    
-    @IBAction func menuClickAndClearDatabase(_ sender: AnyObject) {
-        
-        ProductsForRealm.deleteAllProducts()
-        updateProductInfo()
-        
-        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-        containerViewController.showMenu(!containerViewController.showingMenu, animated: true)
-    }
-    
-    @IBAction func backClickAndClearDatabase (sender: AnyObject) {
-        
-        ProductsForRealm.deleteAllProducts()
-        updateProductInfo()
-        
-        if (self.presentingViewController != nil) {
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-            containerViewController.addController(containerViewController.mainViewController ?? UIViewController())
-        }
-        
-        
-    }
     // end]
+    
+    
     
     
 }
@@ -187,7 +161,7 @@ class BasketTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     var productID: String = ""
-    var quantity: Int = 1
+    var quantity: Int = 0
     var completionBlock: Block?
     var productDetail: ProductsForRealm? = nil
     
@@ -222,7 +196,7 @@ class BasketTableViewCell: UITableViewCell {
         let realm = try! Realm()
         let product = realm.objects(ProductsForRealm.self).filter("id  == [c] %@", productID).first
         try! realm.write {
-            product!.quantity = "\(quantity)"
+            product?.quantity = "\(quantity)"
         }
     }
     

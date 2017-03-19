@@ -4,97 +4,74 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mandarin/BaseLoginViewController.swift"
-            timestampString = "501848369.613749"
+            filePath = "Mandarin/View Controllers/BaseViewController/BaseViewController.swift"
+            timestampString = "509439935.858459"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "BaseLoginViewController"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "BaseViewController"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mandarin/BaseLoginViewController.swift"
-            timestampString = "501972394.287136"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "faceBookLogin(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mandarin/BaseLoginViewController.swift"
-            timestampString = "501972394.287136"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "faceBookLogin(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mandarin/BaseLoginViewController.swift"
-            timestampString = "501972394.287136"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "faceBookLogin(_:)"
-            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Mandarin.LoginViewController.(faceBookLogin (Mandarin.Button) -&gt; ()).(closure #1)"
+                  symbolName = "Mandarin.BaseViewController.updateProductInfo () -&gt; ()"
                   moduleName = "Mandarin"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Mac_data/Projects/Mandarin/Mandarin/Mandarin/BaseLoginViewController.swift"
-                  timestampString = "501971959.420979"
+                  urlString = "file:///Users/Macostik/Projects/Mandarin/Mandarin/Mandarin/View%20Controllers/BaseViewController/BaseViewController.swift"
+                  timestampString = "509010619.426666"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "123"
-                  endingLineNumber = "123"
-                  offsetFromSymbolStart = "3048">
+                  startingLineNumber = "238"
+                  endingLineNumber = "238"
+                  offsetFromSymbolStart = "688">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Mandarin.LoginViewController.(faceBookLogin (Mandarin.Button) -&gt; ()).(closure #1).(closure #1)"
+                  symbolName = "Mandarin.BaseViewController.(updateProductInfo () -&gt; ()).(closure #3)"
                   moduleName = "Mandarin"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Mac_data/Projects/Mandarin/Mandarin/Mandarin/BaseLoginViewController.swift"
-                  timestampString = "501971959.424321"
+                  urlString = "file:///Users/Macostik/Projects/Mandarin/Mandarin/Mandarin/View%20Controllers/BaseViewController/BaseViewController.swift"
+                  timestampString = "509010619.430216"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "123"
-                  endingLineNumber = "123"
-                  offsetFromSymbolStart = "909">
+                  startingLineNumber = "238"
+                  endingLineNumber = "238"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mandarin.BaseViewController.(updateProductInfo () -&gt; ()).(closure #4)"
+                  moduleName = "Mandarin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Macostik/Projects/Mandarin/Mandarin/Mandarin/View%20Controllers/BaseViewController/BaseViewController.swift"
+                  timestampString = "509010619.432307"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "238"
+                  endingLineNumber = "238"
+                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -105,13 +82,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mandarin/ViewController/BaseViewController/BaseLoginViewController.swift"
-            timestampString = "502550220.38917"
+            filePath = "Mandarin/View Controllers/MainViewController/ContainerViewCntroller.swift"
+            timestampString = "509924852.743627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "vkDidAuthorizeWith(parameters:)"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "scrollViewDidScroll(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -121,13 +98,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mandarin/Extension/APIRequest.swift"
-            timestampString = "502751278.085971"
+            filePath = "Mandarin/View Controllers/BaseViewController/BaseViewController.swift"
+            timestampString = "509321580.862668"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "asURLRequest()"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "backClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -137,44 +114,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mandarin/AppDelegate.swift"
-            timestampString = "502665091.148248"
+            filePath = "Mandarin/View Controllers/BaseViewController/BaseViewController.swift"
+            timestampString = "509321448.177262"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mandarin/ViewController/BaseViewController/BaseLoginViewController.swift"
-            timestampString = "504392497.313068"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
-            landmarkName = "CreateAccountViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Mandarin/ViewController/BaseViewController/BaseViewController.swift"
-            timestampString = "505934486.012889"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "BaseViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -185,13 +130,45 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mandarin/BasketViewController.swift"
-            timestampString = "506777693.878552"
+            filePath = "Mandarin/View Controllers/BaseViewController/BaseViewController.swift"
+            timestampString = "509439935.858459"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "tableView(_:canEditRowAt:)"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "BaseViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mandarin/View Controllers/BasketViewController/BasketViewController.swift"
+            timestampString = "509406137.783049"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "searchClickAndClearDatabase(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mandarin/View Controllers/ListOfProductsByWeightViewController/ListOfProductsByWeightViewController.swift"
+            timestampString = "509712878.381254"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "listOfProduct(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -201,6 +178,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+<<<<<<< HEAD
             filePath = "Mandarin/View Controllers/ListOfProductsByWeightViewController/ListOfProductsByWeightViewController.swift"
             timestampString = "507389664.231654"
             startingColumnNumber = "9223372036854775807"
@@ -208,37 +186,46 @@
             startingLineNumber = "158"
             endingLineNumber = "158"
             landmarkName = "viewDidLoad()"
+=======
+            filePath = "Mandarin/View Controllers/MainViewController/ContainerViewCntroller.swift"
+            timestampString = "509926525.384541"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "requestForUpdateDB(_:)"
+>>>>>>> withoutVK
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Mandarin.ListOfProductsByWeightViewController.listOfProduct (() -&gt; ()) -&gt; ()"
+                  symbolName = "Mandarin.ContainerViewController.(requestForUpdateDB (() -&gt; ()) -&gt; ()).(closure #1)"
                   moduleName = "Mandarin"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Mac_data/Projects/Mandarin/Mandarin/Mandarin/View%20Controllers/ListOfProductsByWeightViewController/ListOfProductsByWeightViewController.swift"
-                  timestampString = "507163040.961337"
+                  urlString = "file:///Users/Macostik/Project/Mandarin/Mandarin/Mandarin/View%20Controllers/MainViewController/ContainerViewCntroller.swift"
+                  timestampString = "509924880.752994"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "148"
-                  endingLineNumber = "148"
-                  offsetFromSymbolStart = "31">
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "892">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Mandarin.ListOfProductsByWeightViewController.(listOfProduct (() -&gt; ()) -&gt; ()).(closure #1)"
+                  symbolName = "Mandarin.ContainerViewController.(requestForUpdateDB (() -&gt; ()) -&gt; ()).(closure #1)"
                   moduleName = "Mandarin"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Mac_data/Projects/Mandarin/Mandarin/Mandarin/View%20Controllers/ListOfProductsByWeightViewController/ListOfProductsByWeightViewController.swift"
-                  timestampString = "507163040.96295"
+                  urlString = "file:///Users/Macostik/Project/Mandarin/Mandarin/Mandarin/View%20Controllers/MainViewController/ContainerViewCntroller.swift"
+                  timestampString = "509924880.754824"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "148"
-                  endingLineNumber = "148"
-                  offsetFromSymbolStart = "19">
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "1316">
                </Location>
             </Locations>
          </BreakpointContent>

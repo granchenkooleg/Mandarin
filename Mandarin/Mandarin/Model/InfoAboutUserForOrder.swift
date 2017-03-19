@@ -40,7 +40,7 @@ class InfoAboutUserForOrder : Object {
     override class func primaryKey() -> String? {
         return "idOrder"
     }
-
+    
     
     //path to Realm
     static func setConfig() {
@@ -72,6 +72,14 @@ class InfoAboutUserForOrder : Object {
         let realm = try! Realm()
         try! realm.write {
             realm.add(infoAboutUser, update: true)
+        }
+    }
+    
+    static func deleteUserInfo() {
+        let realm = try! Realm()
+        let userInfo = realm.objects(InfoAboutUserForOrder.self)
+        try! realm.write {
+            realm.delete(userInfo)
         }
     }
     

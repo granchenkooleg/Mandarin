@@ -20,10 +20,10 @@ extension UIApplicationState {
 
 struct Logger {
     
-//    static let logglyDestination = SlimLogglyDestination()
+    static let logglyDestination = SlimLogglyDestination()
     
     static func configure() {
-//        Slim.addLogDestination(logglyDestination)
+        Slim.addLogDestination(logglyDestination)
     }
     
     enum LogColor: String {
@@ -39,16 +39,18 @@ struct Logger {
     
     static func debugLog(_ string: @autoclosure () -> String, color: LogColor = .Default, filename: String = #file, line: Int = #line) {
         #if DEBUG
-//            Slim.debug("\(Escape)\(color.rawValue)\n\(string())\n\n\(Escape);", filename: filename, line: line)
+            Slim.debug("\(Escape)\(color.rawValue)\n\(string())\n\n\(Escape);", filename: filename, line: line)
         #endif
     }
     
     static func log<T>(_ message: @autoclosure () -> T, color: LogColor = .Default, filename: String = #file, line: Int = #line) {
         #if DEBUG
-//            Slim.debug("\(Escape)\(color.rawValue)\n\(message())\n\n\(Escape);", filename: filename, line: line)
+            Slim.debug("\(Escape)\(color.rawValue)\n\(message())\n\n\(Escape);", filename: filename, line: line)
         #else
-//            Slim.info(message, filename: filename, line: line)
+            Slim.info(message, filename: filename, line: line)
         #endif
     }
 }
+
+
 

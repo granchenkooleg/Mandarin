@@ -11,7 +11,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>BezPaketov</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -48,10 +48,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>vk5748027</string>
+			<string>vk5859484</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>vk5748027</string>
+				<string>vk5859484</string>
 			</array>
 		</dict>
 	</array>
@@ -65,6 +65,10 @@
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>vk</string>
+		<string>vk-share</string>
+		<string>vkauthorize</string>
+		<string>fb</string>
 		<string>fbapi</string>
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
@@ -78,6 +82,15 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>vk.com</key>
+			<dict>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>akamaihd.net</key>
 			<dict>
 				<key>NSExceptionRequiresForwardSecrecy</key>

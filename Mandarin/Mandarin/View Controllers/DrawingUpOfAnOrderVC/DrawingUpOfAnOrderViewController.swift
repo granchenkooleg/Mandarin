@@ -11,7 +11,7 @@ import RealmSwift
 /*import MessageUI*/
 
 
-class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate /*, MFMailComposeViewControllerDelegate*/ {
+class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var nameUserTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -22,14 +22,21 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
     @IBOutlet weak var porchTextField: UITextField!
     @IBOutlet weak var numberApartmentTextField: UITextField!
     @IBOutlet weak var floorTextField: UITextField!
-    @IBOutlet weak var commitOfUserTextField: UITextField!
+    @IBOutlet weak var commitOfUserTextView: UITextView!
     
     
     // It spetial for Realm (data extraction) [start
     var adressUserFromRealm : Results<InfoAboutUserForOrder>!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // TextViewCommit for order
+        commitOfUserTextView.text = "Комментарий к заказу"
+        commitOfUserTextView.textColor = UIColor.lightGray
+        
         updateAdressInfo()
+        
         // If table InfoAboutUserForOrder isEmpty, we will not come in here
         if (adressUserFromRealm.isEmpty == false)  {
             // Get last data because user can change last self data
@@ -42,60 +49,67 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
             porchTextField?.text = adressUserFromRealm.last?.porch
             numberApartmentTextField?.text = adressUserFromRealm.last?.apartment
             floorTextField?.text = adressUserFromRealm.last?.floor
-            commitOfUserTextField?.text = adressUserFromRealm.last?.commit
         }
     }
+    
+    // TextViewCommit for order
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    // TextViewCommit for order
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Комментарий к заказу"
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
     
     func updateAdressInfo() {
         let realm = try! Realm()
         adressUserFromRealm = realm.objects(InfoAboutUserForOrder.self)
     }
-    
     // end]
     
     // Entring data from textField to Realm
     @IBAction func checkout(_ sender: UIButton)   {
         
-        //sender.loading = true
-        
-        //let idOrder = "1"
-        
         guard let nameUser = nameUserTextField.text, nameUser.isEmpty == false else {
             
-            let alertController = UIAlertController.alert("Введите вашe имя!".ls)
+            let alertController = UIAlertController.alert("Введите Вашe имя".ls)
             
             let OKAction = UIAlertAction(title: "OK", style: .default)
             
             alertController.addAction(OKAction)
             self.present(alertController, animated: true, completion:nil)
             
-            //sender.loading = false
             return
         }
         
         guard let phone = phoneTextField.text, phone.isEmpty == false else {
             
-            let alertController = UIAlertController.alert("Введите ваш номер телефона!".ls)
+            let alertController = UIAlertController.alert("Введите Ваш номер телефона".ls)
             
             let OKAction = UIAlertAction(title: "OK", style: .default)
             
             alertController.addAction(OKAction)
             self.present(alertController, animated: true, completion:nil)
             
-            //sender.loading = false
             return
         }
         
         guard let city = cityTextField.text, city.isEmpty == false else {
             
-            let alertController = UIAlertController.alert("Введите название вашего города!".ls)
+            let alertController = UIAlertController.alert("Введите название Вашего города".ls)
             
             let OKAction = UIAlertAction(title: "OK", style: .default)
             
             alertController.addAction(OKAction)
             self.present(alertController, animated: true, completion:nil)
             
-            //sender.loading = false
             return
         }
         
@@ -103,72 +117,50 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
         
         guard let street = streetTextField.text, street.isEmpty == false else {
             
-            let alertController = UIAlertController.alert("Введите название вашей улицы!".ls)
+            let alertController = UIAlertController.alert("Введите название Вашей улицы".ls)
             
             let OKAction = UIAlertAction(title: "OK", style: .default)
             
             alertController.addAction(OKAction)
             self.present(alertController, animated: true, completion:nil)
             
-            //sender.loading = false
             return
         }
         
         guard let numberHouse = numberHouseTextField.text, numberHouse.isEmpty == false else {
             
-            let alertController = UIAlertController.alert("Введите  номер вашего дома!".ls)
+            let alertController = UIAlertController.alert("Введите  номер Вашего дома".ls)
             
             let OKAction = UIAlertAction(title: "OK", style: .default)
             
             alertController.addAction(OKAction)
             self.present(alertController, animated: true, completion:nil)
             
-            //sender.loading = false
             return
         }
         
-        guard let porch = porchTextField.text, porch.isEmpty == false else {
-            
-            let alertController = UIAlertController.alert("Введите номер вашего подъезда!".ls)
-            
-            let OKAction = UIAlertAction(title: "OK", style: .default)
-            
-            alertController.addAction(OKAction)
-            self.present(alertController, animated: true, completion:nil)
-            
-            //sender.loading = false
-            return
-        }
-        
-        guard let apartment = numberApartmentTextField.text, apartment.isEmpty == false else {
-            
-            let alertController = UIAlertController.alert("Введите номер вышей квартиры!".ls)
-            
-            let OKAction = UIAlertAction(title: "OK", style: .default)
-            
-            alertController.addAction(OKAction)
-            self.present(alertController, animated: true, completion:nil)
-            
-            //sender.loading = false
-            return
-        }
-        
-        
+        let porch = porchTextField.text
+        let apartment = numberApartmentTextField.text
         let floor = floorTextField.text
-        let commit = commitOfUserTextField.text
+        let commit = commitOfUserTextView.text
         
-        
-        let _ = InfoAboutUserForOrder.setupAllUserInfo(/*idOrder: idOrder ,*/ name: nameUser, phone: phone, city: city, region: region ?? "", street: street, house: numberHouse, porch: porch , apartment: apartment , floor: floor ?? "", commit: commit ?? "")
+        let _ = InfoAboutUserForOrder.setupAllUserInfo(/*idOrder: idOrder ,*/ name: nameUser, phone: phone, city: city, region: region ?? "", street: street, house: numberHouse, porch: porch ?? "", apartment: apartment ?? "" , floor: floor ?? "", commit: commit ?? "")
         
         //MARK: Sender to PaymentVC
-
-//        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
-//        let next = adressUserFromRealm.last?.idOrder
-//        let payment = (UIStoryboard.main["payment"]!)
-//        payment
-//        containerViewController.addController(UIStoryboard.main["payment"]!)
         
-        guard let containerViewController = UINavigationController.main.viewControllers.first as? ContainerViewController else { return }
+        // Check Internet connection
+        guard isNetworkReachable() == true  else {
+            Dispatch.mainQueue.async {
+                let alert = UIAlertController(title: "Нет Интернет Соединения", message: "Убедитесь, что Ваш девайс подключен к сети интернет", preferredStyle: .alert)
+                let OkAction = UIAlertAction(title: "Ok", style: .default) {action in
+                    
+                }
+                alert.addAction(OkAction)
+                alert.show()
+            }
+            return
+        }
+        
         guard let paymentVC = UIStoryboard.main["payment"] as? PaymentViewController, let last = adressUserFromRealm.last else { return }
         paymentVC.idOrderPayment = last.idOrder
         paymentVC.phoneUserPayment = last.phone
@@ -181,38 +173,27 @@ class DrawingUpOfAnOrderViewController: BaseViewController, UITextFieldDelegate 
         paymentVC.apartmentPayment = last.apartment
         paymentVC.floorPayment = last.floor
         paymentVC.commitPayment = last.commit
-        containerViewController.addController(paymentVC)
+        paymentVC.addToContainer()
         
-//        let _name = "NameUser: " + nameUser + "\n"
-//        let _phone = "Phone: " + phone + "\n"
-//        let _city = "City: " + city + "\n"
-//        let _region = "Region: " + (region ?? "") + "\n"
-//        let _street = "Street" + street + "\n"
-//        let _numberHouse = "NumberHouse :" + numberHouse + "\n"
-//        let _porch = "Porch: " + porch  + "\n"
-//        let _appartment = "Apartment: " + apartment + "\n"
-//        let _floor = "Floor: " + (floor ?? "") + "\n"
-//        let _commit = "Commit: " + (commit ?? "")
-//        sendMessage(body: _name + _phone  + _city  + _region + _street + _numberHouse + _porch + _appartment + _floor + _commit, recipients: ["oleg_granchenko@mail.ru"])
         
     }
     
-//    func sendMessage(body: String, recipients: [String]) {
-//        if MFMailComposeViewController.canSendMail() {
-//            let mailComposeVC = MFMailComposeViewController()
-//            mailComposeVC.mailComposeDelegate = self
-//            mailComposeVC.setToRecipients(recipients)
-//            mailComposeVC.setMessageBody(body, isHTML: false)
-//            UINavigationController.main.present(mailComposeVC, animated: true, completion: nil)
-//        }
-//    }
-//    
-//    //MARK: MFMailComposeViewControllerDelegate
-//    
-//    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-//        controller.dismiss(animated: true, completion: nil)
-//    }
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return  textField.resignFirstResponder()
+    }
+    
+    override func keyboardAdjustmentConstant(_ adjustment: KeyboardAdjustment, keyboard: Keyboard) -> CGFloat {
+        if regionTextField.isFirstResponder ||
+            commitOfUserTextView.isFirstResponder ||
+            numberApartmentTextField.isFirstResponder ||
+            floorTextField.isFirstResponder ||
+            numberHouseTextField.isFirstResponder ||
+            porchTextField.isFirstResponder {
+            return adjustment.defaultConstant + 350
+        }
+        return 0
+    }
+    
 }
 
 

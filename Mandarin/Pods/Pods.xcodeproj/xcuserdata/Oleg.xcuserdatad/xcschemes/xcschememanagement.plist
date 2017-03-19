@@ -9,12 +9,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Bolts.xcscheme</key>
+		<key>AlamofireNetworkActivityIndicator.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>CryptoSwift.xcscheme</key>
+		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -29,22 +29,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FBSDKShareKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>FacebookCore.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>FacebookLogin.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FacebookShare.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -64,11 +54,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Kingfisher.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Mandarin.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -84,12 +69,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SnapKit.xcscheme</key>
+		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftValidator.xcscheme</key>
+		<key>SnapKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -99,7 +84,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftyVK.xcscheme</key>
+		<key>VK-ios-sdk-VKSdkResources.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>VK-ios-sdk.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -107,17 +97,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>02BAF4BA8B3ADE36DEED4A45633E0184</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>332F91393FB1DE033D370B4CEDDD5FCF</key>
+		<key>115FA0D867E07C04838493890DBD8D29</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>41849441C636502280D3D40156255A81</key>
+		<key>1204D67E3F776FC2E40E4DC7B5BC33D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2F8725CD6352AD138B20234BC7EA2DDC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>40693793DB19917E4023F9B11925B70F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,11 +137,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5B39E45FC15B8732832931F701884EF3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>5B5AC3C06B783F8674FDB4C0F900B56A</key>
 		<dict>
 			<key>primary</key>
@@ -147,7 +147,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6BB1C1403B2419F911818DA8413FDA07</key>
+		<key>6E5981A24071673FBF95FF80FA9A89D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,47 +162,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97E6A91342AF82DC29496CDDDA9B6E7D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A293FE617478859FF53D99EF062E8A3B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A3DF4A4ABF1858838F201C8AEA11B3E3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A7FEAA14E89971698ACA148F7F7202F2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AD432E29C64508B916D9DBE2926603D4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>B1C4AAFAF49036C7007633DAA3C806AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C4944FEC314D1A66588651D006273ADE</key>
+		<key>B51013186E5A44D2F3917A7C52E2B6B4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C82F032C310EDBFF9422E01854AC360E</key>
+		<key>C95A08B6E65B028DD1C9FA6C6CD923EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>DDBCFDE490CDFDABF6F16A26F346932D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FACF5314636D786C0CE90B040C24A6AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
