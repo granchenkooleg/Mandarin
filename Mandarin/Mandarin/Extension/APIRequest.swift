@@ -63,7 +63,7 @@ func requestHandler(_ function: Any, urlRequest: URLRequestConvertible, completi
                     errorDescription = "Unknown error: " + "\(error)"
                 }
                 Logger.log("\tAPI called function - \(function)\n\t" + errorDescription + errorReason, color: .Red)
-                UIAlertController.alert(String(format: errorDescription), message: errorReason).show()
+//                UIAlertController.alert(String(format: errorDescription), message: errorReason).show()
                 completionHandler(nil)
             }
             
@@ -79,6 +79,7 @@ let encodedRequestHalper: ((HTTPMethod, [String: AnyObject]?, URL) throws -> URL
     var _urlRequest = URLRequest(url: url)
     
     _urlRequest.httpMethod = method.rawValue
+    _urlRequest.timeoutInterval = 120
     return try URLEncoding.default.encode(_urlRequest, with: parameters)
 }
 

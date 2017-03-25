@@ -2,141 +2,34 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SchemeUserState</key>
-	<dict>
-		<key>Alamofire.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Bolts.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-<<<<<<< HEAD
-		</dict>
-		<key>CryptoSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-=======
->>>>>>> withoutVK
-		</dict>
-		<key>FBSDKCoreKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FBSDKLoginKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-<<<<<<< HEAD
-		</dict>
-		<key>FBSDKShareKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-=======
->>>>>>> withoutVK
-		</dict>
-		<key>FacebookCore.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FacebookLogin.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-<<<<<<< HEAD
-		</dict>
-		<key>FacebookShare.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-=======
->>>>>>> withoutVK
-		</dict>
-		<key>GTMOAuth2.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>GTMSessionFetcher.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>GoogleToolboxForMac.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-<<<<<<< HEAD
-		</dict>
-		<key>Kingfisher.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-=======
->>>>>>> withoutVK
-		</dict>
-		<key>Pods-Mandarin.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Realm.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>RealmSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SnapKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-<<<<<<< HEAD
-=======
-		</dict>
-		<key>SwiftyJSON.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
->>>>>>> withoutVK
-		</dict>
-		<key>VK-ios-sdk-VKSdkResources.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>VK-ios-sdk.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>02BAF4BA8B3ADE36DEED4A45633E0184</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-<<<<<<< HEAD
-		<key>332F91393FB1DE033D370B4CEDDD5FCF</key>
-=======
-		<key>3316D4283F8174BC0960AEAB72D17BD9</key>
+		<key>115FA0D867E07C04838493890DBD8D29</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3887EE0B4A8247356AE664854F74463D</key>
->>>>>>> withoutVK
+		<key>1204D67E3F776FC2E40E4DC7B5BC33D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2F8725CD6352AD138B20234BC7EA2DDC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>40693793DB19917E4023F9B11925B70F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -156,20 +49,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-<<<<<<< HEAD
-=======
-		<key>6223E94604122D232AE7E19939996880</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
->>>>>>> withoutVK
 		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6FDAEDE5AC98DEFAAAC80601C686E310</key>
+		<key>6E5981A24071673FBF95FF80FA9A89D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -184,39 +69,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-<<<<<<< HEAD
-		<key>92B85844F217DDCB2DAD312BFC72F349</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A7FEAA14E89971698ACA148F7F7202F2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-=======
->>>>>>> withoutVK
 		<key>B1C4AAFAF49036C7007633DAA3C806AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC531AD7809116806993413B34991816</key>
+		<key>B51013186E5A44D2F3917A7C52E2B6B4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-<<<<<<< HEAD
-		<key>C1B61FCB5FACD590065DCA285DECEC29</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C4944FEC314D1A66588651D006273ADE</key>
-=======
-		<key>CA65D7D737C92577023E317CBD10F759</key>
->>>>>>> withoutVK
+		<key>C95A08B6E65B028DD1C9FA6C6CD923EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -226,16 +89,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-<<<<<<< HEAD
-		<key>DF55F94C2F2764737CB8CC1FD5000F3F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FB10EB7743E646A6688F2BA1A3432E16</key>
-=======
-		<key>F429936841B948F4E0B03A15BEF6CC4D</key>
->>>>>>> withoutVK
+		<key>FACF5314636D786C0CE90B040C24A6AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
