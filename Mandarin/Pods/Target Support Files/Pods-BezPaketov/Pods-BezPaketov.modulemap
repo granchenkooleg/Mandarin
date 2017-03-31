@@ -1,0 +1,6 @@
+framework module Pods_BezPaketov {
+  umbrella header "Pods-BezPaketov-umbrella.h"
+
+  export *
+  module * { export * }
+}
