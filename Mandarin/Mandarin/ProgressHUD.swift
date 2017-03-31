@@ -1,6 +1,6 @@
 //
 //  ProgressHUD.swift
-//  Mandarin
+//  Bezpaketov
 //
 //  Created by Oleg on 2/21/17.
 //  Copyright © 2017 Oleg. All rights reserved.

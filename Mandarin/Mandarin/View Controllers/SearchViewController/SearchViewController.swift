@@ -1,6 +1,6 @@
 //
 //  SearchViewController.swift
-//  Mandarin
+//  Bezpaketov
 //
 //  Created by Oleg on 12/18/16.
 //  Copyright © 2016 Oleg. All rights reserved.

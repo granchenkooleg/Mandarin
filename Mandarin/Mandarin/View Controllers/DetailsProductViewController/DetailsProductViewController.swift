@@ -1,6 +1,6 @@
 //
 //  DetailsViewController.swift
-//  Mandarin
+//  Bezpaketov
 //
 //  Created by Oleg on 11/23/16.
 //  Copyright © 2016 Oleg. All rights reserved.
@@ -146,7 +146,7 @@ class DetailsProductViewController: BaseViewController, UITableViewDelegate {
     
     // Setting overPlusAndMinusButton
     func determinantForOverPlusAndMinusButton() -> Void {
-        overPlusAndMinusButton.setBackgroundColor(Color.mandarin, animated: true)
+        overPlusAndMinusButton.setBackgroundColor(Color.Bezpaketov, animated: true)
         overPlusAndMinusButton.setTitle("В корзину", for: UIControlState.normal)
         overPlusAndMinusButton.setTitleColor(UIColor.white, for: UIControlState.normal)
         

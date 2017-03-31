@@ -1,6 +1,6 @@
 //
 //  MainViewController.swift
-//  Mandarin
+//  Bezpaketov
 //
 //  Created by Yuriy on 11/29/16.
 //  Copyright © 2016 Oleg. All rights reserved.
@@ -82,7 +82,7 @@ class MainViewController: BaseViewController {
         favorit.basketHandler = basketHadler
         // Configure Segmented Control
         segmentControlWrapper.segmentedCotrol.layer.cornerRadius = 5.0
-        segmentControlWrapper.segmentedCotrol?.layer.borderColor = Color.mandarin.cgColor
+        segmentControlWrapper.segmentedCotrol?.layer.borderColor = Color.Bezpaketov.cgColor
         segmentControlWrapper.segmentedCotrol?.layer.borderWidth = 1.0
         segmentControlWrapper.segmentedCotrol?.layer.masksToBounds = true
         //segmentControlWrapper.segmentedCotrol?.selectedSegment = 0

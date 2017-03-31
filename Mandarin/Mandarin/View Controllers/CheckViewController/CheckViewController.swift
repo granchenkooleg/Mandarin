@@ -1,6 +1,6 @@
 //
 //  CheckViewController.swift
-//  Mandarin
+//  Bezpaketov
 //
 //  Created by Oleg on 12/8/16.
 //  Copyright © 2016 Oleg. All rights reserved.

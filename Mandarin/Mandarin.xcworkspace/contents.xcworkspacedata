@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Mandarin.xcodeproj">
+      location = "group:/Users/Macostik/Project/Mandarin/Mandarin/BezPaketov.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

@@ -1,6 +1,6 @@
 //
 //  WeightCollectionViewCell.swift
-//  Mandarin
+//  Bezpaketov
 //
 //  Created by Oleg on 12/7/16.
 //  Copyright © 2016 Oleg. All rights reserved.
@@ -18,7 +18,7 @@ class WeightCollectionViewCell: UICollectionViewCell {
     
     override var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? Color.mandarin : UIColor.white
+            backgroundColor = isHighlighted ? Color.Bezpaketov : UIColor.white
         }
     }
     

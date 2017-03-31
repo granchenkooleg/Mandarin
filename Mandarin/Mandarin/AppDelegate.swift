@@ -1,7 +1,7 @@
 
 //
 //  AppDelegate.swift
-//  Mandarin
+//  Bezpaketov
 //
 //  Created by Oleg on 11/20/16.
 //  Copyright © 2016 Oleg. All rights reserved.

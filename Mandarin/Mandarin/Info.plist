@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3</string>
+	<string>1.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -41,7 +41,7 @@
 			<string>Bundle ID</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.project.mandarin</string>
+				<string>com.project.Bezpaketov</string>
 			</array>
 		</dict>
 		<dict>
@@ -60,7 +60,7 @@
 	<key>FacebookAppID</key>
 	<string>1059473057508658</string>
 	<key>FacebookDisplayName</key>
-	<string>Mandarin</string>
+	<string>Bezpaketov</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>

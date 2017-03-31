@@ -1,6 +1,6 @@
 //
 //  ProductsForRealm.swift
-//  Mandarin
+//  Bezpaketov
 //
 //  Created by Oleg on 12/25/16.
 //  Copyright © 2016 Oleg. All rights reserved.

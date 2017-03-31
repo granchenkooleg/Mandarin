@@ -1,6 +1,6 @@
 //
 //  FavoriteProductsViewController.swift
-//  Mandarin
+//  Bezpaketov
 //
 //  Created by Yuriy on 1/3/17.
 //  Copyright © 2017 Oleg. All rights reserved.

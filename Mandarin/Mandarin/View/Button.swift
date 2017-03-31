@@ -29,7 +29,7 @@ extension UILabel: Highlightable, Selectable {
 
 class Button : UIButton {
     
-    convenience init(icon: String, font: UIFont = UIFont.mandarin(UIFont.systemFontSize), size: CGFloat = UIFont.systemFontSize, textColor: UIColor = UIColor.white) {
+    convenience init(icon: String, font: UIFont = UIFont.bezpaketov(UIFont.systemFontSize), size: CGFloat = UIFont.systemFontSize, textColor: UIColor = UIColor.white) {
         self.init()
         titleLabel?.font = font
         setTitle(icon, for: UIControlState())
@@ -222,7 +222,7 @@ final class IconSegmentButton: Button {
         selectionView.isHidden = true
         selectionView.backgroundColor = UIColor.clear
         iconLabel.textColor = iconColor
-        iconLabel.font = UIFont.mandarin(textIconSize)
+        iconLabel.font = UIFont.bezpaketov(textIconSize)
         iconLabel.highlightedTextColor = UIColor.white
         textLabel.highlightedTextColor = UIColor.white
         textLabel.font = titleLabel?.font
@@ -296,7 +296,7 @@ final class IconSegmentButton: Button {
 
 extension UIFont {
     
-    class func mandarin(_ size: CGFloat) -> UIFont! {
+    class func bezpaketov(_ size: CGFloat) -> UIFont! {
         return UIFont(name: "mandarin", size: size)
     }
 }

@@ -1,6 +1,6 @@
 
 //  User.swift
-//  Mandarin
+//  Bezpaketov
 //
 //  Created by Macostik on 12/3/16.
 //  Copyright © 2016 Oleg. All rights reserved.

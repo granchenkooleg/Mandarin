@@ -32,6 +32,7 @@
 		56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56899DCF1DE9879B00EF02FE /* GoogleService-Info.plist */; };
 		56CEB7851DE47A1800E84345 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CEB7841DE47A1800E84345 /* UIColor+Ext.swift */; };
 		56CEB7871DE4862B00E84345 /* BezierPath+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CEB7861DE4862B00E84345 /* BezierPath+Ext.swift */; };
+		56F84D1D1E8ED3EF0061A086 /* mandarin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56F84D1C1E8ED3EF0061A086 /* mandarin.ttf */; };
 		56FCEA631E34E49E00E2E594 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56FCEA621E34E49E00E2E594 /* Assets.xcassets */; };
 		56FCEA651E34E70700E2E594 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCEA641E34E70700E2E594 /* SegmentControl.swift */; };
 		56FCEA671E34E8D300E2E594 /* ProductsForRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCEA661E34E8D300E2E594 /* ProductsForRealm.swift */; };
@@ -59,11 +60,9 @@
 		7C0949631DE222250038018F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0949621DE222250038018F /* AppDelegate.swift */; };
 		7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C09496B1DE222250038018F /* LaunchScreen.storyboard */; };
 		7C2D16C31DF45A4200A3CF92 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C2D16C11DF45A4200A3CF92 /* SignUp.storyboard */; };
-		7C46E96D1E4137CD0053CFFF /* mandarin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C46E96C1E4137CD0053CFFF /* mandarin.ttf */; };
 		7C6A7D7A1E5CD24D00C562C0 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A7D791E5CD24D00C562C0 /* ProgressHUD.swift */; };
 		7C7157841E21856900C1DCAC /* InfoAboutUserForOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */; };
 		7C887A821E66429500D0F008 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C887A811E66429500D0F008 /* NetworkReachabilityManager.swift */; };
-		ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,10 +93,10 @@
 		56C682FA1DEB78520001790B /* Mandarin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mandarin.entitlements; sourceTree = "<group>"; };
 		56CEB7841DE47A1800E84345 /* UIColor+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Ext.swift"; path = "Extension/UIColor+Ext.swift"; sourceTree = "<group>"; };
 		56CEB7861DE4862B00E84345 /* BezierPath+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BezierPath+Ext.swift"; path = "Extension/BezierPath+Ext.swift"; sourceTree = "<group>"; };
+		56F84D1C1E8ED3EF0061A086 /* mandarin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandarin.ttf; sourceTree = "<group>"; };
 		56FCEA621E34E49E00E2E594 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56FCEA641E34E70700E2E594 /* SegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentControl.swift; path = View/SegmentControl.swift; sourceTree = "<group>"; };
 		56FCEA661E34E8D300E2E594 /* ProductsForRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsForRealm.swift; sourceTree = "<group>"; };
-		56FFEAAE1E43CD9700583B4D /* mandarin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandarin.ttf; sourceTree = "<group>"; };
 		59C633C6F7C974462971A9F1 /* Pods-Mandarin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mandarin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mandarin/Pods-Mandarin.debug.xcconfig"; sourceTree = "<group>"; };
 		6B104AC557B3A7A971D59079 /* Pods_Mandarin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mandarin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C54CC98AB82A309CE8319DC /* Pods-Mandarin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mandarin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mandarin/Pods-Mandarin.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,12 +122,11 @@
 		7C01270F1E34F8D600BF5046 /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckViewController.swift; path = "View Controllers/CheckViewController/CheckViewController.swift"; sourceTree = "<group>"; };
 		7C0127111E34F90200BF5046 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = "View Controllers/SearchViewController/SearchViewController.swift"; sourceTree = "<group>"; };
 		7C0127131E34FA7400BF5046 /* FavoriteProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteProductsViewController.swift; path = "View Controllers/FavoriteProductsViewController/FavoriteProductsViewController.swift"; sourceTree = "<group>"; };
-		7C09495F1DE222250038018F /* Mandarin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mandarin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C09495F1DE222250038018F /* BezPaketov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BezPaketov.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0949621DE222250038018F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C09496C1DE222250038018F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C09496E1DE222250038018F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C2D16C11DF45A4200A3CF92 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
-		7C46E96C1E4137CD0053CFFF /* mandarin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandarin.ttf; sourceTree = "<group>"; };
 		7C6A7D791E5CD24D00C562C0 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		7C7157831E21856900C1DCAC /* InfoAboutUserForOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoAboutUserForOrder.swift; sourceTree = "<group>"; };
 		7C887A811E66429500D0F008 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				56350D0C1E4760C600D487C0 /* VK_ios_sdk.framework in Frameworks */,
-				ECB15A486BFFAEA0F10517DD /* Pods_Mandarin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +285,7 @@
 		7C0949601DE222250038018F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7C09495F1DE222250038018F /* Mandarin.app */,
+				7C09495F1DE222250038018F /* BezPaketov.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -311,9 +308,8 @@
 				56FCEA621E34E49E00E2E594 /* Assets.xcassets */,
 				7C09496E1DE222250038018F /* Info.plist */,
 				56899DCF1DE9879B00EF02FE /* GoogleService-Info.plist */,
-				56FFEAAE1E43CD9700583B4D /* mandarin.ttf */,
 				567C5D3D1DE37BE900776171 /* Mandarin-Bridging-Header.h */,
-				7C46E96C1E4137CD0053CFFF /* mandarin.ttf */,
+				56F84D1C1E8ED3EF0061A086 /* mandarin.ttf */,
 			);
 			path = Mandarin;
 			sourceTree = "<group>";
@@ -389,9 +385,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7C09495E1DE222250038018F /* Mandarin */ = {
+		7C09495E1DE222250038018F /* BezPaketov */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7C0949711DE222250038018F /* Build configuration list for PBXNativeTarget "Mandarin" */;
+			buildConfigurationList = 7C0949711DE222250038018F /* Build configuration list for PBXNativeTarget "BezPaketov" */;
 			buildPhases = (
 				54E9FA394A6A3D384B0468A0 /* [CP] Check Pods Manifest.lock */,
 				7C09495B1DE222250038018F /* Sources */,
@@ -404,9 +400,9 @@
 			);
 			dependencies = (
 			);
-			name = Mandarin;
+			name = BezPaketov;
 			productName = Mandarin;
-			productReference = 7C09495F1DE222250038018F /* Mandarin.app */;
+			productReference = 7C09495F1DE222250038018F /* BezPaketov.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -423,7 +419,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 224SJKKLQ3;
 						LastSwiftMigration = 0810;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -432,7 +428,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7C09495A1DE222250038018F /* Build configuration list for PBXProject "Mandarin" */;
+			buildConfigurationList = 7C09495A1DE222250038018F /* Build configuration list for PBXProject "BezPaketov" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -445,7 +441,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7C09495E1DE222250038018F /* Mandarin */,
+				7C09495E1DE222250038018F /* BezPaketov */,
 			);
 		};
 /* End PBXProject section */
@@ -455,12 +451,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C46E96D1E4137CD0053CFFF /* mandarin.ttf in Resources */,
 				7C0046D51E47B246005CCDE0 /* Main.storyboard in Resources */,
 				56FCEA631E34E49E00E2E594 /* Assets.xcassets in Resources */,
 				7C09496D1DE222250038018F /* LaunchScreen.storyboard in Resources */,
 				56899DD01DE9879B00EF02FE /* GoogleService-Info.plist in Resources */,
 				7C2D16C31DF45A4200A3CF92 /* SignUp.storyboard in Resources */,
+				56F84D1D1E8ED3EF0061A086 /* mandarin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,10 +688,10 @@
 				);
 				INFOPLIST_FILE = Mandarin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.mandarin;
+				PRODUCT_BUNDLE_IDENTIFIER = bezpaketovID;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c41d1851-db3a-4a87-8988-b36f86c3cc0c";
+				PROVISIONING_PROFILE_SPECIFIER = BezPaketov_Developer_Profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "Mandarin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -710,7 +706,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Mandarin/Mandarin.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 224SJKKLQ3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -719,10 +715,10 @@
 				);
 				INFOPLIST_FILE = Mandarin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.project.mandarin;
+				PRODUCT_BUNDLE_IDENTIFIER = bezpaketovID;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "0994a5d1-dfa9-4652-9445-d02b3490b539";
+				PROVISIONING_PROFILE_SPECIFIER = BezPaketov_Ad_Hoc_Profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "Mandarin-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -732,7 +728,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7C09495A1DE222250038018F /* Build configuration list for PBXProject "Mandarin" */ = {
+		7C09495A1DE222250038018F /* Build configuration list for PBXProject "BezPaketov" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C09496F1DE222250038018F /* Debug */,
@@ -741,7 +737,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7C0949711DE222250038018F /* Build configuration list for PBXNativeTarget "Mandarin" */ = {
+		7C0949711DE222250038018F /* Build configuration list for PBXNativeTarget "BezPaketov" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C0949721DE222250038018F /* Debug */,

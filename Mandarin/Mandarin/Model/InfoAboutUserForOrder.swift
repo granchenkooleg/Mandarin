@@ -1,6 +1,6 @@
 //
 //  InfoAboutUserForOrder.swift
-//  Mandarin
+//  Bezpaketov
 //
 //  Created by Oleg on 1/7/17.
 //  Copyright © 2017 Oleg. All rights reserved.

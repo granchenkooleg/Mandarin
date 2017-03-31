@@ -1,6 +1,6 @@
 //
 //  CategoryViewController.swift
-//  Mandarin
+//  Bezpaketov
 //
 //  Created by Oleg on 11/30/16.
 //  Copyright © 2016 Oleg. All rights reserved.

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -404,14 +404,14 @@
                                             <action selector="menuClick:" destination="TLf-Ah-IKN" eventType="touchUpInside" id="cTZ-Cg-VI9"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Главная" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YV7-7G-cqk">
-                                        <rect key="frame" x="353" y="26" width="63" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BezPaketov" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YV7-7G-cqk">
+                                        <rect key="frame" x="340" y="26" width="89.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3K-hu-ZBO">
-                                        <rect key="frame" x="720" y="11" width="36" height="50"/>
+                                        <rect key="frame" x="720" y="11.5" width="36" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOM-5K-1ht" customClass="Button" customModule="Mandarin" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="36" height="50"/>
@@ -429,7 +429,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gF5-Rg-NV6">
-                                                <rect key="frame" x="8" y="15" width="20" height="20"/>
+                                                <rect key="frame" x="8" y="14.5" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="0sA-JZ-4go"/>
                                                     <constraint firstAttribute="width" constant="20" id="6cH-8U-0RK"/>
@@ -826,7 +826,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWN-kl-jVx">
-                                        <rect key="frame" x="720" y="11" width="36" height="50"/>
+                                        <rect key="frame" x="720" y="11.5" width="36" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jay-aU-5e6" customClass="Button" customModule="Mandarin" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="36" height="50"/>
@@ -844,7 +844,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxe-q4-xlp">
-                                                <rect key="frame" x="8" y="15" width="20" height="20"/>
+                                                <rect key="frame" x="8" y="14.5" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="APP-w6-KJ2"/>
                                                     <constraint firstAttribute="height" constant="20" id="Hc5-BU-OLf"/>
@@ -1038,7 +1038,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Йогурт Danone " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHn-BL-gfu">
-                                        <rect key="frame" x="314" y="14.5" width="140" height="44"/>
+                                        <rect key="frame" x="314" y="14" width="140" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="F1w-lI-bZY"/>
                                             <constraint firstAttribute="width" constant="140" id="Ru0-XD-f15"/>
@@ -1048,7 +1048,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ex7-Cq-eON">
-                                        <rect key="frame" x="720" y="11" width="36" height="50"/>
+                                        <rect key="frame" x="720" y="11.5" width="36" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QcV-6k-gZW" customClass="Button" customModule="Mandarin" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="36" height="50"/>
@@ -1066,7 +1066,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucq-gu-w7N">
-                                                <rect key="frame" x="8" y="15" width="20" height="20"/>
+                                                <rect key="frame" x="8" y="14.5" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="lez-Gg-PwD"/>
                                                     <constraint firstAttribute="height" constant="20" id="q48-68-a6L"/>
@@ -1431,7 +1431,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8M-vK-FPh" customClass="Button" customModule="Mandarin" customModuleProvider="target">
-                                        <rect key="frame" x="399" y="10.5" width="254" height="35"/>
+                                        <rect key="frame" x="399" y="11" width="254" height="35"/>
                                         <fontDescription key="fontDescription" name="mandarin" family="mandarin" pointSize="22"/>
                                         <state key="normal" title="l">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2290,7 +2290,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGr-db-E7L">
-                                        <rect key="frame" x="720" y="11" width="36" height="50"/>
+                                        <rect key="frame" x="720" y="11.5" width="36" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hdk-Db-TD0" customClass="Button" customModule="Mandarin" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="36" height="50"/>
@@ -2308,7 +2308,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfk-Gt-Zgh">
-                                                <rect key="frame" x="8" y="15" width="20" height="20"/>
+                                                <rect key="frame" x="8" y="14.5" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="6nU-bO-1op"/>
                                                     <constraint firstAttribute="height" constant="20" id="pGf-rm-7V1"/>
@@ -2404,13 +2404,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ожидайте звонка в течении: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5y8-xB-fle">
-                                <rect key="frame" x="273.5" y="437" width="185" height="16"/>
+                                <rect key="frame" x="274" y="437" width="185" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 мин." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kx5-l1-zXE">
-                                <rect key="frame" x="460.5" y="437" width="173.5" height="16"/>
+                                <rect key="frame" x="461" y="437" width="173" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2705,7 +2705,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ogp-yx-P2x">
-                                        <rect key="frame" x="720" y="11" width="36" height="50"/>
+                                        <rect key="frame" x="720" y="11.5" width="36" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLg-tE-LQg" customClass="Button" customModule="Mandarin" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="36" height="50"/>
@@ -2723,7 +2723,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YD-3P-yww">
-                                                <rect key="frame" x="8" y="15" width="20" height="20"/>
+                                                <rect key="frame" x="8" y="14.5" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="bSo-Ev-bg7"/>
                                                     <constraint firstAttribute="width" constant="20" id="i4Z-dC-Rln"/>
@@ -3430,7 +3430,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Upo-3B-Pvz">
-                                        <rect key="frame" x="720" y="11" width="36" height="50"/>
+                                        <rect key="frame" x="720" y="11.5" width="36" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07f-Pu-ank" customClass="Button" customModule="Mandarin" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="36" height="50"/>
@@ -3448,7 +3448,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57I-KN-Uka">
-                                                <rect key="frame" x="8" y="15" width="20" height="20"/>
+                                                <rect key="frame" x="8" y="14.5" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="phu-9S-ETb"/>
                                                     <constraint firstAttribute="width" constant="20" id="sJb-bJ-9jP"/>
@@ -3790,7 +3790,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uwr-02-Gn9">
-                                        <rect key="frame" x="720" y="11" width="36" height="50"/>
+                                        <rect key="frame" x="720" y="11.5" width="36" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20e-0J-W88" customClass="Button" customModule="Mandarin" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="36" height="50"/>
@@ -3808,7 +3808,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U43-aN-Fee">
-                                                <rect key="frame" x="8" y="15" width="20" height="20"/>
+                                                <rect key="frame" x="8" y="14.5" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="GH3-Yz-1Dh"/>
                                                     <constraint firstAttribute="width" constant="20" id="K1e-Ca-aRR"/>
@@ -3853,7 +3853,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ll-6k-fAU">
-                                <rect key="frame" x="40" y="491.5" width="100" height="41"/>
+                                <rect key="frame" x="40" y="492" width="100" height="41"/>
                                 <color key="backgroundColor" red="1" green="0.30191646799999999" blue="0.040223739379999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="SGz-6f-qs9"/>
@@ -3872,7 +3872,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btR-Aq-6jO">
-                                <rect key="frame" x="628" y="491.5" width="100" height="41"/>
+                                <rect key="frame" x="628" y="492" width="100" height="41"/>
                                 <color key="backgroundColor" red="1" green="0.30191646799999999" blue="0.040223739379999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="CX0-qh-4bZ"/>
@@ -3905,7 +3905,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bH-ck-3mw">
-                                <rect key="frame" x="20" y="80" width="728" height="343.5"/>
+                                <rect key="frame" x="20" y="80" width="728" height="344"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ваш заказ на сумму: " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hW0-dF-8jY">
                                         <rect key="frame" x="295" y="15" width="139" height="16"/>
